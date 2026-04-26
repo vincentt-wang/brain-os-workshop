@@ -255,25 +255,27 @@ const D=[
 {id:'m1_dfv_trap',sec:1,sub:'三種陷阱',type:'dfv-combinations',chip:['三種失敗模式','red'],title:'只靠一個，就是陷阱'},
 {id:'m1_rules',sec:1,sub:'公約',type:'rules'},
 {id:'m1_anchor',sec:1,sub:'目標錨定',type:'sprint',sprintNum:1,title:'寫下你的卡關專案',task:'不用想太久。第一個浮現的，就是最真實的<br>寫下：<strong>我目前最卡關的商業問題或目標是什麼？</strong>',time:60},
-// ════ MODULE 2: Feasibility — 學習基礎系統 (17 slides) ════
+// ════ MODULE 2: Feasibility — 學習基礎系統 ════
 {id:'m2_sec',sec:2,sub:'模組開場',type:'section-cover',secNum:'②',secTitle:'Feasibility',secEn:'可行性',sub2:'建立最強的資訊處理底座'},
 {id:'m2_noise',sec:2,sub:'環境降噪',type:'concept-single',chip:'降噪',chipColor:'blue',title:'學習的第一步：<span class="g-blue">降噪</span>',body:'你的環境決定你的輸入質量。噪音不只是聲音，是一切搶佔注意力的東西。',tip:'手機面朝下。通知關掉。這不是紀律問題，是物理問題。（McKinsey 2023：碎片化注意力讓生產力下降 40%）'},
 {id:'m2_body',sec:2,sub:'身體狀態',type:'body-triangle'},
 {id:'m2_loop',sec:2,sub:'學習迴路',type:'input-output'},
+{id:'m2_memory',sec:2,sub:'訊息的兩種命運',type:'memory-types'},
 {id:'m2_topdown',sec:2,sub:'思維框架',type:'topdown-bottomup-v2',chip:['兩種思維','purple'],title:'Top-down vs Bottom-up'},
 {id:'m2_mckinsey',sec:2,sub:'McKinsey 六元素',type:'mckinsey-six-v2',chip:['McKinsey 六錨點','blue'],title:'Top-down 思維的六個錨點'},
-{id:'m2_speed',sec:2,sub:'速讀本質',type:'concept-single',chip:'速讀本質',chipColor:'yellow',title:'速讀不是<span class="g-orange">讀更快</span>，是<span class="g-orange">找解藥</span>',body:'你帶著什麼問題進入一本書，決定你能提取多少價值。沒有問題就沒有速讀。',tip:'打開書前先問：「我需要從這裡得到什麼答案？」'},
+{id:'m2_speed',sec:2,sub:'速讀本質',type:'concept-single',chip:'速讀本質',chipColor:'yellow',title:'速讀不是<span class="g-orange">讀更快</span>，是<span class="g-orange">找解藥</span>',body:'你帶著什麼問題進入一本書，決定你能提取多少價值。沒有問題就沒有速讀。',tip:'前置作業：先預覽目錄 → 手繪骨架思維導圖 → 寫下 3 個你想得到的答案，再開始讀'},
 {id:'m2_speed_ex',sec:2,sub:'速讀實戰示範',type:'speed-reading-ex'},
-{id:'m2_scan',sec:2,sub:'三段掃描',type:'three-scan'},
-{id:'m2_subvoc',sec:2,sub:'消除默念',type:'concept-single',chip:'消除默念',chipColor:'orange',title:'關閉腦內的<span class="g-orange">閱讀聲音</span>',body:'Sub-vocalization 是大多數人閱讀速度的天花板。強制讓眼睛跑在聲音前面，視野從單字擴展到片語。',tip:'每行只找關鍵詞，用餘光補兩側。把書頁分成三個直列掃描，絕對不回頭看。'},
+{id:'m2_scan',sec:2,sub:'預覽掃描',type:'preview-scan'},
+{id:'m2_visual_scan',sec:2,sub:'視覺三段掃描',type:'visual-scan'},
+{id:'m2_subvoc',sec:2,sub:'消除默念',type:'concept-single',chip:'消除默念',chipColor:'orange',title:'關閉腦內的<span class="g-orange">閱讀聲音</span>',body:'Sub-vocalization 是大多數人閱讀速度的天花板。強制讓眼睛跑在聲音前面，視野從單字擴展到片語。',tip:'初期：完全靜音，不默念。進階：熟練後搭配 2x 有聲書邊聽邊讀，同時啟動聽覺與視覺雙通道，讓海馬迴判定重要性加倍'},
 {id:'m2_chunk',sec:2,sub:'記憶分組',type:'concept-single',chip:'Chunking',chipColor:'green',title:'<span class="g-green">分組</span>讓大腦不過載',body:'工作記憶一次只能處理 5±2 個單位。Chunking 是把碎片壓縮成一個有意義的「包」。用 3 或 5 的奇數分組，大腦最容易打包。',tip:'電話號碼、音樂小節、NBA 首字母縮寫——都是 Chunking 的產物。'},
 {id:'m2_chunk_ex',sec:2,sub:'Chunking 實戰',type:'chunk-example'},
-{id:'m2_dual',sec:2,sub:'雙重編碼',type:'dual-coding'},
 {id:'m2_feynman',sec:2,sub:'費曼技巧',type:'feynman'},
-{id:'m2_spacing',sec:2,sub:'間隔重複',type:'concept-single',chip:'間隔重複',chipColor:'cyan',title:'對抗<span class="g-cyan">遺忘曲線</span>的唯一方法',body:'艾賓浩斯遺忘曲線：24小時後你忘掉70%。解方不是複習更多，是在對的時間點複習。',tip:'第1天 → 第3天 → 第7天 → 第21天。Anki 是最簡單的實踐工具。'},
+{id:'m2_dual',sec:2,sub:'雙重編碼',type:'dual-coding'},
+{id:'m2_spacing',sec:2,sub:'間隔重複',type:'spacing-curve'},
 {id:'m2_mece_intro',sec:2,sub:'MECE 工具',type:'mece-intro-v2',chip:['MECE','yellow'],title:'MECE：相互獨立，完全窮盡'},
 {id:'m2_mece_game',sec:2,sub:'MECE 互動',type:'mece-game-v2',chip:['MECE 猜猜看','yellow'],title:'這是 MECE 嗎？'},
-{id:'m2_sprint1',sec:2,sub:'Sprint 01',type:'sprint',sprintNum:2,title:'速讀訊號萃取實戰',task:'打開手機裡一篇<strong>你一直想讀但沒讀的文章</strong><br>用三段掃描法：只讀標題、第一句、最後一段<br>告訴旁邊的人你萃取到了什麼「訊號」',time:180},
+{id:'m2_sprint1',sec:2,sub:'Sprint 01',type:'sprint',sprintNum:2,title:'速讀訊號萃取實戰',task:'打開手機裡一篇<strong>你一直想讀但沒讀的文章</strong><br>用預覽掃描：先看目錄/標題，寫下你的問題，再用視覺三段掃描提取訊號<br>告訴旁邊的人你萃取到了什麼「訊號」',time:180},
 // ════ MODULE 3: Desirability — 目標錨定 (14 slides) ════
 {id:'m3_sec',sec:3,sub:'模組開場',type:'section-cover',secNum:'③',secTitle:'Desirability',secEn:'欲求性',sub2:'確認學習的 ROI，錨定真實目標'},
 {id:'m3_quote',sec:3,sub:'破題',type:'big-quote',chip:['關鍵診斷','orange'],quote:'有人需要你<br>學的這件事嗎<span class="g-red">？</span>',sub2:'學習的 ROI 取決於你是否在解決真實問題'},
@@ -721,6 +723,52 @@ function renderSlide(sd){
     h+=`</div></div>`;
     break;
 
+  // ── MEMORY TYPES ─────────────────────────────────────────────────────────
+  case 'memory-types':{
+    h+=blob('rgba(59,130,246,.1)','rgba(168,85,247,.08)');
+    h+=`<div style="position:relative;z-index:1;max-width:920px;width:100%">`;
+    h+=mkChip('兩種記憶','blue');
+    h+=`<h2 style="margin-bottom:.3rem">訊息的兩種命運：<span class="g-blue">工作記憶</span> vs 長期記憶</h2>`;
+    h+=`<p style="font-size:var(--min-font);color:var(--mid);margin-bottom:.8rem">海馬迴是大腦的守門員——只讓「跟生存有關」或「有強烈情緒關聯」的訊息進入長期記憶</p>`;
+    h+=`<div class="bar"></div>`;
+    h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin:1rem 0">`;
+    h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:210px">`;
+    h+=`<div class="card-answer" style="background:rgba(255,32,85,.07);border:2px solid rgba(255,32,85,.3);border-radius:14px;padding:1.4rem;height:100%">`;
+    h+=`<div style="font-size:.56rem;font-weight:900;color:var(--red);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.5rem">Working Memory 工作記憶</div>`;
+    h+=`<div style="font-size:clamp(2rem,4vw,3rem);font-weight:900;color:var(--red);line-height:1;margin-bottom:.3rem">7 ± 2</div>`;
+    h+=`<div style="font-size:var(--min-font);color:var(--mid);margin-bottom:.6rem">20秒內消失 · 極易被干擾</div>`;
+    h+=`<div style="display:flex;flex-direction:column;gap:.3rem">`;
+    ['只有 Input 沒有鉤子 → 全部流失','多工 / 手機通知 = 瞬間清空','一次超過 7 項 → 全部記不住'].forEach(it=>{
+      h+=`<div style="font-size:var(--min-label);color:rgba(255,255,255,.7);padding:.3rem .6rem;background:rgba(255,32,85,.08);border-left:2px solid rgba(255,32,85,.4);border-radius:0 6px 6px 0;line-height:1.5">${it}</div>`;
+    });
+    h+=`</div></div>`;
+    h+=`<div class="card-mask" style="border-radius:14px;background:rgba(255,32,85,.12);border:2px solid rgba(255,32,85,.3)">`;
+    h+=`<div style="font-size:clamp(2.2rem,5vw,3.5rem);font-weight:900;color:var(--red);line-height:1">7 ± 2</div>`;
+    h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--red);margin-top:.3rem">工作記憶</div>`;
+    h+=`<div style="font-size:var(--min-label);color:var(--mid);margin-top:.2rem">20秒窗口</div>`;
+    h+=`</div></div>`;
+    h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:210px">`;
+    h+=`<div class="card-answer" style="background:rgba(34,197,94,.07);border:2px solid rgba(34,197,94,.3);border-radius:14px;padding:1.4rem;height:100%">`;
+    h+=`<div style="font-size:.56rem;font-weight:900;color:var(--green);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.5rem">Long-term Memory 長期記憶</div>`;
+    h+=`<div style="font-size:clamp(1.3rem,2.2vw,1.8rem);font-weight:900;color:var(--green);line-height:1.25;margin-bottom:.3rem">生存威脅<br>+ 情緒關聯</div>`;
+    h+=`<div style="font-size:var(--min-font);color:var(--mid);margin-bottom:.6rem">海馬迴的啟動條件</div>`;
+    h+=`<div style="display:flex;flex-direction:column;gap:.3rem">`;
+    ['Chunking：壓縮記憶單位，減少認知負荷','Feynman：能教人才算真懂','間隔複習：在對的時間點強化'].forEach(it=>{
+      h+=`<div style="font-size:var(--min-label);color:rgba(255,255,255,.7);padding:.3rem .6rem;background:rgba(34,197,94,.08);border-left:2px solid rgba(34,197,94,.4);border-radius:0 6px 6px 0;line-height:1.5">${it}</div>`;
+    });
+    h+=`</div></div>`;
+    h+=`<div class="card-mask" style="border-radius:14px;background:rgba(34,197,94,.1);border:2px solid rgba(34,197,94,.3)">`;
+    h+=`<div style="font-size:clamp(1.3rem,2.2vw,1.8rem);font-weight:900;color:var(--green);line-height:1.25">生存威脅<br>+ 情緒關聯</div>`;
+    h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--green);margin-top:.3rem">長期記憶</div>`;
+    h+=`</div></div>`;
+    h+=`</div>`;
+    h+=`<div style="display:grid;grid-template-columns:1fr auto 1fr;gap:.8rem;align-items:center;padding:.9rem 1.4rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px">`;
+    h+=`<div style="text-align:center"><div style="font-size:var(--min-label);font-weight:700;color:var(--mid);margin-bottom:.3rem">目前一般人</div><div style="font-size:clamp(1.1rem,2vw,1.6rem);font-weight:900;color:var(--red)">180–200 字/min</div><div style="font-size:var(--min-label);color:rgba(255,32,85,.7)">留存率 40–60%</div></div>`;
+    h+=`<div style="font-size:1.8rem;color:var(--orange);opacity:.7">→</div>`;
+    h+=`<div style="text-align:center"><div style="font-size:var(--min-label);font-weight:700;color:var(--mid);margin-bottom:.3rem">本章目標</div><div style="font-size:clamp(1.1rem,2vw,1.6rem);font-weight:900;color:var(--green)">600+ 字/min</div><div style="font-size:var(--min-label);color:rgba(34,197,94,.7)">留存率 80%+</div></div>`;
+    h+=`</div></div>`;
+    break;}
+
   // ── TOPDOWN-BOTTOMUP-V2 (v3) ──────────────────────────────────────────────
   case 'topdown-bottomup-v2':{
     h+=blob('rgba(168,85,247,.1)','rgba(255,107,0,.06)');
@@ -850,7 +898,85 @@ function renderSlide(sd){
     h+=`</div>`;
     break;}
 
-  // ── THREE SCAN ───────────────────────────────────────────────────────────
+  // ── PREVIEW SCAN ─────────────────────────────────────────────────────────
+  case 'preview-scan':{
+    h+=blob('rgba(251,191,36,.08)','rgba(255,107,0,.06)');
+    h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%">`;
+    h+=mkChip('預覽掃描','yellow');
+    h+=`<h2 style="margin-bottom:.3rem">讀之前先<span class="g-orange">激發好奇心</span></h2>`;
+    h+=`<p style="font-size:var(--min-font);color:var(--mid);margin-bottom:.8rem">大腦需要「想知道答案」才會啟動記憶。預覽不是提前讀完，是讓你帶著問題進入。</p>`;
+    h+=`<div class="bar"></div>`;
+    h+=`<div class="step-reveal-wrap" style="margin-top:1rem">`;
+    [{n:'01',q:'選書預覽（10分鐘）',a:'<strong>目錄、作者背景、評語、摘要。</strong>問自己：「這本書能幫我解決什麼問題？」目的是讓大腦對即將進入的內容形成「預期框架」，而不是被動接受資訊。'},
+     {n:'02',q:'骨架提取 + 思維導圖（10–20分鐘）',a:'<strong>只讀標題、小標、插圖說明、每章第一句和最後一句。</strong>邊看邊隨手畫思維導圖——目的是刺激好奇心，同時避免確認偏見。你先建骨架，大腦才知道「要把新內容放哪裡」。'},
+     {n:'03',q:'寫下3個你想得到的答案',a:'<strong>在讀之前，手寫3個問題：</strong>你最困惑的是什麼？你最想驗證的假設是什麼？你希望這本書能解決的是什麼？帶著問題進入 = 讓海馬迴判定「這個重要，要記住」。'}].forEach(step=>{
+      const sid=`ps-${step.n}`;
+      h+=`<div class="step-item" id="${sid}" onclick="toggleStep('${sid}')"><div class="step-front"><span class="step-num" style="color:var(--yellow)">${step.n}</span><span class="step-q">${step.q}</span><span class="step-lock">▶</span></div><div class="step-back"><div class="step-back-inner">${step.a}</div></div></div>`;
+    });
+    h+=`</div>`;
+    h+=`<div class="tip-box" style="margin-top:1rem"><strong style="color:var(--yellow)">教科書應用：</strong>先從測驗題開始看，帶著問題回頭讀。讓自己先不及格，才能真的及格。先考後學的效果是被動閱讀的 2 倍。</div>`;
+    h+=`</div>`;
+    break;}
+
+  // ── VISUAL SCAN ──────────────────────────────────────────────────────────
+  case 'visual-scan':{
+    h+=blob('rgba(255,107,0,.08)','rgba(251,191,36,.06)');
+    h+=`<div style="position:relative;z-index:1;max-width:920px;width:100%">`;
+    h+=mkChip('視覺三段掃描','orange');
+    h+=`<h2 style="margin-bottom:.3rem">訓練眼睛<span class="g-orange">一次看更寬</span></h2>`;
+    h+=`<p style="font-size:var(--min-font);color:var(--mid);margin-bottom:.8rem">把每頁分成左/中/右三列，眼睛只落在每列的中間，用餘光捕捉兩側文字。這是反人性的訓練，卻是速度突破的關鍵。</p>`;
+    h+=`<div class="bar"></div>`;
+    h+=`<div style="display:grid;grid-template-columns:auto 1fr;gap:1.6rem;margin-top:1rem;align-items:start">`;
+    h+=`<div style="display:flex;flex-direction:column;align-items:center;gap:.7rem;min-width:200px">`;
+    h+=`<div style="font-size:var(--min-label);font-weight:700;color:var(--mid);letter-spacing:.1em;text-transform:uppercase">書頁示意圖</div>`;
+    h+=`<div style="position:relative;width:190px;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.15);border-radius:10px;padding:.9rem .7rem">`;
+    h+=`<div style="position:absolute;top:0;bottom:0;left:33.33%;border-left:1px dashed rgba(255,107,0,.4)"></div>`;
+    h+=`<div style="position:absolute;top:0;bottom:0;left:66.66%;border-left:1px dashed rgba(255,107,0,.4)"></div>`;
+    for(let row=0;row<8;row++){
+      const isTarget=(row===3);
+      h+=`<div style="display:flex;gap:3px;margin-bottom:${isTarget?'14px':'5px'}">`;
+      for(let col=0;col<3;col++){
+        h+=`<div style="flex:1;position:relative;height:6px;display:flex;align-items:center;justify-content:center">`;
+        h+=`<div style="width:100%;height:100%;background:rgba(255,255,255,${isTarget?'.14':'.05'});border-radius:3px"></div>`;
+        if(isTarget){
+          h+=`<div style="position:absolute;width:18px;height:18px;background:rgba(255,107,0,.9);border-radius:50%;border:2px solid rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;font-size:.5rem;font-weight:900;color:#fff;z-index:2">${col+1}</div>`;
+        }
+        h+=`</div>`;
+      }
+      h+=`</div>`;
+    }
+    h+=`</div>`;
+    h+=`<div style="display:flex;align-items:center;gap:.35rem;font-size:var(--min-label);font-weight:700;color:var(--orange)">`;
+    h+=`<span style="padding:.18rem .45rem;background:rgba(255,107,0,.18);border-radius:5px">① 左列中間</span>`;
+    h+=`<span>→</span><span style="padding:.18rem .45rem;background:rgba(255,107,0,.18);border-radius:5px">② 中列中間</span>`;
+    h+=`<span>→</span><span style="padding:.18rem .45rem;background:rgba(255,107,0,.18);border-radius:5px">③ 右列中間</span>`;
+    h+=`</div>`;
+    h+=`<div style="font-size:var(--min-label);color:var(--mid);text-align:center">眼睛只在3個點移動，餘光捕捉兩側</div>`;
+    h+=`</div>`;
+    h+=`<div style="display:flex;flex-direction:column;gap:.65rem">`;
+    h+=`<div style="font-size:var(--min-label);font-weight:700;color:var(--mid);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.1rem">三條鐵律</div>`;
+    [['01','不回頭看','var(--orange)','rgba(255,107,0','已掃過的不要回頭確認。接受「不完美的閱讀」，建立信心。你以為漏掉的，餘光其實已捕捉了。'],
+     ['02','不默念','var(--yellow)','rgba(251,191,36','初期：完全靜音，不讓腦內聲音出現。進階：熟練後搭配 2x 有聲書邊聽邊讀，聽覺 + 視覺雙通道同時啟動。'],
+     ['03','不用手指','var(--red)','rgba(255,32,85','初期可用物品遮住已讀部分，訓練眼睛。熟練後完全靠視覺自律。Kindle 效率更高：字大、邊框少。'],
+    ].forEach(([n,rule,col,colR,desc])=>{
+      const uid=`vscan-${n}`;
+      h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:70px">`;
+      h+=`<div class="card-answer" style="background:${colR},.07);border:1.5px solid ${colR},.35);border-radius:12px;padding:.9rem 1.1rem">`;
+      h+=`<div style="font-size:.55rem;font-weight:900;letter-spacing:.12em;color:${col};text-transform:uppercase;margin-bottom:.25rem">法則 ${n}</div>`;
+      h+=`<div style="font-size:var(--min-font);font-weight:700;color:${col};margin-bottom:.3rem">${rule}</div>`;
+      h+=`<div style="font-size:var(--min-label);color:rgba(255,255,255,.75);line-height:1.55">${desc}</div>`;
+      h+=`</div>`;
+      h+=`<div class="card-mask" style="border-radius:12px;background:${colR},.14);border:1.5px solid ${colR},.3)">`;
+      h+=`<div style="font-size:var(--min-label);font-weight:900;color:${col};letter-spacing:.08em;text-transform:uppercase">法則 ${n}</div>`;
+      h+=`<div style="font-size:clamp(1rem,1.6vw,1.2rem);font-weight:800;color:var(--ink);margin-top:.25rem">${rule}</div>`;
+      h+=`</div></div>`;
+    });
+    h+=`</div></div>`;
+    h+=`<div class="tip-box" style="margin-top:1rem">目標：1分鐘讀 600 字。長期訓練後留存率可達 80%+。先不求看懂每個字，先求快速抓到訊號。</div>`;
+    h+=`</div>`;
+    break;}
+
+  // ── THREE SCAN (legacy, kept for reference) ───────────────────────────────
   case 'three-scan':
     h+=blob('rgba(251,191,36,.08)','rgba(255,107,0,.06)');
     h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%">`;
@@ -912,20 +1038,55 @@ function renderSlide(sd){
     break;}
 
   // ── DUAL CODING ──────────────────────────────────────────────────────────
-  case 'dual-coding':
+  case 'dual-coding':{
     h+=blob('rgba(168,85,247,.08)','rgba(34,197,94,.06)');
     h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%">`;
     h+=mkChip('雙重編碼','purple');
-    h+=`<h2 style="margin-bottom:.5rem">圖像 + 語言 = <span class="g-purple">記憶威力加倍</span></h2>`;
+    h+=`<h2 style="margin-bottom:.3rem">圖像 + 語言 = <span class="g-purple">記憶威力加倍</span></h2>`;
+    h+=`<p style="font-size:var(--min-font);color:var(--mid);margin-bottom:.8rem">同一個訊息用兩種方式處理 → 騙過海馬迴，大幅提升記憶固化效率</p>`;
     h+=`<div class="bar"></div>`;
-    h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1rem">`;
-    h+=`<div style="background:rgba(168,85,247,.08);border:1.5px solid rgba(168,85,247,.3);border-radius:14px;padding:1.4rem"><div style="font-size:.65rem;font-weight:800;letter-spacing:.14em;color:var(--purple);margin-bottom:.8rem;text-transform:uppercase">視覺通道</div><div style="font-size:var(--min-font);font-weight:700;color:var(--purple);margin-bottom:.8rem">心智圖 × 概念圖</div><ul class="deck-list"><li>時間軸、流程圖</li><li>草圖、視覺隱喻</li><li>空間排列強化回憶</li></ul></div>`;
-    h+=`<div style="background:rgba(6,182,212,.08);border:1.5px solid rgba(6,182,212,.3);border-radius:14px;padding:1.4rem"><div style="font-size:.65rem;font-weight:800;letter-spacing:.14em;color:var(--cyan);margin-bottom:.8rem;text-transform:uppercase">語言通道</div><div style="font-size:var(--min-font);font-weight:700;color:var(--cyan);margin-bottom:.8rem">關鍵字 × 自問自答</div><ul class="deck-list"><li>用自己的話重述</li><li>費曼技巧輸出</li><li>語言標記強化索引</li></ul></div>`;
+    h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin:1rem 0">`;
+    h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:200px">`;
+    h+=`<div class="card-answer" style="background:rgba(168,85,247,.08);border:1.5px solid rgba(168,85,247,.3);border-radius:14px;padding:1.4rem;height:100%">`;
+    h+=`<div style="font-size:.62rem;font-weight:800;letter-spacing:.14em;color:var(--purple);margin-bottom:.5rem;text-transform:uppercase">視覺通道 — 範例</div>`;
+    h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--purple);margin-bottom:.6rem">心智圖 × 概念圖</div>`;
+    h+=`<div style="display:flex;flex-direction:column;gap:.45rem">`;
+    [['讀《Zero to One》','→ 手畫「競爭 vs 壟斷」商業模型圖，把書中案例（Tesla/Google/Facebook）標在圖上'],
+     ['讀《原子習慣》','→ 畫「觸發 → 動作 → 獎勵 → 渴望」習慣迴圈，把自己的習慣填進去']].forEach(([book,action])=>{
+      h+=`<div style="padding:.5rem .7rem;background:rgba(168,85,247,.08);border-left:2px solid rgba(168,85,247,.4);border-radius:0 8px 8px 0">`;
+      h+=`<div style="font-size:var(--min-label);font-weight:700;color:var(--purple);margin-bottom:.2rem">${book}</div>`;
+      h+=`<div style="font-size:var(--min-label);color:rgba(255,255,255,.7);line-height:1.5">${action}</div>`;
+      h+=`</div>`;
+    });
+    h+=`</div></div>`;
+    h+=`<div class="card-mask" style="border-radius:14px;background:rgba(168,85,247,.14);border:1.5px solid rgba(168,85,247,.3)">`;
+    h+=`<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="var(--purple)" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>`;
+    h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--purple);margin-top:.5rem">視覺通道</div>`;
+    h+=`<div style="font-size:var(--min-label);color:var(--mid);margin-top:.2rem">心智圖 × 概念圖</div>`;
+    h+=`</div></div>`;
+    h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:200px">`;
+    h+=`<div class="card-answer" style="background:rgba(6,182,212,.08);border:1.5px solid rgba(6,182,212,.3);border-radius:14px;padding:1.4rem;height:100%">`;
+    h+=`<div style="font-size:.62rem;font-weight:800;letter-spacing:.14em;color:var(--cyan);margin-bottom:.5rem;text-transform:uppercase">語言通道 — 範例</div>`;
+    h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--cyan);margin-bottom:.6rem">關鍵字 × 費曼輸出</div>`;
+    h+=`<div style="display:flex;flex-direction:column;gap:.45rem">`;
+    [['費曼輸出（任何章節後）','→ 不看書，用 3 句話解釋給旁邊的人聽。說不清楚的地方 = 你的知識漏洞，立刻回去補'],
+     ['Anki 卡片製作','→ 正面：概念（例：「什麼是 MECE？」）；背面：用自己的話解釋。間隔重複自動排程']].forEach(([label,action])=>{
+      h+=`<div style="padding:.5rem .7rem;background:rgba(6,182,212,.08);border-left:2px solid rgba(6,182,212,.4);border-radius:0 8px 8px 0">`;
+      h+=`<div style="font-size:var(--min-label);font-weight:700;color:var(--cyan);margin-bottom:.2rem">${label}</div>`;
+      h+=`<div style="font-size:var(--min-label);color:rgba(255,255,255,.7);line-height:1.5">${action}</div>`;
+      h+=`</div>`;
+    });
+    h+=`</div></div>`;
+    h+=`<div class="card-mask" style="border-radius:14px;background:rgba(6,182,212,.1);border:1.5px solid rgba(6,182,212,.3)">`;
+    h+=`<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="var(--cyan)" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`;
+    h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--cyan);margin-top:.5rem">語言通道</div>`;
+    h+=`<div style="font-size:var(--min-label);color:var(--mid);margin-top:.2rem">關鍵字 × 自問自答</div>`;
+    h+=`</div></div>`;
     h+=`</div>`;
-    h+=`<div style="text-align:center;margin:1.2rem 0;font-size:clamp(1.1rem,1.6vw,1.3rem);color:var(--mid)">兩個通道<strong style="color:var(--ink)">同時</strong>使用時，記憶提取率提升 <span style="color:var(--purple);font-size:1.5em;font-weight:800">65%</span></div>`;
-    h+=`<div class="tip-box">學完一個概念後：先用文字解釋，再畫一個圖。這個動作本身就是最強的記憶鞏固。</div>`;
+    h+=`<div style="text-align:center;margin:.8rem 0;font-size:clamp(1rem,1.6vw,1.2rem);color:var(--mid)">兩個通道<strong style="color:var(--ink)">同時</strong>使用，記憶提取率提升 <span style="color:var(--purple);font-size:1.5em;font-weight:800">65%</span></div>`;
+    h+=`<div class="tip-box">學完一個概念後：先用文字解釋，再畫一個圖。兩個動作加起來，記憶固化效果 × 3。</div>`;
     h+=`</div>`;
-    break;
+    break;}
 
   // ── FEYNMAN ──────────────────────────────────────────────────────────────
   case 'feynman':
@@ -946,6 +1107,42 @@ function renderSlide(sd){
     h+=`<div class="tip-box" style="margin-top:1rem">費曼技巧讓你從「感覺懂了」到「真的懂了」。差別只有一個：你能不能教別人。</div>`;
     h+=`</div>`;
     break;
+
+  // ── SPACING CURVE ────────────────────────────────────────────────────────
+  case 'spacing-curve':{
+    h+=blob('rgba(6,182,212,.08)','rgba(168,85,247,.05)');
+    h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%">`;
+    h+=mkChip('間隔重複','cyan');
+    h+=`<h2 style="margin-bottom:.3rem">對抗<span class="g-cyan">遺忘曲線</span>的唯一方法</h2>`;
+    h+=`<p style="font-size:var(--min-font);color:var(--mid);margin-bottom:.8rem">艾賓浩斯遺忘曲線：24小時後你忘掉70%。解方不是複習更多，是在對的時間點複習。</p>`;
+    h+=`<div class="bar"></div>`;
+    h+=`<div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:1.2rem 1.4rem;margin:1rem 0">`;
+    h+=`<div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:.4rem">`;
+    h+=`<div style="font-size:var(--min-label);font-weight:700;color:var(--mid)">記憶留存率</div>`;
+    h+=`<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:flex-end">`;
+    [['第1天','var(--orange)'],['第3天','var(--yellow)'],['第7天','var(--green)'],['第21天','var(--cyan)']].forEach(([label,col])=>{
+      h+=`<span style="font-size:.52rem;padding:.15rem .45rem;background:rgba(255,255,255,.05);border-radius:10px;color:${col};font-weight:700">✦ ${label}</span>`;
+    });
+    h+=`</div></div>`;
+    h+=`<svg viewBox="0 0 500 180" style="width:100%;max-height:160px" preserveAspectRatio="none">`;
+    h+=`<defs><linearGradient id="sg0" x1="0%"><stop offset="0%" stop-color="rgba(255,32,85,1)"/><stop offset="100%" stop-color="rgba(255,32,85,.15)"/></linearGradient><linearGradient id="sg1" x1="0%"><stop offset="0%" stop-color="rgba(255,107,0,.9)"/><stop offset="100%" stop-color="rgba(255,107,0,.15)"/></linearGradient><linearGradient id="sg2" x1="0%"><stop offset="0%" stop-color="rgba(251,191,36,.9)"/><stop offset="100%" stop-color="rgba(251,191,36,.15)"/></linearGradient><linearGradient id="sg3" x1="0%"><stop offset="0%" stop-color="rgba(34,197,94,.9)"/><stop offset="100%" stop-color="rgba(34,197,94,.15)"/></linearGradient><linearGradient id="sg4" x1="0%"><stop offset="0%" stop-color="rgba(6,182,212,1)"/><stop offset="100%" stop-color="rgba(6,182,212,.5)"/></linearGradient></defs>`;
+    h+=`<line x1="40" y1="10" x2="40" y2="155" stroke="rgba(255,255,255,.1)" stroke-width="1"/><line x1="40" y1="155" x2="490" y2="155" stroke="rgba(255,255,255,.1)" stroke-width="1"/>`;
+    h+=`<text x="36" y="14" font-size="9" fill="rgba(255,255,255,.4)" text-anchor="end">100%</text><text x="36" y="84" font-size="9" fill="rgba(255,255,255,.4)" text-anchor="end">50%</text><text x="36" y="155" font-size="9" fill="rgba(255,255,255,.4)" text-anchor="end">20%</text>`;
+    const xs=[[40,'學習'],[120,'Day 1'],[200,'Day 3'],[320,'Day 7'],[460,'Day 21']];
+    xs.forEach(([x,label])=>{h+=`<text x="${x}" y="168" font-size="8" fill="rgba(255,255,255,.4)" text-anchor="middle">${label}</text><line x1="${x}" y1="153" x2="${x}" y2="157" stroke="rgba(255,255,255,.2)" stroke-width="1"/>`;});
+    h+=`<path d="M40,11 C65,11 90,40 120,135 C155,152 185,154 320,154 C390,154 430,154 490,154" fill="none" stroke="url(#sg0)" stroke-width="2" stroke-dasharray="5,3"/>`;
+    h+=`<line x1="120" y1="135" x2="120" y2="42" stroke="rgba(255,107,0,.6)" stroke-width="1.5" stroke-dasharray="2,2"/><circle cx="120" cy="42" r="4" fill="rgba(255,107,0,.9)" stroke="rgba(255,255,255,.7)" stroke-width="1.2"/>`;
+    h+=`<path d="M120,42 C155,42 178,65 200,112 C225,138 260,146 320,148" fill="none" stroke="url(#sg1)" stroke-width="2"/>`;
+    h+=`<line x1="200" y1="112" x2="200" y2="33" stroke="rgba(251,191,36,.6)" stroke-width="1.5" stroke-dasharray="2,2"/><circle cx="200" cy="33" r="4" fill="rgba(251,191,36,.9)" stroke="rgba(255,255,255,.7)" stroke-width="1.2"/>`;
+    h+=`<path d="M200,33 C245,33 285,55 320,86 C355,112 400,124 460,128" fill="none" stroke="url(#sg2)" stroke-width="2"/>`;
+    h+=`<line x1="320" y1="86" x2="320" y2="26" stroke="rgba(34,197,94,.6)" stroke-width="1.5" stroke-dasharray="2,2"/><circle cx="320" cy="26" r="4" fill="rgba(34,197,94,.9)" stroke="rgba(255,255,255,.7)" stroke-width="1.2"/>`;
+    h+=`<path d="M320,26 C370,26 420,38 460,52" fill="none" stroke="url(#sg3)" stroke-width="2"/>`;
+    h+=`<line x1="460" y1="52" x2="460" y2="19" stroke="rgba(6,182,212,.6)" stroke-width="1.5" stroke-dasharray="2,2"/><circle cx="460" cy="19" r="4" fill="rgba(6,182,212,.9)" stroke="rgba(255,255,255,.7)" stroke-width="1.2"/>`;
+    h+=`<path d="M460,19 C472,19 483,19 490,19" fill="none" stroke="url(#sg4)" stroke-width="2.5"/><text x="490" y="16" font-size="8" fill="rgba(6,182,212,.9)" text-anchor="end">長期記憶</text>`;
+    h+=`</svg></div>`;
+    h+=`<div class="tip-box">第1天 → 第3天 → 第7天 → 第21天。每次複習後，遺忘速度變慢。Anki 是最簡單的實踐工具。</div>`;
+    h+=`</div>`;
+    break;}
 
   // ── MECE-INTRO-V2 (v3) ───────────────────────────────────────────────────
   case 'mece-intro-v2':{
