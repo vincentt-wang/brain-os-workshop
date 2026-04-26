@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>大腦作業系統工作坊 · Brain OS Workshop · Vincent</title>
+<title>大腦作業系統 · Brain OS Workshop · Vincent</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -13,7 +13,7 @@
   --green:#22C55E;--yellow:#FBBF24;--cyan:#06B6D4;
   --ease-back:cubic-bezier(0.34,1.56,0.64,1);
   --ease-smooth:cubic-bezier(0.4,0.0,0.2,1);
-  --min-font:clamp(1rem,1.5vw,1.2rem);
+  --min-font:clamp(1rem,1.5vw,1.15rem);
   --min-label:clamp(.78rem,1.1vw,.9rem);
 }
 html{font-size:20px}
@@ -25,19 +25,17 @@ body{font-family:system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;backg
 .slide[data-sec="2"]{background:linear-gradient(165deg,#0c1830 0%,#112240 35%,#142848 70%,#0c1828 100%)}
 .slide[data-sec="3"]{background:linear-gradient(165deg,#0c201a 0%,#102818 35%,#143020 70%,#0c1e14 100%)}
 .slide[data-sec="4"]{background:linear-gradient(165deg,#201808 0%,#281e08 35%,#221c10 70%,#180e08 100%)}
-.slide[data-sec="5"]{background:linear-gradient(165deg,#16102a 0%,#1e1438 35%,#221840 70%,#14102a 100%)}
-.slide[data-sec="6"]{background:linear-gradient(165deg,#0a1a20 0%,#0d2028 35%,#112030 70%,#0a1820 100%)}
+.slide[data-sec="5"]{background:linear-gradient(165deg,#0a1a20 0%,#0d2028 35%,#112030 70%,#0a1820 100%)}
 .slide::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:clamp(40px,6vw,72px) clamp(40px,6vw,72px);z-index:0}
 .slide::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:0}
 .slide[data-sec="1"]::after{background:radial-gradient(ellipse 70% 60% at 15% 15%,rgba(255,32,85,.08),transparent 55%),radial-gradient(ellipse 55% 70% at 85% 85%,rgba(168,85,247,.07),transparent 55%)}
 .slide[data-sec="2"]::after{background:radial-gradient(ellipse 70% 60% at 20% 20%,rgba(59,130,246,.08),transparent 55%),radial-gradient(ellipse 55% 70% at 80% 80%,rgba(255,32,85,.06),transparent 55%)}
 .slide[data-sec="3"]::after{background:radial-gradient(ellipse 70% 60% at 15% 15%,rgba(34,197,94,.08),transparent 55%),radial-gradient(ellipse 55% 70% at 85% 85%,rgba(6,182,212,.06),transparent 55%)}
 .slide[data-sec="4"]::after{background:radial-gradient(ellipse 70% 60% at 20% 20%,rgba(251,191,36,.09),transparent 55%),radial-gradient(ellipse 55% 70% at 80% 80%,rgba(168,85,247,.06),transparent 55%)}
-.slide[data-sec="5"]::after{background:radial-gradient(ellipse 70% 60% at 15% 15%,rgba(168,85,247,.1),transparent 55%),radial-gradient(ellipse 55% 70% at 85% 85%,rgba(255,107,0,.07),transparent 55%)}
-.slide[data-sec="6"]::after{background:radial-gradient(ellipse 70% 60% at 20% 20%,rgba(6,182,212,.08),transparent 55%),radial-gradient(ellipse 55% 70% at 80% 80%,rgba(34,197,94,.06),transparent 55%)}
+.slide[data-sec="5"]::after{background:radial-gradient(ellipse 70% 60% at 15% 15%,rgba(6,182,212,.08),transparent 55%),radial-gradient(ellipse 55% 70% at 85% 85%,rgba(34,197,94,.06),transparent 55%)}
 .slide.timesup-flash{animation:flashbg 0.6s ease 3}
-@keyframes flashbg{0%,100%{filter:brightness(1)}50%{filter:brightness(1.6) saturate(2.5)}}
-.slide.timesup-flash::after{background:rgba(255,32,85,.22)!important}
+@keyframes flashbg{0%,100%{filter:brightness(1)}50%{filter:brightness(1.8) saturate(3) hue-rotate(340deg)}}
+.slide.timesup-flash::after{background:rgba(255,32,85,.28)!important}
 .inner{position:relative;z-index:2;width:min(94vw,1080px);max-height:calc(100vh - 120px);overflow:hidden}
 .slide-content{opacity:0;transform:translateY(32px) scale(.97);transition:opacity .6s var(--ease-smooth),transform .6s var(--ease-back)}
 .slide.is-visible .slide-content{opacity:1;transform:none}
@@ -51,7 +49,8 @@ body{font-family:system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;backg
 @keyframes fade-up{from{opacity:0;transform:translateY(22px) scale(.98)}to{opacity:1;transform:none}}
 @keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(300%)}}
 /* CHIP */
-.chip{display:inline-flex;align-items:center;gap:.4rem;font-size:.65rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:.3em .9em;border-radius:999px;border:1px solid;margin-bottom:.85rem;width:fit-content;white-space:nowrap}
+.chip{display:inline-flex;align-items:center;gap:.4rem;font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:.28em .85em;border-radius:999px;border:1px solid;margin-bottom:.85rem;width:fit-content;white-space:nowrap}
+.chip.chip-lg{font-size:.85rem;padding:.3em 1rem;letter-spacing:.1em}
 .chip-orange{color:var(--orange);border-color:rgba(255,107,0,.4);background:rgba(255,107,0,.1)}
 .chip-red{color:var(--red);border-color:rgba(255,32,85,.4);background:rgba(255,32,85,.1)}
 .chip-blue{color:var(--blue);border-color:rgba(59,130,246,.4);background:rgba(59,130,246,.1)}
@@ -64,8 +63,8 @@ body{font-family:system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;backg
 .hero-txt{font-size:clamp(3.5rem,10vw,8rem);font-weight:800;line-height:1.0;letter-spacing:-0.035em}
 h1{font-size:clamp(2.8rem,7vw,5.5rem);font-weight:800;line-height:1.04;letter-spacing:-0.03em}
 h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em;text-wrap:balance}
-h3{font-size:clamp(1.4rem,2.2vw,1.8rem);font-weight:600;line-height:1.2;text-wrap:balance}
-p,li{font-size:clamp(1.2rem,1.8vw,1.4rem);line-height:1.75;color:var(--mid)}
+h3{font-size:clamp(1.4rem,2.2vw,1.8rem);font-weight:600;line-height:1.2}
+p,li{font-size:clamp(1.1rem,1.6vw,1.3rem);line-height:1.75;color:var(--mid)}
 strong{color:var(--ink);font-weight:700}
 .label-sm{font-size:clamp(1rem,1.4vw,1.2rem);color:var(--mid);line-height:1.6}
 /* Gradient text */
@@ -78,9 +77,9 @@ strong{color:var(--ink);font-weight:700}
 .g-multi{background:linear-gradient(135deg,#FF6B00,#FF2055,#A855F7,#3B82F6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 /* UTIL */
 .bar{width:2.8rem;height:3px;background:linear-gradient(90deg,var(--orange),var(--red));border-radius:2px;margin:.6rem 0 1rem}
-.tip-box{margin-top:1rem;padding:.9rem 1.4rem;border-left:3px solid var(--orange);border-radius:0 10px 10px 0;background:rgba(255,107,0,.08);font-size:clamp(1rem,1.5vw,1.2rem);color:var(--ink);font-weight:500;line-height:1.6}
+.tip-box{margin-top:1rem;padding:.9rem 1.4rem;border-left:3px solid var(--orange);border-radius:0 10px 10px 0;background:rgba(255,107,0,.08);font-size:var(--min-font);color:var(--ink);font-weight:500;line-height:1.6}
 .deck-list{list-style:none;margin-top:.85rem;display:flex;flex-direction:column;gap:.6rem}
-.deck-list li{padding:.1rem 0 .1rem 1.8rem;position:relative;font-size:clamp(1.1rem,1.6vw,1.3rem);color:var(--mid);line-height:1.65}
+.deck-list li{padding:.1rem 0 .1rem 1.8rem;position:relative;font-size:var(--min-font);color:var(--mid);line-height:1.65}
 .deck-list li::before{content:'▸';position:absolute;left:0;color:var(--orange);font-weight:800}
 /* UNLOCK CARDS */
 .mrev-grid{display:grid;gap:.9rem;margin-top:1rem}
@@ -95,14 +94,19 @@ strong{color:var(--ink);font-weight:700}
 .unlock-card.unlocked .card-mask{opacity:0;transform:scale(.88);pointer-events:none}
 .unlock-card:not(.unlocked):hover .card-mask{border-color:rgba(255,255,255,.22)}
 .unlock-card .card-mask-num{font-size:1.8rem;font-weight:800;color:rgba(255,255,255,.15)}
-.unlock-card .card-mask-q{font-size:clamp(1rem,1.4vw,1.15rem);font-weight:600;color:rgba(255,255,255,.55);line-height:1.5;max-width:220px}
-.unlock-card .card-mask-hint{font-size:.65rem;color:rgba(255,255,255,.3);letter-spacing:.1em;text-transform:uppercase;margin-top:.2rem}
-.unlock-card .card-label{font-size:.65rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.2rem}
-.unlock-card .card-title{font-size:clamp(1.1rem,1.6vw,1.3rem);font-weight:700;color:var(--ink);line-height:1.3}
-.unlock-card .card-body{font-size:clamp(1rem,1.4vw,1.1rem);color:var(--mid);line-height:1.6;margin-top:.3rem}
-/* COMPARE */
+.unlock-card .card-mask-q{font-size:var(--min-font);font-weight:600;color:rgba(255,255,255,.55);line-height:1.5;max-width:220px}
+.unlock-card .card-mask-label,.unlock-card .card-mask-hint{font-size:.65rem;color:rgba(255,255,255,.3);letter-spacing:.1em;text-transform:uppercase;margin-top:.2rem}
+/* COMPARE CARD with mask */
 .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1rem}
 .cmp-card{border-radius:14px;padding:1.6rem;border:1.5px solid;position:relative;overflow:hidden}
+.cmp-card .cmp-mask{position:absolute;inset:0;background:#0c0c14;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;cursor:pointer;transition:opacity .4s ease,transform .4s var(--ease-back);z-index:2;overflow:hidden}
+.cmp-card:not(.revealed)>:not(.cmp-mask){visibility:hidden}
+.cmp-card.revealed>:not(.cmp-mask){visibility:visible}
+.cmp-card .cmp-mask::after{content:'';position:absolute;top:0;left:-100%;width:40%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.04),transparent);animation:shimmer 3s .5s ease-in-out infinite}
+.cmp-card .cmp-mask-icon{font-size:1.9rem}
+.cmp-card .cmp-mask-label{font-size:.65rem;color:rgba(255,255,255,.3);letter-spacing:.1em;text-transform:uppercase;margin-top:.2rem}
+.cmp-card.revealed .cmp-mask{opacity:0;transform:scale(.92);pointer-events:none}
+.cmp-card:not(.revealed):hover .cmp-mask{background:#111120}
 .cmp-no{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.1)}
 .cmp-yes{background:rgba(255,107,0,.07);border-color:rgba(255,107,0,.3)}
 /* STEP REVEAL */
@@ -110,56 +114,68 @@ strong{color:var(--ink);font-weight:700}
 .step-item{border-radius:12px;overflow:hidden;cursor:pointer;user-select:none}
 .step-item .step-front{display:flex;align-items:center;gap:1rem;padding:1rem 1.4rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;transition:border-color .2s,background .2s}
 .step-item .step-num{font-size:1.1rem;font-weight:800;min-width:1.8rem;flex-shrink:0}
-.step-item .step-q{font-size:clamp(1.1rem,1.5vw,1.25rem);font-weight:600;color:var(--ink)}
+.step-item .step-q{font-size:var(--min-font);font-weight:600;color:var(--ink)}
 .step-item .step-lock{font-size:.9rem;margin-left:auto;opacity:.35;transition:opacity .2s,transform .3s}
 .step-item .step-back{max-height:0;overflow:hidden;transition:max-height .42s var(--ease-smooth),opacity .32s ease;opacity:0;background:rgba(255,107,0,.06);border-radius:0 0 12px 12px}
 .step-item.open .step-front{border-color:rgba(255,107,0,.4);background:rgba(255,107,0,.08);border-radius:12px 12px 0 0}
 .step-item.open .step-lock{opacity:0;transform:rotate(90deg)}
 .step-item.open .step-back{max-height:200px;opacity:1}
 .step-item:not(.open):hover .step-front{border-color:rgba(255,255,255,.18)}
-.step-back-inner{padding:.85rem 1.4rem 1.1rem;font-size:clamp(1rem,1.45vw,1.15rem);color:rgba(255,255,255,.82);line-height:1.7}
+.step-back-inner{padding:.85rem 1.4rem 1.1rem;font-size:var(--min-font);color:rgba(255,255,255,.82);line-height:1.7}
 .step-back-inner strong{color:var(--orange)}
 /* TIMER */
 .timer-wrap{display:flex;flex-direction:column;align-items:center;gap:1.4rem;margin-top:1.4rem}
-.timer-display{font-size:clamp(6rem,18vw,12rem);font-weight:800;letter-spacing:-.04em;font-variant-numeric:tabular-nums;line-height:1;background:linear-gradient(135deg,var(--orange),var(--red));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;transition:all .3s}
+.timer-display{font-size:clamp(6rem,18vw,12rem);font-weight:800;letter-spacing:-.04em;font-variant-numeric:tabular-nums;line-height:1;background:linear-gradient(135deg,var(--orange),var(--red));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .timer-display.done{background:linear-gradient(135deg,var(--red),#ff6080);-webkit-background-clip:text;background-clip:text;animation:done-pulse .5s ease infinite alternate}
 @keyframes done-pulse{from{filter:brightness(1)}to{filter:brightness(1.4)}}
 .timer-label-done{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:var(--red);letter-spacing:.12em;text-transform:uppercase;animation:done-pulse .5s ease infinite alternate;display:none}
 .timer-label-done.show{display:block}
-.timer-btns{display:flex;gap:1.2rem;align-items:center}
+.timer-btns{display:flex;gap:1.2rem}
 .timer-btn{background:linear-gradient(135deg,var(--orange),var(--red));color:#fff;border:none;border-radius:10px;padding:.85rem 2.8rem;font-size:1.1rem;font-weight:700;cursor:pointer;letter-spacing:.06em;transition:opacity .2s,transform .15s}
 .timer-btn:hover{opacity:.85;transform:scale(1.04)}
 .timer-btn.paused{background:linear-gradient(135deg,var(--green),#16a34a)}
 .timer-reset-btn{background:transparent;color:var(--mid);border:1.5px solid var(--line);border-radius:10px;padding:.85rem 2rem;font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s}
 .timer-reset-btn:hover{border-color:var(--orange);color:var(--orange)}
-.sprint-task{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.1);border-radius:14px;padding:1.2rem 1.8rem;margin-top:1rem;font-size:clamp(1.1rem,1.7vw,1.35rem);color:var(--ink);line-height:1.6;text-align:center;max-width:700px;width:100%}
-/* CAROUSEL (from v3) */
-.carousel-wrap{position:relative;width:min(480px,78vw);aspect-ratio:16/10;border-radius:16px;overflow:hidden;border:2px solid rgba(255,255,255,.12);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.sprint-task{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.1);border-radius:14px;padding:1.2rem 1.8rem;margin-top:1rem;font-size:var(--min-font);color:var(--ink);line-height:1.6;text-align:center;max-width:700px;width:100%}
+/* CAROUSEL */
+.carousel-wrap{position:relative;width:min(480px,76vw);aspect-ratio:16/10;border-radius:16px;overflow:hidden;border:2px solid rgba(255,255,255,.12);box-shadow:0 20px 60px rgba(0,0,0,.5)}
 .carousel-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s ease}
 .carousel-wrap img.active{opacity:1}
 .carousel-dots{display:flex;gap:.5rem;margin-top:.8rem}
 .carousel-dots span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2);cursor:pointer;transition:all .3s}
 .carousel-dots span.active{background:var(--orange);transform:scale(1.2)}
-/* TRIAD V2 (from v3) */
+/* TRIAD */
 .triad-wrap{display:flex;align-items:stretch;gap:1rem;margin-top:1.1rem;flex-wrap:nowrap}
-.triad-orb{flex:1;border-radius:16px;border:1.5px solid;cursor:pointer;user-select:none;overflow:hidden;transition:transform .3s var(--ease-back),box-shadow .35s ease,border-color .3s ease}
+.triad-orb{flex:1;border-radius:16px;border:1.5px solid;cursor:pointer;user-select:none;overflow:hidden;transition:transform .3s var(--ease-back),box-shadow .35s ease}
 .triad-orb:not(.to-open):hover{transform:translateY(-4px)}
 .triad-orb.to-open{transform:translateY(-3px)}
-.triad-orb-front{padding:1.6rem 1.3rem 1.3rem;display:flex;flex-direction:column;align-items:center;text-align:center;gap:.6rem}
-.triad-orb-circle{width:76px;height:76px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .15rem;position:relative;flex-shrink:0;transition:box-shadow .35s ease}
-.triad-orb.to-open .triad-orb-circle{box-shadow:0 0 28px rgba(255,255,255,.1)}
+.triad-orb-front{padding:1.5rem 1.2rem 1.2rem;display:flex;flex-direction:column;align-items:center;text-align:center;gap:.5rem}
 .triad-detail{max-height:0;overflow:hidden;transition:max-height .45s var(--ease-smooth),opacity .32s ease;opacity:0;border-top:1px solid rgba(255,255,255,.07)}
 .triad-orb.to-open .triad-detail{max-height:420px;opacity:1}
-.triad-detail-inner{padding:1rem 1.3rem 1.2rem;display:flex;flex-direction:column;gap:.6rem}
-.triad-det-txt{font-size:clamp(.78rem,1.25vw,.88rem);line-height:1.68;color:rgba(255,255,255,.78)}
-.triad-det-txt strong{color:var(--ink)}
+.triad-detail-inner{padding:.9rem 1.1rem 1rem;display:flex;flex-direction:column;gap:.5rem}
 /* FUNNEL */
 .funnel-layer{cursor:pointer;transition:opacity .3s}
 .funnel-layer.dim{opacity:.25}
+/* MANDALA */
+.mandala-cell{cursor:pointer;user-select:none;transition:transform .2s var(--ease-back),opacity .2s,border-color .2s}
+.mandala-cell:hover{transform:scale(1.05);border-color:currentColor}
+.mandala-cell:active{transform:scale(.96)}
+/* GLASS CARD */
+.glass-card{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.1);border-radius:16px;padding:1.5rem 1.8rem;backdrop-filter:blur(8px)}
+.glass-card:hover{border-color:rgba(255,255,255,.2)}
+/* HOT SEAT */
+.hotseat-badge{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,rgba(255,32,85,.2),rgba(255,107,0,.15));border:2px solid rgba(255,32,85,.5);border-radius:12px;padding:.6rem 1.4rem;font-size:var(--min-font);font-weight:800;color:var(--red);letter-spacing:.08em;text-transform:uppercase}
+/* BIG NUMBER */
+.big-num{font-size:clamp(4rem,12vw,9rem);font-weight:800;line-height:1;letter-spacing:-.04em}
+/* SPRINT BADGE */
+.sprint-badge{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,rgba(255,32,85,.15),rgba(255,107,0,.1));border:2px solid rgba(255,32,85,.45);border-radius:999px;padding:.45rem 1.2rem;font-size:.72rem;font-weight:800;color:var(--red);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem}
+/* CTA BUTTON */
+.cta-btn{display:inline-flex;align-items:center;gap:.6rem;background:linear-gradient(135deg,rgba(255,107,0,.15),rgba(168,85,247,.1));border:1.5px solid rgba(255,107,0,.4);color:var(--orange);border-radius:12px;padding:.7rem 1.8rem;font-size:var(--min-font);font-weight:700;cursor:pointer;letter-spacing:.06em;transition:all .25s}
+.cta-btn:hover{background:linear-gradient(135deg,rgba(255,107,0,.28),rgba(168,85,247,.18));transform:scale(1.03)}
 /* FIXED CHROME */
 #prog{position:fixed;top:0;left:0;right:0;height:3px;background:rgba(255,255,255,.06);z-index:900}
 #prog-fill{height:100%;background:linear-gradient(90deg,var(--orange),var(--red),var(--purple));transition:width .4s ease;width:0%}
-#breadcrumb{position:fixed;top:3px;left:50%;transform:translateX(-50%);font-size:.62rem;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.45);background:rgba(15,15,20,.92);backdrop-filter:blur(12px);padding:.22rem .85rem;border-radius:0 0 8px 8px;z-index:901;white-space:nowrap;border:1px solid var(--line);border-top:none;text-transform:uppercase}
+#breadcrumb{position:fixed;top:3px;left:50%;transform:translateX(-50%);font-size:.6rem;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.45);background:rgba(15,15,20,.92);backdrop-filter:blur(12px);padding:.2rem .85rem;border-radius:0 0 8px 8px;z-index:901;white-space:nowrap;border:1px solid var(--line);border-top:none;text-transform:uppercase}
 #sec-indicator{position:fixed;top:14px;right:18px;z-index:910;padding:.35rem .95rem;border-radius:999px;font-size:.7rem;font-weight:700;color:rgba(255,255,255,.75);background:rgba(255,255,255,.07);backdrop-filter:blur(12px);border:1px solid var(--line);transition:all .25s;letter-spacing:.06em;text-transform:uppercase}
 #dot-nav{position:fixed;right:18px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:5px;z-index:900;max-height:80vh;overflow-y:auto;scrollbar-width:none}
 #dot-nav::-webkit-scrollbar{display:none}
@@ -171,24 +187,16 @@ strong{color:var(--ink);font-weight:700}
 #btn-prev{bottom:72px;right:72px}
 #btn-next{bottom:72px;right:18px}
 #counter{position:fixed;bottom:80px;left:20px;z-index:900;font-size:1.6rem;font-weight:800;color:#fff;letter-spacing:.04em;font-variant-numeric:tabular-nums;text-shadow:0 2px 12px rgba(0,0,0,.7)}
+/* AUDIO TOGGLE */
+#btn-audio{position:fixed;top:14px;right:120px;z-index:910;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.07);backdrop-filter:blur(12px);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.85rem;color:rgba(255,255,255,.5);transition:all .25s}
+#btn-audio:hover{color:var(--orange);border-color:rgba(255,107,0,.4)}
+/* SEC NAV */
 #sec-nav{position:fixed;bottom:0;left:0;right:0;height:56px;background:rgba(8,8,12,.95);backdrop-filter:blur(20px);display:flex;align-items:stretch;z-index:950;border-top:1px solid var(--line)}
-.sec-btn{flex:1;display:flex;align-items:center;justify-content:center;font-size:clamp(.58rem,.85vw,.75rem);font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.3);cursor:pointer;border:none;background:transparent;border-right:1px solid var(--line);transition:color .2s,background .2s;border-top:2px solid transparent}
+.sec-btn{flex:1;display:flex;align-items:center;justify-content:center;font-size:clamp(.55rem,.8vw,.72rem);font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.3);cursor:pointer;border:none;background:transparent;border-right:1px solid var(--line);transition:color .2s,background .2s;border-top:2px solid transparent}
 .sec-btn:last-child{border-right:none}
 .sec-btn:hover{color:rgba(255,255,255,.8);background:rgba(255,107,0,.08)}
 .sec-btn.active{color:#fff;background:rgba(255,107,0,.1);border-top-color:var(--orange)}
-/* GLASS CARD */
-.glass-card{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.1);border-radius:16px;padding:1.5rem 1.8rem;backdrop-filter:blur(8px)}
-.glass-card:hover{border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.06)}
-/* HOT SEAT */
-.hotseat-badge{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,rgba(255,32,85,.2),rgba(255,107,0,.15));border:2px solid rgba(255,32,85,.5);border-radius:12px;padding:.6rem 1.4rem;font-size:clamp(1rem,1.5vw,1.2rem);font-weight:800;color:var(--red);letter-spacing:.08em;text-transform:uppercase}
-/* BIG NUMBER */
-.big-num{font-size:clamp(4rem,12vw,9rem);font-weight:800;line-height:1;letter-spacing:-.04em}
-/* SPRINT BADGE */
-.sprint-badge{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,rgba(255,32,85,.15),rgba(255,107,0,.1));border:2px solid rgba(255,32,85,.45);border-radius:999px;padding:.45rem 1.2rem;font-size:.72rem;font-weight:800;color:var(--red);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem}
-/* CTA BUTTON */
-.cta-btn{display:inline-flex;align-items:center;gap:.6rem;background:linear-gradient(135deg,rgba(255,107,0,.15),rgba(168,85,247,.1));border:1.5px solid rgba(255,107,0,.4);color:var(--orange);border-radius:12px;padding:.75rem 1.8rem;font-size:clamp(1rem,1.4vw,1.15rem);font-weight:700;cursor:pointer;letter-spacing:.06em;transition:all .25s}
-.cta-btn:hover{background:linear-gradient(135deg,rgba(255,107,0,.28),rgba(168,85,247,.18));transform:scale(1.03)}
-/* Mobile */
+/* MOBILE */
 @media(max-width:767px){
   html{font-size:16px}
   .slide{padding:1rem 1rem 52px!important}
@@ -196,11 +204,10 @@ strong{color:var(--ink);font-weight:700}
   #sec-indicator,#dot-nav{display:none!important}
   .mrev-grid.cols-3,.mrev-grid.cols-4{grid-template-columns:1fr 1fr!important}
   .compare-grid{grid-template-columns:1fr!important}
-  #sec-nav{height:46px}
-  .sec-btn{font-size:.44rem}
-  .timer-display{font-size:clamp(4rem,20vw,7rem)!important}
+  #sec-nav{height:46px}.sec-btn{font-size:.42rem}
   .triad-wrap{flex-direction:column!important;gap:.6rem}
   .carousel-wrap{width:min(88vw,420px)!important}
+  .timer-display{font-size:clamp(4rem,20vw,7rem)!important}
 }
 </style>
 </head>
@@ -209,72 +216,114 @@ strong{color:var(--ink);font-weight:700}
 <div id="breadcrumb">Module 1 · 開場</div>
 <div id="sec-indicator">① 開場</div>
 <div id="dot-nav"></div>
-<div id="counter">1 / 28</div>
+<div id="counter">1 / 58</div>
 <button class="nav-btn" id="btn-prev" aria-label="Previous">↑</button>
 <button class="nav-btn" id="btn-next" aria-label="Next">↓</button>
+<button id="btn-audio" title="音效開關" onclick="toggleAudio()">■</button>
 <div id="slides-container"></div>
 <div id="sec-nav">
   <button class="sec-btn active" data-sec="1" onclick="jumpToSection(1)">① 開場</button>
-  <button class="sec-btn" data-sec="2" onclick="jumpToSection(2)">② 學習基礎</button>
-  <button class="sec-btn" data-sec="3" onclick="jumpToSection(3)">③ 記憶留存</button>
-  <button class="sec-btn" data-sec="4" onclick="jumpToSection(4)">④ 速讀獲取</button>
-  <button class="sec-btn" data-sec="5" onclick="jumpToSection(5)">⑤ 策略思維</button>
-  <button class="sec-btn" data-sec="6" onclick="jumpToSection(6)">⑥ 收尾驗收</button>
+  <button class="sec-btn" data-sec="2" onclick="jumpToSection(2)">② Feasibility</button>
+  <button class="sec-btn" data-sec="3" onclick="jumpToSection(3)">③ Desirability</button>
+  <button class="sec-btn" data-sec="4" onclick="jumpToSection(4)">④ Viability</button>
+  <button class="sec-btn" data-sec="5" onclick="jumpToSection(5)">⑤ 收尾</button>
 </div>
 <script>
 // ── SLIDE DATA ──────────────────────────────────────────────────────────────
 const D=[
-// MODULE 1: 開場與目標錨定
+// ════ MODULE 1: 開場 (8 slides) ════
 {id:'m1_cover',sec:1,sub:'開場',type:'cover'},
-{id:'m1_declare',sec:1,sub:'開場',type:'declare'},
+{id:'m1_quote',sec:1,sub:'破題',type:'big-quote',chip:['破題','red'],quote:'學習如何不只是<br><span class="g-red">自我安慰？</span>',sub2:'學了不用 = 收藏焦慮。用了不對 = 方向浪費。'},
 {id:'m1_about',sec:1,sub:'關於講者',type:'profile-hero',chip:['關於講者','white']},
-{id:'m1_triad',sec:1,sub:'工作坊架構',type:'triad-v2',chip:['三維框架','blue'],title:'今日學習路徑'},
-{id:'m1_anchor',sec:1,sub:'目標錨定',type:'anchor'},
-{id:'m1_rules',sec:1,sub:'規則建立',type:'rules'},
-{id:'m1_hotseat',sec:1,sub:'Hot Seat',type:'hotseat-intro'},
-// MODULE 2: 學習基礎系統
-{id:'m2_cover',sec:2,sub:'學習基礎',type:'module-cover',secNum:2,title:'Learning Foundation',zh:'學習基礎系統',color:'var(--blue)',desc:'三個前提，缺一不可'},
-{id:'m2_noise',sec:2,sub:'學習環境',type:'concept-single',chip:'降噪',chipColor:'blue',title:'學習的第一步：<span class="g-blue">降噪</span>',body:'你的環境決定你的輸入質量。噪音不只是聲音，是一切搶佔注意力的東西。',tip:'手機面朝下。通知關掉。這不是紀律問題，是物理問題。'},
+{id:'m1_poll',sec:1,sub:'現況調查',type:'audience-poll',chip:['你是其中之一嗎','orange'],title:'我說問題，你舉手'},
+{id:'m1_triad',sec:1,sub:'工作坊架構',type:'triad-v2',chip:['今日三元架構','blue'],title:'大腦作業系統：三個維度'},
+{id:'m1_dfv_trap',sec:1,sub:'三種陷阱',type:'dfv-combinations',chip:['三種失敗模式','red'],title:'只靠一個，就是陷阱'},
+{id:'m1_rules',sec:1,sub:'公約',type:'rules'},
+{id:'m1_anchor',sec:1,sub:'目標錨定',type:'sprint',sprintNum:1,title:'寫下你的卡關專案',task:'不用想太久。第一個浮現的，就是最真實的。<br>寫下：<strong>我目前最卡關的商業問題或目標是什麼？</strong>',time:60},
+// ════ MODULE 2: Feasibility — 學習基礎系統 (17 slides) ════
+{id:'m2_sec',sec:2,sub:'模組開場',type:'section-cover',secNum:'②',secTitle:'Feasibility',secEn:'可行性',sub2:'建立最強的資訊處理底座'},
+{id:'m2_noise',sec:2,sub:'環境降噪',type:'concept-single',chip:'降噪',chipColor:'blue',title:'學習的第一步：<span class="g-blue">降噪</span>',body:'你的環境決定你的輸入質量。噪音不只是聲音，是一切搶佔注意力的東西。',tip:'手機面朝下。通知關掉。這不是紀律問題，是物理問題。（McKinsey 2023：碎片化注意力讓生產力下降 40%）'},
 {id:'m2_body',sec:2,sub:'身體狀態',type:'body-triangle'},
 {id:'m2_loop',sec:2,sub:'學習迴路',type:'input-output'},
-{id:'m2_sprint1',sec:2,sub:'Sprint 01',type:'sprint',sprintNum:1,title:'寫下你的學習環境殺手',task:'現在，寫下3個<strong>正在偷走你注意力</strong>的東西<br>然後決定：今天要先幹掉哪一個？',time:180},
-// MODULE 3: 訊息留存與記憶
-{id:'m3_cover',sec:3,sub:'記憶留存',type:'module-cover',secNum:3,title:'Retention',zh:'訊息留存與記憶',color:'var(--green)',desc:'大腦不記住「重要的」，記住「情緒化的」'},
-{id:'m3_nature',sec:3,sub:'記憶本質',type:'concept-single',chip:'記憶本質',chipColor:'green',title:'大腦的<span class="g-green">重要性標記</span>機制',body:'大腦不儲存所有資訊。它只保留那些被標記為「重要」的片段。',tip:'如何觸發標記？→ 情緒、重複、驚奇、與已知連結。'},
-{id:'m3_types',sec:3,sub:'記憶種類',type:'memory-types'},
-{id:'m3_chunk',sec:3,sub:'Chunking',type:'concept-single',chip:'Chunking',chipColor:'green',title:'<span class="g-green">分組</span>讓大腦不過載',body:'工作記憶一次只能處理 5±2 個單位。Chunking 是把碎片壓縮成一個有意義的「包」。',tip:'電話號碼、音樂小節、NBA 首字母縮寫——都是 Chunking。'},
-{id:'m3_dual',sec:3,sub:'雙重編碼',type:'dual-coding'},
-{id:'m3_absurd',sec:3,sub:'荒謬連結',type:'concept-single',chip:'想像力記憶',chipColor:'purple',title:'越<span class="g-purple">荒謬</span>，越記得住',body:'大腦對平凡的事情視而不見，但荒謬的畫面會強制留存。',tip:'記「mitochondria」→ 想像一個線粒體在開法拉利。荒謬感 = 記憶強度。'},
-{id:'m3_feynman',sec:3,sub:'費曼技巧',type:'feynman'},
-{id:'m3_spacing',sec:3,sub:'間隔重複',type:'concept-single',chip:'間隔重複',chipColor:'cyan',title:'對抗<span class="g-cyan">遺忘曲線</span>的唯一方法',body:'艾賓浩斯遺忘曲線：24小時後你忘掉70%。解方不是複習更多，是在對的時間點複習。',tip:'第1天 → 第3天 → 第7天 → 第21天。Anki 是最簡單的工具。'},
-{id:'m3_sprint2',sec:3,sub:'Sprint 02',type:'sprint',sprintNum:2,title:'費曼測試：解釋給外星人聽',task:'選一個你最近學到的概念<br>用<strong>國小生也能懂的語言</strong>解釋給旁邊的人聽<br>解釋不清楚的地方 = 你的知識漏洞',time:180},
-// MODULE 4: 訊息獲取與速讀
-{id:'m4_cover',sec:4,sub:'速讀獲取',type:'module-cover',secNum:4,title:'Speed Acquisition',zh:'訊息獲取與速讀',color:'var(--yellow)',desc:'帶著問題找解藥，不是逐字閱讀'},
-{id:'m4_essence',sec:4,sub:'速讀本質',type:'concept-single',chip:'速讀本質',chipColor:'yellow',title:'速讀不是<span class="g-orange">讀更快</span>，是<span class="g-orange">找解藥</span>',body:'你帶著什麼問題進入一本書，決定你能提取多少價值。沒有問題就沒有速讀。',tip:'打開書前先問：「我需要從這裡得到什麼答案？」'},
-{id:'m4_preview',sec:4,sub:'前置預覽',type:'concept-single',chip:'前置預覽',chipColor:'yellow',title:'目錄是<span class="g-orange">戰略地圖</span>',body:'讀目錄、看圖表、掃章節小標——這不是偷懶，是讓大腦先建好地圖再走路。',tip:'預覽花5分鐘，理解速度提升30%。先地圖，後細節。'},
-{id:'m4_scan',sec:4,sub:'三段掃描',type:'three-scan'},
-{id:'m4_pause',sec:4,sub:'停頓機制',type:'concept-single',chip:'停頓機制',chipColor:'orange',title:'<span class="g-orange">停頓</span>是資訊的消化時間',body:'大腦需要「離線時間」整合新資訊。連續輸入沒有停頓等於沒有學習。',tip:'每讀20分鐘，閉眼回想2分鐘。不是休息，是固化。'},
-{id:'m4_medium',sec:4,sub:'載體差異',type:'medium-compare'},
-{id:'m4_myths',sec:4,sub:'破除迷思',type:'myths-unlock'},
-{id:'m4_multimodal',sec:4,sub:'多模態輸入',type:'concept-single',chip:'多模態',chipColor:'cyan',title:'2倍速有聲書<span class="g-cyan"> + </span>視覺同步',body:'眼睛讀文字，耳朵聽語音，雙重通道同步輸入。大腦更容易記住「聽見」和「看見」同一個概念。',tip:'Podcast 2倍速 + 同步閱讀逐字稿。效率直接翻倍。'},
-{id:'m4_textbook',sec:4,sub:'教科書策略',type:'concept-single',chip:'教科書攻略',chipColor:'red',title:'先看<span class="g-red">題目</span>再看內文',body:'考試題目 = 作者認為最重要的內容的外顯。倒著讀，你就知道哪些內文值得深讀。',tip:'課後習題先瀏覽 → 帶著答題目的去讀章節 → 效率提升50%以上。'},
-{id:'m4_sprint3',sec:4,sub:'Sprint 03',type:'sprint',sprintNum:3,title:'5分鐘超速閱讀挑戰',task:'打開手機裡一篇<strong>你一直想讀但沒讀的文章</strong><br>用三段掃描法：只讀標題、第一句、最後一段<br>告訴旁邊的人你讀到了什麼',time:300},
-// MODULE 5: 策略思維
-{id:'m5_cover',sec:5,sub:'策略思維',type:'module-cover',secNum:5,title:'Strategic Thinking',zh:'策略思維',color:'var(--purple)',desc:'Signal over Noise — 在正確的地方玩遊戲'},
-{id:'m5_bridge',sec:5,sub:'認知橋樑',type:'concept-single',chip:'認知橋樑',chipColor:'purple',title:'過濾資訊 = 過濾<span class="g-purple">商業雜訊</span>',body:'你學會從一本書裡萃取訊號，就學會了從市場裡找真正的機會。能力是同一套。',tip:'分心比無能更致命。能力平庸可以練，但注意力錯放是直接損失。'},
-{id:'m5_unfair',sec:5,sub:'Unfair Advantage',type:'unfair-advantage'},
-{id:'m5_signal',sec:5,sub:'Signal over Noise',type:'signal-noise'},
-{id:'m5_mece',sec:5,sub:'MECE決策',type:'mece-decision'},
-{id:'m5_funnel',sec:5,sub:'資源漏斗',type:'resource-funnel-v2'},
-{id:'m5_next_action',sec:5,sub:'下一步行動',type:'concept-single',chip:'執行法則',chipColor:'red',title:'把混亂說清楚<br>就看見<span class="g-red">下一步</span>',body:'策略不是選擇做什麼，是選擇不做什麼。清單越短，執行力越強。',tip:'今天只有一個最重要的行動。寫下來。其他的，等。'},
-// MODULE 6: 收尾與驗收
-{id:'m6_cover',sec:6,sub:'收尾驗收',type:'module-cover',secNum:6,title:'Closing',zh:'收尾與驗收',color:'var(--cyan)',desc:'把今天學到的，用在你自己的問題上'},
-{id:'m6_recap',sec:6,sub:'全場回顧',type:'recap'},
-{id:'m6_hotseat',sec:6,sub:'Hot Seat',type:'hotseat-session'},
-{id:'m6_pressure',sec:6,sub:'壓力測試',type:'sprint',sprintNum:4,title:'Hot Seat 壓力測試',task:'隨機學員：用今天的框架<br>解釋你在 Module 1 寫下的<strong>卡關專案</strong><br>其他人：安靜聽，準備提問',time:120},
-{id:'m6_converge',sec:6,sub:'終極收斂',type:'converge'},
-{id:'m6_cta',sec:6,sub:'CTA',type:'cta'},
+{id:'m2_topdown',sec:2,sub:'思維框架',type:'topdown-bottomup-v2',chip:['兩種思維','purple'],title:'Top-down vs Bottom-up'},
+{id:'m2_mckinsey',sec:2,sub:'McKinsey 六元素',type:'mckinsey-six-v2',chip:['McKinsey 六錨點','blue'],title:'Top-down 思維的六個錨點'},
+{id:'m2_speed',sec:2,sub:'速讀本質',type:'concept-single',chip:'速讀本質',chipColor:'yellow',title:'速讀不是<span class="g-orange">讀更快</span>，是<span class="g-orange">找解藥</span>',body:'你帶著什麼問題進入一本書，決定你能提取多少價值。沒有問題就沒有速讀。',tip:'打開書前先問：「我需要從這裡得到什麼答案？」'},
+{id:'m2_scan',sec:2,sub:'三段掃描',type:'three-scan'},
+{id:'m2_subvoc',sec:2,sub:'消除默念',type:'concept-single',chip:'消除默念',chipColor:'orange',title:'關閉腦內的<span class="g-orange">閱讀聲音</span>',body:'Sub-vocalization 是大多數人閱讀速度的天花板。強制讓眼睛跑在聲音前面，視野從單字擴展到片語。',tip:'每行只找關鍵詞，用餘光補兩側。把書頁分成三個直列掃描，絕對不回頭看。'},
+{id:'m2_chunk',sec:2,sub:'記憶分組',type:'concept-single',chip:'Chunking',chipColor:'green',title:'<span class="g-green">分組</span>讓大腦不過載',body:'工作記憶一次只能處理 5±2 個單位。Chunking 是把碎片壓縮成一個有意義的「包」。用 3 或 5 的奇數分組，大腦最容易打包。',tip:'電話號碼、音樂小節、NBA 首字母縮寫——都是 Chunking 的產物。'},
+{id:'m2_dual',sec:2,sub:'雙重編碼',type:'dual-coding'},
+{id:'m2_feynman',sec:2,sub:'費曼技巧',type:'feynman'},
+{id:'m2_spacing',sec:2,sub:'間隔重複',type:'concept-single',chip:'間隔重複',chipColor:'cyan',title:'對抗<span class="g-cyan">遺忘曲線</span>的唯一方法',body:'艾賓浩斯遺忘曲線：24小時後你忘掉70%。解方不是複習更多，是在對的時間點複習。',tip:'第1天 → 第3天 → 第7天 → 第21天。Anki 是最簡單的實踐工具。'},
+{id:'m2_mece_intro',sec:2,sub:'MECE 工具',type:'mece-intro-v2',chip:['MECE','yellow'],title:'MECE：相互獨立，完全窮盡'},
+{id:'m2_mece_game',sec:2,sub:'MECE 互動',type:'mece-game-v2',chip:['MECE 猜猜看','yellow'],title:'這是 MECE 嗎？'},
+{id:'m2_sprint1',sec:2,sub:'Sprint 01',type:'sprint',sprintNum:2,title:'速讀訊號萃取實戰',task:'打開手機裡一篇<strong>你一直想讀但沒讀的文章</strong><br>用三段掃描法：只讀標題、第一句、最後一段<br>告訴旁邊的人你萃取到了什麼「訊號」',time:180},
+// ════ MODULE 3: Desirability — 目標錨定 (14 slides) ════
+{id:'m3_sec',sec:3,sub:'模組開場',type:'section-cover',secNum:'③',secTitle:'Desirability',secEn:'欲求性',sub2:'確認學習的 ROI，錨定真實目標'},
+{id:'m3_quote',sec:3,sub:'破題',type:'big-quote',chip:['關鍵診斷','orange'],quote:'有人需要你<br>學的這件事嗎<span class="g-red">？</span>',sub2:'學習的 ROI 取決於你是否在解決真實問題'},
+{id:'m3_vitamin',sec:3,sub:'痛點測試',type:'vitamin-painkiller',chip:['痛點測試','orange'],title:'維他命 vs 止痛藥'},
+{id:'m3_pain_game',sec:3,sub:'互動猜題',type:'painkiller-game',chip:['互動遊戲','green'],title:'猜猜看：維他命還是止痛藥？'},
+{id:'m3_hormozi',sec:3,sub:'價值公式',type:'hormozi-value',chip:['Hormozi 價值公式','orange'],title:'Alex Hormozi 的價值公式'},
+{id:'m3_hormozi_ex',sec:3,sub:'Canva 案例',type:'hormozi-example',chip:['Canva 案例拆解','green'],title:'用 Canva 拆解你的學習 ROI'},
+{id:'m3_dfv',sec:3,sub:'黃金交集',type:'goal-oriented-dfv',chip:['個人 DFV','purple'],title:'找到你的黃金交集點'},
+{id:'m3_mandala',sec:3,sub:'九宮格目標',type:'dfv-mandala',chip:['曼陀羅九宮格','purple'],title:'用九宮格展開你的目標'},
+{id:'m3_unfair',sec:3,sub:'不公平優勢',type:'unfair-advantage'},
+{id:'m3_signal',sec:3,sub:'Signal vs Noise',type:'signal-noise'},
+{id:'m3_time_alloc',sec:3,sub:'時間分配',type:'time-allocation',chip:['時間應該放哪','purple'],title:'你把時間放在哪，決定成敗'},
+{id:'m3_mece_dec',sec:3,sub:'MECE 決策',type:'mece-decision'},
+{id:'m3_pause',sec:3,sub:'戰略暫停',type:'concept-single',chip:'戰略暫停',chipColor:'cyan',title:'<span class="g-cyan">停頓</span>是學習的消化時間',body:'大腦需要「離線時間」整合新資訊。每段資訊後停 1-2 秒，章節後停 10-20 秒。給大腦處理與歸檔的機會。',tip:'每讀 20 分鐘，閉眼回想 2 分鐘。不是休息，是固化。這才是真正的學習。'},
+{id:'m3_sprint2',sec:3,sub:'Sprint 02',type:'sprint',sprintNum:3,title:'Hormozi 公式評估你的學習 ROI',task:'用價值公式評估你的卡關專案：<br><strong>夢想結果有多大？成功機率多高？代價多低？速度多快？</strong><br>算完告訴旁邊的人：你的 ROI 值得嗎？',time:180},
+// ════ MODULE 4: Viability — 市場存活 (13 slides) ════
+{id:'m4_sec',sec:4,sub:'模組開場',type:'section-cover',secNum:'④',secTitle:'Viability',secEn:'存續性',sub2:'讓學到的東西在現實中存活'},
+{id:'m4_quote',sec:4,sub:'破題',type:'big-quote',chip:['存續性核心','red'],quote:'知識的壽命<br>< 執行的<span class="g-red">速度</span>',sub2:'學習最大的浪費，是在市場驗證之前把它變成完美'},
+{id:'m4_gtm',sec:4,sub:'GTM 策略',type:'gtm-interactive-v2',chip:['Go-To-Market','blue'],title:'讓對的人看見對的訊息'},
+{id:'m4_poc',sec:4,sub:'GTM → PMF',type:'gtm-poc-pmf-v2',chip:['驗證三階段','green'],title:'GTM → POC → PMF'},
+{id:'m4_pmf',sec:4,sub:'PMF 三支柱',type:'pmf-pillars-v2',chip:['PMF 三支柱','red'],title:'好產品帶來的三種成長'},
+{id:'m4_pmf_game',sec:4,sub:'PMF 訊號',type:'pmf-signals-game',chip:['PMF 訊號辨識','green'],title:'這是 PMF 訊號嗎？'},
+{id:'m4_bigquote',sec:4,sub:'最重要的判斷',type:'big-quote',chip:['最重要的判斷','red'],quote:'陌生人的行動<br>比朋友的稱讚<br><span class="g-red">重要 100 倍</span>',sub2:'PMF 訊號：截圖、tag 朋友、主動分享，這才是真訊號'},
+{id:'m4_leverage',sec:4,sub:'槓桿與安全邊際',type:'leverage-safety',chip:['槓桿策略','blue'],title:'Leverage 與 Safety Margin'},
+{id:'m4_funnel',sec:4,sub:'資源漏斗',type:'resource-funnel-v2'},
+{id:'m4_bessemer',sec:4,sub:'知識三層價值',type:'bessemer-ai'},
+{id:'m4_growth_funnel',sec:4,sub:'獲客成長漏斗',type:'growth-funnel'},
+{id:'m4_growth',sec:4,sub:'成長思維',type:'growth-final',chip:['最後一課','orange'],title:'擴展認知的邊界'},
+{id:'m4_sprint3',sec:4,sub:'Sprint 03',type:'sprint',sprintNum:4,title:'漏斗決策：砍掉低槓桿行動',task:'用資源漏斗過濾你的卡關專案行動清單：<br><strong>哪些行動對齊你的 Unfair Advantage？現在有資源執行嗎？ROI 最高的是哪一個？</strong>',time:180},
+// ════ MODULE 5: 收尾與驗收 (6 slides) ════
+{id:'m5_sec',sec:5,sub:'收尾開場',type:'section-cover',secNum:'⑤',secTitle:'Closing',secEn:'收尾驗收',sub2:'把今天學到的，用在你自己的問題上'},
+{id:'m5_recap',sec:5,sub:'全場回顧',type:'recap'},
+{id:'m5_hotseat',sec:5,sub:'Hot Seat',type:'hotseat-session'},
+{id:'m5_pressure',sec:5,sub:'壓力測試',type:'sprint',sprintNum:5,title:'Hot Seat 壓力測試',task:'隨機學員：用今天的框架<br>解釋你在開場寫下的<strong>卡關專案</strong><br>其他人：安靜聽，準備提問',time:120},
+{id:'m5_converge',sec:5,sub:'終極收斂',type:'converge'},
+{id:'m5_cta',sec:5,sub:'CTA',type:'cta'},
 ];
+
+// ── AUDIO ENGINE (Web Audio API) ─────────────────────────────────────────
+let audioEnabled=true;
+let audioCtx=null;
+function getAudioCtx(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();return audioCtx;}
+function playTone(freq,dur,vol=0.15,type='sine'){
+  if(!audioEnabled)return;
+  try{
+    const ctx=getAudioCtx();
+    const osc=ctx.createOscillator();const gain=ctx.createGain();
+    osc.connect(gain);gain.connect(ctx.destination);
+    osc.type=type;osc.frequency.setValueAtTime(freq,ctx.currentTime);
+    gain.gain.setValueAtTime(vol,ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+dur);
+    osc.start();osc.stop(ctx.currentTime+dur);
+  }catch(e){}
+}
+function playPageFlip(){playTone(220,.04,.08,'sine');}
+function playUnlock(){playTone(440,.03,.1,'sine');}
+function playTimerEnd(){
+  [0,300,600].forEach(delay=>setTimeout(()=>{
+    playTone(880,.12,.2,'square');
+    setTimeout(()=>playTone(1100,.08,.15,'sine'),60);
+  },delay));
+}
+function toggleAudio(){
+  audioEnabled=!audioEnabled;
+  document.getElementById('btn-audio').style.color=audioEnabled?'rgba(255,255,255,.5)':'rgba(255,32,85,.6)';
+  document.getElementById('btn-audio').title=audioEnabled?'音效開關（開）':'音效開關（關）';
+}
 
 // ── TIMER STATE ───────────────────────────────────────────────────────────
 const timers={};
@@ -300,6 +349,7 @@ function toggleTimer(id,total){
         const b=document.getElementById('tbtn-'+id);if(b){b.textContent='結束';b.disabled=true;}
         const slideEl=document.querySelector(`.slide[data-index="${cur}"]`);
         if(slideEl){slideEl.classList.add('timesup-flash');setTimeout(()=>slideEl.classList.remove('timesup-flash'),2200);}
+        playTimerEnd();
       }
     },1000);
   }
@@ -312,7 +362,7 @@ function resetTimer(id,total){
   const btn=document.getElementById('tbtn-'+id);if(btn){btn.textContent='開始';btn.disabled=false;btn.classList.remove('paused');}
 }
 
-// ── CAROUSEL (from v3) ────────────────────────────────────────────────────
+// ── CAROUSEL ──────────────────────────────────────────────────────────────
 const carouselTimers={};
 function carouselGo(id,idx){
   const wrap=document.getElementById(id);const dots=document.getElementById(id+'-dots');
@@ -321,8 +371,7 @@ function carouselGo(id,idx){
   if(dots)dots.querySelectorAll('span').forEach((dot,i)=>{dot.classList.toggle('active',i===idx);});
 }
 function startCarousel(id,count){
-  if(carouselTimers[id])return;
-  let idx=0;
+  if(carouselTimers[id])return;let idx=0;
   carouselTimers[id]=setInterval(()=>{idx=(idx+1)%count;carouselGo(id,idx);},3500);
 }
 function initCarousels(){
@@ -332,7 +381,7 @@ function initCarousels(){
   });
 }
 
-// ── TRIAD TOGGLE (from v3) ────────────────────────────────────────────────
+// ── TRIAD TOGGLE ──────────────────────────────────────────────────────────
 function triadToggle(uid){
   const el=document.getElementById(uid);if(!el)return;
   const wasOpen=el.classList.contains('to-open');
@@ -354,571 +403,1031 @@ function funnelFocus(fid,key){
   if(d){box.style.borderColor=d.col;box.innerHTML=d.text;box.style.opacity='1';}
 }
 
-// ── RENDER ENGINE ─────────────────────────────────────────────────────────
-function blob(c1,c2){return `<div style="position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 60% 55% at 20% 20%,${c1},transparent 60%),radial-gradient(ellipse 50% 50% at 80% 80%,${c2},transparent 60%)"></div>`;}
-function chip(label,color){return `<div class="chip chip-${color}">${label}</div>`;}
+// ── TOGGLE PHASE (for time-allocation) ───────────────────────────────────
+function togglePhase(sid,key){
+  const allPanels=document.querySelectorAll(`[id^="phase-${sid}-"]`);
+  const target=document.getElementById(`phase-${sid}-${key}`);
+  if(!target)return;
+  const isOpen=target.dataset.open==='1';
+  allPanels.forEach(p=>{
+    p.dataset.open='0';
+    const inner=p.querySelector('.phase-inner');
+    if(inner){inner.style.maxHeight='0';inner.style.opacity='0';}
+    const hdr=p.querySelector('.phase-hdr');if(hdr)hdr.style.opacity='.55';
+    p.querySelectorAll('[data-bar]').forEach(b=>{b.style.width='0';});
+  });
+  if(!isOpen){
+    target.dataset.open='1';
+    const inner=target.querySelector('.phase-inner');
+    if(inner){inner.style.maxHeight='300px';inner.style.opacity='1';}
+    const hdr=target.querySelector('.phase-hdr');if(hdr)hdr.style.opacity='1';
+    setTimeout(()=>{target.querySelectorAll('[data-bar]').forEach(b=>{b.style.width=b.dataset.bar+'%';});},80);
+  }
+}
 
+// ── MANDALA FOCUS ─────────────────────────────────────────────────────────
+function mandalaFocus(sid,idx,colRaw){
+  const detail=document.getElementById('mdf-'+sid);if(!detail)return;
+  const allCells=document.querySelectorAll('[id^="mc-'+sid+'-"]');
+  const cur2=detail.dataset.active||'';
+  if(cur2===String(idx)){
+    detail.dataset.active='';detail.style.display='none';
+    allCells.forEach(c=>{c.style.opacity='1';c.style.transform='scale(1)';});
+  }else{
+    detail.dataset.active=String(idx);
+    const cell=document.getElementById('mc-'+sid+'-'+idx);
+    const title=cell?cell.dataset.title:'';const desc=cell?cell.dataset.desc:'';
+    detail.style.display='block';detail.style.borderLeftColor=colRaw+',1)';detail.style.background=colRaw+',.08)';
+    detail.innerHTML=`<strong style="color:${colRaw},1)">${title}：</strong><span style="color:var(--mid)">${desc}</span>`;
+    allCells.forEach(c=>{const active=c.id==='mc-'+sid+'-'+idx;c.style.opacity=active?'1':'0.4';c.style.transform=active?'scale(1.04)':'scale(1)';});
+  }
+}
+
+// ── SEQ MANUAL TOGGLE (for leverage-safety) ───────────────────────────────
+function seqManualToggle(grpId,idx){
+  const grp=document.getElementById(grpId);if(!grp)return;
+  const bodies=[...grp.querySelectorAll('[data-seq-body]')];
+  const arrs=[...grp.querySelectorAll('[data-seq-arr]')];
+  const body=bodies[idx];if(!body)return;
+  const isOpen=body.style.maxHeight!=='0px'&&body.style.maxHeight!=='';
+  body.style.maxHeight=isOpen?'0px':'400px';body.style.opacity=isOpen?'0':'1';
+  if(arrs[idx])arrs[idx].style.transform=isOpen?'rotate(0deg)':'rotate(180deg)';
+}
+
+// ── HELPERS ───────────────────────────────────────────────────────────────
+function blob(c1,c2){return `<div style="position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 60% 55% at 20% 20%,${c1},transparent 60%),radial-gradient(ellipse 50% 50% at 80% 80%,${c2},transparent 60%)"></div>`;}
+function toggleStep(id){const el=document.getElementById(id);if(!el)return;el.classList.toggle('open');}
+function jumpToId(id){const idx=D.findIndex(s=>s.id===id);if(idx>=0)scrollToSlide(idx);}
+
+// ── RENDER ENGINE ─────────────────────────────────────────────────────────
 function renderSlide(sd){
   let h='<div class="slide-content">';
+  // Pre-compute chip string for v3-style cases
+  const chip=Array.isArray(sd.chip)?`<div class="chip chip-${sd.chip[1]||'white'}">${sd.chip[0]}</div>`:(sd.chip?`<div class="chip chip-white">${sd.chip}</div>`:'');
+  // Chip function for original-style cases
+  function mkChip(label,color){return `<div class="chip chip-${color}">${label}</div>`;}
+
   switch(sd.type){
 
-    // ── COVER ─────────────────────────────────────────
-    case 'cover':
-      h+=blob('rgba(255,32,85,.1)','rgba(168,85,247,.08)');
-      h+=`<div style="position:relative;z-index:1;text-align:center">`;
-      h+=`<div class="chip chip-red" style="justify-content:center;margin:0 auto .8rem">Brain OS Workshop · 90 min</div>`;
-      h+=`<div class="hero-txt g-multi" style="margin-bottom:1rem">大腦<br>作業系統</div>`;
-      h+=`<div class="bar" style="margin:.8rem auto 1.2rem"></div>`;
-      h+=`<h2 style="font-weight:400;opacity:.7;font-size:clamp(1.4rem,2.5vw,2rem)">從快速學習到戰略思維</h2>`;
-      h+=`<p style="margin-top:1.2rem;font-size:clamp(1rem,1.5vw,1.2rem);opacity:.45;letter-spacing:.08em">Vincent &nbsp;·&nbsp; 90 min &nbsp;·&nbsp; Signal over Noise</p>`;
-      h+=`<button class="cta-btn" style="margin-top:2rem" onclick="jumpToId('m6_converge')">預覽終極成果 →</button>`;
-      h+=`</div>`;
-      break;
+  // ── COVER ────────────────────────────────────────────────────────────────
+  case 'cover':
+    h+=blob('rgba(255,32,85,.1)','rgba(168,85,247,.08)');
+    h+=`<div style="position:relative;z-index:1;text-align:center">`;
+    h+=`<div class="chip chip-red" style="justify-content:center;margin:0 auto .8rem">Brain OS Workshop · 90 min</div>`;
+    h+=`<div class="hero-txt g-multi" style="margin-bottom:1rem">大腦<br>作業系統</div>`;
+    h+=`<div class="bar" style="margin:.8rem auto 1.2rem"></div>`;
+    h+=`<h2 style="font-weight:400;opacity:.7;font-size:clamp(1.4rem,2.5vw,2rem)">從快速學習到戰略思維</h2>`;
+    h+=`<p style="margin-top:1.2rem;font-size:clamp(1rem,1.5vw,1.2rem);opacity:.45;letter-spacing:.08em">Vincent &nbsp;·&nbsp; 90 min &nbsp;·&nbsp; Signal over Noise</p>`;
+    h+=`<button class="cta-btn" style="margin-top:2rem" onclick="jumpToId('m5_converge')">預覽終極成果 →</button>`;
+    h+=`</div>`;
+    break;
 
-    // ── DECLARE ───────────────────────────────────────
-    case 'declare':
-      h+=blob('rgba(255,32,85,.08)','rgba(255,107,0,.06)');
-      h+=`<div style="position:relative;z-index:1;max-width:820px">`;
-      h+=chip('今天不是聽講課','red');
-      h+=`<h1 style="margin-bottom:1rem">這是一場<br><span class="g-red">高壓實戰</span></h1>`;
-      h+=`<div class="bar"></div>`;
-      h+=`<p style="font-size:clamp(1.3rem,2vw,1.6rem);margin-bottom:1.5rem">你的大腦今天會很不舒服。<br>那是它在<strong>成長</strong>。</p>`;
-      h+=`<div style="display:flex;flex-direction:column;gap:.9rem">`;
-      [['01','不記筆記，記重點。觀念 > 文字。'],['02','每3-5張有互動或提問。沒有標準答案。'],['03','Hot Seat 隨時發動。被點到的人，說出你的思考過程。']].forEach(([num,text])=>{
-        h+=`<div style="display:flex;align-items:center;gap:1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:.9rem 1.4rem"><span style="font-size:1.2rem;font-weight:800;color:rgba(255,107,0,.5);min-width:2rem">${num}</span><span style="font-size:clamp(1.1rem,1.6vw,1.3rem);color:var(--ink)">${text}</span></div>`;
-      });
+  // ── BIG QUOTE ────────────────────────────────────────────────────────────
+  case 'big-quote':
+    h+=`<div style="text-align:center;max-width:820px;margin:0 auto">${chip}<div class="bar" style="margin:.6rem auto 1.3rem"></div><h1 style="font-size:clamp(2.5rem,6.5vw,5.5rem);line-height:1.1">${sd.quote}</h1>${sd.sub2?`<p style="margin-top:1.4rem;font-size:clamp(1rem,1.6vw,1.2rem)">${sd.sub2}</p>`:''}</div>`;
+    break;
+
+  // ── SECTION COVER (v3) ───────────────────────────────────────────────────
+  case 'section-cover':{
+    const cols={'②':['rgba(59,130,246,.14)','rgba(168,85,247,.1)'],'③':['rgba(34,197,94,.12)','rgba(6,182,212,.09)'],'④':['rgba(251,191,36,.12)','rgba(255,107,0,.09)'],'⑤':['rgba(168,85,247,.14)','rgba(255,107,0,.1)']};
+    const[c1,c2]=cols[sd.secNum]||['rgba(255,107,0,.12)','rgba(255,32,85,.09)'];
+    h+=blob(c1,c2);
+    h+=`<div style="position:relative;z-index:1;text-align:center;display:flex;flex-direction:column;align-items:center;gap:0">`;
+    h+=`<div style="font-size:clamp(4rem,10vw,7rem);font-weight:900;line-height:1;opacity:.15;letter-spacing:-.02em;margin-bottom:.1rem">${sd.secNum}</div>`;
+    h+=`<h1 style="margin:.1rem 0 .5rem;white-space:nowrap;font-size:clamp(2.8rem,7vw,5rem);font-weight:900;letter-spacing:.08em;line-height:1">${sd.secTitle}</h1>`;
+    h+=`<div style="font-size:.85rem;letter-spacing:.3em;text-transform:uppercase;color:var(--mid);margin:.2rem 0 .8rem">${sd.secEn}</div>`;
+    h+=`<div class="bar" style="margin:.4rem auto 1rem;width:3.5rem"></div>`;
+    h+=`<p style="font-size:clamp(1.1rem,2vw,1.4rem);color:var(--mid);font-weight:500">${sd.sub2}</p>`;
+    h+=`</div>`;
+    break;}
+
+  // ── PROFILE HERO (v3) ────────────────────────────────────────────────────
+  case 'profile-hero':{
+    h+=blob('rgba(255,107,0,.1)','rgba(59,130,246,.08)');
+    h+=`<div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:1.2rem;text-align:center;width:100%">`;
+    h+=chip;
+    const cid='carousel-'+sd.id;
+    const photos=['images/4847933632894551843.bb63d732054d4edd9992eba0a6595c53.23020814.jpg','images/IMG_2571.JPG','images/IMG_5763.jpeg','images/IMG_8198.JPG','images/IMG_8266.JPG'];
+    h+=`<div class="carousel-wrap" id="${cid}">`;
+    photos.forEach((p,i)=>{h+=`<img src="${p}" alt="Vincent" class="${i===0?'active':''}" data-idx="${i}">`;});
+    h+=`</div>`;
+    h+=`<div class="carousel-dots" id="${cid}-dots">`;
+    photos.forEach((p,i)=>{h+=`<span data-idx="${i}" class="${i===0?'active':''}" onclick="carouselGo('${cid}',${i})"></span>`;});
+    h+=`</div>`;
+    h+=`<div style="display:flex;flex-direction:column;align-items:center;gap:.4rem">`;
+    h+=`<div style="font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;letter-spacing:-.02em">Vincent</div>`;
+    h+=`<div style="font-size:var(--min-font);color:var(--mid);line-height:1.7">Stanford d.school × IDEO 矽谷研習<br>EmoTree Founder · DFT 商業競賽冠軍<br><span style="color:var(--orange)">大腦作業系統 — 讓學習直接轉化為商業行動</span></div>`;
+    h+=`</div>`;
+    h+=`<div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center">`;
+    [['Stanford d.school','var(--red)'],['IDEO 矽谷參訪','var(--orange)'],['DFT 冠軍','var(--purple)']].forEach(([label,col])=>{
+      h+=`<div style="padding:.5rem 1.1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;font-size:var(--min-font);font-weight:600;color:${col}">${label}</div>`;
+    });
+    h+=`</div></div>`;
+    break;}
+
+  // ── AUDIENCE POLL (v3, adapted for Brain OS) ─────────────────────────────
+  case 'audience-poll':{
+    h+=blob('rgba(255,107,0,.07)','rgba(168,85,247,.06)');
+    h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto 1rem"></div>`;
+    if(sd.title)h+=`<h2 style="margin-bottom:.3rem">${sd.title}</h2>`;
+    h+=`<p style="font-size:var(--min-font);color:var(--mid);margin-bottom:1.4rem">我說問題，請舉手。看完各題之後，點擊揭曉數據。</p>`;
+    h+=`</div>`;
+    const pollQs=[
+      {n:'01',q:'買了一堆書<br>卻成了書架裝飾品',col:'var(--orange)',colR:'rgba(255,107,0',stat:'72%',statSub:'的人承認：買書的動機是緩解焦慮，而不是真的要讀',note:'資訊焦慮讓你買書，而不是學習動機。'},
+      {n:'02',q:'學習速度<br>追不上資訊焦慮',col:'var(--blue)',colR:'rgba(59,130,246',stat:'89%',statSub:'的知識工作者表示學習跟不上，即使每週投入 5+ 小時',note:'問題不是投入時間不夠，是學習方法沒有系統。'},
+      {n:'03',q:'學了理論<br>卻無法轉為商業行動',col:'var(--purple)',colR:'rgba(168,85,247',stat:'94%',statSub:'的課程學員表示：很有啟發，但不知道如何執行',note:'今天的目標：帶走可以直接執行的框架，不是知識清單。'},
+    ];
+    h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:920px;margin:0 auto;position:relative;z-index:1">`;
+    pollQs.forEach((q,i)=>{
+      const uid=`poll-${sd.id}-${i}`;
+      h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:200px">`;
+      h+=`<div class="card-answer" style="background:${q.colR},.07);border:2px solid ${q.colR},.3);border-top:3px solid ${q.col};border-radius:14px;padding:1.2rem 1.1rem;text-align:left">`;
+      h+=`<div style="font-size:.55rem;font-weight:900;color:${q.col};letter-spacing:.12em;text-transform:uppercase;margin-bottom:.35rem">${q.n} — 數據揭曉</div>`;
+      h+=`<div style="font-size:clamp(1.4rem,2.8vw,2.2rem);font-weight:900;color:${q.col};line-height:1;margin-bottom:.3rem">${q.stat}</div>`;
+      h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--ink);margin-bottom:.5rem">${q.statSub}</div>`;
+      h+=`<div style="font-size:var(--min-label);color:var(--mid);padding:.45rem .6rem;background:${q.colR},.08);border-left:2px solid ${q.colR},.4);border-radius:0 6px 6px 0;line-height:1.55">${q.note}</div>`;
+      h+=`</div>`;
+      h+=`<div class="card-mask" style="border-radius:14px;background:${q.colR},.1);border:2px solid ${q.colR},.25)">`;
+      h+=`<div style="font-size:.55rem;font-weight:900;color:${q.col};letter-spacing:.12em;text-transform:uppercase;margin-bottom:.4rem">${q.n}</div>`;
+      h+=`<div style="font-size:clamp(1rem,1.7vw,1.25rem);font-weight:700;color:var(--ink);line-height:1.4">${q.q}</div>`;
+      h+=`<div style="font-size:var(--min-label);color:rgba(255,255,255,.28);margin-top:.55rem;letter-spacing:.06em">舉完手再點擊</div>`;
       h+=`</div></div>`;
-      break;
+    });
+    h+=`</div>`;
+    break;}
 
-    // ── PROFILE HERO (from v3) ─────────────────────────
-    case 'profile-hero':{
-      const chipLabel=Array.isArray(sd.chip)?sd.chip[0]:sd.chip;
-      const chipColor=Array.isArray(sd.chip)?sd.chip[1]:'white';
-      h+=blob('rgba(255,107,0,.1)','rgba(59,130,246,.08)');
-      h+=`<div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:1.2rem;text-align:center;width:100%">`;
-      h+=`<div class="chip chip-${chipColor}">${chipLabel}</div>`;
-      const cid='carousel-'+sd.id;
-      const photos=['images/4847933632894551843.bb63d732054d4edd9992eba0a6595c53.23020814.jpg','images/IMG_2571.JPG','images/IMG_5763.jpeg','images/IMG_8198.JPG','images/IMG_8266.JPG'];
-      h+=`<div class="carousel-wrap" id="${cid}">`;
-      photos.forEach((p,i)=>{h+=`<img src="${p}" alt="Vincent" class="${i===0?'active':''}" data-idx="${i}">`;});
+  // ── TRIAD V2 (adapted for Brain OS modules) ──────────────────────────────
+  case 'triad-v2':{
+    h+=blob('rgba(59,130,246,.08)','rgba(255,32,85,.06)');
+    h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto 1rem"></div>`;
+    if(sd.title)h+=`<h2 style="margin-bottom:1.2rem">${sd.title}</h2>`;
+    h+=`</div>`;
+    const checkIcon='<svg viewBox="0 0 20 20" width="16" height="16" fill="var(--green)"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>';
+    const xIcon='<svg viewBox="0 0 20 20" width="16" height="16" fill="var(--red)"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg>';
+    const orbs=[
+      {key:'fea',en:'FEASIBILITY',zh:'可行性',col:'var(--blue)',bg:'linear-gradient(135deg,rgba(59,130,246,.15),rgba(59,130,246,.05))',border:'rgba(59,130,246,.4)',
+       icon:'<svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
+       def:'怎麼學得進去？',plain:'環境降噪 × 記憶留存 × 速讀技術',example:'費曼技巧 + 間隔重複 = 真正內化',mistake:'只收藏知識，不輸出知識'},
+      {key:'des',en:'DESIRABILITY',zh:'欲求性',col:'var(--red)',bg:'linear-gradient(135deg,rgba(255,32,85,.15),rgba(255,32,85,.05))',border:'rgba(255,32,85,.4)',
+       icon:'<svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>',
+       def:'為什麼而學？',plain:'目標錨定 × Hormozi 公式 × 九宮格展開',example:'用痛點思維確認學習的 ROI',mistake:'漫無目的的資訊消費'},
+      {key:'via',en:'VIABILITY',zh:'存續性',col:'rgba(255,255,255,.85)',bg:'linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.02))',border:'rgba(255,255,255,.2)',
+       icon:'<svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
+       def:'學完能做什麼？',plain:'GTM × PMF × 槓桿與資源漏斗',example:'MECE 框架砍掉低槓桿行動',mistake:'學了但沒轉化為具體的下一步'},
+    ];
+    h+=`<div class="triad-wrap" style="position:relative;z-index:1">`;
+    orbs.forEach(t=>{
+      const uid=`tv2-${sd.id}-${t.key}`;
+      h+=`<div class="triad-orb" id="${uid}" onclick="triadToggle('${uid}')" data-glow="${t.border}" style="background:${t.bg};border-color:${t.border};min-width:240px;max-width:320px">`;
+      h+=`<div class="triad-orb-front" style="padding:1.3rem 1.1rem;text-align:center;align-items:center">`;
+      h+=`<div style="color:${t.col};margin-bottom:.35rem">${t.icon}</div>`;
+      h+=`<div style="font-size:.6rem;font-weight:800;letter-spacing:.16em;color:${t.col};margin-bottom:.2rem">${t.en}</div>`;
+      h+=`<div style="font-size:clamp(1.3rem,2.2vw,1.7rem);font-weight:800;color:${t.col}">${t.zh}</div>`;
+      h+=`<div style="font-size:var(--min-label);color:var(--mid);margin-top:.3rem">${t.def}</div>`;
+      h+=`<div style="font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;opacity:.28;margin-top:.4rem">點擊展開</div>`;
       h+=`</div>`;
-      h+=`<div class="carousel-dots" id="${cid}-dots">`;
-      photos.forEach((p,i)=>{h+=`<span data-idx="${i}" class="${i===0?'active':''}" onclick="carouselGo('${cid}',${i})"></span>`;});
-      h+=`</div>`;
-      h+=`<div style="display:flex;flex-direction:column;align-items:center;gap:.4rem">`;
-      h+=`<div style="font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;letter-spacing:-.02em">Vincent</div>`;
-      h+=`<div style="font-size:clamp(.95rem,1.5vw,1.15rem);color:var(--mid);line-height:1.7">Stanford d.school × IDEO 矽谷研習<br>EmoTree Founder · DFT 商業競賽冠軍<br><span style="color:var(--orange)">大腦作業系統 — 讓學習直接變成商業行動</span></div>`;
-      h+=`</div>`;
-      h+=`<div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center">`;
-      [['Stanford d.school','var(--red)'],['IDEO 矽谷參訪','var(--orange)'],['DFT 冠軍','var(--purple)']].forEach(([label,col])=>{
-        h+=`<div style="padding:.5rem 1.1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;font-size:clamp(.9rem,1.3vw,1.05rem);font-weight:600;color:${col}">${label}</div>`;
-      });
-      h+=`</div></div>`;
-      break;}
-
-    // ── TRIAD V2 (from v3, adapted for Brain OS) ────────
-    case 'triad-v2':{
-      const chipLabel=Array.isArray(sd.chip)?sd.chip[0]:sd.chip;
-      const chipColor=Array.isArray(sd.chip)?sd.chip[1]:'blue';
-      h+=blob('rgba(59,130,246,.08)','rgba(255,32,85,.06)');
-      h+=`<div style="position:relative;z-index:1;text-align:center">`;
-      h+=`<div class="chip chip-${chipColor}">${chipLabel}</div>`;
-      h+=`<div class="bar" style="margin:.6rem auto 1rem"></div>`;
-      if(sd.title)h+=`<h2 style="margin-bottom:1.2rem">${sd.title}</h2>`;
-      h+=`</div>`;
-      const checkIcon='<svg viewBox="0 0 20 20" width="16" height="16" fill="var(--green)"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>';
-      const xIcon='<svg viewBox="0 0 20 20" width="16" height="16" fill="var(--red)"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg>';
-      const orbs=[
-        {key:'des',en:'DESIRABILITY',zh:'欲求性',col:'var(--red)',bg:'linear-gradient(135deg,rgba(255,32,85,.15),rgba(255,32,85,.05))',border:'rgba(255,32,85,.4)',
-         icon:'<svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
-         def:'為什麼而學？',plain:'目標錨定 × 問題驅動 × 清晰動機',example:'帶著卡關的商業問題進入學習',mistake:'漫無目的的資訊消費 ≠ 學習'},
-        {key:'fea',en:'FEASIBILITY',zh:'可行性',col:'var(--blue)',bg:'linear-gradient(135deg,rgba(59,130,246,.12),rgba(59,130,246,.04))',border:'rgba(59,130,246,.4)',
-         icon:'<svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
-         def:'怎麼學得進去？',plain:'環境降噪 × 記憶留存 × 速讀技術',example:'費曼技巧 + 間隔重複 = 真正內化',mistake:'只收藏知識，不輸出知識'},
-        {key:'via',en:'VIABILITY',zh:'存續性',col:'rgba(255,255,255,.85)',bg:'linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.02))',border:'rgba(255,255,255,.2)',
-         icon:'<svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
-         def:'學完能做什麼？',plain:'Signal 過濾 × 不公平優勢 × 資源漏斗',example:'MECE 框架砍掉低槓桿行動',mistake:'學了但沒轉化為具體的下一步'},
-      ];
-      h+=`<div class="triad-wrap" style="position:relative;z-index:1">`;
-      orbs.forEach(t=>{
-        const uid=`tv2-${sd.id}-${t.key}`;
-        h+=`<div class="triad-orb" id="${uid}" onclick="triadToggle('${uid}')" data-glow="${t.border}" style="background:${t.bg};border-color:${t.border};min-width:240px;max-width:320px">`;
-        h+=`<div class="triad-orb-front" style="padding:1.3rem 1.1rem">`;
-        h+=`<div style="color:${t.col};margin-bottom:.35rem">${t.icon}</div>`;
-        h+=`<div style="font-size:.6rem;font-weight:800;letter-spacing:.16em;color:${t.col};margin-bottom:.2rem">${t.en}</div>`;
-        h+=`<div style="font-size:clamp(1.3rem,2.2vw,1.7rem);font-weight:800;color:${t.col}">${t.zh}</div>`;
-        h+=`<div style="font-size:clamp(.85rem,1.3vw,.95rem);color:var(--mid);margin-top:.3rem">${t.def}</div>`;
-        h+=`<div style="font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;opacity:.28;margin-top:.4rem">點擊展開</div>`;
-        h+=`</div>`;
-        h+=`<div class="triad-detail"><div class="triad-detail-inner" style="align-items:center;text-align:center">`;
-        h+=`<div style="font-size:.75rem;font-weight:700;color:var(--ink);line-height:1.4">${t.plain}</div>`;
-        h+=`<div style="display:flex;gap:.4rem;align-items:flex-start;justify-content:center">${checkIcon}<span class="triad-det-txt" style="text-align:left">${t.example}</span></div>`;
-        h+=`<div style="display:flex;gap:.4rem;align-items:flex-start;justify-content:center">${xIcon}<span class="triad-det-txt" style="text-align:left">${t.mistake}</span></div>`;
-        h+=`</div></div></div>`;
-      });
-      h+=`</div>`;
-      break;}
-
-    // ── ANCHOR ────────────────────────────────────────
-    case 'anchor':
-      h+=blob('rgba(168,85,247,.08)','rgba(255,32,85,.06)');
-      h+=`<div style="position:relative;z-index:1;max-width:820px;width:100%">`;
-      h+=chip('目標錨定','purple');
-      h+=`<h2 style="margin-bottom:.5rem">現在，寫下你最<span class="g-purple">卡關</span>的專案或目標</h2>`;
-      h+=`<div class="bar"></div>`;
-      h+=`<p style="margin-bottom:1.5rem;font-size:clamp(1.1rem,1.6vw,1.3rem)">不用想太久。第一個浮現的，就是最真實的。</p>`;
-      h+=`<div style="background:rgba(255,255,255,.04);border:2px solid rgba(168,85,247,.3);border-radius:16px;padding:2rem;text-align:center">`;
-      h+=`<p style="font-size:clamp(1.4rem,2.2vw,1.8rem);color:var(--ink);margin-bottom:1.2rem">在紙上或手機備忘錄寫下：</p>`;
-      h+=`<div style="font-size:clamp(1.2rem,1.8vw,1.5rem);color:rgba(255,255,255,.6);line-height:2">我目前最卡關的是：<span style="color:var(--purple);border-bottom:2px solid rgba(168,85,247,.4);padding:0 .5rem">＿＿＿＿＿＿＿＿＿</span><br>我不知道怎麼解決的是：<span style="color:var(--purple);border-bottom:2px solid rgba(168,85,247,.4);padding:0 .5rem">＿＿＿＿＿</span></div>`;
-      h+=`</div>`;
-      h+=`<div class="tip-box" style="margin-top:1.2rem">今天結束時，我們會用所有工具一起壓力測試你寫下的這個問題。</div>`;
-      h+=`</div>`;
-      break;
-
-    // ── RULES ─────────────────────────────────────────
-    case 'rules':
-      h+=blob('rgba(255,255,255,.04)','rgba(255,107,0,.05)');
-      h+=`<div style="position:relative;z-index:1;max-width:800px">`;
-      h+=chip('規則建立','white');
-      h+=`<h1 style="margin-bottom:1rem">三個<span class="g-orange">公約</span></h1>`;
-      h+=`<div class="bar"></div>`;
-      h+=`<div style="display:flex;flex-direction:column;gap:1rem;margin-top:.5rem">`;
-      [['01','全員參與','沉默不是觀察，是浪費。你的問題是別人的問題。'],['02','快速回應','想太久等於沒想。說出你現在的思考，哪怕不完整。'],['03','沒有廢話','一句話說清楚比三段話更有力。精準 > 豐富。']].forEach(([num,title,desc])=>{
-        h+=`<div class="glass-card" style="display:flex;gap:1.2rem;align-items:flex-start">`;
-        h+=`<span style="font-size:2rem;font-weight:800;color:rgba(255,107,0,.3);flex-shrink:0;line-height:1">${num}</span>`;
-        h+=`<div><div style="font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:700;color:var(--ink);margin-bottom:.3rem">${title}</div><div class="label-sm">${desc}</div></div>`;
-        h+=`</div>`;
-      });
-      h+=`</div></div>`;
-      break;
-
-    // ── HOT SEAT INTRO ────────────────────────────────
-    case 'hotseat-intro':
-      h+=blob('rgba(255,32,85,.12)','rgba(255,107,0,.08)');
-      h+=`<div style="position:relative;z-index:1;text-align:center;max-width:800px">`;
-      h+=`<div class="hotseat-badge" style="margin:0 auto 1.2rem">Hot Seat</div>`;
-      h+=`<h1 class="g-red" style="margin-bottom:1rem">隨時有人被點名</h1>`;
-      h+=`<div class="bar" style="margin:.8rem auto 1.4rem"></div>`;
-      h+=`<p style="font-size:clamp(1.2rem,1.8vw,1.5rem);margin-bottom:1.5rem">被點到的任務很簡單：<strong>說出你的思考過程</strong><br>不需要正確答案。需要的是真實的推論。</p>`;
-      h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;text-align:left">`;
-      [['不需要','背標準答案','var(--red)'],['需要','說「我認為...因為...」','var(--green)'],['不需要','沉默或說不知道','var(--red)'],['需要','任何方向的猜測都算','var(--green)']].forEach(([badge,text,col])=>{
-        h+=`<div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:.9rem 1.2rem;font-size:clamp(1rem,1.5vw,1.2rem)"><span style="color:${col};font-weight:700">${badge}：</span><span style="color:var(--ink)">${text}</span></div>`;
-      });
-      h+=`</div></div>`;
-      break;
-
-    // ── MODULE COVER ──────────────────────────────────
-    case 'module-cover':
-      const mc=sd;
-      const colorMap={'var(--orange)':'rgba(255,107,0','var(--blue)':'rgba(59,130,246','var(--green)':'rgba(34,197,94','var(--yellow)':'rgba(251,191,36','var(--purple)':'rgba(168,85,247','var(--cyan)':'rgba(6,182,212','var(--red)':'rgba(255,32,85'};
-      const cRgb=colorMap[mc.color]||'rgba(255,107,0';
-      h+=blob(`${cRgb},.12)`,'rgba(255,255,255,.03)');
-      h+=`<div style="position:relative;z-index:1;text-align:center">`;
-      h+=`<div style="font-size:.72rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:${mc.color};margin-bottom:.8rem;opacity:.7">Module ${mc.secNum}</div>`;
-      h+=`<div class="big-num" style="background:linear-gradient(135deg,${mc.color},rgba(255,255,255,.3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.5rem">0${mc.secNum}</div>`;
-      h+=`<h1 style="font-size:clamp(2rem,5vw,4rem);margin-bottom:.5rem;color:${mc.color}">${mc.title}</h1>`;
-      h+=`<h2 style="font-weight:400;opacity:.65;margin-bottom:1.2rem">${mc.zh}</h2>`;
-      h+=`<div style="width:3rem;height:3px;background:${mc.color};border-radius:2px;margin:0 auto 1.2rem"></div>`;
-      h+=`<p style="font-size:clamp(1.2rem,1.8vw,1.5rem)">${mc.desc}</p>`;
-      h+=`</div>`;
-      break;
-
-    // ── CONCEPT SINGLE ────────────────────────────────
-    case 'concept-single':
-      h+=blob('rgba(255,255,255,.03)','rgba(255,255,255,.02)');
-      h+=`<div style="position:relative;z-index:1;max-width:820px">`;
-      h+=chip(sd.chip,sd.chipColor);
-      h+=`<h1 style="margin-bottom:1rem">${sd.title}</h1>`;
-      h+=`<div class="bar"></div>`;
-      h+=`<p style="font-size:clamp(1.2rem,1.8vw,1.5rem);margin-bottom:1.2rem;color:var(--mid)">${sd.body}</p>`;
-      if(sd.tip)h+=`<div class="tip-box">${sd.tip}</div>`;
-      h+=`</div>`;
-      break;
-
-    // ── BODY TRIANGLE ─────────────────────────────────
-    case 'body-triangle':
-      h+=blob('rgba(59,130,246,.08)','rgba(34,197,94,.06)');
-      h+=`<div style="position:relative;z-index:1;max-width:960px;width:100%">`;
-      h+=chip('身體狀態底層邏輯','blue');
-      h+=`<h2 style="margin-bottom:.5rem">大腦硬體決定<span class="g-blue">學習效率</span>上限</h2>`;
-      h+=`<div class="bar"></div>`;
-      h+=`<div class="mrev-grid cols-3" style="margin-top:1rem">`;
-      [
-        {n:'01',tag:'MOVE',title:'運動',color:'var(--blue)',colR:'rgba(59,130,246',body:'有氧運動後 BDNF（腦源性神經營養因子）飆升，記憶力短期提升30%。',tip:'學前20分鐘快走 = 最便宜的聰明藥'},
-        {n:'02',tag:'REST',title:'睡眠',color:'var(--purple)',colR:'rgba(168,85,247',body:'睡眠中海馬迴把短期記憶轉換為長期記憶。睡不夠 = 白天學了白學。',tip:'學後睡覺，記憶固化效率提升40%'},
-        {n:'03',tag:'FUEL',title:'飲食',color:'var(--green)',colR:'rgba(34,197,94',body:'血糖劇烈波動導致注意力崩潰。Omega-3 支援神經連結形成。',tip:'學前不喝手搖、不吃精緻澱粉'},
-      ].forEach(item=>{
-        const uid=`bt-${item.n}`;
-        h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:180px">`;
-        h+=`<div class="card-answer" style="background:${item.colR},.08);border:1.5px solid ${item.colR},.3);border-radius:14px;padding:1.3rem">`;
-        h+=`<div style="font-size:.6rem;font-weight:900;letter-spacing:.2em;color:${item.color};margin-bottom:.4rem">${item.tag}</div>`;
-        h+=`<div style="font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:700;color:${item.color};margin-bottom:.5rem">${item.title}</div>`;
-        h+=`<div style="font-size:clamp(1rem,1.4vw,1.1rem);color:var(--mid);margin-bottom:.5rem;line-height:1.6">${item.body}</div>`;
-        h+=`<div style="font-size:clamp(.95rem,1.3vw,1.05rem);color:${item.color};background:${item.colR},.1);border-radius:6px;padding:.4rem .7rem">${item.tip}</div>`;
-        h+=`</div>`;
-        h+=`<div class="card-mask" style="background:${item.colR},.12);border:1.5px solid ${item.colR},.3)">`;
-        h+=`<div class="card-mask-num">${item.n}</div>`;
-        h+=`<div style="font-size:.6rem;font-weight:900;letter-spacing:.2em;color:${item.color};margin:.2rem 0">${item.tag}</div>`;
-        h+=`<div class="card-mask-q" style="color:${item.color}">${item.title}</div>`;
-        h+=`<div class="card-mask-hint">點擊解鎖</div>`;
-        h+=`</div></div>`;
-      });
-      h+=`</div>`;
-      h+=`<div class="tip-box" style="margin-top:1rem">三角形底座：睡眠 × 運動 × 飲食。底座不穩，上層的學習技巧全部打折。</div>`;
-      h+=`</div>`;
-      break;
-
-    // ── INPUT-OUTPUT LOOP ─────────────────────────────
-    case 'input-output':
-      h+=blob('rgba(255,107,0,.08)','rgba(168,85,247,.06)');
-      h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%">`;
-      h+=chip('高效循環','orange');
-      h+=`<h2 style="margin-bottom:.5rem">Input 沒有連結 Output<br>等於<span class="g-red"> 沒有學習</span></h2>`;
-      h+=`<div class="bar"></div>`;
-      h+=`<div style="display:flex;align-items:center;justify-content:center;gap:1rem;margin:1.5rem 0;flex-wrap:wrap">`;
-      [['INPUT','讀書 · 聽課 · 看影片','var(--blue)','rgba(59,130,246'],['PROCESS','整理 · 連結 · 質疑','var(--orange)','rgba(255,107,0'],['OUTPUT','教人 · 寫作 · 實作','var(--green)','rgba(34,197,94']].forEach(([label,desc,col,colR],i)=>{
-        h+=`<div style="text-align:center;flex:1;min-width:180px;background:${colR},.08);border:1.5px solid ${colR},.3);border-radius:16px;padding:1.2rem .8rem">`;
-        h+=`<div style="font-size:clamp(1rem,1.4vw,1.2rem);font-weight:800;color:${col};margin-bottom:.4rem">${label}</div>`;
-        h+=`<div style="font-size:clamp(.95rem,1.3vw,1.1rem);color:var(--mid)">${desc}</div>`;
-        h+=`</div>`;
-        if(i<2)h+=`<div style="font-size:2rem;color:var(--orange);opacity:.6">→</div>`;
-      });
-      h+=`</div>`;
-      h+=`<div class="tip-box">只有 Input 沒有 Output 的學習，只是「感覺有學到」。真正的學習是你能把它<strong>轉移</strong>給別人。</div>`;
-      h+=`<div class="compare-grid" style="margin-top:1rem">`;
-      h+=`<div class="cmp-card cmp-no"><div style="font-size:1.1rem;font-weight:700;color:rgba(255,32,85,.7);margin-bottom:.6rem">常見錯誤</div><ul class="deck-list"><li>看了書但不寫心得</li><li>聽了課但不做練習</li><li>學了工具但不實際用</li></ul></div>`;
-      h+=`<div class="cmp-card cmp-yes"><div style="font-size:1.1rem;font-weight:700;color:var(--orange);margin-bottom:.6rem">正確迴路</div><ul class="deck-list"><li>每次 Input 後問：我要怎麼輸出它？</li><li>找一個人，把你剛學到的解釋給他聽</li><li>學完當天就用一次</li></ul></div>`;
-      h+=`</div></div>`;
-      break;
-
-    // ── MEMORY TYPES ──────────────────────────────────
-    case 'memory-types':
-      h+=blob('rgba(34,197,94,.08)','rgba(6,182,212,.06)');
-      h+=`<div style="position:relative;z-index:1;max-width:920px;width:100%">`;
-      h+=chip('記憶種類','green');
-      h+=`<h2 style="margin-bottom:.5rem">短期工作記憶 <span style="color:rgba(255,255,255,.3)">vs</span> 長期記憶</h2>`;
-      h+=`<div class="bar"></div>`;
-      h+=`<div class="compare-grid">`;
-      h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked')" style="min-height:220px">`;
-      h+=`<div class="card-answer" style="background:rgba(59,130,246,.08);border:1.5px solid rgba(59,130,246,.3);border-radius:14px;padding:1.4rem">`;
-      h+=`<div style="font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:700;color:var(--blue);margin-bottom:.8rem">短期工作記憶</div>`;
-      h+=`<ul class="deck-list"><li>容量極小：5±2 個單位</li><li>持續時間：15-30 秒</li><li>像桌面：空間有限，常被清空</li><li>注意力分散時立即消失</li></ul>`;
-      h+=`<div class="tip-box" style="margin-top:.8rem">多工 = 不斷清空桌面。效率最低的工作方式。</div>`;
-      h+=`</div>`;
-      h+=`<div class="card-mask" style="background:rgba(59,130,246,.12)"><div class="card-mask-num">01</div><div class="card-mask-q" style="color:var(--blue)">短期工作記憶</div><div class="card-mask-hint">點擊解鎖</div></div></div>`;
-      h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked')" style="min-height:220px">`;
-      h+=`<div class="card-answer" style="background:rgba(34,197,94,.08);border:1.5px solid rgba(34,197,94,.3);border-radius:14px;padding:1.4rem">`;
-      h+=`<div style="font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:700;color:var(--green);margin-bottom:.8rem">長期記憶</div>`;
-      h+=`<ul class="deck-list"><li>容量理論上無限</li><li>持續時間：終生（若正確鞏固）</li><li>像硬碟：需要「存檔」動作</li><li>存檔關鍵：情緒 + 重複 + 連結</li></ul>`;
-      h+=`<div class="tip-box" style="margin-top:.8rem">從工作記憶進入長期記憶，需要主動編碼。</div>`;
-      h+=`</div>`;
-      h+=`<div class="card-mask" style="background:rgba(34,197,94,.12)"><div class="card-mask-num">02</div><div class="card-mask-q" style="color:var(--green)">長期記憶</div><div class="card-mask-hint">點擊解鎖</div></div></div>`;
-      h+=`</div>`;
-      h+=`<div class="tip-box" style="margin-top:1rem">策略：不要試圖把所有東西放進工作記憶。先理解，再用間隔重複轉移到長期記憶。</div>`;
-      h+=`</div>`;
-      break;
-
-    // ── DUAL CODING ───────────────────────────────────
-    case 'dual-coding':
-      h+=blob('rgba(168,85,247,.08)','rgba(34,197,94,.06)');
-      h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%">`;
-      h+=chip('雙重編碼','purple');
-      h+=`<h2 style="margin-bottom:.5rem">圖像 + 語言 = <span class="g-purple">記憶威力加倍</span></h2>`;
-      h+=`<div class="bar"></div>`;
-      h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1rem">`;
-      h+=`<div style="background:rgba(168,85,247,.08);border:1.5px solid rgba(168,85,247,.3);border-radius:14px;padding:1.4rem">`;
-      h+=`<div style="font-size:.65rem;font-weight:800;letter-spacing:.14em;color:var(--purple);margin-bottom:.8rem;text-transform:uppercase">視覺通道</div>`;
-      h+=`<div style="font-size:clamp(1.1rem,1.6vw,1.3rem);font-weight:700;color:var(--purple);margin-bottom:.8rem">心智圖 × 概念圖</div>`;
-      h+=`<ul class="deck-list"><li>時間軸、流程圖</li><li>草圖、視覺隱喻</li><li>空間排列強化回憶</li></ul>`;
-      h+=`</div>`;
-      h+=`<div style="background:rgba(6,182,212,.08);border:1.5px solid rgba(6,182,212,.3);border-radius:14px;padding:1.4rem">`;
-      h+=`<div style="font-size:.65rem;font-weight:800;letter-spacing:.14em;color:var(--cyan);margin-bottom:.8rem;text-transform:uppercase">語言通道</div>`;
-      h+=`<div style="font-size:clamp(1.1rem,1.6vw,1.3rem);font-weight:700;color:var(--cyan);margin-bottom:.8rem">關鍵字 × 自問自答</div>`;
-      h+=`<ul class="deck-list"><li>用自己的話重述</li><li>費曼技巧輸出</li><li>語言標記強化索引</li></ul>`;
-      h+=`</div>`;
-      h+=`</div>`;
-      h+=`<div style="text-align:center;margin:1.2rem 0;font-size:clamp(1.1rem,1.6vw,1.3rem);color:var(--mid)">兩個通道<strong style="color:var(--ink)">同時</strong>使用時，記憶提取率提升 <span style="color:var(--purple);font-size:1.5em;font-weight:800">65%</span></div>`;
-      h+=`<div class="tip-box">學完一個概念後：先用文字解釋，再畫一個圖表示。這個動作本身就是最強的記憶鞏固。</div>`;
-      h+=`</div>`;
-      break;
-
-    // ── FEYNMAN ───────────────────────────────────────
-    case 'feynman':
-      h+=blob('rgba(34,197,94,.08)','rgba(6,182,212,.06)');
-      h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%">`;
-      h+=chip('費曼技巧','green');
-      h+=`<h2 style="margin-bottom:.5rem">能教人的，才是<span class="g-green">真的懂</span></h2>`;
-      h+=`<div class="bar"></div>`;
-      h+=`<div class="step-reveal-wrap">`;
-      [{n:'01',q:'選一個概念',a:'<strong>選你正在學的一個概念。</strong>不用是全本書，就是一個概念。例：「間隔重複」'},{n:'02',q:'解釋給小孩聽',a:'<strong>假設你在解釋給一個10歲的孩子聽。</strong>不能用術語，不能跳步驟。說不清楚 = 你還不懂。'},{n:'03',q:'找到知識漏洞',a:'<strong>解釋過程中卡住的地方 = 你的漏洞。</strong>回去補那個漏洞，而不是繼續往前走。'},{n:'04',q:'簡化與類比',a:'<strong>用日常生活的類比替換複雜概念。</strong>「間隔重複就像健身：每隔幾天練一次，比每天練更有效。」'}].forEach(step=>{
-        const sid=`fey-${step.n}`;
-        h+=`<div class="step-item" id="${sid}" onclick="toggleStep('${sid}')"><div class="step-front"><span class="step-num g-green">${step.n}</span><span class="step-q">${step.q}</span><span class="step-lock">▶</span></div><div class="step-back"><div class="step-back-inner">${step.a}</div></div></div>`;
-      });
-      h+=`</div>`;
-      h+=`<div class="tip-box" style="margin-top:1rem">費曼技巧讓你從「感覺懂了」到「真的懂了」。差別只有一個：你能不能教別人。</div>`;
-      h+=`</div>`;
-      break;
-
-    // ── THREE SCAN ────────────────────────────────────
-    case 'three-scan':
-      h+=blob('rgba(251,191,36,.08)','rgba(255,107,0,.06)');
-      h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%">`;
-      h+=chip('三段掃描法','yellow');
-      h+=`<h2 style="margin-bottom:.5rem">用<span class="g-orange">三次掃描</span>掌握任何文章</h2>`;
-      h+=`<div class="bar"></div>`;
-      h+=`<div class="step-reveal-wrap">`;
-      [{n:'01',q:'第一掃：骨架（30秒）',col:'var(--yellow)',a:'<strong>只看：</strong>標題、副標題、第一句話、圖表標題。目的：知道這篇在講什麼主題。'},{n:'02',q:'第二掃：關鍵詞（2分鐘）',col:'var(--orange)',a:'<strong>找：</strong>粗體字、重複出現的詞、數字、引號內的話。目的：找到核心論點在哪裡。'},{n:'03',q:'第三掃：深讀（視需要）',col:'var(--red)',a:'<strong>只深讀</strong>你的問題答案所在的段落。其他段落可以跳過。目的：最大化時間投資報酬。'}].forEach(step=>{
-        const sid=`scan-${step.n}`;
-        h+=`<div class="step-item" id="${sid}" onclick="toggleStep('${sid}')"><div class="step-front"><span class="step-num" style="color:${step.col}">${step.n}</span><span class="step-q">${step.q}</span><span class="step-lock">▶</span></div><div class="step-back"><div class="step-back-inner">${step.a}</div></div></div>`;
-      });
-      h+=`</div>`;
-      h+=`<div class="tip-box" style="margin-top:1rem">三段掃描不是要你讀得更快，是要你讀得更<strong>有目的</strong>。沒有問題，就沒有掃描。</div>`;
-      h+=`</div>`;
-      break;
-
-    // ── MEDIUM COMPARE ────────────────────────────────
-    case 'medium-compare':
-      h+=blob('rgba(255,107,0,.08)','rgba(59,130,246,.06)');
-      h+=`<div style="position:relative;z-index:1;max-width:920px;width:100%">`;
-      h+=chip('載體差異','orange');
-      h+=`<h2 style="margin-bottom:.5rem">電子 vs 紙本：<span class="g-orange">不同場合，不同策略</span></h2>`;
-      h+=`<div class="bar"></div>`;
-      h+=`<div class="compare-grid">`;
-      h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked')" style="min-height:200px">`;
-      h+=`<div class="card-answer" style="background:rgba(59,130,246,.08);border:1.5px solid rgba(59,130,246,.3);border-radius:14px;padding:1.4rem">`;
-      h+=`<div style="font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:700;color:var(--blue);margin-bottom:.8rem">電子載體</div>`;
-      h+=`<ul class="deck-list"><li>適合：快速掃描、關鍵字搜索</li><li>優勢：Cmd+F 搜索、超連結跳轉</li><li>劣勢：通知干擾、藍光疲勞</li><li>策略：開飛行模式，全螢幕閱讀</li></ul>`;
-      h+=`</div>`;
-      h+=`<div class="card-mask" style="background:rgba(59,130,246,.12)"><div class="card-mask-q" style="color:var(--blue)">電子載體策略</div><div class="card-mask-hint">點擊解鎖</div></div></div>`;
-      h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked')" style="min-height:200px">`;
-      h+=`<div class="card-answer" style="background:rgba(255,107,0,.08);border:1.5px solid rgba(255,107,0,.3);border-radius:14px;padding:1.4rem">`;
-      h+=`<div style="font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:700;color:var(--orange);margin-bottom:.8rem">紙本</div>`;
-      h+=`<ul class="deck-list"><li>適合：深讀、理解複雜邏輯</li><li>優勢：空間記憶、手寫批注</li><li>劣勢：無法搜索、攜帶不便</li><li>策略：主動用筆劃線、在空白處寫問題</li></ul>`;
-      h+=`</div>`;
-      h+=`<div class="card-mask" style="background:rgba(255,107,0,.12)"><div class="card-mask-q" style="color:var(--orange)">紙本策略</div><div class="card-mask-hint">點擊解鎖</div></div></div>`;
-      h+=`</div>`;
-      h+=`<div class="tip-box" style="margin-top:1rem">沒有最好的載體，只有最適合的場景。<strong>掃描用電子，深讀用紙本</strong>是大多數人的最優解。</div>`;
-      h+=`</div>`;
-      break;
-
-    // ── MYTHS UNLOCK ──────────────────────────────────
-    case 'myths-unlock':
-      h+=blob('rgba(255,32,85,.08)','rgba(255,107,0,.06)');
-      h+=`<div style="position:relative;z-index:1;max-width:920px;width:100%">`;
-      h+=chip('破除速讀迷思','red');
-      h+=`<h2 style="margin-bottom:.5rem">你以為的 <span class="g-red">Bug</span>，其實是 <span class="g-green">Feature</span></h2>`;
-      h+=`<div class="bar"></div>`;
-      h+=`<div class="mrev-grid cols-2">`;
-      [{n:'01',myth:'默念（Sub-vocalization）是壞習慣？',truth:'不完全是。複雜文本默念有助理解。只有讀簡單重複內容時才需要刻意消除。',col:'var(--red)',colR:'rgba(255,32,85'},{n:'02',myth:'指讀會拖慢速度？',truth:'錯。指讀能保持注意力焦點，避免眼睛跳行。對專注力差的人反而更快。',col:'var(--orange)',colR:'rgba(255,107,0'},{n:'03',myth:'速讀 = 一眼掃整頁？',truth:'是行銷話術。一次性視野擴展無法改變大腦的語言處理速度。真正的速讀靠選擇，不靠眼球。',col:'var(--purple)',colR:'rgba(168,85,247'},{n:'04',myth:'讀越多越好？',truth:'讀你真正需要的，輸出你真正消化了的。100本讀了沒輸出，不如10本讀了能教人。',col:'var(--cyan)',colR:'rgba(6,182,212'}].forEach(item=>{
-        const uid=`myth-${item.n}`;
-        h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:160px">`;
-        h+=`<div class="card-answer" style="background:${item.colR},.07);border:1.5px solid ${item.colR},.3);border-radius:14px;padding:1.3rem">`;
-        h+=`<div style="font-size:.65rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:${item.col};margin-bottom:.4rem">迷思 ${item.n}</div>`;
-        h+=`<div style="font-size:clamp(1rem,1.4vw,1.15rem);font-weight:700;color:rgba(255,255,255,.5);margin-bottom:.6rem;text-decoration:line-through">「${item.myth}」</div>`;
-        h+=`<div style="font-size:clamp(1rem,1.4vw,1.15rem);color:var(--ink);line-height:1.65"><strong style="color:${item.col}">真相：</strong>${item.truth}</div>`;
-        h+=`</div>`;
-        h+=`<div class="card-mask" style="background:${item.colR},.12);border:1.5px solid ${item.colR},.25)"><div class="card-mask-num">${item.n}</div><div class="card-mask-q" style="color:${item.col}">迷思 ${item.n}</div><div class="card-mask-hint">點擊看真相</div></div></div>`;
-      });
-      h+=`</div></div>`;
-      break;
-
-    // ── UNFAIR ADVANTAGE ──────────────────────────────
-    case 'unfair-advantage':
-      h+=blob('rgba(168,85,247,.1)','rgba(255,107,0,.07)');
-      h+=`<div style="position:relative;z-index:1;max-width:920px;width:100%">`;
-      h+=chip('Unfair Advantage','purple');
-      h+=`<h2 style="margin-bottom:.5rem">打好<span class="g-purple">手上的牌</span>，不要在別人的主場玩</h2>`;
-      h+=`<div class="bar"></div>`;
-      h+=`<div class="mrev-grid cols-2">`;
-      [{n:'A',title:'你的 Unfair Advantage',col:'var(--purple)',colR:'rgba(168,85,247',body:'你擁有但別人沒有的：特定圈子的人脈、某段特殊經歷、某個深度技能、某個不對稱的資訊優勢。',action:'現在寫下：我有什麼是別人很難複製的？'},{n:'B',title:'在你的主場作戰',col:'var(--orange)',colR:'rgba(255,107,0',body:'成功不是模仿別人的策略，是把資源放到你能贏的地方。你在別人的主場永遠是弱者。',action:'你的主場是哪裡？你的訊號雷達對什麼最靈？'}].forEach(item=>{
-        const uid=`ua-${item.n}`;
-        h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:200px">`;
-        h+=`<div class="card-answer" style="background:${item.colR},.08);border:2px solid ${item.colR},.3);border-radius:14px;padding:1.4rem">`;
-        h+=`<div style="font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:700;color:${item.col};margin-bottom:.7rem">${item.title}</div>`;
-        h+=`<div style="font-size:clamp(1rem,1.4vw,1.15rem);color:var(--mid);margin-bottom:.8rem;line-height:1.65">${item.body}</div>`;
-        h+=`<div style="background:${item.colR},.1);border-radius:8px;padding:.6rem .9rem;font-size:clamp(1rem,1.4vw,1.15rem);color:${item.col};font-weight:600">→ ${item.action}</div>`;
-        h+=`</div>`;
-        h+=`<div class="card-mask" style="background:${item.colR},.15);border:2px solid ${item.colR},.3)"><div style="font-size:3rem;font-weight:800;color:${item.col};opacity:.5">${item.n}</div><div class="card-mask-q" style="color:${item.col}">${item.title}</div><div class="card-mask-hint">點擊解鎖</div></div></div>`;
-      });
-      h+=`</div>`;
-      h+=`<div class="tip-box" style="margin-top:1rem"><strong>核心：</strong>你的 Unfair Advantage × 你的主場 = 你的不對稱優勢。這才是選擇策略的起點。</div>`;
-      h+=`</div>`;
-      break;
-
-    // ── SIGNAL NOISE ──────────────────────────────────
-    case 'signal-noise':
-      h+=blob('rgba(255,32,85,.1)','rgba(168,85,247,.07)');
-      h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%">`;
-      h+=chip('Signal over Noise','red');
-      h+=`<h1 style="margin-bottom:.8rem">分心比<span class="g-red">無能</span>更致命</h1>`;
-      h+=`<div class="bar"></div>`;
-      h+=`<div style="display:grid;grid-template-columns:1fr auto 1fr;gap:1.2rem;align-items:center;margin:1.4rem 0">`;
-      h+=`<div style="background:rgba(255,32,85,.08);border:2px solid rgba(255,32,85,.3);border-radius:14px;padding:1.4rem;text-align:center">`;
-      h+=`<div style="font-size:.65rem;font-weight:800;letter-spacing:.14em;color:var(--red);margin-bottom:.6rem;text-transform:uppercase">Noise 雜訊</div>`;
-      h+=`<ul class="deck-list" style="text-align:left"><li>讓你焦慮的資訊</li><li>別人成功的消息</li><li>下一個趨勢</li><li>沒有行動的計畫</li></ul></div>`;
-      h+=`<div style="font-size:3rem;color:rgba(255,255,255,.2)">→</div>`;
-      h+=`<div style="background:rgba(34,197,94,.08);border:2px solid rgba(34,197,94,.3);border-radius:14px;padding:1.4rem;text-align:center">`;
-      h+=`<div style="font-size:.65rem;font-weight:800;letter-spacing:.14em;color:var(--green);margin-bottom:.6rem;text-transform:uppercase">Signal 訊號</div>`;
-      h+=`<ul class="deck-list" style="text-align:left"><li>讓你更清晰的資訊</li><li>你現在能用的洞見</li><li>驗證你假設的數據</li><li>能立刻行動的方向</li></ul></div>`;
-      h+=`</div>`;
-      h+=`<div class="tip-box">過濾資訊是技能，過濾機會也是技能。兩者用的是同一套大腦作業系統。</div>`;
-      h+=`</div>`;
-      break;
-
-    // ── MECE DECISION ─────────────────────────────────
-    case 'mece-decision':
-      h+=blob('rgba(251,191,36,.08)','rgba(255,107,0,.06)');
-      h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%">`;
-      h+=chip('MECE 決策工具','yellow');
-      h+=`<h2 style="margin-bottom:.5rem">不重疊、不遺漏的<span class="g-orange">資源斷捨離</span></h2>`;
-      h+=`<div class="bar"></div>`;
-      h+=`<div style="background:rgba(255,255,255,.03);border:1.5px solid rgba(251,191,36,.25);border-radius:16px;padding:1.4rem;margin-top:1rem">`;
-      h+=`<div style="font-size:clamp(1.1rem,1.6vw,1.3rem);font-weight:700;color:var(--yellow);margin-bottom:1rem;text-align:center">把你的行動清單分進這四個格子</div>`;
-      h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">`;
-      [{label:'高影響 × 高確定性',desc:'立刻做，不要想',color:'var(--green)',colR:'rgba(34,197,94',num:'01'},{label:'高影響 × 低確定性',desc:'驗證它，小步測試',color:'var(--blue)',colR:'rgba(59,130,246',num:'02'},{label:'低影響 × 高確定性',desc:'排程或委託',color:'var(--yellow)',colR:'rgba(251,191,36',num:'03'},{label:'低影響 × 低確定性',desc:'砍掉，現在',color:'var(--red)',colR:'rgba(255,32,85',num:'04'}].forEach(cell=>{
-        h+=`<div style="background:${cell.colR},.08);border:1.5px solid ${cell.colR},.25);border-radius:12px;padding:1rem 1.2rem">`;
-        h+=`<div style="font-size:1.2rem;font-weight:800;color:${cell.colR},.3);margin-bottom:.4rem">${cell.num}</div>`;
-        h+=`<div style="font-size:clamp(1rem,1.4vw,1.15rem);font-weight:700;color:${cell.color};margin-bottom:.3rem">${cell.label}</div>`;
-        h+=`<div style="font-size:clamp(.95rem,1.3vw,1.1rem);color:var(--mid)">${cell.desc}</div>`;
-        h+=`</div>`;
-      });
-      h+=`</div></div>`;
-      h+=`<div class="tip-box" style="margin-top:1rem">MECE 的真正價值：讓你<strong>有信心地砍掉</strong>不必要的行動，而不是永遠覺得「可能有用」。</div>`;
-      h+=`</div>`;
-      break;
-
-    // ── RESOURCE FUNNEL V2 (SVG, from v3 adapted) ─────
-    case 'resource-funnel-v2':
-      const fid=sd.id;
-      h+=blob('rgba(168,85,247,.1)','rgba(255,32,85,.07)');
-      h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%">`;
-      h+=chip('資源漏斗','purple');
-      h+=`<h2 style="margin-bottom:.5rem">把資源<span class="g-purple">漏進</span>最重要的事情裡</h2>`;
-      h+=`<div class="bar"></div>`;
-      h+=`<div style="display:flex;gap:2rem;align-items:center;margin-top:1rem;flex-wrap:wrap;justify-content:center">`;
-      h+=`<svg id="funnel-${fid}" viewBox="0 0 440 280" width="400" height="280" style="max-width:min(400px,72vw);flex-shrink:0" font-family="system-ui,sans-serif">`;
-      h+=`<g class="funnel-layer" id="fl-p-${fid}" onclick="funnelFocus('${fid}','p')"><polygon points="16,10 424,10 330,92 110,92" fill="rgba(168,85,247,.1)" stroke="rgba(168,85,247,.35)" stroke-width="1.5"/><text x="220" y="47" text-anchor="middle" font-weight="800" font-size="14" fill="rgba(168,85,247,.9)">所有商業行動</text><text x="220" y="68" text-anchor="middle" font-size="10" fill="rgba(168,85,247,.5)">你的完整待辦清單</text></g>`;
-      h+=`<g class="funnel-layer" id="fl-i-${fid}" onclick="funnelFocus('${fid}','i')"><polygon points="110,102 330,102 258,178 182,178" fill="rgba(59,130,246,.12)" stroke="rgba(59,130,246,.55)" stroke-width="1.5"/><text x="220" y="138" text-anchor="middle" font-weight="800" font-size="14" fill="rgba(59,130,246,.95)">本季核心項目</text><text x="220" y="158" text-anchor="middle" font-size="9.5" fill="rgba(59,130,246,.6)">對齊優勢、有資源的</text></g>`;
-      h+=`<g class="funnel-layer" id="fl-h-${fid}" onclick="funnelFocus('${fid}','h')"><polygon points="182,188 258,188 240,268 200,268" fill="rgba(255,32,85,.28)" stroke="rgba(255,32,85,.75)" stroke-width="1.5"/><text x="220" y="224" text-anchor="middle" font-weight="800" font-size="13" fill="#fff">唯一行動</text><text x="220" y="243" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,.75)">最高槓桿 · 今天就做</text></g>`;
-      h+=`</svg>`;
-      h+=`<div style="flex:1;min-width:200px;display:flex;flex-direction:column;gap:.7rem">`;
-      [{key:'p',label:'所有商業行動',col:'rgba(168,85,247,.8)',sub:'廣泛的待辦清單'},{key:'i',label:'本季核心項目',col:'rgba(59,130,246,.9)',sub:'對齊 Unfair Advantage'},{key:'h',label:'唯一最高槓桿',col:'var(--red)',sub:'今天就執行'}].forEach(row=>{
-        h+=`<div onclick="funnelFocus('${fid}','${row.key}')" style="cursor:pointer;background:rgba(255,255,255,.04);border-left:3px solid ${row.col};border-radius:0 8px 8px 0;padding:.6rem 1rem;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.07)'" onmouseout="this.style.background='rgba(255,255,255,.04)'">`;
-        h+=`<div style="font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:${row.col};margin-bottom:.2rem">${row.sub}</div>`;
-        h+=`<div style="font-weight:700;color:var(--ink);font-size:clamp(.95rem,1.4vw,1.1rem)">${row.label}</div>`;
-        h+=`</div>`;
-      });
-      h+=`</div></div>`;
-      h+=`<div id="fd-${fid}" style="margin-top:.8rem;padding:.75rem 1.2rem;border-radius:8px;border-left:3px solid var(--orange);background:rgba(255,107,0,.08);font-size:clamp(1rem,1.4vw,1.1rem);color:var(--ink);transition:opacity .3s;opacity:0">點擊漏斗層查看說明</div>`;
-      h+=`<div class="tip-box" style="margin-top:1rem">漏斗越窄，執行力越強。專注不是天賦，是主動過濾的結果。</div>`;
-      h+=`</div>`;
-      break;
-
-    // ── RECAP ─────────────────────────────────────────
-    case 'recap':
-      h+=blob('rgba(6,182,212,.08)','rgba(34,197,94,.06)');
-      h+=`<div style="position:relative;z-index:1;max-width:920px;width:100%">`;
-      h+=chip('全場回顧','cyan');
-      h+=`<h2 style="margin-bottom:.5rem">90 分鐘<span class="g-cyan">大腦作業系統</span>總覽</h2>`;
-      h+=`<div class="bar"></div>`;
-      h+=`<div class="mrev-grid cols-3" style="margin-top:1rem">`;
-      [{num:'01',title:'學習基礎',points:['降噪環境','身體三角形','Input → Output 迴路'],col:'var(--blue)',colR:'rgba(59,130,246'},{num:'02',title:'記憶留存',points:['重要性標記','雙重編碼','費曼技巧 + 間隔重複'],col:'var(--green)',colR:'rgba(34,197,94'},{num:'03',title:'速讀獲取',points:['問題先行','三段掃描法','破除默念迷思'],col:'var(--yellow)',colR:'rgba(251,191,36'},{num:'04',title:'策略思維',points:['Signal vs Noise','Unfair Advantage','MECE 資源漏斗'],col:'var(--purple)',colR:'rgba(168,85,247'},{num:'05',title:'底層原則',points:['Signal over Noise','在你的主場作戰','今天只做一件事'],col:'var(--red)',colR:'rgba(255,32,85'},{num:'06',title:'你的下一步',points:['用框架看你的問題','找出最高槓桿行動','明天就開始一件事'],col:'var(--cyan)',colR:'rgba(6,182,212'}].forEach(item=>{
-        h+=`<div style="background:${item.colR},.07);border:1.5px solid ${item.colR},.25);border-radius:14px;padding:1.2rem">`;
-        h+=`<div style="font-size:1.4rem;font-weight:800;color:${item.colR},.25);margin-bottom:.4rem">${item.num}</div>`;
-        h+=`<div style="font-size:clamp(1rem,1.4vw,1.2rem);font-weight:700;color:${item.col};margin-bottom:.6rem">${item.title}</div>`;
-        h+=`<ul class="deck-list">`;
-        item.points.forEach(p=>{h+=`<li style="font-size:clamp(.9rem,1.3vw,1.05rem)">${p}</li>`;});
-        h+=`</ul></div>`;
-      });
-      h+=`</div></div>`;
-      break;
-
-    // ── HOT SEAT SESSION ──────────────────────────────
-    case 'hotseat-session':
-      h+=blob('rgba(255,32,85,.12)','rgba(255,107,0,.08)');
-      h+=`<div style="position:relative;z-index:1;text-align:center;max-width:800px">`;
-      h+=`<div class="hotseat-badge" style="margin:0 auto 1.2rem">全場 Hot Seat</div>`;
-      h+=`<h1 class="g-red" style="margin-bottom:1rem">壓力測試時間</h1>`;
-      h+=`<div class="bar" style="margin:.8rem auto 1.4rem"></div>`;
-      h+=`<div style="background:rgba(255,32,85,.08);border:2px solid rgba(255,32,85,.3);border-radius:16px;padding:1.6rem;margin-bottom:1.2rem">`;
-      h+=`<p style="font-size:clamp(1.2rem,1.8vw,1.5rem);color:var(--ink);line-height:1.8">被點到的學員：<br>用<strong style="color:var(--red)">今天學到的框架</strong><br>分析你在 Module 1 寫下的<strong style="color:var(--orange)">卡關問題</strong><br><span style="opacity:.6;font-size:.9em">2 分鐘，說出你的診斷</span></p>`;
-      h+=`</div>`;
-      h+=`<div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap">`;
-      ['學習環境有哪些噪音？','用了哪個記憶策略？','資源漏斗怎麼切？','你的 Signal 是什麼？'].forEach(q=>{
-        h+=`<div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.6rem 1rem;font-size:clamp(.9rem,1.3vw,1.1rem);color:rgba(255,255,255,.6)">${q}</div>`;
-      });
-      h+=`</div></div>`;
-      break;
-
-    // ── CONVERGE ──────────────────────────────────────
-    case 'converge':
-      h+=blob('rgba(6,182,212,.08)','rgba(34,197,94,.06)');
-      h+=`<div style="position:relative;z-index:1;max-width:820px">`;
-      h+=chip('終極收斂','cyan');
-      h+=`<h1 style="margin-bottom:1rem">把混亂說清楚<br>就看見<span class="g-cyan">真正的下一步</span></h1>`;
-      h+=`<div class="bar"></div>`;
-      h+=`<div style="display:flex;flex-direction:column;gap:1rem;margin-top:1rem">`;
-      [['01','現在，看看你 Module 1 寫下的問題'],['02','用 MECE 漏斗分類你的可用行動'],['03','找出你的 Unfair Advantage 在哪裡'],['04','寫下：明天第一件要做的事（一件）']].forEach(([num,text])=>{
-        h+=`<div class="glass-card" style="display:flex;align-items:center;gap:1.2rem">`;
-        h+=`<span style="font-size:1.4rem;font-weight:800;color:rgba(6,182,212,.4);flex-shrink:0;min-width:2rem">${num}</span>`;
-        h+=`<span style="font-size:clamp(1.1rem,1.6vw,1.3rem);color:var(--ink)">${text}</span>`;
-        h+=`</div>`;
-      });
-      h+=`</div>`;
-      h+=`<div class="tip-box" style="margin-top:1.2rem">混亂不是因為事情太複雜。是因為<strong>你還沒有過濾</strong>。現在，過濾它。</div>`;
-      h+=`<div style="text-align:center;margin-top:1.4rem">`;
-      h+=`<button class="cta-btn" onclick="jumpToId('m1_cover')" style="font-size:clamp(.9rem,1.3vw,1.1rem)">← 返回開頭</button>`;
-      h+=`</div></div>`;
-      break;
-
-    // ── CTA ───────────────────────────────────────────
-    case 'cta':
-      h+=blob('rgba(255,107,0,.1)','rgba(168,85,247,.08)');
-      h+=`<div style="position:relative;z-index:1;text-align:center;max-width:800px">`;
-      h+=chip('後續連結','orange');
-      h+=`<h1 class="g-multi" style="margin-bottom:1rem">繼續對話</h1>`;
-      h+=`<div class="bar" style="margin:.8rem auto 1.4rem"></div>`;
-      h+=`<p style="font-size:clamp(1.2rem,1.8vw,1.5rem);margin-bottom:1.8rem">今天是起點，不是終點。<br>有問題、有想法、想深聊——歡迎隨時找我。</p>`;
-      h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.8rem;text-align:left">`;
-      [['01','後續策略對接','有具體問題想深聊，歡迎直接聯繫'],['02','資源與工具','今天提到的工具清單會整理後分享'],['03','社群連結','加入持續學習的社群，保持校準'],['04','書單推薦','今天框架的延伸閱讀，精選5本']].forEach(([num,title,desc])=>{
-        h+=`<div class="glass-card"><div style="font-size:.65rem;font-weight:800;letter-spacing:.14em;color:var(--orange);margin-bottom:.4rem">${num}</div><div style="font-size:clamp(1rem,1.4vw,1.2rem);font-weight:700;color:var(--ink);margin-bottom:.3rem">${title}</div><div class="label-sm">${desc}</div></div>`;
-      });
-      h+=`</div>`;
-      h+=`<div style="background:linear-gradient(135deg,rgba(255,107,0,.1),rgba(168,85,247,.08));border:2px solid rgba(255,107,0,.3);border-radius:16px;padding:1.4rem;margin-bottom:1.4rem">`;
-      h+=`<div style="font-size:clamp(1.4rem,2.2vw,1.8rem);font-weight:700;color:var(--ink)">Signal over Noise.</div>`;
-      h+=`<div style="font-size:clamp(1rem,1.5vw,1.2rem);color:var(--mid);margin-top:.5rem">每一天，都是過濾的練習。</div>`;
-      h+=`</div>`;
-      h+=`<button class="cta-btn" onclick="jumpToId('m1_cover')" style="font-size:clamp(.9rem,1.3vw,1.1rem)">← 返回開頭</button>`;
-      h+=`</div>`;
-      break;
-
-    // ── SPRINT ────────────────────────────────────────
-    case 'sprint':
-      const sid=sd.id;
-      timers[sid]={rem:sd.time,running:false,interval:null};
-      h+=blob('rgba(255,32,85,.12)','rgba(255,107,0,.1)');
-      h+=`<div style="position:relative;z-index:1;text-align:center;max-width:820px;width:100%">`;
-      h+=`<div class="sprint-badge">Sprint ${sd.sprintNum} · 實戰衝刺</div>`;
-      h+=`<h2 style="margin-bottom:.8rem">${sd.title}</h2>`;
-      h+=`<div class="sprint-task">${sd.task}</div>`;
-      h+=`<div class="timer-wrap">`;
-      h+=`<div class="timer-display" id="td-${sid}">${fmt(sd.time)}</div>`;
-      h+=`<div id="tlbl-${sid}" class="timer-label-done">TIME IS UP</div>`;
-      h+=`<div class="timer-btns">`;
-      h+=`<button class="timer-btn" id="tbtn-${sid}" onclick="toggleTimer('${sid}',${sd.time})">開始</button>`;
-      h+=`<button class="timer-reset-btn" onclick="resetTimer('${sid}',${sd.time})">重設</button>`;
+      h+=`<div class="triad-detail"><div class="triad-detail-inner" style="align-items:center;text-align:center">`;
+      h+=`<div style="font-size:.75rem;font-weight:700;color:var(--ink);line-height:1.4">${t.plain}</div>`;
+      h+=`<div style="display:flex;gap:.4rem;align-items:flex-start;justify-content:center">${checkIcon}<span style="font-size:var(--min-label);color:rgba(255,255,255,.85);line-height:1.5;text-align:left">${t.example}</span></div>`;
+      h+=`<div style="display:flex;gap:.4rem;align-items:flex-start;justify-content:center">${xIcon}<span style="font-size:var(--min-label);color:rgba(255,255,255,.85);line-height:1.5;text-align:left">${t.mistake}</span></div>`;
       h+=`</div></div></div>`;
-      break;
+    });
+    h+=`</div>`;
+    break;}
 
-    default:
-      h+=`<div style="position:relative;z-index:1"><h2>${sd.id}</h2></div>`;
+  // ── DFV COMBINATIONS (v3, failure modes) ─────────────────────────────────
+  case 'dfv-combinations':{
+    h+=blob('rgba(255,32,85,.1)','rgba(168,85,247,.07)');
+    h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto .8rem"></div>`;
+    if(sd.title)h+=`<h2 style="margin-bottom:.3rem">${sd.title}</h2>`;
+    h+=`<p style="font-size:var(--min-font);color:var(--mid);margin-bottom:1.2rem">只偏重一個維度，學習和創業都會走進死角</p>`;
+    h+=`</div>`;
+    const traps=[
+      {only:'只有可行性 F',col:'var(--blue)',colR:'rgba(59,130,246',icon:'<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',punchline:'愛上工具',desc:'學了很多工具，但不知道要解決什麼問題',detail:'學了 Notion、Obsidian、Readwise——工具堆滿了，問題一個沒解決。',result:'Tool Collector'},
+      {only:'只有欲求性 D',col:'var(--red)',colR:'rgba(255,32,85',icon:'<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',punchline:'停在願望',desc:'知道要學什麼，但方法不對一直學不進去',detail:'目標很清晰，買了一堆課，但沒有系統化的學習方法，知識留不住。',result:'Wishful Thinking'},
+      {only:'只有存續性 V',col:'var(--green)',colR:'rgba(34,197,94',icon:'<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',punchline:'計劃完美，沒有行動',desc:'策略想得很清楚，但執行力是零',detail:'完美的商業計畫、完整的學習路線圖，但從來不動手。分析癱瘓症。',result:'Analysis Paralysis'},
+    ];
+    h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:950px;margin:0 auto;position:relative;z-index:1">`;
+    traps.forEach((t,i)=>{
+      const uid=`trap-${sd.id}-${i}`;
+      h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:210px">`;
+      h+=`<div class="card-answer" style="background:${t.colR},.07);border:2px solid ${t.colR},.3);border-radius:14px;padding:1.1rem;display:flex;flex-direction:column;gap:.5rem;text-align:center;align-items:center;height:100%">`;
+      h+=`<div style="color:${t.col}">${t.icon}</div>`;
+      h+=`<div><div style="font-size:var(--min-label);font-weight:800;letter-spacing:.08em;color:${t.col};margin-bottom:.2rem">${t.only}</div>`;
+      h+=`<div style="font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:800;color:var(--ink)">${t.punchline}</div></div>`;
+      h+=`<div style="font-size:var(--min-font);color:var(--mid)">${t.desc}</div>`;
+      h+=`<div style="font-size:var(--min-font);color:var(--mid);padding:.5rem .7rem;background:rgba(255,255,255,.05);border-radius:8px;font-style:italic;flex:1">${t.detail}</div>`;
+      h+=`<div style="font-size:var(--min-label);color:${t.col};font-weight:700;padding:.25rem .5rem;background:${t.colR},.1);border-radius:6px;display:inline-block">${t.result}</div>`;
+      h+=`</div>`;
+      h+=`<div class="card-mask" style="border-radius:14px;background:${t.colR},.14);border:2px solid ${t.colR},.3)">`;
+      h+=`<div style="font-size:var(--min-label);font-weight:800;color:${t.col};letter-spacing:.06em;margin-bottom:.45rem">${t.only}</div>`;
+      h+=`<div style="font-size:clamp(1.1rem,2vw,1.4rem);font-weight:800;color:var(--ink)">${t.punchline}</div>`;
+      h+=`</div></div>`;
+    });
+    h+=`</div>`;
+    h+=`<div class="tip-box" style="max-width:950px;margin:1rem auto 0;position:relative;z-index:1"><strong style="color:var(--orange)">今天的目標：</strong>三個維度同時激活。學得進去 × 學對的東西 × 讓知識在市場中存活。</div>`;
+    break;}
+
+  // ── RULES ───────────────────────────────────────────────────────────────
+  case 'rules':
+    h+=blob('rgba(255,255,255,.04)','rgba(255,107,0,.05)');
+    h+=`<div style="position:relative;z-index:1;max-width:800px">`;
+    h+=mkChip('今日公約','white');
+    h+=`<h1 style="margin-bottom:1rem">三個<span class="g-orange">公約</span></h1>`;
+    h+=`<div class="bar"></div>`;
+    h+=`<div style="display:flex;flex-direction:column;gap:1rem;margin-top:.5rem">`;
+    [['01','全員參與','沉默不是觀察，是浪費。你的問題是別人的問題。'],['02','快速回應','想太久等於沒想。說出你現在的思考，哪怕不完整。'],['03','沒有廢話','一句話說清楚比三段話更有力。精準 > 豐富。']].forEach(([num,title,desc])=>{
+      h+=`<div class="glass-card" style="display:flex;gap:1.2rem;align-items:flex-start">`;
+      h+=`<span style="font-size:2rem;font-weight:800;color:rgba(255,107,0,.3);flex-shrink:0;line-height:1">${num}</span>`;
+      h+=`<div><div style="font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:700;color:var(--ink);margin-bottom:.3rem">${title}</div><div class="label-sm">${desc}</div></div>`;
+      h+=`</div>`;
+    });
+    h+=`</div></div>`;
+    break;
+
+  // ── CONCEPT SINGLE ───────────────────────────────────────────────────────
+  case 'concept-single':
+    h+=blob('rgba(255,255,255,.03)','rgba(255,255,255,.02)');
+    h+=`<div style="position:relative;z-index:1;max-width:820px">`;
+    h+=mkChip(sd.chip,sd.chipColor);
+    h+=`<h1 style="margin-bottom:1rem">${sd.title}</h1>`;
+    h+=`<div class="bar"></div>`;
+    h+=`<p style="font-size:clamp(1.2rem,1.8vw,1.5rem);margin-bottom:1.2rem;color:var(--mid)">${sd.body}</p>`;
+    if(sd.tip)h+=`<div class="tip-box">${sd.tip}</div>`;
+    h+=`</div>`;
+    break;
+
+  // ── BODY TRIANGLE ────────────────────────────────────────────────────────
+  case 'body-triangle':
+    h+=blob('rgba(59,130,246,.08)','rgba(34,197,94,.06)');
+    h+=`<div style="position:relative;z-index:1;max-width:960px;width:100%">`;
+    h+=mkChip('身體狀態底層邏輯','blue');
+    h+=`<h2 style="margin-bottom:.5rem">大腦硬體決定<span class="g-blue">學習效率</span>上限</h2>`;
+    h+=`<div class="bar"></div>`;
+    h+=`<div class="mrev-grid cols-3" style="margin-top:1rem">`;
+    [{n:'01',tag:'MOVE',title:'運動',color:'var(--blue)',colR:'rgba(59,130,246',body:'BDNF（腦源性神經營養因子）在有氧運動後飆升。記憶力短期提升30%，大腦神經可塑性增強。',tip:'學前20分鐘快走 = 最便宜的聰明藥'},
+     {n:'02',tag:'REST',title:'睡眠',color:'var(--purple)',colR:'rgba(168,85,247',body:'海馬迴在睡眠中把短期記憶轉換為長期記憶。睡不夠 = 白天學了白學，記憶固化效率下降 40%。',tip:'學後睡覺，記憶固化效率提升40%'},
+     {n:'03',tag:'FUEL',title:'飲食',color:'var(--green)',colR:'rgba(34,197,94',body:'血糖劇烈波動導致注意力崩潰（波峰後的低谷）。生酮或避糖飲食維持穩定血糖，保持極致專注。',tip:'學前不喝手搖、不吃精緻澱粉'}].forEach(item=>{
+      const uid=`bt-${item.n}`;
+      h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:180px">`;
+      h+=`<div class="card-answer" style="background:${item.colR},.08);border:1.5px solid ${item.colR},.3);border-radius:14px;padding:1.3rem">`;
+      h+=`<div style="font-size:.6rem;font-weight:900;letter-spacing:.2em;color:${item.color};margin-bottom:.4rem">${item.tag}</div>`;
+      h+=`<div style="font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:700;color:${item.color};margin-bottom:.5rem">${item.title}</div>`;
+      h+=`<div style="font-size:var(--min-font);color:var(--mid);margin-bottom:.5rem;line-height:1.6">${item.body}</div>`;
+      h+=`<div style="font-size:var(--min-font);color:${item.color};background:${item.colR},.1);border-radius:6px;padding:.4rem .7rem">${item.tip}</div>`;
+      h+=`</div>`;
+      h+=`<div class="card-mask" style="background:${item.colR},.12);border:1.5px solid ${item.colR},.3)">`;
+      h+=`<div class="card-mask-num">${item.n}</div><div style="font-size:.6rem;font-weight:900;letter-spacing:.2em;color:${item.color};margin:.2rem 0">${item.tag}</div>`;
+      h+=`<div class="card-mask-q" style="color:${item.color}">${item.title}</div><div class="card-mask-hint">點擊解鎖</div></div></div>`;
+    });
+    h+=`</div>`;
+    h+=`<div class="tip-box" style="margin-top:1rem">三角形底座：睡眠 × 運動 × 飲食。底座不穩，上層的學習技巧全部打折。</div>`;
+    h+=`</div>`;
+    break;
+
+  // ── INPUT-OUTPUT LOOP ────────────────────────────────────────────────────
+  case 'input-output':
+    h+=blob('rgba(255,107,0,.08)','rgba(168,85,247,.06)');
+    h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%">`;
+    h+=mkChip('高效循環','orange');
+    h+=`<h2 style="margin-bottom:.5rem">Input 沒有連結 Output<br>等於<span class="g-red"> 沒有學習</span></h2>`;
+    h+=`<div class="bar"></div>`;
+    h+=`<div style="display:flex;align-items:center;justify-content:center;gap:1rem;margin:1.5rem 0;flex-wrap:wrap">`;
+    [['INPUT','讀書 · 聽課 · 看影片','var(--blue)','rgba(59,130,246'],['PROCESS','整理 · 連結 · 質疑','var(--orange)','rgba(255,107,0'],['OUTPUT','教人 · 寫作 · 實作','var(--green)','rgba(34,197,94']].forEach(([label,desc,col,colR],i)=>{
+      h+=`<div style="text-align:center;flex:1;min-width:180px;background:${colR},.08);border:1.5px solid ${colR},.3);border-radius:16px;padding:1.2rem .8rem">`;
+      h+=`<div style="font-size:clamp(1rem,1.4vw,1.2rem);font-weight:800;color:${col};margin-bottom:.4rem">${label}</div>`;
+      h+=`<div style="font-size:var(--min-font);color:var(--mid)">${desc}</div></div>`;
+      if(i<2)h+=`<div style="font-size:2rem;color:var(--orange);opacity:.6">→</div>`;
+    });
+    h+=`</div>`;
+    h+=`<div class="tip-box">只有 Input 沒有 Output 的學習，只是「感覺有學到」。費曼技巧：學完當天就解釋給一個人聽。</div>`;
+    h+=`<div class="compare-grid" style="margin-top:1rem">`;
+    h+=`<div class="cmp-card cmp-no"><div style="font-size:var(--min-font);font-weight:700;color:rgba(255,32,85,.7);margin-bottom:.6rem">常見錯誤</div><ul class="deck-list"><li>看了書但不寫心得</li><li>聽了課但不做練習</li><li>學了工具但不實際用</li></ul></div>`;
+    h+=`<div class="cmp-card cmp-yes"><div style="font-size:var(--min-font);font-weight:700;color:var(--orange);margin-bottom:.6rem">正確迴路</div><ul class="deck-list"><li>每次 Input 後問：我要怎麼輸出它？</li><li>找一個人，把你剛學到的解釋給他聽</li><li>學完當天就用一次</li></ul></div>`;
+    h+=`</div></div>`;
+    break;
+
+  // ── TOPDOWN-BOTTOMUP-V2 (v3) ──────────────────────────────────────────────
+  case 'topdown-bottomup-v2':{
+    h+=blob('rgba(168,85,247,.1)','rgba(255,107,0,.06)');
+    h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto .8rem"></div>`;
+    if(sd.title)h+=`<h2 style="margin-bottom:1rem">${sd.title}</h2>`;
+    h+=`</div>`;
+    h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;max-width:900px;margin:0 auto .9rem;position:relative;z-index:1">`;
+    h+=`<div style="background:rgba(255,255,255,.04);border:2px solid rgba(255,255,255,.12);border-radius:14px;padding:1.2rem">`;
+    h+=`<div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.7rem">`;
+    h+=`<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>`;
+    h+=`<span style="font-size:clamp(1rem,1.6vw,1.2rem);font-weight:700;color:rgba(255,255,255,.65)">Bottom-up</span></div>`;
+    h+=`<div style="font-size:var(--min-font);color:var(--mid);margin-bottom:.5rem;font-style:italic">「我會什麼、我能做什麼？」</div>`;
+    h+=`<ul style="list-style:none;display:flex;flex-direction:column;gap:.35rem">`;
+    ['先想我有什麼技術或資源','再去找誰可能會用','從能力出發，向外尋找市場'].forEach(it=>{
+      h+=`<li style="font-size:var(--min-font);color:rgba(255,255,255,.75);padding-left:1.1rem;position:relative"><span style="position:absolute;left:0;color:rgba(255,255,255,.3)">·</span>${it}</li>`;
+    });
+    h+=`</ul></div>`;
+    h+=`<div style="background:rgba(255,107,0,.08);border:2px solid rgba(255,107,0,.35);border-radius:14px;padding:1.2rem">`;
+    h+=`<div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.7rem">`;
+    h+=`<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--orange)" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>`;
+    h+=`<span style="font-size:clamp(1rem,1.6vw,1.2rem);font-weight:700;color:var(--orange)">Top-down</span></div>`;
+    h+=`<div style="font-size:var(--min-font);color:var(--mid);margin-bottom:.5rem;font-style:italic">「誰需要？目標是什麼？」</div>`;
+    h+=`<ul style="list-style:none;display:flex;flex-direction:column;gap:.35rem">`;
+    ['先想誰最痛、痛在哪裡','再設定要解決的目標','最後回推你需要做什麼'].forEach(it=>{
+      h+=`<li style="font-size:var(--min-font);color:rgba(255,255,255,.75);padding-left:1.1rem;position:relative"><span style="position:absolute;left:0;color:var(--orange)">→</span>${it}</li>`;
+    });
+    h+=`</ul></div></div>`;
+    h+=`<div style="max-width:900px;margin:0 auto .9rem;padding:.9rem 1.2rem;background:rgba(255,32,85,.06);border:1.5px solid rgba(255,32,85,.3);border-radius:12px;display:flex;align-items:flex-start;gap:.8rem;position:relative;z-index:1">`;
+    h+=`<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--red)" stroke-width="2" style="flex-shrink:0;margin-top:.1rem"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`;
+    h+=`<div><div style="font-size:var(--min-font);font-weight:700;color:var(--ink);margin-bottom:.25rem">Bottom-up 並非一定錯</div><div style="font-size:var(--min-font);color:var(--mid);line-height:1.6">而是它很容易讓人<strong style="color:var(--red)">先做再找理由</strong>。做完了才發現沒人要，成本已付出。Top-down 的優點：先驗證問題再動手。</div></div>`;
+    h+=`</div>`;
+    h+=`<div class="tip-box" style="max-width:900px;margin:0 auto;position:relative;z-index:1"><strong style="color:var(--orange)">應用到學習：</strong>不要先學一堆工具，先問「我要解決的問題是什麼？」再決定學什麼。</div>`;
+    break;}
+
+  // ── MCKINSEY-SIX-V2 (v3) ─────────────────────────────────────────────────
+  case 'mckinsey-six-v2':{
+    h+=blob('rgba(59,130,246,.1)','rgba(168,85,247,.06)');
+    h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto .8rem"></div>`;
+    if(sd.title)h+=`<h2 style="margin-bottom:.25rem">${sd.title}</h2>`;
+    h+=`<p style="color:var(--mid);font-size:var(--min-font);margin-bottom:1rem">Top-down 思考前，先把這六件事問清楚</p>`;
+    h+=`</div>`;
+    const sixElements=[
+      {zh:'做什麼、不做什麼？',en:'Scope',col:'var(--red)',colR:'rgba(255,32,85',q:'這次的範圍是哪裡？邊界在哪？',tip:'沒有邊界的學習，方向會一直跑掉'},
+      {zh:'有哪些限制？',en:'Constraints',col:'var(--orange)',colR:'rgba(255,107,0',q:'時間、精力、資源限制是什麼？',tip:'先接受限制，才能在裡面找到創意'},
+      {zh:'你在對誰說話？',en:'Stakeholder',col:'var(--purple)',colR:'rgba(168,85,247',q:'誰是你的受眾？誰受益？誰決策？',tip:'忽略利害關係人是大多數提案失敗的原因'},
+      {zh:'怎麼算成功？',en:'Criteria',col:'var(--green)',colR:'rgba(34,197,94',q:'什麼樣的結果代表你學到了？',tip:'沒有指標，就沒辦法知道到底有沒有學到'},
+      {zh:'你的洞察從哪裡來？',en:'Insight',col:'var(--cyan)',colR:'rgba(6,182,212',q:'是訪談？數據？還是直覺？',tip:'洞察的來源，決定它可不可以被相信'},
+      {zh:'背景脈絡是什麼？',en:'Context',col:'var(--blue)',colR:'rgba(59,130,246',q:'市場趨勢、競爭環境如何？',tip:'不了解環境，很難做出差異化的判斷'}
+    ];
+    h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;max-width:920px;margin:0 auto;position:relative;z-index:1">`;
+    sixElements.forEach((el,i)=>{
+      const uid=`mck-${sd.id}-${i}`;
+      h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:130px">`;
+      h+=`<div class="card-answer" style="background:${el.colR},.07);border:1.5px solid ${el.colR},.35);border-radius:12px;padding:.95rem 1rem">`;
+      h+=`<div style="font-size:.58rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:${el.col};margin-bottom:.35rem">${el.en}</div>`;
+      h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--ink);margin-bottom:.45rem">${el.zh}</div>`;
+      h+=`<div style="font-size:var(--min-font);color:rgba(255,255,255,.75);margin-bottom:.4rem">${el.q}</div>`;
+      h+=`<div style="font-size:var(--min-label);color:${el.col};font-style:italic">${el.tip}</div></div>`;
+      h+=`<div class="card-mask" style="border-radius:12px;background:${el.colR},.12);border:1.5px solid ${el.colR},.3)">`;
+      h+=`<div style="font-size:var(--min-font);font-weight:800;color:var(--ink);margin-bottom:.3rem">${el.zh}</div>`;
+      h+=`<div style="font-size:var(--min-label);color:${el.col}">${el.en}</div></div></div>`;
+    });
+    h+=`</div>`;
+    h+=`<div class="tip-box" style="max-width:920px;margin:.9rem auto 0;position:relative;z-index:1"><strong style="color:var(--orange)">重點：</strong>這六個問題，是把「直覺出發」升格成「邏輯出發」的關鍵。先問清楚，再動手。</div>`;
+    break;}
+
+  // ── THREE SCAN ───────────────────────────────────────────────────────────
+  case 'three-scan':
+    h+=blob('rgba(251,191,36,.08)','rgba(255,107,0,.06)');
+    h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%">`;
+    h+=mkChip('三段掃描法','yellow');
+    h+=`<h2 style="margin-bottom:.5rem">用<span class="g-orange">三次掃描</span>掌握任何文章</h2>`;
+    h+=`<div class="bar"></div>`;
+    h+=`<div class="step-reveal-wrap">`;
+    [{n:'01',q:'第一掃：骨架（30秒）',col:'var(--yellow)',a:'<strong>只看：</strong>標題、副標題、第一句話、圖表標題。目的：知道這篇在講什麼主題。'},
+     {n:'02',q:'第二掃：關鍵詞（2分鐘）',col:'var(--orange)',a:'<strong>找：</strong>粗體字、重複出現的詞、數字、引號內的話。目的：找到核心論點。'},
+     {n:'03',q:'第三掃：深讀（視需要）',col:'var(--red)',a:'<strong>只深讀</strong>你的問題答案所在的段落。其他段落可以跳過。'}].forEach(step=>{
+      const sid=`scan-${step.n}`;
+      h+=`<div class="step-item" id="${sid}" onclick="toggleStep('${sid}')"><div class="step-front"><span class="step-num" style="color:${step.col}">${step.n}</span><span class="step-q">${step.q}</span><span class="step-lock">▶</span></div><div class="step-back"><div class="step-back-inner">${step.a}</div></div></div>`;
+    });
+    h+=`</div>`;
+    h+=`<div class="tip-box" style="margin-top:1rem">三段掃描不是要你讀得更快，是要你讀得更<strong>有目的</strong>。沒有問題，就沒有掃描。</div>`;
+    h+=`</div>`;
+    break;
+
+  // ── DUAL CODING ──────────────────────────────────────────────────────────
+  case 'dual-coding':
+    h+=blob('rgba(168,85,247,.08)','rgba(34,197,94,.06)');
+    h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%">`;
+    h+=mkChip('雙重編碼','purple');
+    h+=`<h2 style="margin-bottom:.5rem">圖像 + 語言 = <span class="g-purple">記憶威力加倍</span></h2>`;
+    h+=`<div class="bar"></div>`;
+    h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1rem">`;
+    h+=`<div style="background:rgba(168,85,247,.08);border:1.5px solid rgba(168,85,247,.3);border-radius:14px;padding:1.4rem"><div style="font-size:.65rem;font-weight:800;letter-spacing:.14em;color:var(--purple);margin-bottom:.8rem;text-transform:uppercase">視覺通道</div><div style="font-size:var(--min-font);font-weight:700;color:var(--purple);margin-bottom:.8rem">心智圖 × 概念圖</div><ul class="deck-list"><li>時間軸、流程圖</li><li>草圖、視覺隱喻</li><li>空間排列強化回憶</li></ul></div>`;
+    h+=`<div style="background:rgba(6,182,212,.08);border:1.5px solid rgba(6,182,212,.3);border-radius:14px;padding:1.4rem"><div style="font-size:.65rem;font-weight:800;letter-spacing:.14em;color:var(--cyan);margin-bottom:.8rem;text-transform:uppercase">語言通道</div><div style="font-size:var(--min-font);font-weight:700;color:var(--cyan);margin-bottom:.8rem">關鍵字 × 自問自答</div><ul class="deck-list"><li>用自己的話重述</li><li>費曼技巧輸出</li><li>語言標記強化索引</li></ul></div>`;
+    h+=`</div>`;
+    h+=`<div style="text-align:center;margin:1.2rem 0;font-size:clamp(1.1rem,1.6vw,1.3rem);color:var(--mid)">兩個通道<strong style="color:var(--ink)">同時</strong>使用時，記憶提取率提升 <span style="color:var(--purple);font-size:1.5em;font-weight:800">65%</span></div>`;
+    h+=`<div class="tip-box">學完一個概念後：先用文字解釋，再畫一個圖。這個動作本身就是最強的記憶鞏固。</div>`;
+    h+=`</div>`;
+    break;
+
+  // ── FEYNMAN ──────────────────────────────────────────────────────────────
+  case 'feynman':
+    h+=blob('rgba(34,197,94,.08)','rgba(6,182,212,.06)');
+    h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%">`;
+    h+=mkChip('費曼技巧','green');
+    h+=`<h2 style="margin-bottom:.5rem">能教人的，才是<span class="g-green">真的懂</span></h2>`;
+    h+=`<div class="bar"></div>`;
+    h+=`<div class="step-reveal-wrap">`;
+    [{n:'01',q:'選一個概念',a:'<strong>選你正在學的一個概念。</strong>不用是全本書，就是一個概念。例：「間隔重複」'},
+     {n:'02',q:'解釋給小孩聽',a:'<strong>假設你在解釋給一個10歲的孩子聽。</strong>不能用術語。說不清楚 = 你還不懂。'},
+     {n:'03',q:'找到知識漏洞',a:'<strong>解釋過程中卡住的地方 = 你的漏洞。</strong>回去補那個漏洞，而不是繼續往前走。'},
+     {n:'04',q:'簡化與類比',a:'<strong>用日常生活的類比替換複雜概念。</strong>「間隔重複就像健身：每隔幾天練一次，比每天練更有效。」'}].forEach(step=>{
+      const sid=`fey-${step.n}`;
+      h+=`<div class="step-item" id="${sid}" onclick="toggleStep('${sid}')"><div class="step-front"><span class="step-num g-green">${step.n}</span><span class="step-q">${step.q}</span><span class="step-lock">▶</span></div><div class="step-back"><div class="step-back-inner">${step.a}</div></div></div>`;
+    });
+    h+=`</div>`;
+    h+=`<div class="tip-box" style="margin-top:1rem">費曼技巧讓你從「感覺懂了」到「真的懂了」。差別只有一個：你能不能教別人。</div>`;
+    h+=`</div>`;
+    break;
+
+  // ── MECE-INTRO-V2 (v3) ───────────────────────────────────────────────────
+  case 'mece-intro-v2':{
+    h+=blob('rgba(251,191,36,.08)','rgba(255,107,0,.06)');
+    h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto 1rem"></div>`;
+    h+=`<div style="font-size:clamp(2.5rem,6vw,4rem);font-weight:800;color:var(--yellow);margin-bottom:.5rem">MECE</div>`;
+    h+=`<div style="font-size:clamp(1.2rem,2vw,1.6rem);font-weight:600;color:var(--ink);margin-bottom:1.5rem">Mutually Exclusive, Collectively Exhaustive</div>`;
+    h+=`</div>`;
+    h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;max-width:800px;margin:0 auto 1rem;position:relative;z-index:1">`;
+    h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:150px">`;
+    h+=`<div class="card-answer" style="background:rgba(255,32,85,.08);border:2px solid rgba(255,32,85,.3);border-radius:12px;padding:1.2rem;text-align:center">`;
+    h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--red);margin-bottom:.6rem;display:flex;align-items:center;justify-content:center;gap:.4rem"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> 不是 MECE</div>`;
+    h+=`<div style="font-size:var(--min-font);color:var(--mid);margin-bottom:.5rem">分類「為什麼不運動」</div>`;
+    h+=`<div style="display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap">`;
+    ['太忙','懶','沒時間'].forEach(t=>{h+=`<span style="padding:.3rem .6rem;background:rgba(255,32,85,.15);border-radius:6px;font-size:var(--min-font);color:var(--ink)">${t}</span>`;});
+    h+=`</div><div style="font-size:var(--min-label);color:var(--red);margin-top:.5rem">「懶」和「沒時間」重疊了！</div></div>`;
+    h+=`<div class="card-mask" style="border-radius:12px;background:rgba(255,32,85,.12)"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="var(--red)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg><div style="font-size:var(--min-font);font-weight:700;color:var(--red);margin-top:.4rem">不是 MECE</div><div style="font-size:var(--min-label);color:rgba(255,255,255,.35);margin-top:.3rem">點擊看為什麼</div></div></div>`;
+    h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:150px">`;
+    h+=`<div class="card-answer" style="background:rgba(34,197,94,.08);border:2px solid rgba(34,197,94,.3);border-radius:12px;padding:1.2rem;text-align:center">`;
+    h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--green);margin-bottom:.6rem;display:flex;align-items:center;justify-content:center;gap:.4rem"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> 是 MECE</div>`;
+    h+=`<div style="font-size:var(--min-font);color:var(--mid);margin-bottom:.5rem">同樣問題，正確切法</div>`;
+    h+=`<div style="display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap">`;
+    ['動機問題','能力問題','觸及問題'].forEach(t=>{h+=`<span style="padding:.3rem .6rem;background:rgba(34,197,94,.15);border-radius:6px;font-size:var(--min-font);color:var(--ink)">${t}</span>`;});
+    h+=`</div><div style="font-size:var(--min-label);color:var(--green);margin-top:.5rem">不重疊、不遺漏！</div></div>`;
+    h+=`<div class="card-mask" style="border-radius:12px;background:rgba(34,197,94,.12)"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><div style="font-size:var(--min-font);font-weight:700;color:var(--green);margin-top:.4rem">是 MECE</div><div style="font-size:var(--min-label);color:rgba(255,255,255,.35);margin-top:.3rem">點擊看正確切法</div></div></div>`;
+    h+=`</div>`;
+    h+=`<div class="tip-box" style="max-width:800px;margin:0 auto;position:relative;z-index:1"><strong style="color:var(--yellow)">MECE 的目的：</strong>把大問題拆成小問題，每個小問題都可以獨立分析、不重複計算</div>`;
+    break;}
+
+  // ── MECE-GAME-V2 (v3) ─────────────────────────────────────────────────────
+  case 'mece-game-v2':{
+    h+=blob('rgba(251,191,36,.08)','rgba(255,107,0,.06)');
+    h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto .7rem"></div>`;
+    if(sd.title)h+=`<h2 style="margin-bottom:.3rem">${sd.title}</h2>`;
+    h+=`<p style="color:var(--mid);font-size:var(--min-font);margin-bottom:1.1rem">三個情境，哪種分法是 MECE？點擊揭曉</p>`;
+    h+=`</div>`;
+    const meceQuiz=[
+      {q:'分類「為什麼不學習」',opts:[{text:'沒時間 / 太累 / 懶',mece:false,why:'「太累」和「懶」重疊，不是 MECE'},{text:'動機問題 / 能力問題 / 環境問題',mece:true,why:'三個維度不重疊且窮盡所有情況'},{text:'早上 / 下午 / 晚上',mece:true,why:'時間段互斥且涵蓋全天，也是 MECE'}]},
+      {q:'分析「速讀無效的原因」',opts:[{text:'注意力不集中 / 理解力差 / 速度太快',mece:false,why:'注意力不集中可能導致速度太快，有重疊'},{text:'輸入問題 / 處理問題 / 輸出問題',mece:true,why:'學習三階段，不重疊不遺漏'},{text:'電子書 / 紙本',mece:true,why:'載體類型互斥且窮盡，是 MECE'}]},
+      {q:'劃分「你的行動清單」',opts:[{text:'重要 / 緊急 / 有趣',mece:false,why:'「重要且緊急」同時屬於前兩類，重疊'},{text:'高影響高確定 / 高影響低確定 / 低影響高確定 / 低影響低確定',mece:true,why:'四象限：不重疊且涵蓋所有組合'},{text:'今天 / 本週 / 本月',mece:true,why:'時間維度切割，互斥且窮盡'}]}
+    ];
+    h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:960px;margin:0 auto;position:relative;z-index:1">`;
+    meceQuiz.forEach((quiz,qi)=>{
+      const uid=`mg-${sd.id}-${qi}`;
+      h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:260px">`;
+      h+=`<div class="card-answer" style="background:rgba(255,255,255,.03);border:1.5px solid rgba(251,191,36,.3);border-top:3px solid var(--yellow);border-radius:12px;padding:1.1rem">`;
+      h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--ink);margin-bottom:.9rem;text-align:center">${quiz.q}</div>`;
+      h+=`<div style="display:flex;flex-direction:column;gap:.5rem">`;
+      quiz.opts.forEach((opt,oi)=>{
+        h+=`<div style="padding:.55rem .8rem;border-radius:8px;background:${opt.mece?'rgba(34,197,94,.1)':'rgba(255,32,85,.08)'};border:1px solid ${opt.mece?'rgba(34,197,94,.3)':'rgba(255,32,85,.2)'}">`;
+        h+=`<div style="display:flex;align-items:center;gap:.4rem;margin-bottom:.2rem"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" style="color:${opt.mece?'var(--green)':'var(--red)'}">${opt.mece?'<path d="M20 6L9 17l-5-5"/>':'<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>'}</svg><span style="font-size:var(--min-font);color:var(--ink);font-weight:600">${opt.text}</span></div>`;
+        h+=`<div style="font-size:var(--min-label);color:var(--mid);padding-left:1.1rem">${opt.why}</div></div>`;
+      });
+      h+=`</div></div>`;
+      h+=`<div class="card-mask" style="border-radius:12px;background:rgba(251,191,36,.1);flex-direction:column;gap:.6rem;padding:1.4rem">`;
+      h+=`<div style="font-size:clamp(1.5rem,2.5vw,2rem);font-weight:800;color:var(--yellow);line-height:1">0${qi+1}</div>`;
+      h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--ink);text-align:center;line-height:1.4">${quiz.q}</div>`;
+      h+=`<div style="font-size:var(--min-label);color:rgba(251,191,36,.6);margin-top:.4rem">點擊看哪個是 MECE</div></div></div>`;
+    });
+    h+=`</div>`;
+    h+=`<div class="tip-box" style="max-width:960px;margin:.8rem auto 0;position:relative;z-index:1"><strong style="color:var(--yellow)">MECE 判斷兩個問題：</strong>① 這些類別彼此有重疊嗎？② 所有情況都能被歸進某一類嗎？</div>`;
+    break;}
+
+  // ── VITAMIN PAINKILLER (v3) ───────────────────────────────────────────────
+  case 'vitamin-painkiller':{
+    const vitaminIcon='<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>';
+    const painkillerIcon='<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>';
+    h+=`<div style="text-align:center">${chip}<div class="bar" style="margin:.6rem auto 1rem"></div>`;
+    if(sd.title)h+=`<h2 style="margin-bottom:.6rem">${sd.title}</h2>`;
+    h+=`<p style="color:var(--mid);font-size:var(--min-font);margin-bottom:.8rem">你的學習目標是哪一種？</p>`;
+    h+=`</div>`;
+    h+=`<div class="compare-grid">`;
+    h+=`<div class="cmp-card cmp-no" onclick="this.classList.toggle('revealed');playUnlock()">`;
+    h+=`<div style="color:var(--mid);margin-bottom:.4rem">${vitaminIcon}</div>`;
+    h+=`<h3 style="color:rgba(255,255,255,.7)">維他命 Nice to Have</h3>`;
+    h+=`<ul class="deck-list" style="margin-top:.5rem"><li>有的話不錯</li><li>沒有也過得去</li><li>學習動機弱</li><li>難以建立急迫性</li></ul>`;
+    h+=`<div class="cmp-mask"><div class="cmp-mask-icon">${vitaminIcon}</div><div style="font-weight:800;font-size:var(--min-font);color:var(--ink);margin:.3rem 0">維他命</div><div class="cmp-mask-label">點擊解鎖</div></div></div>`;
+    h+=`<div class="cmp-card cmp-yes" onclick="this.classList.toggle('revealed');playUnlock()">`;
+    h+=`<div style="color:var(--orange);margin-bottom:.4rem">${painkillerIcon}</div>`;
+    h+=`<h3>止痛藥 Must Have</h3>`;
+    h+=`<ul class="deck-list" style="margin-top:.5rem"><li>沒有就真的很痛</li><li>主動在找解法</li><li>決策快、行動快</li><li>高轉換、高堅持</li></ul>`;
+    h+=`<div class="cmp-mask"><div class="cmp-mask-icon">${painkillerIcon}</div><div style="font-weight:800;font-size:var(--min-font);color:var(--ink);margin:.3rem 0">止痛藥</div><div class="cmp-mask-label">點擊解鎖</div></div></div>`;
+    h+=`</div>`;
+    h+=`<div class="tip-box" style="margin-top:1rem">判斷標準：問「如果我永遠學不到這個，我會怎樣？」——他聳肩 = 維他命；他皺眉 = 止痛藥。<strong>選止痛藥，執行力是維他命的 5 倍。</strong></div>`;
+    break;}
+
+  // ── PAINKILLER GAME (v3) ──────────────────────────────────────────────────
+  case 'painkiller-game':{
+    h+=blob('rgba(34,197,94,.08)','rgba(255,107,0,.06)');
+    h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto 1rem"></div>`;
+    if(sd.title)h+=`<h2 style="margin-bottom:.6rem">${sd.title}</h2>`;
+    h+=`<p style="color:var(--mid);font-size:var(--min-font);margin-bottom:1rem">點擊每個產品，猜猜它是維他命還是止痛藥</p>`;
+    h+=`</div>`;
+    const products=[
+      {name:'Notion',answer:'止痛藥',reason:'解決「文件散落各處、協作混亂」的焦慮，估值 100 億',isVitamin:false},
+      {name:'Threads',answer:'維他命',reason:'有 IG 就夠了，沒有急迫需求切換',isVitamin:true},
+      {name:'ChatGPT',answer:'止痛藥',reason:'「寫不出來、查不到」的即時痛點，用了回不去',isVitamin:false},
+      {name:'Duolingo',answer:'維他命',reason:'學語言是長期目標，沒有急迫性',isVitamin:true},
+      {name:'Uber Eats',answer:'止痛藥',reason:'「餓了但不想出門」是真實的即時痛點',isVitamin:false},
+      {name:'Headspace',answer:'維他命',reason:'冥想 App，大家知道該練習正念，但下載後常被遺忘',isVitamin:true}
+    ];
+    h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;max-width:900px;margin:0 auto;position:relative;z-index:1">`;
+    products.forEach((p,i)=>{
+      const col=p.isVitamin?'rgba(255,255,255,.5)':'var(--green)';
+      h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:130px">`;
+      h+=`<div class="card-answer" style="background:${p.isVitamin?'rgba(255,255,255,.03)':'rgba(34,197,94,.08)'};border:1.5px solid ${p.isVitamin?'rgba(255,255,255,.1)':'rgba(34,197,94,.3)'};border-radius:10px;padding:1rem">`;
+      h+=`<div style="font-size:var(--min-label);font-weight:800;color:${col};margin-bottom:.3rem">${p.answer}</div>`;
+      h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--ink);margin-bottom:.3rem">${p.name}</div>`;
+      h+=`<div style="font-size:var(--min-label);color:var(--mid)">${p.reason}</div></div>`;
+      h+=`<div class="card-mask" style="border-radius:10px"><div style="font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:700;color:var(--ink)">${p.name}</div><div style="font-size:var(--min-font);color:var(--mid);margin-top:.3rem">點擊揭曉</div></div></div>`;
+    });
+    h+=`</div>`;
+    h+=`<div class="tip-box" style="max-width:900px;margin:.8rem auto 0;position:relative;z-index:1"><strong style="color:var(--orange)">應用到你的學習目標：</strong>你正在學的東西，是解決一個真實的痛，還是緩解資訊焦慮？</div>`;
+    break;}
+
+  // ── HORMOZI VALUE (v3) ────────────────────────────────────────────────────
+  case 'hormozi-value':{
+    h+=blob('rgba(255,107,0,.1)','rgba(255,32,85,.06)');
+    h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto 1rem"></div>`;
+    if(sd.title)h+=`<h2 style="margin-bottom:.8rem">${sd.title}</h2>`;
+    h+=`<p style="font-size:var(--min-font);color:var(--mid);margin-bottom:1.2rem">來自《$100M Offers》— 如何讓產品「貴到賣爆」</p>`;
+    h+=`</div>`;
+    h+=`<div style="max-width:850px;margin:0 auto;position:relative;z-index:1">`;
+    h+=`<div style="background:linear-gradient(135deg,rgba(255,107,0,.1),rgba(168,85,247,.06));border:2px solid rgba(255,107,0,.35);border-radius:16px;padding:1.5rem 2rem;text-align:center;margin-bottom:1.2rem">`;
+    h+=`<div style="font-size:var(--min-label);font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:1rem">PERCEIVED VALUE FORMULA</div>`;
+    h+=`<div style="display:flex;align-items:center;justify-content:center;gap:1.5rem">`;
+    h+=`<div style="font-size:clamp(2rem,4vw,3rem);font-weight:800;color:var(--orange)">Value =</div>`;
+    h+=`<div style="display:flex;flex-direction:column;align-items:center">`;
+    h+=`<div style="display:flex;align-items:center;gap:.8rem;padding:.6rem 1.2rem;background:rgba(34,197,94,.15);border-radius:10px"><span style="font-size:clamp(1.2rem,2.2vw,1.6rem);font-weight:700;color:var(--green)">Dream</span><span style="font-size:clamp(1.2rem,2.2vw,1.6rem);color:var(--mid)">×</span><span style="font-size:clamp(1.2rem,2.2vw,1.6rem);font-weight:700;color:var(--green)">Likelihood</span></div>`;
+    h+=`<div style="width:100%;height:3px;background:var(--ink);margin:.5rem 0;border-radius:2px"></div>`;
+    h+=`<div style="display:flex;align-items:center;gap:.8rem;padding:.6rem 1.2rem;background:rgba(255,32,85,.15);border-radius:10px"><span style="font-size:clamp(1.2rem,2.2vw,1.6rem);font-weight:700;color:var(--red)">Sacrifice</span><span style="font-size:clamp(1.2rem,2.2vw,1.6rem);color:var(--mid)">×</span><span style="font-size:clamp(1.2rem,2.2vw,1.6rem);font-weight:700;color:var(--red)">Time</span></div>`;
+    h+=`</div></div></div>`;
+    h+=`<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin-bottom:1rem">`;
+    [{label:'Dream',zh:'夢想結果',col:'var(--green)',arrow:'↑ 越大越好'},{label:'Likelihood',zh:'成功機率',col:'var(--blue)',arrow:'↑ 越高越好'},{label:'Sacrifice',zh:'犧牲成本',col:'var(--orange)',arrow:'↓ 越低越好'},{label:'Time',zh:'所需時間',col:'var(--red)',arrow:'↓ 越短越好'}].forEach((v,i)=>{
+      h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:100px">`;
+      h+=`<div class="card-answer" style="background:${v.col}12;border:1.5px solid ${v.col}50;border-radius:10px;padding:.9rem;text-align:center">`;
+      h+=`<div style="font-size:var(--min-font);font-weight:700;color:${v.col};margin-bottom:.2rem">${v.label}</div>`;
+      h+=`<div style="font-size:var(--min-label);color:var(--mid);margin:.2rem 0">${v.zh}</div>`;
+      h+=`<div style="font-size:var(--min-label);padding:.2rem .5rem;border-radius:4px;background:${v.col}25;color:${v.col};font-weight:700">${v.arrow}</div></div>`;
+      h+=`<div class="card-mask" style="border-radius:10px;background:${v.col}20"><div style="font-size:var(--min-font);font-weight:700;color:${v.col}">${v.label}</div></div></div>`;
+    });
+    h+=`</div>`;
+    h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">`;
+    h+=`<div style="background:rgba(34,197,94,.1);border:1.5px solid rgba(34,197,94,.3);border-radius:10px;padding:.9rem;text-align:center"><div style="font-size:var(--min-label);font-weight:700;color:var(--green);margin-bottom:.3rem">分子策略</div><div style="font-size:var(--min-font);color:var(--ink)">把結果說得更大、更可信</div></div>`;
+    h+=`<div style="background:rgba(255,32,85,.1);border:1.5px solid rgba(255,32,85,.3);border-radius:10px;padding:.9rem;text-align:center"><div style="font-size:var(--min-label);font-weight:700;color:var(--red);margin-bottom:.3rem">分母策略</div><div style="font-size:var(--min-font);color:var(--ink)">把成本和時間壓到最低</div></div>`;
+    h+=`</div></div>`;
+    break;}
+
+  // ── HORMOZI EXAMPLE (v3, adapted for learning ROI) ───────────────────────
+  case 'hormozi-example':{
+    h+=blob('rgba(34,197,94,.08)','rgba(255,107,0,.06)');
+    h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto 1rem"></div>`;
+    if(sd.title)h+=`<h2 style="margin-bottom:1rem">${sd.title}</h2>`;
+    h+=`</div>`;
+    h+=`<div style="max-width:900px;margin:0 auto;position:relative;z-index:1">`;
+    h+=`<div style="display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:1.5rem"><div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#00C4CC,#7B2FF7);display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M4 4h7v7H4V4zm9 0h7v7h-7V4zm-9 9h7v7H4v-7zm12.5 2.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zm0 4a2.5 2.5 0 100-5 2.5 2.5 0 000 5z"/></svg></div><div style="font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:700;color:var(--ink)">Canva：設計給非設計師</div></div>`;
+    h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">`;
+    [{label:'Dream 夢想結果',value:'做出專業級設計作品',detail:'「我的 IG 貼文看起來像設計師做的」',col:'var(--green)'},{label:'Likelihood 成功機率',value:'模板 + 拖拉 = 一定做得出來',detail:'「有 50 萬個模板，我只需要換字」',col:'var(--blue)'},{label:'Sacrifice 犧牲成本',value:'不用學 PS、不需付大筆費用',detail:'「免費版就很夠用，不用學 Adobe」',col:'var(--orange)'},{label:'Time 所需時間',value:'5 分鐘做好一張專業海報',detail:'「以前要花 2 小時，現在 5 分鐘」',col:'var(--red)'}].forEach(q=>{
+      h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:130px">`;
+      h+=`<div class="card-answer" style="background:${q.col}12;border:2px solid ${q.col}40;border-radius:12px;padding:1rem">`;
+      h+=`<div style="font-size:var(--min-label);font-weight:700;color:${q.col};margin-bottom:.5rem">${q.label}</div>`;
+      h+=`<div style="font-size:var(--min-font);color:var(--ink);font-weight:600;margin-bottom:.3rem">${q.value}</div>`;
+      h+=`<div style="font-size:var(--min-label);color:var(--mid);font-style:italic">${q.detail}</div></div>`;
+      h+=`<div class="card-mask" style="border-radius:12px;background:${q.col}20"><div style="font-size:var(--min-label);font-weight:700;color:${q.col}">${q.label}</div></div></div>`;
+    });
+    h+=`</div>`;
+    h+=`<div class="tip-box" style="margin-top:1rem"><strong style="color:var(--orange)">現在換你：</strong>用這四個維度評估你的卡關專案。你的「Dream」夠大嗎？你的「Sacrifice」夠低嗎？</div>`;
+    h+=`</div>`;
+    break;}
+
+  // ── GOAL-ORIENTED-DFV (v3) ────────────────────────────────────────────────
+  case 'goal-oriented-dfv':{
+    h+=blob('rgba(168,85,247,.1)','rgba(255,107,0,.06)');
+    h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto 1rem"></div>`;
+    if(sd.title)h+=`<h2 style="margin-bottom:.5rem">${sd.title}</h2>`;
+    h+=`<p style="color:var(--mid);font-size:var(--min-font);margin-bottom:1.2rem">用 <strong style="color:var(--purple)">DFV 模型</strong> 找到你的人生目標</p>`;
+    h+=`</div>`;
+    h+=`<div style="max-width:680px;margin:0 auto;position:relative;z-index:1">`;
+    h+=`<div style="position:relative;height:320px">`;
+    h+=`<div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:175px;height:175px;border-radius:50%;background:rgba(168,85,247,.12);border:3px solid var(--purple);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1rem"><div style="font-size:var(--min-font);font-weight:700;color:var(--purple);margin-bottom:.2rem">欲求性</div><div style="font-size:var(--min-label);color:var(--mid)">好玩・快樂</div><div style="font-size:.6rem;color:var(--purple);margin-top:.25rem">「做這件事讓我開心嗎？」</div></div>`;
+    h+=`<div style="position:absolute;bottom:0;left:50%;transform:translateX(calc(-50% - 88px));width:175px;height:175px;border-radius:50%;background:rgba(59,130,246,.12);border:3px solid var(--blue);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1rem"><div style="font-size:var(--min-font);font-weight:700;color:var(--blue);margin-bottom:.2rem">可行性</div><div style="font-size:var(--min-label);color:var(--mid)">專業・天賦</div><div style="font-size:.6rem;color:var(--blue);margin-top:.25rem">「我有能力做好嗎？」</div></div>`;
+    h+=`<div style="position:absolute;bottom:0;left:50%;transform:translateX(calc(-50% + 88px));width:175px;height:175px;border-radius:50%;background:rgba(34,197,94,.12);border:3px solid var(--green);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1rem"><div style="font-size:var(--min-font);font-weight:700;color:var(--green);margin-bottom:.2rem">存續性</div><div style="font-size:var(--min-label);color:var(--mid)">價值・收益</div><div style="font-size:.6rem;color:var(--green);margin-top:.25rem">「能創造價值嗎？」</div></div>`;
+    h+=`</div></div>`;
+    h+=`<div style="max-width:700px;margin:1rem auto 0;position:relative;z-index:1"><div style="background:rgba(255,107,0,.1);border:2px solid rgba(255,107,0,.3);border-radius:12px;padding:1rem 1.2rem;text-align:center"><div style="font-size:var(--min-font);font-weight:700;color:var(--orange);margin-bottom:.4rem">黃金交集點 = 你的理想目標</div><div style="font-size:var(--min-font);color:var(--mid)">找到讓你<span style="color:var(--purple)">快樂</span>、你有<span style="color:var(--blue)">天賦</span>、又能<span style="color:var(--green)">創造價值</span>的事</div></div></div>`;
+    h+=`<div class="tip-box" style="max-width:700px;margin:1rem auto 0;position:relative;z-index:1"><strong style="color:var(--purple)">行動建議：</strong>用 DFV 三角檢視你的卡關專案——它缺少哪一塊？</div>`;
+    break;}
+
+  // ── DFV MANDALA (v3) ──────────────────────────────────────────────────────
+  case 'dfv-mandala':{
+    h+=blob('rgba(168,85,247,.1)','rgba(59,130,246,.06)');
+    h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto .7rem"></div>`;
+    if(sd.title)h+=`<h2 style="margin-bottom:.2rem">${sd.title}</h2>`;
+    h+=`<p style="color:var(--mid);font-size:var(--min-font);white-space:nowrap;margin-bottom:.7rem">大谷翔平 18 歲時用這個方法，把「進入 MLB」拆解成 64 個具體行動</p>`;
+    h+=`</div>`;
+    h+=`<div style="display:flex;gap:1rem;align-items:flex-start;max-width:700px;margin:0 auto .65rem;position:relative;z-index:1">`;
+    [{num:'①',col:'var(--purple)',title:'定核心目標',desc:'最重要的目標放在中心格'},{num:'②',col:'var(--blue)',title:'展開 8 個維度',desc:'點擊各格查看說明'},{num:'③',col:'var(--green)',title:'每維度 8 個行動',desc:'1 個目標 = 64 個具體計畫'}].forEach(s=>{
+      h+=`<div style="flex:1;display:flex;gap:.55rem;align-items:flex-start"><div style="width:26px;height:26px;border-radius:7px;background:${s.col};display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;flex-shrink:0;font-size:.75rem">${s.num}</div><div><div style="font-size:var(--min-label);font-weight:700;color:var(--ink)">${s.title}</div><div style="font-size:.62rem;color:var(--mid)">${s.desc}</div></div></div>`;
+    });
+    h+=`</div>`;
+    const mdid=sd.id;
+    const mandalaLabels=[
+      {t:'技能發展',c:'rgba(168,85,247',desc:'技術、創意、語言——選一項核心能力深度發展，讓它成為你的護城河'},
+      {t:'知識學習',c:'rgba(59,130,246',desc:'讀書、課程、訪談——系統化吸收領域知識，建立自己的思維框架'},
+      {t:'人際關係',c:'rgba(34,197,94',desc:'導師、同儕、社群——你的人脈就是你的槓桿，主動連結對的人'},
+      {t:'身體健康',c:'rgba(255,107,0',desc:'睡眠、運動、飲食——體力是執行力的基礎，沒有健康就沒有一切'},
+      {t:'你的核心目標',c:'rgba(168,85,247',center:true},
+      {t:'心理強化',c:'rgba(6,182,212',desc:'韌性、專注、情緒管理——Growth Mindset 的起點，面對挫折的能力'},
+      {t:'財務規劃',c:'rgba(251,191,36',desc:'儲蓄、收入來源、資源配置——讓財務條件支撐你追求目標'},
+      {t:'習慣建立',c:'rgba(255,32,85',desc:'每日例行、複利效應——小習慣堆積大改變，今天的選擇決定一年後的你'},
+      {t:'機會創造',c:'rgba(168,85,247',desc:'增加曝光度、提高嘗試次數——機會是給準備好的人，主動創造「被看見」的機會'},
+    ];
+    h+=`<div id="mandala-grid-${mdid}" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:680px;margin:0 auto .5rem;position:relative;z-index:1">`;
+    mandalaLabels.forEach((cell,i)=>{
+      if(cell.center){
+        h+=`<div style="background:rgba(168,85,247,.25);border:2px solid rgba(168,85,247,.7);border-radius:10px;padding:.6rem .4rem;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:96px"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:.25rem"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg><div style="font-size:var(--min-font);font-weight:900;color:var(--purple);line-height:1.3">${cell.t}</div><div style="font-size:.52rem;color:rgba(168,85,247,.55);margin-top:.18rem">中央目標</div></div>`;
+      }else{
+        h+=`<div id="mc-${mdid}-${i}" class="mandala-cell" data-title="${cell.t}" data-desc="${cell.desc.replace(/"/g,'&quot;')}" onclick="mandalaFocus('${mdid}','${i}','${cell.c}')" style="background:${cell.c},.08);border:1.5px solid ${cell.c},.3);border-radius:10px;padding:.55rem .4rem;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:96px;gap:.3rem"><div style="font-size:var(--min-font);font-weight:700;color:${cell.c},1);line-height:1.3">${cell.t}</div><div style="display:grid;grid-template-columns:repeat(3,4px);gap:1.5px">`;
+        for(let j=0;j<9;j++)h+=`<div style="width:4px;height:4px;border-radius:1px;background:${cell.c},${j===4?'.8':'.25'})"></div>`;
+        h+=`</div></div>`;
+      }
+    });
+    h+=`</div>`;
+    h+=`<div id="mdf-${mdid}" data-active="" style="display:none;max-width:680px;margin:0 auto .4rem;position:relative;z-index:1;padding:.5rem .85rem;border-left:3px solid;border-radius:0 8px 8px 0;font-size:var(--min-font);line-height:1.6"></div>`;
+    h+=`<div class="tip-box" style="max-width:680px;margin:0 auto;position:relative;z-index:1;text-align:center"><strong style="color:var(--purple)">每個外圍格子</strong>，都可以成為另一張九宮格的中心 → 從 1 個目標，展出 64 個具體行動</div>`;
+    break;}
+
+  // ── UNFAIR ADVANTAGE ──────────────────────────────────────────────────────
+  case 'unfair-advantage':
+    h+=blob('rgba(168,85,247,.1)','rgba(255,107,0,.07)');
+    h+=`<div style="position:relative;z-index:1;max-width:920px;width:100%">`;
+    h+=mkChip('Unfair Advantage','purple');
+    h+=`<h2 style="margin-bottom:.5rem">打好<span class="g-purple">手上的牌</span>，不要在別人的主場玩</h2>`;
+    h+=`<div class="bar"></div>`;
+    h+=`<div class="mrev-grid cols-2">`;
+    [{n:'A',title:'你的 Unfair Advantage',col:'var(--purple)',colR:'rgba(168,85,247',body:'你擁有但別人沒有的：特定圈子的人脈、某段特殊經歷、某個深度技能、某個不對稱的資訊優勢。',action:'現在寫下：我有什麼是別人很難複製的？'},{n:'B',title:'在你的主場作戰',col:'var(--orange)',colR:'rgba(255,107,0',body:'成功不是模仿別人的策略，是把資源放到你能贏的地方。你在別人的主場永遠是弱者。',action:'你的主場是哪裡？你的訊號雷達對什麼最靈？'}].forEach(item=>{
+      const uid=`ua-${item.n}`;
+      h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:200px">`;
+      h+=`<div class="card-answer" style="background:${item.colR},.08);border:2px solid ${item.colR},.3);border-radius:14px;padding:1.4rem">`;
+      h+=`<div style="font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:700;color:${item.col};margin-bottom:.7rem">${item.title}</div>`;
+      h+=`<div style="font-size:var(--min-font);color:var(--mid);margin-bottom:.8rem;line-height:1.65">${item.body}</div>`;
+      h+=`<div style="background:${item.colR},.1);border-radius:8px;padding:.6rem .9rem;font-size:var(--min-font);color:${item.col};font-weight:600">→ ${item.action}</div></div>`;
+      h+=`<div class="card-mask" style="background:${item.colR},.15);border:2px solid ${item.colR},.3)"><div style="font-size:3rem;font-weight:800;color:${item.col};opacity:.5">${item.n}</div><div class="card-mask-q" style="color:${item.col}">${item.title}</div><div class="card-mask-hint">點擊解鎖</div></div></div>`;
+    });
+    h+=`</div>`;
+    h+=`<div class="tip-box" style="margin-top:1rem"><strong>核心：</strong>你的 Unfair Advantage × 你的主場 = 你的不對稱優勢。這才是選擇策略的起點。</div>`;
+    h+=`</div>`;
+    break;
+
+  // ── SIGNAL NOISE ──────────────────────────────────────────────────────────
+  case 'signal-noise':
+    h+=blob('rgba(255,32,85,.1)','rgba(168,85,247,.07)');
+    h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%">`;
+    h+=mkChip('Signal over Noise','red');
+    h+=`<h1 style="margin-bottom:.8rem">分心比<span class="g-red">無能</span>更致命</h1>`;
+    h+=`<div class="bar"></div>`;
+    h+=`<div style="display:grid;grid-template-columns:1fr auto 1fr;gap:1.2rem;align-items:center;margin:1.4rem 0">`;
+    h+=`<div style="background:rgba(255,32,85,.08);border:2px solid rgba(255,32,85,.3);border-radius:14px;padding:1.4rem;text-align:center"><div style="font-size:.65rem;font-weight:800;letter-spacing:.14em;color:var(--red);margin-bottom:.6rem;text-transform:uppercase">Noise 雜訊</div><ul class="deck-list" style="text-align:left"><li>讓你焦慮的資訊</li><li>別人成功的消息</li><li>下一個趨勢</li><li>沒有行動的計畫</li></ul></div>`;
+    h+=`<div style="font-size:3rem;color:rgba(255,255,255,.2)">→</div>`;
+    h+=`<div style="background:rgba(34,197,94,.08);border:2px solid rgba(34,197,94,.3);border-radius:14px;padding:1.4rem;text-align:center"><div style="font-size:.65rem;font-weight:800;letter-spacing:.14em;color:var(--green);margin-bottom:.6rem;text-transform:uppercase">Signal 訊號</div><ul class="deck-list" style="text-align:left"><li>讓你更清晰的資訊</li><li>你現在能用的洞見</li><li>驗證你假設的數據</li><li>能立刻行動的方向</li></ul></div>`;
+    h+=`</div>`;
+    h+=`<div class="tip-box">過濾資訊是技能，過濾機會也是技能。兩者用的是同一套大腦作業系統。</div>`;
+    h+=`</div>`;
+    break;
+
+  // ── TIME ALLOCATION (v3) ──────────────────────────────────────────────────
+  case 'time-allocation':{
+    h+=blob('rgba(168,85,247,.08)','rgba(255,107,0,.06)');
+    h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto .7rem"></div>`;
+    if(sd.title)h+=`<h2 style="margin-bottom:.5rem">${sd.title}</h2>`;
+    h+=`</div>`;
+    const sid=sd.id;
+    const phases=[
+      {key:'des',col:'rgba(255,32,85',label:'欲求性 D',en:'DESIRABILITY',pct:'50%',main:{pct:80,label:'確認問題',desc:'深度訪談、田野觀察、找出真實痛點'},sub:{pct:20,label:'發想解法',desc:'初步 ideation、概念驗證'},tip:'先搞清楚「誰在痛、痛在哪」，比想解法重要十倍'},
+      {key:'via',col:'rgba(34,197,94',label:'存續性 V',en:'VIABILITY',pct:'30%',main:{pct:80,label:'商業模型優化',desc:'利害關係人、BD、募資、夥伴資源整合'},sub:{pct:20,label:'迭代更新',desc:'根據市場反饋持續優化'},tip:'有人要、做得出來之後，才是讓它活下去的時候'},
+      {key:'fea',col:'rgba(59,130,246',label:'可行性 F',en:'FEASIBILITY',pct:'20%',main:{pct:80,label:'執行力',desc:'產品建構、技術累積、專案管理'},sub:{pct:20,label:'市場調查',desc:'持續測試假設、收集用戶反饋'},tip:'執行力一直都是最重要的 — 想法不值錢，做出來才算數'},
+    ];
+    h+=`<div style="max-width:860px;margin:0 auto;position:relative;z-index:1;display:flex;flex-direction:column;gap:.55rem">`;
+    h+=`<div style="display:flex;height:10px;border-radius:99px;overflow:hidden;margin-bottom:.1rem;opacity:.85"><div style="flex:5;background:rgba(255,32,85,.9)"></div><div style="flex:3;background:rgba(34,197,94,.9)"></div><div style="flex:2;background:rgba(59,130,246,.9)"></div></div>`;
+    phases.forEach(p=>{
+      h+=`<div id="phase-${sid}-${p.key}" class="phase-panel" data-open="0" style="border-radius:14px;border:1.5px solid ${p.col},.3);background:${p.col},.06);overflow:hidden;cursor:pointer" onclick="togglePhase('${sid}','${p.key}')">`;
+      h+=`<div class="phase-hdr" style="display:flex;align-items:center;gap:.8rem;padding:.75rem 1.1rem;opacity:.55;transition:opacity .25s">`;
+      h+=`<div style="font-size:.58rem;font-weight:800;letter-spacing:.12em;color:${p.col},1);padding:.2em .6em;border-radius:99px;background:${p.col},.15);border:1px solid ${p.col},.35);white-space:nowrap">${p.en}</div>`;
+      h+=`<div style="font-size:clamp(1rem,1.7vw,1.2rem);font-weight:800;color:${p.col},1);flex:1">${p.label}</div>`;
+      h+=`<div style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;color:${p.col},1);line-height:1">${p.pct}</div>`;
+      h+=`<svg viewBox="0 0 20 20" width="16" height="16" fill="${p.col},1)" style="flex-shrink:0;transition:transform .3s"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></div>`;
+      h+=`<div class="phase-inner" style="max-height:0;opacity:0;overflow:hidden;transition:max-height .38s ease,opacity .28s ease"><div style="padding:.1rem 1.1rem .9rem">`;
+      h+=`<div style="display:flex;align-items:center;gap:1rem;margin-bottom:.45rem"><div style="font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:900;color:${p.col},1);width:4.2rem;flex-shrink:0;line-height:1;text-align:right">80%</div><div style="flex:1"><div style="display:flex;justify-content:space-between;margin-bottom:.2rem"><span style="font-size:var(--min-font);font-weight:700;color:${p.col},.9)">${p.main.label}</span></div><div style="height:8px;border-radius:99px;background:rgba(255,255,255,.07);overflow:hidden"><div data-bar="80" style="height:100%;width:0;background:${p.col},.75);border-radius:99px;transition:width .55s cubic-bezier(.25,.46,.45,.94)"></div></div><div style="font-size:var(--min-label);color:var(--mid);margin-top:.2rem">${p.main.desc}</div></div></div>`;
+      h+=`<div style="display:flex;align-items:center;gap:1rem;margin-bottom:.5rem"><div style="font-size:clamp(.9rem,1.6vw,1.15rem);font-weight:700;color:${p.col},.55);width:4.2rem;flex-shrink:0;line-height:1;text-align:right">20%</div><div style="flex:1"><div style="height:6px;border-radius:99px;background:rgba(255,255,255,.07);overflow:hidden"><div data-bar="20" style="height:100%;width:0;background:${p.col},.4);border-radius:99px;transition:width .55s cubic-bezier(.25,.46,.45,.94) .1s"></div></div><div style="font-size:var(--min-label);color:var(--mid);margin-top:.2rem">${p.sub.desc}</div></div></div>`;
+      h+=`<div style="font-size:var(--min-font);color:${p.col},.85);padding:.4rem .7rem;background:${p.col},.08);border-radius:8px;font-style:italic">${p.tip}</div>`;
+      h+=`</div></div></div>`;
+    });
+    h+=`<div class="tip-box" style="margin-top:.3rem"><strong style="color:var(--orange)">核心原則：</strong>執行力一直都是最重要的 — 做出來永遠比想出來更有價值。</div>`;
+    h+=`</div>`;
+    break;}
+
+  // ── MECE DECISION ─────────────────────────────────────────────────────────
+  case 'mece-decision':
+    h+=blob('rgba(251,191,36,.08)','rgba(255,107,0,.06)');
+    h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%">`;
+    h+=mkChip('MECE 決策工具','yellow');
+    h+=`<h2 style="margin-bottom:.5rem">不重疊、不遺漏的<span class="g-orange">資源斷捨離</span></h2>`;
+    h+=`<div class="bar"></div>`;
+    h+=`<div style="background:rgba(255,255,255,.03);border:1.5px solid rgba(251,191,36,.25);border-radius:16px;padding:1.4rem;margin-top:1rem">`;
+    h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--yellow);margin-bottom:1rem;text-align:center">把你的行動清單分進這四個格子</div>`;
+    h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">`;
+    [{label:'高影響 × 高確定性',desc:'立刻做，不要想',color:'var(--green)',colR:'rgba(34,197,94',num:'01'},{label:'高影響 × 低確定性',desc:'驗證它，小步測試',color:'var(--blue)',colR:'rgba(59,130,246',num:'02'},{label:'低影響 × 高確定性',desc:'排程或委託',color:'var(--yellow)',colR:'rgba(251,191,36',num:'03'},{label:'低影響 × 低確定性',desc:'砍掉，現在',color:'var(--red)',colR:'rgba(255,32,85',num:'04'}].forEach(cell=>{
+      h+=`<div style="background:${cell.colR},.08);border:1.5px solid ${cell.colR},.25);border-radius:12px;padding:1rem 1.2rem">`;
+      h+=`<div style="font-size:1.2rem;font-weight:800;color:${cell.colR},.3);margin-bottom:.4rem">${cell.num}</div>`;
+      h+=`<div style="font-size:var(--min-font);font-weight:700;color:${cell.color};margin-bottom:.3rem">${cell.label}</div>`;
+      h+=`<div style="font-size:var(--min-font);color:var(--mid)">${cell.desc}</div></div>`;
+    });
+    h+=`</div></div>`;
+    h+=`<div class="tip-box" style="margin-top:1rem">MECE 的真正價值：讓你<strong>有信心地砍掉</strong>不必要的行動，而不是永遠覺得「可能有用」。</div>`;
+    h+=`</div>`;
+    break;
+
+  // ── GTM INTERACTIVE V2 (v3) ───────────────────────────────────────────────
+  case 'gtm-interactive-v2':{
+    h+=blob('rgba(59,130,246,.08)','rgba(34,197,94,.06)');
+    h+=`<div style="position:relative;z-index:1;text-align:center">${chip}`;
+    h+=`<div style="font-size:clamp(1.8rem,3.8vw,3rem);font-weight:900;letter-spacing:-.02em;line-height:1.1;margin:.3rem 0 .2rem;background:linear-gradient(135deg,var(--blue),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Go-To-Market Strategy</div>`;
+    h+=`<div class="bar" style="margin:.5rem auto .6rem"></div>`;
+    if(sd.title)h+=`<p style="color:var(--mid);font-size:var(--min-font);margin-bottom:.8rem">${sd.title}</p>`;
+    h+=`</div>`;
+    const gtmSteps=[
+      {q:'誰？',label:'Audience',col:'var(--red)',colR:'rgba(255,32,85',icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',answer:'你的 ICP，不是「所有人」',detail:'誰痛得最深？誰最急需解決？先服務他，再擴大。'},
+      {q:'說什麼？',label:'Message',col:'var(--orange)',colR:'rgba(255,107,0',icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',answer:'對應他的痛，用他的語言說',detail:'不說功能，說結果。不說「我們有 AI」，說「你的問題消失了」。'},
+      {q:'在哪說？',label:'Channel',col:'var(--blue)',colR:'rgba(59,130,246',icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>',answer:'他在哪，你就在哪說',detail:'不是你喜歡的平台，是他出現的地方。'},
+      {q:'何時說？',label:'Timing',col:'var(--green)',colR:'rgba(34,197,94',icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',answer:'對的時機 × 對的路徑 = 爆發',detail:'市場正在成長嗎？趨勢站在你這邊嗎？太早死，太晚被淹。'},
+    ];
+    h+=`<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;max-width:960px;margin:0 auto .7rem;position:relative;z-index:1">`;
+    gtmSteps.forEach((s,i)=>{
+      h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:155px">`;
+      h+=`<div class="card-answer" style="background:${s.colR},.1);border:2px solid ${s.colR},.4);border-radius:12px;padding:1rem;text-align:center"><div style="color:${s.col};margin-bottom:.3rem">${s.icon}</div><div style="font-size:var(--min-label);font-weight:700;color:${s.col};margin-bottom:.15rem;letter-spacing:.08em">0${i+1}</div><div style="font-size:var(--min-font);font-weight:800;color:var(--ink);margin-bottom:.35rem">${s.label}</div><div style="font-size:var(--min-label);color:${s.col};margin-bottom:.3rem;font-weight:600">${s.answer}</div><div style="font-size:var(--min-label);color:var(--mid);line-height:1.5">${s.detail}</div></div>`;
+      h+=`<div class="card-mask" style="border-radius:12px;background:${s.colR},.22)"><div style="color:${s.col}">${s.icon}</div><div style="font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:800;color:var(--ink);margin-top:.3rem">${s.q}</div><div style="font-size:var(--min-label);color:${s.col};margin-top:.2rem">${s.label}</div></div></div>`;
+    });
+    h+=`</div>`;
+    h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked');playUnlock()" style="max-width:960px;margin:0 auto;position:relative;z-index:1;min-height:90px">`;
+    h+=`<div class="card-answer" style="background:linear-gradient(135deg,rgba(34,197,94,.12),rgba(6,182,212,.07));border:2px solid rgba(34,197,94,.45);border-radius:14px;padding:.85rem 1.2rem;display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:center"><div style="text-align:center;min-width:90px"><div style="font-size:var(--min-label);font-weight:800;color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.2rem">最重要的元素</div><div style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;color:var(--green);line-height:1">Timing</div><div style="font-size:var(--min-label);color:var(--mid)">時機</div></div><div style="border-left:2px solid rgba(34,197,94,.3);padding-left:1rem"><div style="font-size:var(--min-font);font-weight:700;color:var(--ink);margin-bottom:.3rem">「站在風口上，豬都會飛。」— 雷軍</div><div style="font-size:var(--min-font);color:rgba(255,255,255,.75)">Audience、Message、Channel 都對，但時機錯了，再好的產品也難逃失敗。</div></div></div>`;
+    h+=`<div class="card-mask" style="border-radius:14px;background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(6,182,212,.05));border:2px solid rgba(34,197,94,.3)"><svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><div style="font-size:clamp(1.2rem,2vw,1.6rem);font-weight:800;color:var(--green);margin-top:.5rem">GTM 四要素中，最重要的是哪一個？</div><div style="font-size:var(--min-font);color:rgba(255,255,255,.35);margin-top:.4rem">點擊揭曉答案</div></div></div>`;
+    break;}
+
+  // ── GTM-POC-PMF-V2 (v3) ──────────────────────────────────────────────────
+  case 'gtm-poc-pmf-v2':{
+    h+=blob('rgba(34,197,94,.08)','rgba(59,130,246,.06)');
+    h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto 1rem"></div>`;
+    if(sd.title)h+=`<h2 style="margin-bottom:1rem">${sd.title}</h2>`;
+    h+=`</div>`;
+    const stages=[
+      {name:'GTM',zh:'Go-To-Market',col:'var(--blue)',desc:'誰 × 說什麼 × 在哪說 × 何時說',icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>'},
+      {name:'POC',zh:'Proof of Concept',col:'var(--orange)',desc:'最低成本驗證，找第一個真實訊號',icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>'},
+      {name:'PMF',zh:'Product-Market Fit',col:'var(--green)',desc:'用戶主動回來、分享、推薦',icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>'}
+    ];
+    h+=`<div style="display:flex;gap:.5rem;justify-content:center;align-items:center;max-width:900px;margin:0 auto;position:relative;z-index:1">`;
+    stages.forEach((s,i)=>{
+      h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked');playUnlock()" style="flex:1;min-height:200px"><div class="card-answer" style="background:${s.col}12;border:2px solid ${s.col}40;border-radius:12px;padding:1.2rem;text-align:center"><div style="color:${s.col};margin-bottom:.4rem">${s.icon}</div><div style="font-size:clamp(1.2rem,2vw,1.5rem);font-weight:700;color:${s.col}">${s.name}</div><div style="font-size:var(--min-font);color:var(--mid);margin:.3rem 0">${s.zh}</div><div style="font-size:var(--min-font);color:var(--ink);margin-top:.5rem">${s.desc}</div></div><div class="card-mask" style="border-radius:12px;background:${s.col}25"><div style="color:${s.col}">${s.icon}</div><div style="font-size:clamp(1.2rem,2vw,1.5rem);font-weight:700;color:var(--ink);margin-top:.3rem">${s.name}</div></div></div>`;
+      if(i<stages.length-1)h+=`<div style="font-size:1.5rem;color:var(--mid)">→</div>`;
+    });
+    h+=`</div>`;
+    h+=`<div class="tip-box" style="max-width:900px;margin:1rem auto 0;position:relative;z-index:1"><strong style="color:var(--green)">順序不能錯：</strong>先有方向（GTM），再驗證（POC），再放大（PMF）。跳過任何一步都是在浪費資源。</div>`;
+    break;}
+
+  // ── PMF-PILLARS-V2 (v3) ──────────────────────────────────────────────────
+  case 'pmf-pillars-v2':{
+    h+=blob('rgba(255,32,85,.08)','rgba(34,197,94,.06)');
+    h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto 1rem"></div>`;
+    if(sd.title)h+=`<h2 style="margin-bottom:.6rem">${sd.title}</h2>`;
+    h+=`<p style="color:var(--mid);font-size:var(--min-font);margin-bottom:1rem">Product-Market Fit 的三個訊號</p>`;
+    h+=`</div>`;
+    const pillars=[
+      {icon:'<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',name:'Sticky',zh:'黏著度',col:'var(--blue)',desc:'用戶主動回來，不需要你提醒',metric:'DAU/MAU > 25%'},
+      {icon:'<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>',name:'Viral',zh:'病毒性',col:'var(--green)',desc:'用戶主動分享給朋友',metric:'推薦值 NPS > 50'},
+      {icon:'<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',name:'Paid',zh:'付費意願',col:'var(--orange)',desc:'用戶願意掏錢購買',metric:'轉換率 > 2%'}
+    ];
+    h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:850px;margin:0 auto;position:relative;z-index:1">`;
+    pillars.forEach((p,i)=>{
+      h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:170px"><div class="card-answer" style="background:${p.col}12;border:2px solid ${p.col}40;border-radius:12px;padding:1.1rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.4rem"><div style="color:${p.col}">${p.icon}</div><div style="font-size:clamp(1.2rem,2vw,1.5rem);font-weight:800;color:${p.col};line-height:1.2">${p.name}<br><span style="font-size:var(--min-label);color:var(--mid);font-weight:500">${p.zh}</span></div><div style="font-size:var(--min-font);color:var(--ink)">${p.desc}</div><div style="font-size:var(--min-label);color:${p.col};padding:.28rem .6rem;background:${p.col}20;border-radius:4px">${p.metric}</div></div><div class="card-mask" style="border-radius:12px;background:${p.col}25"><div style="color:${p.col}">${p.icon}</div><div style="font-size:clamp(1.2rem,2vw,1.5rem);font-weight:800;color:var(--ink);margin-top:.3rem">${p.name}</div></div></div>`;
+    });
+    h+=`</div>`;
+    h+=`<div class="tip-box" style="max-width:850px;margin:1rem auto 0;position:relative;z-index:1"><strong style="color:var(--red)">三個都有 = PMF。</strong>缺任何一個，都還在找 Product-Solution Fit (PSF)。</div>`;
+    break;}
+
+  // ── PMF-SIGNALS-GAME (v3) ─────────────────────────────────────────────────
+  case 'pmf-signals-game':{
+    h+=blob('rgba(34,197,94,.08)','rgba(59,130,246,.06)');
+    h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto 1rem"></div>`;
+    if(sd.title)h+=`<h2 style="margin-bottom:.4rem">${sd.title}</h2>`;
+    h+=`<p style="color:var(--mid);font-size:var(--min-font);margin-bottom:1rem">點擊每個情境，判斷它是不是真正的 PMF 訊號</p>`;
+    h+=`</div>`;
+    const pmfSignals=[
+      {scenario:'陌生人主動截圖你的作品，tag 給有相同困擾的朋友',isPmf:true,label:'PMF 訊號',why:'有機傳播 = 他認為這值得分享。朋友推薦的信任度是廣告的 10 倍。'},
+      {scenario:'你媽說：「這個做得很棒！」還把你的作品分享給所有親戚',isPmf:false,label:'不是 PMF',why:'認識你的人帶有情感濾鏡。PMF 需要來自陌生人的真實行動，不是善意稱讚。'},
+      {scenario:'有人主動問：「這個有沒有付費進階版？我願意每月訂閱」',isPmf:true,label:'PMF 訊號',why:'願意掏錢 = 真實痛點。問這個問題代表你的解法已命中他的痛。'},
+      {scenario:'IG 發文後按讚破千，留言滿是「好讚！」「厲害！」',isPmf:false,label:'不是 PMF',why:'Engagement ≠ 購買意願。按讚零成本；付費才是真正的投票。'},
+      {scenario:'用戶每週自發回來使用，你完全沒有做任何推廣',isPmf:true,label:'PMF 訊號',why:'自發留存 = 已融入生活習慣。這是最強的 PMF 訊號，沒有之一。'},
+      {scenario:'朋友說「等你做完記得通知我！」但發布後完全沒有回音',isPmf:false,label:'不是 PMF',why:'嘴說想要 ≠ 真的需要。觀察行動，不要問意願。（Sean Ellis 法則）'},
+    ];
+    h+=`<div class="mrev-grid cols-3" style="gap:.7rem;max-width:960px;margin:0 auto;position:relative;z-index:1">`;
+    pmfSignals.forEach((s,si)=>{
+      const isGreen=s.isPmf;
+      h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:145px"><div class="card-answer" style="background:${isGreen?'rgba(34,197,94,.07)':'rgba(255,32,85,.07)'};border:1.5px solid ${isGreen?'rgba(34,197,94,.3)':'rgba(255,32,85,.3)'};border-top:3px solid ${isGreen?'var(--green)':'var(--red)'};border-radius:10px;padding:1rem"><div style="font-size:var(--min-label);font-weight:800;color:${isGreen?'var(--green)':'var(--red)'};margin-bottom:.4rem">${s.label}</div><div style="font-size:var(--min-font);color:var(--ink);margin-bottom:.4rem">${s.scenario}</div><div style="font-size:var(--min-label);color:var(--mid);padding:.4rem .6rem;background:rgba(255,255,255,.04);border-radius:6px">${s.why}</div></div><div class="card-mask" style="border-radius:10px;flex-direction:column;gap:.5rem;padding:1rem"><div style="font-size:var(--min-font);color:var(--ink);text-align:center;line-height:1.5">${s.scenario}</div><div style="font-size:var(--min-label);color:rgba(255,255,255,.35);margin-top:.3rem">PMF 訊號嗎？點擊判斷</div></div></div>`;
+    });
+    h+=`</div>`;
+    h+=`<div class="tip-box" style="max-width:960px;margin:.8rem auto 0;position:relative;z-index:1"><strong style="color:var(--green)">真正的 PMF 訊號：</strong>陌生人的行動、自發留存、付費意願。你媽的稱讚很溫暖，但不算數。</div>`;
+    break;}
+
+  // ── LEVERAGE SAFETY (v3) ──────────────────────────────────────────────────
+  case 'leverage-safety':{
+    h+=blob('rgba(59,130,246,.1)','rgba(34,197,94,.06)');
+    h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto .7rem"></div>`;
+    if(sd.title)h+=`<h2 style="margin-bottom:.3rem">${sd.title}</h2>`;
+    h+=`<p style="color:var(--mid);font-size:var(--min-font);margin-bottom:.9rem">確認方向後，如何投入資源？以下三個核心要點</p>`;
+    h+=`</div>`;
+    const lvItems=[
+      {col:'rgba(255,32,85',icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>',title:'測試最高風險的假設',tag:'Risk First',body:'優先投入資源驗證最關鍵的假設。先問：「這件事不可行，我整個計畫就垮了嗎？」是的話，就先驗證它。不要先做簡單的，要先做最怕出錯的。'},
+      {col:'rgba(59,130,246',icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>',title:'投入高槓桿的行為',tag:'80/20 Rule',body:'20% 的關鍵任務帶來 80% 的成效。問自己：這件事有複利效應嗎？Steve Jobs 和 Elon Musk 都只做訊號，不碰雜訊。'},
+      {col:'rgba(34,197,94',icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',title:'建立並守住安全邊際',tag:'Safety Margin',body:'槓桿一定伴隨風險，所以先提升安全邊際：累積資產後再投資、保留本業收入。確保投入高槓桿行為時，不超過自己的安全邊際。'},
+    ];
+    const lvGrpId='lv-grp-'+sd.id;
+    h+=`<div id="${lvGrpId}" style="display:flex;flex-direction:column;gap:.7rem;max-width:900px;margin:0 auto;position:relative;z-index:1">`;
+    lvItems.forEach((item,i)=>{
+      h+=`<div style="border-radius:14px;overflow:hidden;border:2px solid ${item.col},.3)"><button onclick="seqManualToggle('${lvGrpId}',${i})" style="width:100%;background:${item.col},.08);border:none;cursor:pointer;padding:.9rem 1.2rem;display:flex;align-items:center;gap:.8rem;text-align:left"><div style="color:${item.col},1);flex-shrink:0">${item.icon}</div><div style="flex:1"><div style="font-size:.55rem;font-weight:900;letter-spacing:.12em;color:${item.col},.7);text-transform:uppercase;margin-bottom:.15rem">${item.tag}</div><div style="font-size:var(--min-font);font-weight:700;color:var(--ink)">${item.title}</div></div><svg data-seq-arr viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="${item.col},1)" stroke-width="2" style="transition:transform .25s;flex-shrink:0"><polyline points="6 9 12 15 18 9"/></svg></button><div data-seq-body style="max-height:0px;opacity:0;overflow:hidden;transition:max-height .3s ease,opacity .25s ease;background:${item.col},.04);padding:0 1.2rem"><div style="padding:.8rem 0;font-size:var(--min-font);color:var(--mid);line-height:1.7">${item.body}</div></div></div>`;
+    });
+    h+=`</div>`;
+    h+=`<div class="tip-box" style="max-width:900px;margin:.8rem auto 0;position:relative;z-index:1"><strong style="color:var(--blue)">80/20 法則：</strong>鎖定那 20% 會影響 80% 成效的任務，其餘都是雜訊。投資、創業、任何專案都適用。</div>`;
+    break;}
+
+  // ── RESOURCE FUNNEL V2 (SVG) ──────────────────────────────────────────────
+  case 'resource-funnel-v2':{
+    const fid=sd.id;
+    h+=blob('rgba(168,85,247,.1)','rgba(255,32,85,.07)');
+    h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%">`;
+    h+=mkChip('資源漏斗','purple');
+    h+=`<h2 style="margin-bottom:.5rem">把資源<span class="g-purple">漏進</span>最重要的事情裡</h2>`;
+    h+=`<div class="bar"></div>`;
+    h+=`<div style="display:flex;gap:2rem;align-items:center;margin-top:1rem;flex-wrap:wrap;justify-content:center">`;
+    h+=`<svg id="funnel-${fid}" viewBox="0 0 440 280" width="400" height="280" style="max-width:min(400px,72vw);flex-shrink:0" font-family="system-ui,sans-serif">`;
+    h+=`<g class="funnel-layer" id="fl-p-${fid}" onclick="funnelFocus('${fid}','p')"><polygon points="16,10 424,10 330,92 110,92" fill="rgba(168,85,247,.1)" stroke="rgba(168,85,247,.35)" stroke-width="1.5"/><text x="220" y="47" text-anchor="middle" font-weight="800" font-size="14" fill="rgba(168,85,247,.9)">所有商業行動</text><text x="220" y="68" text-anchor="middle" font-size="10" fill="rgba(168,85,247,.5)">你的完整待辦清單</text></g>`;
+    h+=`<g class="funnel-layer" id="fl-i-${fid}" onclick="funnelFocus('${fid}','i')"><polygon points="110,102 330,102 258,178 182,178" fill="rgba(59,130,246,.12)" stroke="rgba(59,130,246,.55)" stroke-width="1.5"/><text x="220" y="138" text-anchor="middle" font-weight="800" font-size="14" fill="rgba(59,130,246,.95)">本季核心項目</text><text x="220" y="158" text-anchor="middle" font-size="9.5" fill="rgba(59,130,246,.6)">對齊優勢、有資源的</text></g>`;
+    h+=`<g class="funnel-layer" id="fl-h-${fid}" onclick="funnelFocus('${fid}','h')"><polygon points="182,188 258,188 240,268 200,268" fill="rgba(255,32,85,.28)" stroke="rgba(255,32,85,.75)" stroke-width="1.5"/><text x="220" y="224" text-anchor="middle" font-weight="800" font-size="13" fill="#fff">唯一行動</text><text x="220" y="243" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,.75)">最高槓桿 · 今天就做</text></g>`;
+    h+=`</svg>`;
+    h+=`<div style="flex:1;min-width:200px;display:flex;flex-direction:column;gap:.7rem">`;
+    [{key:'p',label:'所有商業行動',col:'rgba(168,85,247,.8)',sub:'廣泛的待辦清單'},{key:'i',label:'本季核心項目',col:'rgba(59,130,246,.9)',sub:'對齊 Unfair Advantage'},{key:'h',label:'唯一最高槓桿',col:'var(--red)',sub:'今天就執行'}].forEach(row=>{
+      h+=`<div onclick="funnelFocus('${fid}','${row.key}')" style="cursor:pointer;background:rgba(255,255,255,.04);border-left:3px solid ${row.col};border-radius:0 8px 8px 0;padding:.6rem 1rem;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.07)'" onmouseout="this.style.background='rgba(255,255,255,.04)'"><div style="font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:${row.col};margin-bottom:.2rem">${row.sub}</div><div style="font-weight:700;color:var(--ink);font-size:var(--min-font)">${row.label}</div></div>`;
+    });
+    h+=`</div></div>`;
+    h+=`<div id="fd-${fid}" style="margin-top:.8rem;padding:.75rem 1.2rem;border-radius:8px;border-left:3px solid var(--orange);background:rgba(255,107,0,.08);font-size:var(--min-font);color:var(--ink);transition:opacity .3s;opacity:0">點擊漏斗層查看說明</div>`;
+    h+=`<div class="tip-box" style="margin-top:1rem">漏斗越窄，執行力越強。專注不是天賦，是主動過濾的結果。</div>`;
+    h+=`</div>`;
+    break;}
+
+  // ── BESSEMER AI (new build) ───────────────────────────────────────────────
+  case 'bessemer-ai':
+    h+=blob('rgba(59,130,246,.1)','rgba(168,85,247,.07)');
+    h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%">`;
+    h+=mkChip('知識三層價值','blue');
+    h+=`<h2 style="margin-bottom:.5rem">Bessemer AI 價值三層<br><span class="g-blue">對應你的學習輸出</span></h2>`;
+    h+=`<div class="bar"></div>`;
+    h+=`<div style="display:flex;flex-direction:column;gap:.8rem;margin-top:1rem">`;
+    [{layer:'Foundation',zh:'底層基礎',col:'var(--blue)',colR:'rgba(59,130,246',bessemer:'算力與模型（GPU、LLM）',learning:'你的思維框架與底層能力（批判性思考、邏輯分析）',moat:'建立需要多年，最難被複製'},{layer:'Orchestration',zh:'整合層',col:'var(--purple)',colR:'rgba(168,85,247',bessemer:'工具與 API（Cursor、LangChain）',learning:'你的系統與工具組（學習方法、知識管理）',moat:'今天學的工具，明天就能應用'},{layer:'Application',zh:'應用層',col:'var(--orange)',colR:'rgba(255,107,0',bessemer:'使用者場景（AI 產品、服務）',learning:'你的商業輸出（作品、服務、決策）',moat:'最快看到 ROI，但也最快被模仿'}].forEach((item,i)=>{
+      h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:auto">`;
+      h+=`<div class="card-answer" style="background:${item.colR},.08);border:1.5px solid ${item.colR},.3);border-radius:12px;padding:1rem 1.2rem;display:grid;grid-template-columns:auto 1fr 1fr;gap:1rem;align-items:center">`;
+      h+=`<div style="text-align:center;min-width:90px"><div style="font-size:var(--min-label);font-weight:800;color:${item.col};letter-spacing:.1em;text-transform:uppercase;margin-bottom:.2rem">${item.layer}</div><div style="font-size:var(--min-font);color:var(--mid)">${item.zh}</div></div>`;
+      h+=`<div style="border-left:2px solid ${item.colR},.25);padding-left:1rem"><div style="font-size:var(--min-label);color:${item.col};font-weight:700;margin-bottom:.2rem">Bessemer AI 模型</div><div style="font-size:var(--min-font);color:var(--mid)">${item.bessemer}</div></div>`;
+      h+=`<div style="border-left:2px solid ${item.colR},.25);padding-left:1rem"><div style="font-size:var(--min-label);color:${item.col};font-weight:700;margin-bottom:.2rem">對應你的學習</div><div style="font-size:var(--min-font);color:var(--ink)">${item.learning}</div></div>`;
+      h+=`</div>`;
+      h+=`<div class="card-mask" style="border-radius:12px;background:${item.colR},.12);border:1.5px solid ${item.colR},.3)">`;
+      h+=`<div style="font-size:var(--min-font);font-weight:800;color:${item.col}">${item.layer} 層</div><div style="font-size:var(--min-font);color:var(--mid);margin-top:.3rem">${item.zh}</div></div></div>`;
+    });
+    h+=`</div>`;
+    h+=`<div class="tip-box" style="margin-top:1rem"><strong>核心洞見：</strong>大多數人只在應用層學習（工具），忽略了底層（思維框架）的複利效應。先建底座，再擴應用。</div>`;
+    h+=`</div>`;
+    break;
+
+  // ── GROWTH FUNNEL (new build) ──────────────────────────────────────────────
+  case 'growth-funnel':
+    h+=blob('rgba(34,197,94,.08)','rgba(59,130,246,.06)');
+    h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%">`;
+    h+=mkChip('獲客成長漏斗','green');
+    h+=`<h2 style="margin-bottom:.5rem">讓知識<span class="g-green">在市場中流通</span></h2>`;
+    h+=`<div class="bar"></div>`;
+    h+=`<div style="display:flex;gap:1rem;align-items:center;margin-top:1.2rem;flex-wrap:wrap;justify-content:center">`;
+    [{stage:'Awareness',zh:'讓對的人知道你',col:'var(--blue)',colR:'rgba(59,130,246',width:'100%',action:'輸出你的學習：寫作、演講、分享','metric':'觸及對的 1000 人'},{stage:'Activation',zh:'讓他們採取第一個行動',col:'var(--orange)',colR:'rgba(255,107,0',width:'70%',action:'給他一個低成本嘗試的機會','metric':'第一次真實接觸'},{stage:'Retention',zh:'讓他們持續回來',col:'var(--green)',colR:'rgba(34,197,94',width:'40%',action:'持續創造讓他們需要你的價值','metric':'NPS > 50 × 自發分享'}].forEach((item,i)=>{
+      h+=`<div style="width:${item.width};background:${item.colR},.08);border:1.5px solid ${item.colR},.3);border-radius:12px;padding:1rem 1.2rem;display:flex;justify-content:space-between;align-items:center;transition:all .3s">`;
+      h+=`<div><div style="font-size:.6rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:${item.col};margin-bottom:.2rem">${item.stage} · ${item.zh}</div><div style="font-size:var(--min-font);color:var(--ink)">${item.action}</div></div>`;
+      h+=`<div style="font-size:var(--min-label);color:${item.col};font-weight:600;white-space:nowrap;padding:.3rem .6rem;background:${item.colR},.1);border-radius:6px">${item.metric}</div>`;
+      h+=`</div>`;
+      if(i<2)h+=`<div style="color:rgba(255,255,255,.2);font-size:1.2rem">▼</div>`;
+    });
+    h+=`</div>`;
+    h+=`<div class="tip-box" style="margin-top:1.2rem"><strong>核心原則：</strong>不要試圖讓所有人知道你。專注於讓正確的 1,000 人深度認識你。精準 > 廣播。</div>`;
+    h+=`</div>`;
+    break;
+
+  // ── GROWTH FINAL (v3) ──────────────────────────────────────────────────────
+  case 'growth-final':{
+    h+=blob('rgba(255,107,0,.12)','rgba(168,85,247,.08)');
+    h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto 1rem"></div>`;
+    if(sd.title)h+=`<h2 style="margin-bottom:.5rem">${sd.title}</h2>`;
+    h+=`<p style="color:var(--mid);font-size:var(--min-font);margin-bottom:1.2rem">今天你帶走的，不只是工具——而是一套問問題的方式</p>`;
+    h+=`</div>`;
+    const finalPoints=[
+      {col:'var(--red)',title:'先問欲求性',desc:'誰在痛？他現在怎麼解決？他願意付出代價換取你的解法嗎？'},
+      {col:'var(--blue)',title:'市場是可以估算的',desc:'先假設再驗證。5 分鐘建立數量感，比沒有框架好 10 倍（費米思維）'},
+      {col:'var(--orange)',title:'精準 > 廣播',desc:'1,000 個有真實痛點的 ICP，比 100,000 個「也許有興趣」的受眾更值錢'},
+      {col:'var(--green)',title:'陌生人的行動才算數',desc:'朋友說「不錯喔」不是 PMF。截圖、tag 朋友、主動分享——那才是真訊號'},
+    ];
+    h+=`<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;max-width:800px;margin:0 auto;position:relative;z-index:1">`;
+    finalPoints.forEach((p,i)=>{
+      h+=`<div style="background:${p.col}10;border:2px solid ${p.col}40;border-radius:12px;padding:1.2rem;text-align:center;opacity:0;animation:fade-up .5s ease forwards;animation-delay:${.2+i*.12}s"><div style="font-size:var(--min-font);font-weight:700;color:${p.col};margin-bottom:.3rem">${p.title}</div><div style="font-size:var(--min-label);color:var(--mid)">${p.desc}</div></div>`;
+    });
+    h+=`</div>`;
+    h+=`<div style="max-width:700px;margin:1.2rem auto 0;position:relative;z-index:1;text-align:center"><div style="font-size:clamp(1.4rem,3vw,2rem);font-weight:800;color:var(--orange);line-height:1.4">「設計不是讓作品變美，<br>是讓人改變行為」</div><p style="font-size:var(--min-font);color:var(--mid);margin-top:.6rem">帶著這套框架，去驗證你的下一個想法。</p></div>`;
+    break;}
+
+  // ── RECAP ─────────────────────────────────────────────────────────────────
+  case 'recap':
+    h+=blob('rgba(6,182,212,.08)','rgba(34,197,94,.06)');
+    h+=`<div style="position:relative;z-index:1;max-width:920px;width:100%">`;
+    h+=mkChip('全場回顧','cyan');
+    h+=`<h2 style="margin-bottom:.5rem">90 分鐘<span class="g-cyan">大腦作業系統</span>總覽</h2>`;
+    h+=`<div class="bar"></div>`;
+    h+=`<div class="mrev-grid cols-3" style="margin-top:1rem">`;
+    [{num:'01',title:'學習基礎',points:['環境降噪','身體三角形','Input → Output 迴路'],col:'var(--blue)',colR:'rgba(59,130,246'},{num:'02',title:'速讀與留存',points:['三段掃描法','Chunking 分組','費曼技巧 + 間隔重複'],col:'var(--green)',colR:'rgba(34,197,94'},{num:'03',title:'目標錨定',points:['Hormozi 價值公式','九宮格目標展開','不公平優勢'],col:'var(--purple)',colR:'rgba(168,85,247'},{num:'04',title:'市場驗證',points:['GTM → POC → PMF','PMF 三支柱','陌生人行動才算數'],col:'var(--yellow)',colR:'rgba(251,191,36'},{num:'05',title:'槓桿策略',points:['80/20 法則','MECE 資源漏斗','Safety Margin'],col:'var(--red)',colR:'rgba(255,32,85'},{num:'06',title:'你的下一步',points:['用框架看你的問題','找出最高槓桿行動','明天就開始一件事'],col:'var(--cyan)',colR:'rgba(6,182,212'}].forEach(item=>{
+      h+=`<div style="background:${item.colR},.07);border:1.5px solid ${item.colR},.25);border-radius:14px;padding:1.2rem"><div style="font-size:1.4rem;font-weight:800;color:${item.colR},.25);margin-bottom:.4rem">${item.num}</div><div style="font-size:var(--min-font);font-weight:700;color:${item.col};margin-bottom:.6rem">${item.title}</div><ul class="deck-list">`;
+      item.points.forEach(p=>{h+=`<li style="font-size:var(--min-label)">${p}</li>`;});
+      h+=`</ul></div>`;
+    });
+    h+=`</div></div>`;
+    break;
+
+  // ── HOT SEAT SESSION ──────────────────────────────────────────────────────
+  case 'hotseat-session':
+    h+=blob('rgba(255,32,85,.12)','rgba(255,107,0,.08)');
+    h+=`<div style="position:relative;z-index:1;text-align:center;max-width:800px">`;
+    h+=`<div class="hotseat-badge" style="margin:0 auto 1.2rem">全場 Hot Seat</div>`;
+    h+=`<h1 class="g-red" style="margin-bottom:1rem">壓力測試時間</h1>`;
+    h+=`<div class="bar" style="margin:.8rem auto 1.4rem"></div>`;
+    h+=`<div style="background:rgba(255,32,85,.08);border:2px solid rgba(255,32,85,.3);border-radius:16px;padding:1.6rem;margin-bottom:1.2rem"><p style="font-size:clamp(1.2rem,1.8vw,1.5rem);color:var(--ink);line-height:1.8">被點到的學員：<br>用<strong style="color:var(--red)">今天學到的框架</strong><br>分析你在開場寫下的<strong style="color:var(--orange)">卡關問題</strong><br><span style="opacity:.6;font-size:.9em">2 分鐘，說出你的診斷</span></p></div>`;
+    h+=`<div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap">`;
+    ['用 Hormozi 公式算一下 ROI？','你的 ICP 是誰？','資源漏斗怎麼切？','你的 Unfair Advantage 在哪？'].forEach(q=>{
+      h+=`<div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.6rem 1rem;font-size:var(--min-font);color:rgba(255,255,255,.6)">${q}</div>`;
+    });
+    h+=`</div></div>`;
+    break;
+
+  // ── CONVERGE ──────────────────────────────────────────────────────────────
+  case 'converge':
+    h+=blob('rgba(6,182,212,.08)','rgba(34,197,94,.06)');
+    h+=`<div style="position:relative;z-index:1;max-width:820px">`;
+    h+=mkChip('終極收斂','cyan');
+    h+=`<h1 style="margin-bottom:1rem">把混亂說清楚<br>就看見<span class="g-cyan">真正的下一步</span></h1>`;
+    h+=`<div class="bar"></div>`;
+    h+=`<div style="display:flex;flex-direction:column;gap:1rem;margin-top:1rem">`;
+    [['01','現在，看看你在開場寫下的問題'],['02','用 Hormozi 公式確認學習的 ROI'],['03','用九宮格展開你的行動計畫'],['04','用資源漏斗砍到唯一最高槓桿行動'],['05','寫下：明天第一件要做的事（一件）']].forEach(([num,text])=>{
+      h+=`<div class="glass-card" style="display:flex;align-items:center;gap:1.2rem"><span style="font-size:1.4rem;font-weight:800;color:rgba(6,182,212,.4);flex-shrink:0;min-width:2rem">${num}</span><span style="font-size:clamp(1.1rem,1.6vw,1.3rem);color:var(--ink)">${text}</span></div>`;
+    });
+    h+=`</div>`;
+    h+=`<div class="tip-box" style="margin-top:1.2rem">混亂不是因為事情太複雜。是因為<strong>你還沒有過濾</strong>。現在，過濾它。</div>`;
+    h+=`<div style="text-align:center;margin-top:1.4rem"><button class="cta-btn" onclick="jumpToId('m1_cover')" style="font-size:clamp(.9rem,1.3vw,1.1rem)">← 返回開頭</button></div>`;
+    h+=`</div>`;
+    break;
+
+  // ── CTA ────────────────────────────────────────────────────────────────────
+  case 'cta':
+    h+=blob('rgba(255,107,0,.1)','rgba(168,85,247,.08)');
+    h+=`<div style="position:relative;z-index:1;text-align:center;max-width:800px">`;
+    h+=mkChip('後續連結','orange');
+    h+=`<h1 class="g-multi" style="margin-bottom:1rem">繼續對話</h1>`;
+    h+=`<div class="bar" style="margin:.8rem auto 1.4rem"></div>`;
+    h+=`<p style="font-size:clamp(1.2rem,1.8vw,1.5rem);margin-bottom:1.8rem">今天是起點，不是終點。<br>有問題、有想法、想深聊——歡迎隨時找我。</p>`;
+    h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.8rem;text-align:left">`;
+    [['01','後續策略對接','有具體問題想深聊，歡迎直接聯繫'],['02','資源與工具清單','今天提到的工具清單整理後分享'],['03','社群連結','加入持續學習的社群，保持校準'],['04','書單推薦','今天框架的延伸閱讀，精選 5 本']].forEach(([num,title,desc])=>{
+      h+=`<div class="glass-card"><div style="font-size:.65rem;font-weight:800;letter-spacing:.14em;color:var(--orange);margin-bottom:.4rem">${num}</div><div style="font-size:var(--min-font);font-weight:700;color:var(--ink);margin-bottom:.3rem">${title}</div><div class="label-sm">${desc}</div></div>`;
+    });
+    h+=`</div>`;
+    h+=`<div style="background:linear-gradient(135deg,rgba(255,107,0,.1),rgba(168,85,247,.08));border:2px solid rgba(255,107,0,.3);border-radius:16px;padding:1.4rem;margin-bottom:1.4rem"><div style="font-size:clamp(1.4rem,2.2vw,1.8rem);font-weight:700;color:var(--ink)">Signal over Noise.</div><div style="font-size:var(--min-font);color:var(--mid);margin-top:.5rem">每一天，都是過濾的練習。</div></div>`;
+    h+=`<button class="cta-btn" onclick="jumpToId('m1_cover')" style="font-size:clamp(.9rem,1.3vw,1.1rem)">← 返回開頭</button>`;
+    h+=`</div>`;
+    break;
+
+  // ── SPRINT ─────────────────────────────────────────────────────────────────
+  case 'sprint':{
+    const sid=sd.id;
+    timers[sid]={rem:sd.time,running:false,interval:null};
+    h+=blob('rgba(255,32,85,.12)','rgba(255,107,0,.1)');
+    h+=`<div style="position:relative;z-index:1;text-align:center;max-width:820px;width:100%">`;
+    h+=`<div class="sprint-badge">Sprint ${sd.sprintNum} · 實戰衝刺</div>`;
+    h+=`<h2 style="margin-bottom:.8rem">${sd.title}</h2>`;
+    h+=`<div class="sprint-task">${sd.task}</div>`;
+    h+=`<div class="timer-wrap"><div class="timer-display" id="td-${sid}">${fmt(sd.time)}</div>`;
+    h+=`<div id="tlbl-${sid}" class="timer-label-done">TIME IS UP</div>`;
+    h+=`<div class="timer-btns"><button class="timer-btn" id="tbtn-${sid}" onclick="toggleTimer('${sid}',${sd.time})">開始</button><button class="timer-reset-btn" onclick="resetTimer('${sid}',${sd.time})">重設</button></div></div></div>`;
+    break;}
+
+  default:
+    h+=`<div style="position:relative;z-index:1"><h2>${sd.id}</h2></div>`;
   }
   h+='</div>';
   return h;
 }
-
-// ── TOGGLE STEP ───────────────────────────────────────────────────────────
-function toggleStep(id){const el=document.getElementById(id);if(!el)return;el.classList.toggle('open');}
 
 // ── NAVIGATION ENGINE ─────────────────────────────────────────────────────
 let cur=0;
@@ -929,29 +1438,25 @@ D.forEach((sd,i)=>{if(secStarts[sd.sec]===undefined)secStarts[sd.sec]=i;});
 
 const slideEls=D.map((sd,i)=>{
   const el=document.createElement('div');
-  el.className='slide';
-  el.dataset.sec=sd.sec;
-  el.dataset.index=i;
-  el.innerHTML=renderSlide(sd);
-  container.appendChild(el);
-  return el;
+  el.className='slide';el.dataset.sec=sd.sec;el.dataset.index=i;
+  el.innerHTML=`<div class="inner">${renderSlide(sd)}</div>`;
+  container.appendChild(el);return el;
 });
 
-// Dot nav
 const dotNav=document.getElementById('dot-nav');
 D.forEach((sd,i)=>{
   const d=document.createElement('div');
-  d.className='dot';d.dataset.idx=i;
-  d.title=`${i+1}. ${sd.sub}`;
-  d.onclick=()=>scrollToSlide(i);
-  dotNav.appendChild(d);
+  d.className='dot';d.dataset.idx=i;d.title=`${i+1}. ${sd.sub}`;
+  d.onclick=()=>scrollToSlide(i);dotNav.appendChild(d);
 });
+
+const secNames=['開場','Feasibility','Desirability','Viability','收尾'];
 
 function updateUI(){
   const sd=D[cur];
   document.getElementById('prog-fill').style.width=`${(cur/(total-1))*100}%`;
-  document.getElementById('breadcrumb').textContent=`Module ${sd.sec} · ${sd.sub}`;
-  document.getElementById('sec-indicator').textContent=`${'①②③④⑤⑥'[sd.sec-1]} ${['開場','學習基礎','記憶留存','速讀獲取','策略思維','收尾驗收'][sd.sec-1]}`;
+  document.getElementById('breadcrumb').textContent=`${sd.sub}`;
+  document.getElementById('sec-indicator').textContent=`${'①②③④⑤'[sd.sec-1]} ${secNames[sd.sec-1]}`;
   document.getElementById('counter').textContent=`${cur+1} / ${total}`;
   document.querySelectorAll('.sec-btn').forEach(btn=>{btn.classList.toggle('active',parseInt(btn.dataset.sec)===sd.sec);});
   document.querySelectorAll('.dot').forEach(d=>{
@@ -964,23 +1469,28 @@ function updateUI(){
 function scrollToSlide(idx){
   idx=Math.max(0,Math.min(idx,total-1));
   slideEls[idx]?.scrollIntoView({behavior:'smooth',block:'start'});
-  cur=idx;updateUI();
+  cur=idx;updateUI();playPageFlip();
 }
 function jumpToSection(sec){const idx=secStarts[sec];if(idx!==undefined)scrollToSlide(idx);}
-function jumpToId(id){const idx=D.findIndex(sd=>sd.id===id);if(idx>=0)scrollToSlide(idx);}
 
 function findNextRevealable(){
   const slideEl=document.querySelector(`.slide[data-index="${cur}"]`);if(!slideEl)return null;
   const card=slideEl.querySelector('.unlock-card:not(.unlocked)');if(card)return card;
+  const cmp=slideEl.querySelector('.cmp-card:not(.revealed)');if(cmp)return cmp;
   const stepItem=slideEl.querySelector('.step-item:not(.open)');if(stepItem)return stepItem;
   return null;
 }
 
 document.getElementById('btn-prev').addEventListener('click',()=>scrollToSlide(cur-1));
-document.getElementById('btn-next').addEventListener('click',()=>{const t=findNextRevealable();if(t){t.click();}else{scrollToSlide(cur+1);}});
+document.getElementById('btn-next').addEventListener('click',()=>{
+  const t=findNextRevealable();
+  if(t){t.click();}else{scrollToSlide(cur+1);}
+});
 
 document.addEventListener('keydown',e=>{
-  if(['ArrowDown','ArrowRight',' ','PageDown'].includes(e.key)){e.preventDefault();const t=findNextRevealable();if(t){t.click();}else{scrollToSlide(cur+1);}}
+  if(['ArrowDown','ArrowRight',' ','PageDown'].includes(e.key)){
+    e.preventDefault();const t=findNextRevealable();if(t){t.click();}else{scrollToSlide(cur+1);}
+  }
   if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();scrollToSlide(cur-1);}
   if(e.key==='Home'){e.preventDefault();scrollToSlide(0);}
   if(e.key==='End'){e.preventDefault();scrollToSlide(total-1);}
@@ -1002,8 +1512,9 @@ const observer=new IntersectionObserver(entries=>{
   });
 },{threshold:0.5});
 slideEls.forEach(el=>observer.observe(el));
+
 updateUI();
-initCarousels();
+setTimeout(initCarousels,500);
 </script>
 </body>
 </html>
