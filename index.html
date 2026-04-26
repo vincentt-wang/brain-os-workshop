@@ -193,13 +193,17 @@ strong{color:var(--ink);font-weight:700}
 .sec-btn:last-child{border-right:none}
 .sec-btn:hover{color:rgba(255,255,255,.8);background:rgba(255,107,0,.08)}
 .sec-btn.active{color:#fff;background:rgba(255,107,0,.1);border-top-color:var(--orange)}
-.sec-tooltip{position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:rgba(8,8,12,.97);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:.55rem .9rem;min-width:90px;opacity:0;pointer-events:none;transition:opacity .18s ease;font-size:.65rem;line-height:2;text-align:center;z-index:999;white-space:nowrap;letter-spacing:.06em;text-transform:none;font-weight:700;color:rgba(255,255,255,.75)}
+.sec-tooltip{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);background:rgba(8,8,12,.97);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:.5rem .6rem;min-width:88px;opacity:0;pointer-events:none;transition:opacity .18s ease;font-size:.65rem;text-align:center;z-index:1000;white-space:nowrap;letter-spacing:.04em;text-transform:none}
 .sec-tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:rgba(255,255,255,.1)}
-.sec-btn:hover .sec-tooltip{opacity:1}
-/* DOT PAGE LABEL */
-.dot{position:relative}
-.dot::after{content:attr(data-page);position:absolute;right:calc(100% + 7px);top:50%;transform:translateY(-50%);background:rgba(8,8,12,.9);border:1px solid rgba(255,255,255,.09);border-radius:4px;padding:.1rem .38rem;font-size:.52rem;font-weight:700;color:rgba(255,255,255,.55);white-space:nowrap;opacity:0;transition:opacity .15s;pointer-events:none}
-.dot:hover::after{opacity:1}
+.sec-tooltip.visible{opacity:1;pointer-events:all}
+.tt-item{display:block;padding:.18rem .5rem;border-radius:5px;font-weight:700;color:rgba(255,255,255,.72);cursor:pointer;transition:color .15s,background .15s;line-height:1.9}
+.tt-item:hover{color:var(--orange);background:rgba(255,107,0,.12)}
+/* DOT FLOATING LABEL — handled via JS */
+#dot-page-label{position:fixed;background:rgba(8,8,12,.92);border:1px solid rgba(255,255,255,.1);border-radius:5px;padding:.14rem .48rem;font-size:.55rem;font-weight:700;color:rgba(255,255,255,.65);white-space:nowrap;z-index:950;pointer-events:none;opacity:0;transition:opacity .15s;transform:translate(-100%,-50%)}
+/* AUDIO TOGGLE */
+#btn-audio{position:fixed;bottom:68px;right:18px;z-index:920;width:34px;height:34px;border-radius:50%;background:rgba(8,8,12,.8);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.7rem;color:rgba(255,255,255,.4);transition:all .25s}
+#btn-audio:hover{color:var(--orange);border-color:rgba(255,107,0,.4)}
+#btn-audio.muted{color:rgba(255,32,85,.5);border-color:rgba(255,32,85,.3)}
 /* MANDALA ENTRANCE */
 @keyframes mc-pop{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}
 /* MOBILE */
@@ -240,13 +244,45 @@ strong{color:var(--ink);font-weight:700}
 <div id="counter">1 / 58</div>
 <button class="nav-btn" id="btn-prev" aria-label="Previous">↑</button>
 <button class="nav-btn" id="btn-next" aria-label="Next">↓</button>
+<div id="dot-page-label"></div>
+<button id="btn-audio" title="音效開關" onclick="toggleAudio()">♪</button>
 <div id="slides-container"></div>
 <div id="sec-nav">
-  <button class="sec-btn active" data-sec="1" onclick="jumpToSection(1)">① 底層邏輯<div class="sec-tooltip">創新三元<br>三種陷阱<br>時間分配</div></button>
-  <button class="sec-btn" data-sec="2" onclick="jumpToSection(2)">② 可行性<div class="sec-tooltip">訊息獲取<br>訊息留存<br>決策框架</div></button>
-  <button class="sec-btn" data-sec="3" onclick="jumpToSection(3)">③ 欲求性<div class="sec-tooltip">目標設計<br>黃金交集<br>風險假設</div></button>
-  <button class="sec-btn" data-sec="4" onclick="jumpToSection(4)">④ 存續性<div class="sec-tooltip">痛點定位<br>市場驗證<br>槓桿策略</div></button>
-  <button class="sec-btn" data-sec="5" onclick="jumpToSection(5)">⑤ 整合行動<div class="sec-tooltip">全場回顧<br>壓力測試<br>第一行動</div></button>
+  <button class="sec-btn active" data-sec="1" onclick="jumpToSection(1)">① 底層邏輯
+    <div class="sec-tooltip" id="tt-1">
+      <span class="tt-item" onclick="jumpToId('m1_triad');event.stopPropagation()">創新三元</span>
+      <span class="tt-item" onclick="jumpToId('m1_dfv_trap');event.stopPropagation()">三種陷阱</span>
+      <span class="tt-item" onclick="jumpToId('m1_time_alloc');event.stopPropagation()">時間分配</span>
+    </div>
+  </button>
+  <button class="sec-btn" data-sec="2" onclick="jumpToSection(2)">② 可行性
+    <div class="sec-tooltip" id="tt-2">
+      <span class="tt-item" onclick="jumpToId('m2_speed');event.stopPropagation()">訊息獲取</span>
+      <span class="tt-item" onclick="jumpToId('m2_chunk');event.stopPropagation()">訊息留存</span>
+      <span class="tt-item" onclick="jumpToId('m2_mece_intro');event.stopPropagation()">決策框架</span>
+    </div>
+  </button>
+  <button class="sec-btn" data-sec="3" onclick="jumpToSection(3)">③ 欲求性
+    <div class="sec-tooltip" id="tt-3">
+      <span class="tt-item" onclick="jumpToId('m3_dt');event.stopPropagation()">目標設計</span>
+      <span class="tt-item" onclick="jumpToId('m3_dfv');event.stopPropagation()">黃金交集</span>
+      <span class="tt-item" onclick="jumpToId('m3_riskiest');event.stopPropagation()">風險假設</span>
+    </div>
+  </button>
+  <button class="sec-btn" data-sec="4" onclick="jumpToSection(4)">④ 存續性
+    <div class="sec-tooltip" id="tt-4">
+      <span class="tt-item" onclick="jumpToId('m3_vitamin');event.stopPropagation()">痛點定位</span>
+      <span class="tt-item" onclick="jumpToId('m4_gtm');event.stopPropagation()">市場驗證</span>
+      <span class="tt-item" onclick="jumpToId('m4_leverage');event.stopPropagation()">槓桿策略</span>
+    </div>
+  </button>
+  <button class="sec-btn" data-sec="5" onclick="jumpToSection(5)">⑤ 整合行動
+    <div class="sec-tooltip" id="tt-5">
+      <span class="tt-item" onclick="jumpToId('m5_recap');event.stopPropagation()">全場回顧</span>
+      <span class="tt-item" onclick="jumpToId('m5_pressure');event.stopPropagation()">壓力測試</span>
+      <span class="tt-item" onclick="jumpToId('m5_converge');event.stopPropagation()">第一行動</span>
+    </div>
+  </button>
 </div>
 <script>
 // ── SLIDE DATA ──────────────────────────────────────────────────────────────
@@ -652,11 +688,18 @@ function renderSlide(sd){
     h+=`<div style="font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;letter-spacing:-.02em">Vincent</div>`;
     h+=`<div style="font-size:var(--min-font);color:var(--mid);line-height:1.7">Stanford d.school × IDEO 矽谷研習<br>EmoTree Founder · DFT 商業競賽冠軍<br><span style="color:var(--orange)">大腦作業系統 — 讓學習直接轉化為商業行動</span></div>`;
     h+=`</div>`;
-    h+=`<div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center">`;
-    [['Stanford d.school','var(--red)'],['IDEO 矽谷參訪','var(--orange)'],['DFT 冠軍','var(--purple)']].forEach(([label,col])=>{
-      h+=`<div style="padding:.5rem 1.1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;font-size:var(--min-font);font-weight:600;color:${col}">${label}</div>`;
+    h+=`<div style="display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center">`;
+    [
+      ['<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>','Stanford d.school','var(--red)'],
+      ['<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>','IDEO 矽谷參訪','var(--orange)'],
+      ['<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>','DFT 冠軍','var(--purple)'],
+    ].forEach(([icon,label,col])=>{
+      h+=`<div style="padding:.45rem 1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;font-size:var(--min-font);font-weight:600;color:${col};display:flex;align-items:center;gap:.4rem">${icon}${label}</div>`;
     });
-    h+=`<button class="cta-btn" style="margin-top:.6rem" onclick="jumpToId('m5_converge')">預覽終極成果 →</button>`;
+    h+=`</div>`;
+    h+=`<button class="cta-btn" style="margin-top:.2rem;align-self:center" onclick="jumpToId('m5_converge')">`;
+    h+=`<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>`;
+    h+=`預覽成果</button>`;
     h+=`</div></div>`;
     break;}
 
@@ -1985,6 +2028,49 @@ function updateRail(sec){
 
 updateUI();
 setTimeout(initCarousels,500);
+
+/* ── SEC-NAV TOOLTIP: hover delay so user can move mouse in and click ── */
+(function(){
+  let ttTimer=null;
+  document.querySelectorAll('.sec-btn').forEach(btn=>{
+    const tt=btn.querySelector('.sec-tooltip');
+    if(!tt)return;
+    const show=()=>{clearTimeout(ttTimer);tt.classList.add('visible');};
+    const hide=()=>{ttTimer=setTimeout(()=>tt.classList.remove('visible'),900);};
+    btn.addEventListener('mouseenter',show);
+    btn.addEventListener('mouseleave',hide);
+    tt.addEventListener('mouseenter',show);
+    tt.addEventListener('mouseleave',hide);
+  });
+})();
+
+/* ── DOT-NAV FLOATING PAGE LABEL ── */
+(function(){
+  const lbl=document.getElementById('dot-page-label');
+  if(!lbl)return;
+  let hideT=null;
+  document.addEventListener('mouseover',e=>{
+    const dot=e.target.closest('.dot');
+    if(!dot){clearTimeout(hideT);hideT=setTimeout(()=>{lbl.style.opacity='0';},100);return;}
+    clearTimeout(hideT);
+    const page=dot.dataset.page||'';
+    lbl.textContent=page;
+    const r=dot.getBoundingClientRect();
+    lbl.style.left=(r.left-10)+'px';
+    lbl.style.top=(r.top+r.height/2)+'px';
+    lbl.style.opacity='1';
+  });
+  document.addEventListener('mouseout',e=>{
+    if(!e.target.closest('.dot')){clearTimeout(hideT);hideT=setTimeout(()=>{lbl.style.opacity='0';},100);}
+  });
+})();
+
+/* ── AUDIO TOGGLE ── */
+function toggleAudio(){
+  audioEnabled=!audioEnabled;
+  const btn=document.getElementById('btn-audio');
+  if(btn){btn.classList.toggle('muted',!audioEnabled);btn.title=audioEnabled?'音效開（點擊關閉）':'音效關（點擊開啟）';}
+}
 </script>
 </body>
 </html>
