@@ -187,15 +187,21 @@ strong{color:var(--ink);font-weight:700}
 #btn-prev{bottom:72px;right:72px}
 #btn-next{bottom:72px;right:18px}
 #counter{position:fixed;bottom:80px;left:20px;z-index:900;font-size:1.6rem;font-weight:800;color:#fff;letter-spacing:.04em;font-variant-numeric:tabular-nums;text-shadow:0 2px 12px rgba(0,0,0,.7)}
-/* AUDIO TOGGLE */
-#btn-audio{position:fixed;top:14px;right:120px;z-index:910;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.07);backdrop-filter:blur(12px);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.85rem;color:rgba(255,255,255,.5);transition:all .25s}
-#btn-audio:hover{color:var(--orange);border-color:rgba(255,107,0,.4)}
 /* SEC NAV */
 #sec-nav{position:fixed;bottom:0;left:0;right:0;height:56px;background:rgba(8,8,12,.95);backdrop-filter:blur(20px);display:flex;align-items:stretch;z-index:950;border-top:1px solid var(--line)}
-.sec-btn{flex:1;display:flex;align-items:center;justify-content:center;font-size:clamp(.55rem,.8vw,.72rem);font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.3);cursor:pointer;border:none;background:transparent;border-right:1px solid var(--line);transition:color .2s,background .2s;border-top:2px solid transparent}
+.sec-btn{flex:1;display:flex;align-items:center;justify-content:center;font-size:clamp(.52rem,.75vw,.68rem);font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.3);cursor:pointer;border:none;background:transparent;border-right:1px solid var(--line);transition:color .2s,background .2s;border-top:2px solid transparent;position:relative;overflow:visible}
 .sec-btn:last-child{border-right:none}
 .sec-btn:hover{color:rgba(255,255,255,.8);background:rgba(255,107,0,.08)}
 .sec-btn.active{color:#fff;background:rgba(255,107,0,.1);border-top-color:var(--orange)}
+.sec-tooltip{position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:rgba(8,8,12,.97);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:.55rem .9rem;min-width:90px;opacity:0;pointer-events:none;transition:opacity .18s ease;font-size:.65rem;line-height:2;text-align:center;z-index:999;white-space:nowrap;letter-spacing:.06em;text-transform:none;font-weight:700;color:rgba(255,255,255,.75)}
+.sec-tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:rgba(255,255,255,.1)}
+.sec-btn:hover .sec-tooltip{opacity:1}
+/* DOT PAGE LABEL */
+.dot{position:relative}
+.dot::after{content:attr(data-page);position:absolute;right:calc(100% + 7px);top:50%;transform:translateY(-50%);background:rgba(8,8,12,.9);border:1px solid rgba(255,255,255,.09);border-radius:4px;padding:.1rem .38rem;font-size:.52rem;font-weight:700;color:rgba(255,255,255,.55);white-space:nowrap;opacity:0;transition:opacity .15s;pointer-events:none}
+.dot:hover::after{opacity:1}
+/* MANDALA ENTRANCE */
+@keyframes mc-pop{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}
 /* MOBILE */
 @media(max-width:767px){
   html{font-size:16px}
@@ -234,37 +240,38 @@ strong{color:var(--ink);font-weight:700}
 <div id="counter">1 / 58</div>
 <button class="nav-btn" id="btn-prev" aria-label="Previous">↑</button>
 <button class="nav-btn" id="btn-next" aria-label="Next">↓</button>
-<button id="btn-audio" title="音效開關" onclick="toggleAudio()">■</button>
 <div id="slides-container"></div>
 <div id="sec-nav">
-  <button class="sec-btn active" data-sec="1" onclick="jumpToSection(1)">① 開場</button>
-  <button class="sec-btn" data-sec="2" onclick="jumpToSection(2)">② Feasibility</button>
-  <button class="sec-btn" data-sec="3" onclick="jumpToSection(3)">③ Desirability</button>
-  <button class="sec-btn" data-sec="4" onclick="jumpToSection(4)">④ Viability</button>
-  <button class="sec-btn" data-sec="5" onclick="jumpToSection(5)">⑤ 收尾</button>
+  <button class="sec-btn active" data-sec="1" onclick="jumpToSection(1)">① 底層邏輯<div class="sec-tooltip">創新三元<br>三種陷阱<br>時間分配</div></button>
+  <button class="sec-btn" data-sec="2" onclick="jumpToSection(2)">② 可行性<div class="sec-tooltip">訊息獲取<br>訊息留存<br>決策框架</div></button>
+  <button class="sec-btn" data-sec="3" onclick="jumpToSection(3)">③ 欲求性<div class="sec-tooltip">目標設計<br>黃金交集<br>風險假設</div></button>
+  <button class="sec-btn" data-sec="4" onclick="jumpToSection(4)">④ 存續性<div class="sec-tooltip">痛點定位<br>市場驗證<br>槓桿策略</div></button>
+  <button class="sec-btn" data-sec="5" onclick="jumpToSection(5)">⑤ 整合行動<div class="sec-tooltip">全場回顧<br>壓力測試<br>第一行動</div></button>
 </div>
 <script>
 // ── SLIDE DATA ──────────────────────────────────────────────────────────────
 const D=[
-// ════ MODULE 1: 開場 (8 slides) ════
-{id:'m1_cover',sec:1,sub:'開場',type:'cover'},
+// ════ MODULE 1: 底層邏輯 ════
+{id:'m1_cover',sec:1,sub:'底層邏輯',type:'cover'},
 {id:'m1_quote',sec:1,sub:'破題',type:'big-quote',chip:['破題','red'],quote:'學習如何不只是<br><span class="g-red">自我慰藉？</span>',sub2:'學了不用 = 收藏焦慮<br>用了不對 = 方向浪費'},
 {id:'m1_about',sec:1,sub:'關於講者',type:'profile-hero',chip:['關於講者','white']},
 {id:'m1_poll',sec:1,sub:'現況調查',type:'audience-poll',chip:['現況診斷','orange'],title:'你中幾個？'},
-{id:'m1_triad',sec:1,sub:'工作坊架構',type:'triad-v2',chip:['今日三元架構','blue'],title:'大腦作業系統：三個維度'},
+{id:'m1_triad',sec:1,sub:'創新三元',type:'triad-v2',chip:['今日三元架構','blue'],title:'大腦作業系統：三個維度'},
+{id:'m1_innovation',sec:1,sub:'創新三元 Venn',type:'innovation-triad',chip:['創新三元','blue'],title:'創新需要三個條件同時成立'},
 {id:'m1_dfv_trap',sec:1,sub:'三種陷阱',type:'dfv-combinations',chip:['三種失敗模式','red'],title:'只靠一個，就是陷阱'},
+{id:'m1_time_alloc',sec:1,sub:'時間分配',type:'time-allocation',chip:['時間分配','purple'],title:'你把時間放在哪，決定成敗'},
 {id:'m1_rules',sec:1,sub:'公約',type:'rules'},
 {id:'m1_anchor',sec:1,sub:'目標錨定',type:'sprint',sprintNum:1,title:'寫下你的卡關專案',task:'不用想太久。第一個浮現的，就是最真實的<br>寫下：<strong>我目前最卡關的商業問題或目標是什麼？</strong>',time:60},
-// ════ MODULE 2: Feasibility — 學習基礎系統 ════
-{id:'m2_sec',sec:2,sub:'模組開場',type:'section-cover',secNum:'②',secTitle:'Feasibility',secEn:'可行性',sub2:'建立最強的資訊處理底座'},
-{id:'m2_noise',sec:2,sub:'環境降噪',type:'concept-single',chip:'降噪',chipColor:'blue',title:'學習的第一步：<span class="g-blue">降噪</span>',body:'你的環境決定你的輸入質量。噪音不只是聲音，是一切搶佔注意力的東西。',tip:'手機面朝下。通知關掉。這不是紀律問題，是物理問題。（McKinsey 2023：碎片化注意力讓生產力下降 40%）'},
+// ════ MODULE 2: Feasibility — 掌握資訊處理工具 ════
+{id:'m2_sec',sec:2,sub:'模組開場',type:'section-cover',secNum:'②',secTitle:'Feasibility',secEn:'可行性',sub2:'掌握資訊處理工具'},
+{id:'m2_noise',sec:2,sub:'排除干擾',type:'concept-single',chip:'排除干擾',chipColor:'blue',title:'學習的第一步：<span class="g-blue">排除干擾源</span>',body:'你的環境決定你的輸入質量。干擾不只是聲音，是一切搶佔注意力的東西。',tip:'手機面朝下。通知關掉。這不是紀律問題，是物理問題。（McKinsey 2023：碎片化注意力讓生產力下降 40%）'},
 {id:'m2_body',sec:2,sub:'身體狀態',type:'body-triangle'},
 {id:'m2_loop',sec:2,sub:'學習迴路',type:'input-output'},
-{id:'m2_memory',sec:2,sub:'訊息的兩種命運',type:'memory-types'},
+{id:'m2_memory',sec:2,sub:'兩種記憶',type:'memory-types'},
 {id:'m2_topdown',sec:2,sub:'思維框架',type:'topdown-bottomup-v2',chip:['兩種思維','purple'],title:'Top-down vs Bottom-up'},
-{id:'m2_mckinsey',sec:2,sub:'McKinsey 六元素',type:'mckinsey-six-v2',chip:['McKinsey 六錨點','blue'],title:'Top-down 思維的六個錨點'},
+{id:'m2_mckinsey',sec:2,sub:'McKinsey 六錨點',type:'mckinsey-six-v2',chip:['McKinsey','blue'],title:'Top-down 思維的六個錨點'},
 {id:'m2_speed',sec:2,sub:'速讀本質',type:'concept-single',chip:'速讀本質',chipColor:'yellow',title:'速讀不是<span class="g-orange">讀更快</span>，是<span class="g-orange">找解藥</span>',body:'你帶著什麼問題進入一本書，決定你能提取多少價值。沒有問題就沒有速讀。',tip:'前置作業：先預覽目錄 → 手繪骨架思維導圖 → 寫下 3 個你想得到的答案，再開始讀'},
-{id:'m2_speed_ex',sec:2,sub:'速讀實戰示範',type:'speed-reading-ex'},
+{id:'m2_speed_ex',sec:2,sub:'速讀示範',type:'speed-reading-ex'},
 {id:'m2_scan',sec:2,sub:'預覽掃描',type:'preview-scan'},
 {id:'m2_visual_scan',sec:2,sub:'視覺三段掃描',type:'visual-scan'},
 {id:'m2_subvoc',sec:2,sub:'消除默念',type:'concept-single',chip:'消除默念',chipColor:'orange',title:'關閉腦內的<span class="g-orange">閱讀聲音</span>',body:'Sub-vocalization 是大多數人閱讀速度的天花板。強制讓眼睛跑在聲音前面，視野從單字擴展到片語。',tip:'初期：完全靜音，不默念。進階：熟練後搭配 2x 有聲書邊聽邊讀，同時啟動聽覺與視覺雙通道，讓海馬迴判定重要性加倍'},
@@ -274,39 +281,37 @@ const D=[
 {id:'m2_dual',sec:2,sub:'雙重編碼',type:'dual-coding'},
 {id:'m2_spacing',sec:2,sub:'間隔重複',type:'spacing-curve'},
 {id:'m2_mece_intro',sec:2,sub:'MECE 工具',type:'mece-intro-v2',chip:['MECE','yellow'],title:'MECE：相互獨立，完全窮盡'},
-{id:'m2_mece_game',sec:2,sub:'MECE 互動',type:'mece-game-v2',chip:['MECE 猜猜看','yellow'],title:'這是 MECE 嗎？'},
-{id:'m2_sprint1',sec:2,sub:'Sprint 01',type:'sprint',sprintNum:2,title:'速讀訊號萃取實戰',task:'打開手機裡一篇<strong>你一直想讀但沒讀的文章</strong><br>用預覽掃描：先看目錄/標題，寫下你的問題，再用視覺三段掃描提取訊號<br>告訴旁邊的人你萃取到了什麼「訊號」',time:180},
-// ════ MODULE 3: Desirability — 目標錨定 (14 slides) ════
-{id:'m3_sec',sec:3,sub:'模組開場',type:'section-cover',secNum:'③',secTitle:'Desirability',secEn:'欲求性',sub2:'確認學習的 ROI，錨定真實目標'},
-{id:'m3_quote',sec:3,sub:'破題',type:'big-quote',chip:['關鍵診斷','orange'],quote:'有人需要你<br>學的這件事嗎<span class="g-red">？</span>',sub2:'學習的 ROI 取決於你是否在解決真實問題'},
-{id:'m3_vitamin',sec:3,sub:'痛點測試',type:'vitamin-painkiller',chip:['痛點測試','orange'],title:'維他命 vs 止痛藥'},
-{id:'m3_pain_game',sec:3,sub:'互動猜題',type:'painkiller-game',chip:['互動遊戲','green'],title:'猜猜看：維他命還是止痛藥？'},
-{id:'m3_hormozi',sec:3,sub:'價值公式',type:'hormozi-value',chip:['Hormozi 價值公式','orange'],title:'Alex Hormozi 的價值公式'},
-{id:'m3_hormozi_ex',sec:3,sub:'Canva 案例',type:'hormozi-example',chip:['Canva 案例拆解','green'],title:'用 Canva 拆解你的學習 ROI'},
+{id:'m2_mece_game',sec:2,sub:'MECE 互動',type:'mece-game-v2',chip:['MECE','yellow'],title:'這是 MECE 嗎？'},
+{id:'m2_sprint1',sec:2,sub:'Sprint 02',type:'sprint',sprintNum:2,title:'速讀工具即時體驗',task:'翻開手機一篇<strong>你一直想讀的文章</strong><br>用預覽掃描 + 視覺三段掃描，2 分鐘萃取 1 個洞見<br>告訴旁邊的人你抓到了什麼',time:120},
+// ════ MODULE 3: Desirability — 找到並鎖定學習目標 ════
+{id:'m3_sec',sec:3,sub:'模組開場',type:'section-cover',secNum:'③',secTitle:'Desirability',secEn:'欲求性',sub2:'找到並鎖定你的學習目標'},
+{id:'m3_dt',sec:3,sub:'設計思考',type:'dt-loop-auto',chip:['設計思考','blue'],title:'鎖定學習目標的五個步驟'},
 {id:'m3_dfv',sec:3,sub:'黃金交集',type:'goal-oriented-dfv',chip:['個人 DFV','purple'],title:'找到你的黃金交集點'},
-{id:'m3_mandala',sec:3,sub:'九宮格目標',type:'dfv-mandala',chip:['曼陀羅九宮格','purple'],title:'用九宮格展開你的目標'},
-{id:'m3_unfair',sec:3,sub:'不公平優勢',type:'unfair-advantage'},
-{id:'m3_signal',sec:3,sub:'Signal vs Noise',type:'signal-noise'},
-{id:'m3_time_alloc',sec:3,sub:'時間分配',type:'time-allocation',chip:['時間應該放哪','purple'],title:'你把時間放在哪，決定成敗'},
+{id:'m3_mandala',sec:3,sub:'九宮格目標',type:'dfv-mandala',chip:['曼陀羅','purple'],title:'用九宮格展開你的目標'},
+{id:'m3_riskiest',sec:3,sub:'最高風險假設',type:'riskiest-assumption'},
+{id:'m3_signal',sec:3,sub:'訊號過濾',type:'signal-noise'},
 {id:'m3_mece_dec',sec:3,sub:'MECE 決策',type:'mece-decision'},
-{id:'m3_pause',sec:3,sub:'戰略暫停',type:'concept-single',chip:'戰略暫停',chipColor:'cyan',title:'<span class="g-cyan">停頓</span>是學習的消化時間',body:'大腦需要「離線時間」整合新資訊。每段資訊後停 1-2 秒，章節後停 10-20 秒。給大腦處理與歸檔的機會。',tip:'每讀 20 分鐘，閉眼回想 2 分鐘。不是休息，是固化。這才是真正的學習。'},
-{id:'m3_sprint2',sec:3,sub:'Sprint 02',type:'sprint',sprintNum:3,title:'Hormozi 公式評估你的學習 ROI',task:'用價值公式評估你的卡關專案：<br><strong>夢想結果有多大？成功機率多高？代價多低？速度多快？</strong><br>算完告訴旁邊的人：你的 ROI 值得嗎？',time:180},
-// ════ MODULE 4: Viability — 市場存活 (13 slides) ════
-{id:'m4_sec',sec:4,sub:'模組開場',type:'section-cover',secNum:'④',secTitle:'Viability',secEn:'存續性',sub2:'讓學到的東西在現實中存活'},
-{id:'m4_quote',sec:4,sub:'破題',type:'big-quote',chip:['存續性核心','red'],quote:'知識的壽命<br>< 執行的<span class="g-red">速度</span>',sub2:'學習最大的浪費，是在市場驗證之前把它變成完美'},
+{id:'m3_pause',sec:3,sub:'停頓消化',type:'concept-single',chip:'停頓消化',chipColor:'cyan',title:'<span class="g-cyan">停頓</span>是學習的消化時間',body:'大腦需要「離線時間」整合新資訊。每段資訊後停 1-2 秒，章節後停 10-20 秒。給大腦處理與歸檔的機會。',tip:'每讀 20 分鐘，閉眼回想 2 分鐘。不是休息，是固化。'},
+{id:'m3_sprint2',sec:3,sub:'Sprint 03',type:'sprint',sprintNum:3,title:'鎖定你的學習目標',task:'用設計思考的 Define 步驟，寫下一句話：<br><strong>「我要在＿週內學會＿＿，輸出成果是＿＿」</strong><br>找出：這個計畫最高風險的假設是什麼？',time:180},
+// ════ MODULE 4: Viability — 讓目標在現實中存活 ════
+{id:'m4_sec',sec:4,sub:'模組開場',type:'section-cover',secNum:'④',secTitle:'Viability',secEn:'存續性',sub2:'讓你的目標在現實中持續存活'},
+{id:'m4_quote',sec:4,sub:'破題',type:'big-quote',chip:['存續性核心','red'],quote:'知識沒有被應用<br>就只是<span class="g-red">昂貴的收藏</span>',sub2:'選好目標後，你的下一步是讓它在現實中站得住腳'},
+{id:'m3_vitamin',sec:4,sub:'痛點測試',type:'vitamin-painkiller',chip:['痛點測試','orange'],title:'維他命 vs 止痛藥'},
+{id:'m3_pain_game',sec:4,sub:'痛點互動',type:'painkiller-game',chip:['痛點互動','green'],title:'猜猜看：維他命還是止痛藥？'},
+{id:'m3_hormozi',sec:4,sub:'價值公式',type:'hormozi-value',chip:['Hormozi 公式','orange'],title:'Alex Hormozi 的價值公式'},
 {id:'m4_gtm',sec:4,sub:'GTM 策略',type:'gtm-interactive-v2',chip:['Go-To-Market','blue'],title:'讓對的人看見對的訊息'},
 {id:'m4_poc',sec:4,sub:'GTM → PMF',type:'gtm-poc-pmf-v2',chip:['驗證三階段','green'],title:'GTM → POC → PMF'},
 {id:'m4_pmf',sec:4,sub:'PMF 三支柱',type:'pmf-pillars-v2',chip:['PMF 三支柱','red'],title:'好產品帶來的三種成長'},
-{id:'m4_pmf_game',sec:4,sub:'PMF 訊號',type:'pmf-signals-game',chip:['PMF 訊號辨識','green'],title:'這是 PMF 訊號嗎？'},
-{id:'m4_bigquote',sec:4,sub:'最重要的判斷',type:'big-quote',chip:['最重要的判斷','red'],quote:'陌生人的行動<br>比朋友的稱讚<br><span class="g-red">重要 100 倍</span>',sub2:'PMF 訊號：截圖、tag 朋友、主動分享，這才是真訊號'},
-{id:'m4_leverage',sec:4,sub:'槓桿與安全邊際',type:'leverage-safety',chip:['槓桿策略','blue'],title:'Leverage 與 Safety Margin'},
+{id:'m4_pmf_game',sec:4,sub:'PMF 訊號',type:'pmf-signals-game',chip:['PMF 訊號','green'],title:'這是 PMF 訊號嗎？'},
+{id:'m4_bigquote',sec:4,sub:'陌生人才算數',type:'big-quote',chip:['關鍵判斷','red'],quote:'陌生人的行動<br>比朋友的稱讚<br><span class="g-red">重要 100 倍</span>',sub2:'PMF 訊號：截圖、tag 朋友、主動分享，這才是真訊號'},
+{id:'m4_leverage',sec:4,sub:'槓桿安全邊際',type:'leverage-safety',chip:['槓桿策略','blue'],title:'Leverage 與 Safety Margin'},
 {id:'m4_funnel',sec:4,sub:'資源漏斗',type:'resource-funnel-v2'},
 {id:'m4_bessemer',sec:4,sub:'知識三層價值',type:'bessemer-ai'},
-{id:'m4_growth_funnel',sec:4,sub:'獲客成長漏斗',type:'growth-funnel'},
+{id:'m4_growth_funnel',sec:4,sub:'獲客漏斗',type:'growth-funnel'},
 {id:'m4_growth',sec:4,sub:'成長思維',type:'growth-final',chip:['最後一課','orange'],title:'擴展認知的邊界'},
-{id:'m4_sprint3',sec:4,sub:'Sprint 03',type:'sprint',sprintNum:4,title:'漏斗決策：砍掉低槓桿行動',task:'用資源漏斗過濾你的卡關專案行動清單：<br><strong>哪些行動對齊你的 Unfair Advantage？現在有資源執行嗎？ROI 最高的是哪一個？</strong>',time:180},
-// ════ MODULE 5: 收尾與驗收 (6 slides) ════
-{id:'m5_sec',sec:5,sub:'收尾開場',type:'section-cover',secNum:'⑤',secTitle:'Closing',secEn:'收尾驗收',sub2:'把今天學到的，用在你自己的問題上'},
+{id:'m4_sprint3',sec:4,sub:'Sprint 04',type:'sprint',sprintNum:4,title:'用 Hormozi 公式評估你的 ROI',task:'計算你學習目標的 ROI：<br><strong>夢想結果 × 成功機率 ÷ 代價 ÷ 時間 = ？</strong><br>告訴旁邊的人：你的最高槓桿行動是什麼？',time:180},
+// ════ MODULE 5: 整合行動 ════
+{id:'m5_sec',sec:5,sub:'整合行動',type:'section-cover',secNum:'⑤',secTitle:'Closing',secEn:'整合行動',sub2:'把今天變成明天的第一個動作'},
 {id:'m5_recap',sec:5,sub:'全場回顧',type:'recap'},
 {id:'m5_hotseat',sec:5,sub:'Hot Seat',type:'hotseat-session'},
 {id:'m5_pressure',sec:5,sub:'壓力測試',type:'sprint',sprintNum:5,title:'Hot Seat 壓力測試',task:'隨機學員：用今天的框架<br>解釋你在開場寫下的<strong>卡關專案</strong><br>其他人：安靜聽，準備提問',time:120},
@@ -489,6 +494,117 @@ function renderSlide(sd){
   switch(sd.type){
 
   // ── COVER ────────────────────────────────────────────────────────────────
+  // ── INNOVATION TRIAD (from v3 feasibility-in-triad) ─────────────────────
+  case 'innovation-triad':{
+    h+=blob('rgba(59,130,246,.1)','rgba(168,85,247,.07)');
+    h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto 1rem"></div>`;
+    if(sd.title)h+=`<h2 style="margin-bottom:1.2rem">${sd.title}</h2>`;
+    h+=`</div>`;
+    h+=`<div style="display:flex;flex-direction:column;align-items:center;gap:1rem;max-width:780px;margin:0 auto;position:relative;z-index:1">`;
+    h+=`<svg viewBox="0 0 400 280" width="360" height="252" font-family="system-ui,sans-serif" style="display:block;max-width:100%">`;
+    h+=`<circle cx="200" cy="100" r="85" fill="rgba(255,32,85,.12)" stroke="rgba(255,32,85,.55)" stroke-width="2"/>`;
+    h+=`<circle cx="138" cy="198" r="85" fill="rgba(59,130,246,.12)" stroke="rgba(59,130,246,.55)" stroke-width="2"/>`;
+    h+=`<circle cx="262" cy="198" r="85" fill="rgba(34,197,94,.12)" stroke="rgba(34,197,94,.55)" stroke-width="2"/>`;
+    h+=`<text x="200" y="45" text-anchor="middle" font-weight="800" font-size="16" fill="rgba(255,32,85,1)">欲求性</text>`;
+    h+=`<text x="200" y="60" text-anchor="middle" font-size="10" fill="rgba(255,32,85,.65)">Desirability</text>`;
+    h+=`<text x="106" y="196" text-anchor="middle" font-weight="800" font-size="16" fill="rgba(59,130,246,1)">可行性</text>`;
+    h+=`<text x="106" y="211" text-anchor="middle" font-size="10" fill="rgba(59,130,246,.65)">Feasibility</text>`;
+    h+=`<text x="294" y="196" text-anchor="middle" font-weight="800" font-size="16" fill="rgba(34,197,94,1)">存續性</text>`;
+    h+=`<text x="294" y="211" text-anchor="middle" font-size="10" fill="rgba(34,197,94,.65)">Viability</text>`;
+    h+=`<text x="200" y="158" text-anchor="middle" font-weight="900" font-size="13" fill="rgba(255,255,255,.9)">創新</text>`;
+    h+=`</svg>`;
+    h+=`<div style="display:flex;gap:.7rem;width:100%;flex-wrap:wrap;justify-content:center">`;
+    [['欲求性','有人真的想要嗎？','var(--red)','rgba(255,32,85'],['可行性','你做得出來嗎？','var(--blue)','rgba(59,130,246'],['存續性','能持續運作嗎？','var(--green)','rgba(34,197,94']].forEach(([zh,q,col,colR])=>{
+      h+=`<div style="flex:1;min-width:160px;background:${colR},.08);border:1.5px solid ${colR},.35);border-radius:12px;padding:.85rem 1rem;text-align:center"><div style="font-size:var(--min-font);font-weight:700;color:${col};margin-bottom:.2rem">${zh}</div><div style="font-size:var(--min-label);color:var(--mid)">${q}</div></div>`;
+    });
+    h+=`</div>`;
+    const itUid=`it-${sd.id}`;
+    h+=`<div class="unlock-card" id="${itUid}" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:54px;max-width:640px;width:100%">`;
+    h+=`<div class="card-answer" style="background:rgba(255,107,0,.08);border:1.5px solid rgba(255,107,0,.35);border-radius:10px;padding:.85rem 1.4rem;text-align:center">`;
+    h+=`<div style="font-size:.55rem;font-weight:900;color:var(--orange);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.3rem">創新的定義</div>`;
+    h+=`<div style="font-size:clamp(.95rem,1.6vw,1.2rem);font-weight:700;color:var(--ink)">理解真實需求 × 用可行的方法做出來 × 讓它持續存活</div>`;
+    h+=`</div>`;
+    h+=`<div class="card-mask" style="border-radius:10px;background:rgba(255,107,0,.1);border:1.5px solid rgba(255,107,0,.28)">`;
+    h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--ink)">你覺得什麼才叫做創新？</div>`;
+    h+=`</div></div>`;
+    h+=`</div>`;
+    break;}
+
+  // ── DT LOOP AUTO (from v3 dt-loop-auto, adapted) ─────────────────────────
+  case 'dt-loop-auto':{
+    const dtSteps=[
+      {en:'Empathize',zh:'同理',col:'var(--blue)',colR:'rgba(59,130,246',num:'01',
+       icon:'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+       desc:'訪問你未來的自己：<strong style="color:var(--blue)">最痛的知識缺口是什麼？</strong>不是你覺得應該學，是你最痛的地方。'},
+      {en:'Define',zh:'收斂',col:'var(--purple)',colR:'rgba(168,85,247',num:'02',
+       icon:'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>',
+       desc:'用一句話收斂：<strong style="color:var(--purple)">「我要在＿週內學會＿＿，輸出成果是＿＿」</strong>'},
+      {en:'Ideate',zh:'發散',col:'var(--orange)',colR:'rgba(255,107,0',num:'03',
+       icon:'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>',
+       desc:'列 3–5 條可能路徑，<strong style="color:var(--orange)">不評判</strong>（課程、書、mentor、實作、社群）'},
+      {en:'Prototype',zh:'實驗',col:'var(--green)',colR:'rgba(34,197,94',num:'04',
+       icon:'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>',
+       desc:'選一條，做 <strong style="color:var(--green)">7天最小學習實驗</strong>，要有一個具體輸出'},
+      {en:'Test',zh:'驗證',col:'var(--yellow)',colR:'rgba(251,191,36',num:'05',
+       icon:'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>',
+       desc:'<strong style="color:var(--yellow)">費曼技巧驗證</strong>：教得出去才算真學會。然後循環回第一步。'},
+    ];
+    h+=blob('rgba(59,130,246,.08)','rgba(168,85,247,.06)');
+    h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto .8rem"></div>`;
+    if(sd.title)h+=`<h2 style="margin-bottom:.8rem">${sd.title}</h2>`;
+    h+=`</div>`;
+    h+=`<div style="display:flex;gap:.5rem;max-width:960px;margin:0 auto;position:relative;z-index:1;flex-wrap:nowrap">`;
+    dtSteps.forEach((s,si)=>{
+      const uid=`dt-${sd.id}-${si}`;
+      h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked');playUnlock()" style="flex:1;min-height:160px">`;
+      h+=`<div class="card-answer" style="background:${s.colR},.08);border:1.5px solid ${s.colR},.3);border-radius:12px;padding:.8rem .65rem;display:flex;flex-direction:column;align-items:center;text-align:center;gap:.4rem;height:100%">`;
+      h+=`<div style="color:${s.col}">${s.icon}</div>`;
+      h+=`<div style="font-size:.5rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:${s.col};opacity:.8">${s.en}</div>`;
+      h+=`<div style="font-size:clamp(.9rem,1.4vw,1.05rem);font-weight:800;color:var(--ink)">${s.zh}</div>`;
+      h+=`<div style="font-size:var(--min-label);color:rgba(255,255,255,.7);line-height:1.55;text-align:left">${s.desc}</div>`;
+      h+=`</div>`;
+      h+=`<div class="card-mask" style="border-radius:12px;background:${s.colR},.1);border:1.5px solid ${s.colR},.25)">`;
+      h+=`<div style="font-size:.58rem;font-weight:800;letter-spacing:.14em;color:${s.col};opacity:.65;text-transform:uppercase">${s.num}</div>`;
+      h+=`<div style="color:${s.col};margin:.35rem 0">${s.icon}</div>`;
+      h+=`<div style="font-size:clamp(.95rem,1.4vw,1.1rem);font-weight:800;color:var(--ink)">${s.zh}</div>`;
+      h+=`</div></div>`;
+    });
+    h+=`</div>`;
+    h+=`<div class="tip-box" style="max-width:960px;margin:.8rem auto 0;position:relative;z-index:1">設計思考不是給產品用的，是給你的學習計畫用的。從 Empathize 開始。</div>`;
+    break;}
+
+  // ── RISKIEST ASSUMPTION ───────────────────────────────────────────────────
+  case 'riskiest-assumption':{
+    h+=blob('rgba(255,32,85,.1)','rgba(255,107,0,.07)');
+    h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%;text-align:center;margin:0 auto">`;
+    h+=mkChip('最高風險假設','red');
+    h+=`<h2 style="margin-bottom:.4rem">如果這件事是錯的<br>你的學習計畫就全垮了</h2>`;
+    h+=`<p style="font-size:var(--min-font);color:var(--mid);margin-bottom:.8rem">先測試最高風險的假設，而不是最容易的那個</p>`;
+    h+=`<div class="bar" style="margin:.4rem auto .9rem"></div>`;
+    h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:.9rem">`;
+    h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:180px">`;
+    h+=`<div class="card-answer" style="background:rgba(255,32,85,.07);border:2px solid rgba(255,32,85,.3);border-radius:14px;padding:1.2rem;text-align:left;height:100%">`;
+    h+=`<div style="font-size:.56rem;font-weight:900;color:var(--red);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.6rem">常見的錯誤假設</div>`;
+    h+=`<div style="display:flex;flex-direction:column;gap:.45rem">`;
+    [['學完就會用','學到 ≠ 會用。「用」需要另外練習和情境。'],['有時間就會去做','時間不是等來的，是排出來的。'],['學了就能轉職','職涯轉換需要的是輸出，不只是輸入。']].forEach(([a,why])=>{
+      h+=`<div style="padding:.4rem .65rem;background:rgba(255,32,85,.07);border-left:2px solid rgba(255,32,85,.4);border-radius:0 6px 6px 0"><div style="font-size:var(--min-font);font-weight:700;color:var(--ink)">${a}</div><div style="font-size:var(--min-label);color:var(--mid);line-height:1.5">${why}</div></div>`;
+    });
+    h+=`</div></div>`;
+    h+=`<div class="card-mask" style="border-radius:14px;background:rgba(255,32,85,.14);border:2px solid rgba(255,32,85,.3)"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="var(--red)" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><div style="font-size:var(--min-font);font-weight:700;color:var(--red);margin-top:.4rem">錯誤假設</div></div></div>`;
+    h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:180px">`;
+    h+=`<div class="card-answer" style="background:rgba(34,197,94,.07);border:2px solid rgba(34,197,94,.3);border-radius:14px;padding:1.2rem;text-align:left;height:100%">`;
+    h+=`<div style="font-size:.56rem;font-weight:900;color:var(--green);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.6rem">測試假設的方法</div>`;
+    h+=`<div style="display:flex;flex-direction:column;gap:.45rem">`;
+    [['7天最小實驗','選一條路徑，要有具體的學習輸出（不是筆記，是作品）'],['找1個人展示','教給他聽。他聽懂了 = 你真的學會了。'],['設定可量化指標','「學完後，我能做到＿＿」才算有效的目標']].forEach(([a,how])=>{
+      h+=`<div style="padding:.4rem .65rem;background:rgba(34,197,94,.07);border-left:2px solid rgba(34,197,94,.4);border-radius:0 6px 6px 0"><div style="font-size:var(--min-font);font-weight:700;color:var(--ink)">${a}</div><div style="font-size:var(--min-label);color:var(--mid);line-height:1.5">${how}</div></div>`;
+    });
+    h+=`</div></div>`;
+    h+=`<div class="card-mask" style="border-radius:14px;background:rgba(34,197,94,.1);border:2px solid rgba(34,197,94,.3)"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><div style="font-size:var(--min-font);font-weight:700;color:var(--green);margin-top:.4rem">測試方法</div></div></div>`;
+    h+=`</div>`;
+    h+=`<div class="tip-box" style="margin-top:.5rem">先測試最高風險的假設，成功機率才會是真的。</div>`;
+    h+=`</div>`;
+    break;}
+
   case 'cover':
     h+=blob('rgba(255,32,85,.1)','rgba(168,85,247,.08)');
     h+=`<div style="position:relative;z-index:1;text-align:center">`;
@@ -773,59 +889,34 @@ function renderSlide(sd){
   case 'topdown-bottomup-v2':{
     h+=blob('rgba(168,85,247,.1)','rgba(255,107,0,.06)');
     h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto .8rem"></div>`;
-    if(sd.title)h+=`<h2 style="margin-bottom:1rem">${sd.title}</h2>`;
+    if(sd.title)h+=`<h2 style="margin-bottom:.9rem">${sd.title}</h2>`;
     h+=`</div>`;
-    h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;max-width:900px;margin:0 auto .9rem;position:relative;z-index:1">`;
-    h+=`<div style="background:rgba(255,255,255,.04);border:2px solid rgba(255,255,255,.12);border-radius:14px;padding:1.2rem">`;
-    h+=`<div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.7rem">`;
-    h+=`<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>`;
-    h+=`<span style="font-size:clamp(1rem,1.6vw,1.2rem);font-weight:700;color:rgba(255,255,255,.65)">Bottom-up</span></div>`;
-    h+=`<div style="font-size:var(--min-font);color:var(--mid);margin-bottom:.5rem;font-style:italic">「我會什麼、我能做什麼？」</div>`;
-    h+=`<ul style="list-style:none;display:flex;flex-direction:column;gap:.35rem">`;
-    ['先想我有什麼技術或資源','再去找誰可能會用','從能力出發，向外尋找市場'].forEach(it=>{
-      h+=`<li style="font-size:var(--min-font);color:rgba(255,255,255,.75);padding-left:1.1rem;position:relative"><span style="position:absolute;left:0;color:rgba(255,255,255,.3)">·</span>${it}</li>`;
-    });
-    h+=`</ul></div>`;
-    h+=`<div style="background:rgba(255,107,0,.08);border:2px solid rgba(255,107,0,.35);border-radius:14px;padding:1.2rem">`;
-    h+=`<div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.7rem">`;
-    h+=`<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--orange)" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>`;
-    h+=`<span style="font-size:clamp(1rem,1.6vw,1.2rem);font-weight:700;color:var(--orange)">Top-down</span></div>`;
-    h+=`<div style="font-size:var(--min-font);color:var(--mid);margin-bottom:.5rem;font-style:italic">「誰需要？目標是什麼？」</div>`;
-    h+=`<ul style="list-style:none;display:flex;flex-direction:column;gap:.35rem">`;
-    ['先想誰最痛、痛在哪裡','再設定要解決的目標','最後回推你需要做什麼'].forEach(it=>{
-      h+=`<li style="font-size:var(--min-font);color:rgba(255,255,255,.75);padding-left:1.1rem;position:relative"><span style="position:absolute;left:0;color:var(--orange)">→</span>${it}</li>`;
-    });
-    h+=`</ul></div></div>`;
-    h+=`<div style="max-width:900px;margin:0 auto .9rem;padding:.9rem 1.2rem;background:rgba(255,32,85,.06);border:1.5px solid rgba(255,32,85,.3);border-radius:12px;display:flex;align-items:flex-start;gap:.8rem;position:relative;z-index:1">`;
-    h+=`<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--red)" stroke-width="2" style="flex-shrink:0;margin-top:.1rem"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`;
-    h+=`<div><div style="font-size:var(--min-font);font-weight:700;color:var(--ink);margin-bottom:.25rem">Bottom-up 並非一定錯</div><div style="font-size:var(--min-font);color:var(--mid);line-height:1.6">而是它很容易讓人<strong style="color:var(--red)">先做再找理由</strong>。做完了才發現沒人要，成本已付出。Top-down 的優點：先驗證問題再動手。</div></div>`;
-    h+=`</div>`;
-    h+=`<div class="tip-box" style="max-width:900px;margin:0 auto;position:relative;z-index:1"><strong style="color:var(--orange)">應用到學習：</strong>不要先學一堆工具，先問「我要解決的問題是什麼？」再決定學什麼。</div>`;
-    const tdExId=`tdex-${sd.id}`;
-    h+=`<div style="max-width:900px;margin:.9rem auto 0;position:relative;z-index:1;text-align:center">`;
-    h+=`<button class="cta-btn" id="${tdExId}-btn" onclick="document.getElementById('${tdExId}').style.display='block';document.getElementById('${tdExId}-btn').style.display='none'" style="margin:0 auto">查看真實案例 →</button>`;
-    h+=`<div id="${tdExId}" style="display:none">`;
-    const tdPairs=[
-      {td:{co:'HTC / Samsung 早期 Android',desc:'先做出能跑 Android 的硬體 → 再找誰要買',tag:'Bottom-up'},bu:{co:'Apple iPhone',desc:'先問「人們最想從手機得到什麼？」→ 再設計硬體',tag:'Top-down'},domain:'智慧型手機'},
-      {td:{co:'Evernote',desc:'先建了同步筆記技術 → 再找用戶說「你需要這個」',tag:'Bottom-up'},bu:{co:'Notion',desc:'先問「知識工作者的核心痛點是什麼？」→ 再建 all-in-one 工作空間',tag:'Top-down'},domain:'生產力工具'},
-      {td:{co:'Couchsurfing',desc:'先建了沙發交換網路 → 商業模式從未清晰',tag:'Bottom-up'},bu:{co:'Airbnb',desc:'先確認「短租市場真實存在且夠痛」→ 再建撮合平台',tag:'Top-down'},domain:'共享住宿'},
+    const tdData=[
+      {key:'bu',dir:'Bottom-up',tag:'能力出發',col:'rgba(255,255,255,.55)',colR:'rgba(255,255,255',arrow:'↑',q:'「我會什麼、我能做什麼？」',steps:['先想我有什麼技術或資源','再去找誰可能會用','從能力出發，向外尋找市場'],cases:[{domain:'手機',co:'HTC / Samsung 早期',desc:'先做出能跑 Android 的硬體，再找誰要買'},{domain:'工具',co:'Evernote',desc:'先建了同步筆記技術，再找用戶說你需要這個'},{domain:'住宿',co:'Couchsurfing',desc:'先建沙發交換網路，商業模式從未清晰'}]},
+      {key:'td',dir:'Top-down',tag:'問題出發',col:'var(--orange)',colR:'rgba(255,107,0',arrow:'↓',q:'「誰需要？目標是什麼？」',steps:['先想誰最痛、痛在哪裡','再設定要解決的目標','最後回推你需要做什麼'],cases:[{domain:'手機',co:'Apple iPhone',desc:'先問人們最想從手機得到什麼，再設計硬體'},{domain:'工具',co:'Notion',desc:'先問知識工作者的核心痛點，再建 all-in-one'},{domain:'住宿',co:'Airbnb',desc:'先確認短租市場真實存在且夠痛，再建撮合平台'}]},
     ];
-    h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.8rem">`;
-    h+=`<div style="font-size:.62rem;font-weight:900;color:rgba(255,255,255,.35);letter-spacing:.15em;text-transform:uppercase;text-align:center;padding:.3rem 0">Bottom-up 出發</div>`;
-    h+=`<div style="font-size:.62rem;font-weight:900;color:var(--orange);letter-spacing:.15em;text-transform:uppercase;text-align:center;padding:.3rem 0">Top-down 出發</div>`;
-    tdPairs.forEach(p=>{
-      h+=`<div style="background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.12);border-radius:12px;padding:1rem">`;
-      h+=`<div style="font-size:var(--min-label);font-weight:800;color:rgba(255,255,255,.3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem">${p.domain}</div>`;
-      h+=`<div style="font-size:var(--min-font);font-weight:700;color:rgba(255,255,255,.55);margin-bottom:.3rem">${p.td.co}</div>`;
-      h+=`<div style="font-size:var(--min-label);color:var(--mid);line-height:1.5">${p.td.desc}</div>`;
-      h+=`</div>`;
-      h+=`<div style="background:rgba(255,107,0,.08);border:1.5px solid rgba(255,107,0,.3);border-radius:12px;padding:1rem">`;
-      h+=`<div style="font-size:var(--min-label);font-weight:800;color:var(--orange);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem">${p.domain}</div>`;
-      h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--orange);margin-bottom:.3rem">${p.bu.co}</div>`;
-      h+=`<div style="font-size:var(--min-label);color:var(--mid);line-height:1.5">${p.bu.desc}</div>`;
-      h+=`</div>`;
+    h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;max-width:900px;margin:0 auto;position:relative;z-index:1">`;
+    tdData.forEach(t=>{
+      const uid=`td-${sd.id}-${t.key}`;
+      h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:200px">`;
+      h+=`<div class="card-answer" style="background:${t.colR},.06);border:2px solid ${t.colR},.25);border-radius:14px;padding:1.2rem;text-align:left">`;
+      h+=`<div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem"><span style="font-size:1.2rem;color:${t.col}">${t.arrow}</span><span style="font-size:clamp(1rem,1.6vw,1.2rem);font-weight:700;color:${t.col}">${t.dir}</span><span style="font-size:var(--min-label);color:var(--mid);margin-left:.3rem">${t.tag}</span></div>`;
+      h+=`<div style="font-size:var(--min-label);color:var(--mid);margin-bottom:.6rem;font-style:italic">${t.q}</div>`;
+      h+=`<ul style="list-style:none;display:flex;flex-direction:column;gap:.25rem;margin-bottom:.7rem">`;
+      t.steps.forEach(it=>{h+=`<li style="font-size:var(--min-font);color:rgba(255,255,255,.75);padding-left:1rem;position:relative"><span style="position:absolute;left:0;color:${t.col}">›</span>${it}</li>`;});
+      h+=`</ul>`;
+      h+=`<div style="font-size:.56rem;font-weight:800;color:${t.col};letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem">真實案例</div>`;
+      h+=`<div style="display:flex;flex-direction:column;gap:.3rem">`;
+      t.cases.forEach(c=>{h+=`<div style="background:${t.colR},.08);border-radius:6px;padding:.3rem .55rem"><span style="font-size:var(--min-label);font-weight:700;color:${t.col}">${c.co}</span><span style="font-size:var(--min-label);color:var(--mid)"> — ${c.desc}</span></div>`;});
+      h+=`</div></div>`;
+      h+=`<div class="card-mask" style="border-radius:14px;background:${t.colR},.1);border:2px solid ${t.colR},.25)">`;
+      h+=`<div style="font-size:2.5rem;color:${t.col};line-height:1;margin-bottom:.35rem">${t.arrow}</div>`;
+      h+=`<div style="font-size:clamp(1.2rem,2vw,1.6rem);font-weight:800;color:${t.col}">${t.dir}</div>`;
+      h+=`<div style="font-size:var(--min-label);color:var(--mid);margin-top:.3rem">${t.q}</div>`;
+      h+=`</div></div>`;
     });
-    h+=`</div></div></div>`;
+    h+=`</div>`;
+    h+=`<div class="tip-box" style="max-width:900px;margin:.8rem auto 0;position:relative;z-index:1"><strong style="color:var(--orange)">應用到學習：</strong>不要先學一堆工具，先問「我要解決的問題是什麼？」再決定學什麼。</div>`;
     break;}
 
   // ── MCKINSEY-SIX-V2 (v3) ─────────────────────────────────────────────────
@@ -1359,7 +1450,8 @@ function renderSlide(sd){
       if(cell.center){
         h+=`<div style="background:rgba(168,85,247,.25);border:2px solid rgba(168,85,247,.7);border-radius:10px;padding:.6rem .4rem;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:96px"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:.25rem"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg><div style="font-size:var(--min-font);font-weight:900;color:var(--purple);line-height:1.3">${cell.t}</div><div style="font-size:.52rem;color:rgba(168,85,247,.55);margin-top:.18rem">中央目標</div></div>`;
       }else{
-        h+=`<div id="mc-${mdid}-${i}" class="mandala-cell" data-title="${cell.t}" data-desc="${cell.desc.replace(/"/g,'&quot;')}" onclick="mandalaFocus('${mdid}','${i}','${cell.c}')" style="background:${cell.c},.08);border:1.5px solid ${cell.c},.3);border-radius:10px;padding:.55rem .4rem;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:96px;gap:.3rem"><div style="font-size:var(--min-font);font-weight:700;color:${cell.c},1);line-height:1.3">${cell.t}</div><div style="display:grid;grid-template-columns:repeat(3,4px);gap:1.5px">`;
+        const mcDelay=(i<4?i:i-1)*0.07;
+        h+=`<div id="mc-${mdid}-${i}" class="mandala-cell" data-title="${cell.t}" data-desc="${cell.desc.replace(/"/g,'&quot;')}" onclick="mandalaFocus('${mdid}','${i}','${cell.c}')" style="background:${cell.c},.08);border:1.5px solid ${cell.c},.3);border-radius:10px;padding:.55rem .4rem;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:96px;gap:.3rem;opacity:0;animation:mc-pop .4s ease forwards ${mcDelay.toFixed(2)}s"><div style="font-size:var(--min-font);font-weight:700;color:${cell.c},1);line-height:1.3">${cell.t}</div><div style="display:grid;grid-template-columns:repeat(3,4px);gap:1.5px">`;
         for(let j=0;j<9;j++)h+=`<div style="width:4px;height:4px;border-radius:1px;background:${cell.c},${j===4?'.8':'.25'})"></div>`;
         h+=`</div></div>`;
       }
@@ -1392,20 +1484,32 @@ function renderSlide(sd){
     break;
 
   // ── SIGNAL NOISE ──────────────────────────────────────────────────────────
-  case 'signal-noise':
-    h+=blob('rgba(255,32,85,.1)','rgba(168,85,247,.07)');
-    h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%">`;
-    h+=mkChip('Signal over Noise','red');
-    h+=`<h1 style="margin-bottom:.8rem">分心比<span class="g-red">無能</span>更致命</h1>`;
-    h+=`<div class="bar"></div>`;
-    h+=`<div style="display:grid;grid-template-columns:1fr auto 1fr;gap:1.2rem;align-items:center;margin:1.4rem 0">`;
-    h+=`<div style="background:rgba(255,32,85,.08);border:2px solid rgba(255,32,85,.3);border-radius:14px;padding:1.4rem;text-align:center"><div style="font-size:.65rem;font-weight:800;letter-spacing:.14em;color:var(--red);margin-bottom:.6rem;text-transform:uppercase">Noise 雜訊</div><ul class="deck-list" style="text-align:left"><li>讓你焦慮的資訊</li><li>別人成功的消息</li><li>下一個趨勢</li><li>沒有行動的計畫</li></ul></div>`;
-    h+=`<div style="font-size:3rem;color:rgba(255,255,255,.2)">→</div>`;
-    h+=`<div style="background:rgba(34,197,94,.08);border:2px solid rgba(34,197,94,.3);border-radius:14px;padding:1.4rem;text-align:center"><div style="font-size:.65rem;font-weight:800;letter-spacing:.14em;color:var(--green);margin-bottom:.6rem;text-transform:uppercase">Signal 訊號</div><ul class="deck-list" style="text-align:left"><li>讓你更清晰的資訊</li><li>你現在能用的洞見</li><li>驗證你假設的數據</li><li>能立刻行動的方向</li></ul></div>`;
+  case 'signal-noise':{
+    h+=blob('rgba(34,197,94,.08)','rgba(255,32,85,.06)');
+    h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%;text-align:center;margin:0 auto">`;
+    h+=mkChip('訊號過濾','green');
+    h+=`<h2 style="margin-bottom:.4rem">把時間投入<span class="g-green">訊號</span>，不是雜訊</h2>`;
+    h+=`<p style="font-size:var(--min-font);color:var(--mid);margin-bottom:.8rem">過濾資訊是技能，過濾機會也是技能</p>`;
+    h+=`<div class="bar" style="margin:.4rem auto .9rem"></div>`;
+    h+=`<div style="display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:center;margin-bottom:.9rem">`;
+    h+=`<div style="background:rgba(255,32,85,.08);border:2px solid rgba(255,32,85,.3);border-radius:14px;padding:1.2rem;text-align:left"><div style="font-size:.6rem;font-weight:800;letter-spacing:.14em;color:var(--red);margin-bottom:.5rem;text-transform:uppercase">Noise 雜訊</div><ul class="deck-list"><li>讓你焦慮的資訊</li><li>別人成功的消息</li><li>下一個趨勢</li><li>沒有行動的計畫</li></ul></div>`;
+    h+=`<div style="font-size:2.5rem;color:rgba(255,255,255,.2)">→</div>`;
+    h+=`<div style="background:rgba(34,197,94,.08);border:2px solid rgba(34,197,94,.3);border-radius:14px;padding:1.2rem;text-align:left"><div style="font-size:.6rem;font-weight:800;letter-spacing:.14em;color:var(--green);margin-bottom:.5rem;text-transform:uppercase">Signal 訊號</div><ul class="deck-list"><li>讓你更清晰的資訊</li><li>你現在能用的洞見</li><li>驗證你假設的數據</li><li>能立刻行動的方向</li></ul></div>`;
     h+=`</div>`;
-    h+=`<div class="tip-box">過濾資訊是技能，過濾機會也是技能。兩者用的是同一套大腦作業系統。</div>`;
+    const snUid=`sn-${sd.id}`;
+    h+=`<div class="unlock-card" id="${snUid}" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:54px;width:100%">`;
+    h+=`<div class="card-answer" style="background:rgba(255,107,0,.08);border:1.5px solid rgba(255,107,0,.35);border-radius:12px;padding:1rem 1.4rem;text-align:left">`;
+    h+=`<div style="font-size:.56rem;font-weight:900;color:var(--orange);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem">如何判斷手上的機會是訊號？</div>`;
+    h+=`<div style="display:flex;flex-direction:column;gap:.35rem">`;
+    [['這個解決真實問題嗎？','有人正在為這個問題付出成本（時間、金錢、情緒）'],['有人願意為此付出代價嗎？','願意付費 / 願意改變行為 / 願意推薦給朋友'],['我現在就能用嗎？','7天內能有一個具體行動，而不是「以後再說」']].forEach(([q,a])=>{
+      h+=`<div style="display:flex;gap:.7rem;align-items:flex-start"><div style="font-size:var(--min-font);font-weight:700;color:var(--orange);flex-shrink:0;min-width:40%">${q}</div><div style="font-size:var(--min-label);color:var(--mid);line-height:1.5">${a}</div></div>`;
+    });
+    h+=`</div></div>`;
+    h+=`<div class="card-mask" style="border-radius:12px;background:rgba(255,107,0,.1);border:1.5px solid rgba(255,107,0,.28)">`;
+    h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--orange)">如何判斷是訊號？</div>`;
+    h+=`</div></div>`;
     h+=`</div>`;
-    break;
+    break;}
 
   // ── TIME ALLOCATION (v3) ──────────────────────────────────────────────────
   case 'time-allocation':{
@@ -1443,7 +1547,7 @@ function renderSlide(sd){
     h+=blob('rgba(251,191,36,.08)','rgba(255,107,0,.06)');
     h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%">`;
     h+=mkChip('MECE 決策工具','yellow');
-    h+=`<h2 style="margin-bottom:.5rem">不重疊、不遺漏的<span class="g-orange">資源斷捨離</span></h2>`;
+    h+=`<h2 style="margin-bottom:.5rem;text-align:center">不重疊、不遺漏的<span class="g-orange">資源斷捨離</span></h2>`;
     h+=`<div class="bar"></div>`;
     h+=`<div style="background:rgba(255,255,255,.03);border:1.5px solid rgba(251,191,36,.25);border-radius:16px;padding:1.4rem;margin-top:1rem">`;
     h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--yellow);margin-bottom:1rem;text-align:center">把你的行動清單分進這四個格子</div>`;
@@ -1597,7 +1701,7 @@ function renderSlide(sd){
   // ── BESSEMER AI (new build) ───────────────────────────────────────────────
   case 'bessemer-ai':
     h+=blob('rgba(59,130,246,.1)','rgba(168,85,247,.07)');
-    h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%">`;
+    h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%;text-align:center;margin:0 auto">`;
     h+=mkChip('知識三層價值','blue');
     h+=`<h2 style="margin-bottom:.5rem">Bessemer AI 價值三層<br><span class="g-blue">對應你的學習輸出</span></h2>`;
     h+=`<div class="bar"></div>`;
@@ -1620,7 +1724,7 @@ function renderSlide(sd){
   // ── GROWTH FUNNEL (new build) ──────────────────────────────────────────────
   case 'growth-funnel':
     h+=blob('rgba(34,197,94,.08)','rgba(59,130,246,.06)');
-    h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%">`;
+    h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%;text-align:center;margin:0 auto">`;
     h+=mkChip('獲客成長漏斗','green');
     h+=`<h2 style="margin-bottom:.5rem">讓知識<span class="g-green">在市場中流通</span></h2>`;
     h+=`<div class="bar"></div>`;
@@ -1661,12 +1765,12 @@ function renderSlide(sd){
   // ── RECAP ─────────────────────────────────────────────────────────────────
   case 'recap':
     h+=blob('rgba(6,182,212,.08)','rgba(34,197,94,.06)');
-    h+=`<div style="position:relative;z-index:1;max-width:920px;width:100%">`;
+    h+=`<div style="position:relative;z-index:1;max-width:920px;width:100%;text-align:center;margin:0 auto">`;
     h+=mkChip('全場回顧','cyan');
     h+=`<h2 style="margin-bottom:.5rem">90 分鐘<span class="g-cyan">大腦作業系統</span>總覽</h2>`;
     h+=`<div class="bar"></div>`;
     h+=`<div class="mrev-grid cols-3" style="margin-top:1rem">`;
-    [{num:'01',title:'學習基礎',points:['環境降噪','身體三角形','Input → Output 迴路'],col:'var(--blue)',colR:'rgba(59,130,246'},{num:'02',title:'速讀與留存',points:['三段掃描法','Chunking 分組','費曼技巧 + 間隔重複'],col:'var(--green)',colR:'rgba(34,197,94'},{num:'03',title:'目標錨定',points:['Hormozi 價值公式','九宮格目標展開','不公平優勢'],col:'var(--purple)',colR:'rgba(168,85,247'},{num:'04',title:'市場驗證',points:['GTM → POC → PMF','PMF 三支柱','陌生人行動才算數'],col:'var(--yellow)',colR:'rgba(251,191,36'},{num:'05',title:'槓桿策略',points:['80/20 法則','MECE 資源漏斗','Safety Margin'],col:'var(--red)',colR:'rgba(255,32,85'},{num:'06',title:'你的下一步',points:['用框架看你的問題','找出最高槓桿行動','明天就開始一件事'],col:'var(--cyan)',colR:'rgba(6,182,212'}].forEach(item=>{
+    [{num:'01',title:'底層邏輯',points:['創新三元框架','三種失敗模式','時間資源分配'],col:'var(--blue)',colR:'rgba(59,130,246'},{num:'02',title:'訊息獲取',points:['排除干擾','視覺三段掃描','消除默念'],col:'var(--green)',colR:'rgba(34,197,94'},{num:'03',title:'訊息留存',points:['Chunking 分組','費曼技巧','雙重編碼 + 間隔重複'],col:'var(--purple)',colR:'rgba(168,85,247'},{num:'04',title:'目標定位',points:['設計思考五步驟','黃金交集點','最高風險假設'],col:'var(--yellow)',colR:'rgba(251,191,36'},{num:'05',title:'市場存活',points:['痛點定位','GTM → PMF','Hormozi 價值公式'],col:'var(--red)',colR:'rgba(255,32,85'},{num:'06',title:'行動收斂',points:['七天最小實驗','最高槓桿行動','明天就開始一件事'],col:'var(--cyan)',colR:'rgba(6,182,212'}].forEach(item=>{
       h+=`<div style="background:${item.colR},.07);border:1.5px solid ${item.colR},.25);border-radius:14px;padding:1.2rem"><div style="font-size:1.4rem;font-weight:800;color:${item.colR},.25);margin-bottom:.4rem">${item.num}</div><div style="font-size:var(--min-font);font-weight:700;color:${item.col};margin-bottom:.6rem">${item.title}</div><ul class="deck-list">`;
       item.points.forEach(p=>{h+=`<li style="font-size:var(--min-label)">${p}</li>`;});
       h+=`</ul></div>`;
@@ -1762,7 +1866,7 @@ const slideEls=D.map((sd,i)=>{
 const dotNav=document.getElementById('dot-nav');
 D.forEach((sd,i)=>{
   const d=document.createElement('div');
-  d.className='dot';d.dataset.idx=i;d.title=`${i+1}. ${sd.sub}`;
+  d.className='dot';d.dataset.idx=i;d.dataset.page=i+1;d.title=`${i+1}. ${sd.sub}`;
   d.onclick=()=>scrollToSlide(i);dotNav.appendChild(d);
 });
 
