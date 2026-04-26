@@ -537,19 +537,18 @@ function renderSlide(sd){
     if(sd.title)h+=`<h2 style="margin-bottom:1.2rem">${sd.title}</h2>`;
     h+=`</div>`;
     h+=`<div style="display:flex;flex-direction:column;align-items:center;gap:1rem;max-width:780px;margin:0 auto;position:relative;z-index:1">`;
-    h+=`<svg viewBox="0 0 400 280" width="360" height="252" font-family="system-ui,sans-serif" style="display:block;max-width:100%">`;
-    h+=`<circle cx="200" cy="100" r="85" fill="rgba(255,32,85,.12)" stroke="rgba(255,32,85,.55)" stroke-width="2"/>`;
-    h+=`<circle cx="138" cy="198" r="85" fill="rgba(59,130,246,.12)" stroke="rgba(59,130,246,.55)" stroke-width="2"/>`;
-    h+=`<circle cx="262" cy="198" r="85" fill="rgba(34,197,94,.12)" stroke="rgba(34,197,94,.55)" stroke-width="2"/>`;
-    h+=`<text x="200" y="45" text-anchor="middle" font-weight="800" font-size="16" fill="rgba(255,32,85,1)">欲求性</text>`;
-    h+=`<text x="200" y="60" text-anchor="middle" font-size="10" fill="rgba(255,32,85,.65)">Desirability</text>`;
-    h+=`<text x="106" y="196" text-anchor="middle" font-weight="800" font-size="16" fill="rgba(59,130,246,1)">可行性</text>`;
-    h+=`<text x="106" y="211" text-anchor="middle" font-size="10" fill="rgba(59,130,246,.65)">Feasibility</text>`;
-    h+=`<text x="294" y="196" text-anchor="middle" font-weight="800" font-size="16" fill="rgba(34,197,94,1)">存續性</text>`;
-    h+=`<text x="294" y="211" text-anchor="middle" font-size="10" fill="rgba(34,197,94,.65)">Viability</text>`;
-    h+=`<text x="200" y="158" text-anchor="middle" font-weight="900" font-size="13" fill="rgba(255,255,255,.9)">創新</text>`;
+    h+=`<svg viewBox="0 0 400 310" width="340" height="264" font-family="system-ui,sans-serif" style="display:block;max-width:100%">`;
+    h+=`<circle cx="200" cy="108" r="85" fill="rgba(255,32,85,.12)" stroke="rgba(255,32,85,.55)" stroke-width="2"/>`;
+    h+=`<circle cx="138" cy="210" r="85" fill="rgba(59,130,246,.12)" stroke="rgba(59,130,246,.55)" stroke-width="2"/>`;
+    h+=`<circle cx="262" cy="210" r="85" fill="rgba(34,197,94,.12)" stroke="rgba(34,197,94,.55)" stroke-width="2"/>`;
+    h+=`<text x="200" y="48" text-anchor="middle" font-weight="800" font-size="16" fill="rgba(255,32,85,1)">欲求性</text>`;
+    h+=`<text x="200" y="63" text-anchor="middle" font-size="10" fill="rgba(255,32,85,.65)">Desirability</text>`;
+    h+=`<text x="100" y="214" text-anchor="middle" font-weight="800" font-size="16" fill="rgba(59,130,246,1)">可行性</text>`;
+    h+=`<text x="100" y="229" text-anchor="middle" font-size="10" fill="rgba(59,130,246,.65)">Feasibility</text>`;
+    h+=`<text x="300" y="214" text-anchor="middle" font-weight="800" font-size="16" fill="rgba(34,197,94,1)">存續性</text>`;
+    h+=`<text x="300" y="229" text-anchor="middle" font-size="10" fill="rgba(34,197,94,.65)">Viability</text>`;
     h+=`</svg>`;
-    h+=`<div style="display:flex;gap:.7rem;width:100%;flex-wrap:wrap;justify-content:center">`;
+    h+=`<div style="display:flex;gap:.7rem;width:100%;flex-wrap:wrap;justify-content:center;margin-top:.4rem">`;
     [['欲求性','有人真的想要嗎？','var(--red)','rgba(255,32,85'],['可行性','你做得出來嗎？','var(--blue)','rgba(59,130,246'],['存續性','能持續運作嗎？','var(--green)','rgba(34,197,94']].forEach(([zh,q,col,colR])=>{
       h+=`<div style="flex:1;min-width:160px;background:${colR},.08);border:1.5px solid ${colR},.35);border-radius:12px;padding:.85rem 1rem;text-align:center"><div style="font-size:var(--min-font);font-weight:700;color:${col};margin-bottom:.2rem">${zh}</div><div style="font-size:var(--min-label);color:var(--mid)">${q}</div></div>`;
     });
@@ -718,11 +717,11 @@ function renderSlide(sd){
     pollQs.forEach((q,i)=>{
       const uid=`poll-${sd.id}-${i}`;
       h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:200px">`;
-      h+=`<div class="card-answer" style="background:${q.colR},.07);border:2px solid ${q.colR},.3);border-top:3px solid ${q.col};border-radius:14px;padding:1.2rem 1.1rem;text-align:left">`;
+      h+=`<div class="card-answer" style="background:${q.colR},.07);border:2px solid ${q.colR},.3);border-top:3px solid ${q.col};border-radius:14px;padding:1.2rem 1.1rem;text-align:left;display:flex;flex-direction:column;height:100%">`;
       h+=`<div style="font-size:.55rem;font-weight:900;color:${q.col};letter-spacing:.12em;text-transform:uppercase;margin-bottom:.35rem">${q.n} — 數據揭曉</div>`;
       h+=`<div style="font-size:clamp(1.4rem,2.8vw,2.2rem);font-weight:900;color:${q.col};line-height:1;margin-bottom:.3rem">${q.stat}</div>`;
-      h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--ink);margin-bottom:.5rem">${q.statSub}</div>`;
-      h+=`<div style="font-size:var(--min-label);color:var(--mid);padding:.45rem .6rem;background:${q.colR},.08);border-left:2px solid ${q.colR},.4);border-radius:0 6px 6px 0;line-height:1.55">${q.note}</div>`;
+      h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--ink);margin-bottom:.5rem;flex:1">${q.statSub}</div>`;
+      h+=`<div style="font-size:var(--min-label);color:var(--mid);padding:.45rem .6rem;background:${q.colR},.08);border-left:2px solid ${q.colR},.4);border-radius:0 6px 6px 0;line-height:1.55;margin-top:auto">${q.note}</div>`;
       h+=`</div>`;
       h+=`<div class="card-mask" style="border-radius:14px;background:${q.colR},.1);border:2px solid ${q.colR},.25)">`;
       h+=`<div style="font-size:.55rem;font-weight:900;color:${q.col};letter-spacing:.12em;text-transform:uppercase;margin-bottom:.4rem">${q.n}</div>`;
@@ -806,7 +805,7 @@ function renderSlide(sd){
   // ── RULES ───────────────────────────────────────────────────────────────
   case 'rules':
     h+=blob('rgba(255,255,255,.04)','rgba(255,107,0,.05)');
-    h+=`<div style="position:relative;z-index:1;max-width:800px;text-align:center">`;
+    h+=`<div style="position:relative;z-index:1;max-width:800px;text-align:center;margin:0 auto">`;
     h+=mkChip('今日公約','white');
     h+=`<h1 style="margin-bottom:1rem">三個<span class="g-orange">公約</span></h1>`;
     h+=`<div class="bar" style="margin:.6rem auto 1rem"></div>`;
@@ -1876,7 +1875,7 @@ function renderSlide(sd){
     const sid=sd.id;
     timers[sid]={rem:sd.time,running:false,interval:null};
     h+=blob('rgba(255,32,85,.12)','rgba(255,107,0,.1)');
-    h+=`<div style="position:relative;z-index:1;text-align:center;max-width:820px;width:100%">`;
+    h+=`<div style="position:relative;z-index:1;text-align:center;max-width:820px;width:100%;margin:0 auto">`;
     h+=`<div class="sprint-badge">Sprint ${sd.sprintNum} · 實戰衝刺</div>`;
     h+=`<h2 style="margin-bottom:.8rem">${sd.title}</h2>`;
     h+=`<div class="sprint-task">${sd.task}</div>`;
@@ -1944,6 +1943,8 @@ function findNextRevealable(){
   const card=slideEl.querySelector('.unlock-card:not(.unlocked)');if(card)return card;
   const cmp=slideEl.querySelector('.cmp-card:not(.revealed)');if(cmp)return cmp;
   const stepItem=slideEl.querySelector('.step-item:not(.open)');if(stepItem)return stepItem;
+  const triadOrb=slideEl.querySelector('.triad-orb:not(.to-open)');if(triadOrb)return triadOrb;
+  const phase=slideEl.querySelector('.phase-panel[data-open="0"]');if(phase)return phase;
   return null;
 }
 
