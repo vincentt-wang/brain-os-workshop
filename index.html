@@ -263,9 +263,11 @@ const D=[
 {id:'m2_topdown',sec:2,sub:'思維框架',type:'topdown-bottomup-v2',chip:['兩種思維','purple'],title:'Top-down vs Bottom-up'},
 {id:'m2_mckinsey',sec:2,sub:'McKinsey 六元素',type:'mckinsey-six-v2',chip:['McKinsey 六錨點','blue'],title:'Top-down 思維的六個錨點'},
 {id:'m2_speed',sec:2,sub:'速讀本質',type:'concept-single',chip:'速讀本質',chipColor:'yellow',title:'速讀不是<span class="g-orange">讀更快</span>，是<span class="g-orange">找解藥</span>',body:'你帶著什麼問題進入一本書，決定你能提取多少價值。沒有問題就沒有速讀。',tip:'打開書前先問：「我需要從這裡得到什麼答案？」'},
+{id:'m2_speed_ex',sec:2,sub:'速讀實戰示範',type:'speed-reading-ex'},
 {id:'m2_scan',sec:2,sub:'三段掃描',type:'three-scan'},
 {id:'m2_subvoc',sec:2,sub:'消除默念',type:'concept-single',chip:'消除默念',chipColor:'orange',title:'關閉腦內的<span class="g-orange">閱讀聲音</span>',body:'Sub-vocalization 是大多數人閱讀速度的天花板。強制讓眼睛跑在聲音前面，視野從單字擴展到片語。',tip:'每行只找關鍵詞，用餘光補兩側。把書頁分成三個直列掃描，絕對不回頭看。'},
 {id:'m2_chunk',sec:2,sub:'記憶分組',type:'concept-single',chip:'Chunking',chipColor:'green',title:'<span class="g-green">分組</span>讓大腦不過載',body:'工作記憶一次只能處理 5±2 個單位。Chunking 是把碎片壓縮成一個有意義的「包」。用 3 或 5 的奇數分組，大腦最容易打包。',tip:'電話號碼、音樂小節、NBA 首字母縮寫——都是 Chunking 的產物。'},
+{id:'m2_chunk_ex',sec:2,sub:'Chunking 實戰',type:'chunk-example'},
 {id:'m2_dual',sec:2,sub:'雙重編碼',type:'dual-coding'},
 {id:'m2_feynman',sec:2,sub:'費曼技巧',type:'feynman'},
 {id:'m2_spacing',sec:2,sub:'間隔重複',type:'concept-single',chip:'間隔重複',chipColor:'cyan',title:'對抗<span class="g-cyan">遺忘曲線</span>的唯一方法',body:'艾賓浩斯遺忘曲線：24小時後你忘掉70%。解方不是複習更多，是在對的時間點複習。',tip:'第1天 → 第3天 → 第7天 → 第21天。Anki 是最簡單的實踐工具。'},
@@ -493,7 +495,6 @@ function renderSlide(sd){
     h+=`<div class="bar" style="margin:.8rem auto 1.2rem"></div>`;
     h+=`<h2 style="font-weight:400;opacity:.7;font-size:clamp(1.4rem,2.5vw,2rem)">從快速學習到戰略思維</h2>`;
     h+=`<p style="margin-top:1.2rem;font-size:clamp(1rem,1.5vw,1.2rem);opacity:.45;letter-spacing:.08em">Vincent &nbsp;·&nbsp; 90 min &nbsp;·&nbsp; Signal over Noise</p>`;
-    h+=`<button class="cta-btn" style="margin-top:2rem" onclick="jumpToId('m5_converge')">預覽終極成果 →</button>`;
     h+=`</div>`;
     break;
 
@@ -537,6 +538,7 @@ function renderSlide(sd){
     [['Stanford d.school','var(--red)'],['IDEO 矽谷參訪','var(--orange)'],['DFT 冠軍','var(--purple)']].forEach(([label,col])=>{
       h+=`<div style="padding:.5rem 1.1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;font-size:var(--min-font);font-weight:600;color:${col}">${label}</div>`;
     });
+    h+=`<button class="cta-btn" style="margin-top:.6rem" onclick="jumpToId('m5_converge')">預覽終極成果 →</button>`;
     h+=`</div></div>`;
     break;}
 
@@ -714,8 +716,8 @@ function renderSlide(sd){
     h+=`</div>`;
     h+=`<div class="tip-box">只有 Input 沒有 Output 的學習，只是「感覺有學到」。費曼技巧：學完當天就解釋給一個人聽。</div>`;
     h+=`<div class="compare-grid" style="margin-top:1rem">`;
-    h+=`<div class="cmp-card cmp-no"><div style="font-size:var(--min-font);font-weight:700;color:rgba(255,32,85,.7);margin-bottom:.6rem">常見錯誤</div><ul class="deck-list"><li>看了書但不寫心得</li><li>聽了課但不做練習</li><li>學了工具但不實際用</li></ul></div>`;
-    h+=`<div class="cmp-card cmp-yes"><div style="font-size:var(--min-font);font-weight:700;color:var(--orange);margin-bottom:.6rem">正確迴路</div><ul class="deck-list"><li>每次 Input 後問：我要怎麼輸出它？</li><li>找一個人，把你剛學到的解釋給他聽</li><li>學完當天就用一次</li></ul></div>`;
+    h+=`<div class="cmp-card cmp-no revealed"><div style="font-size:var(--min-font);font-weight:700;color:rgba(255,32,85,.7);margin-bottom:.6rem">常見錯誤</div><ul class="deck-list"><li>看了書但不寫心得</li><li>聽了課但不做練習</li><li>學了工具但不實際用</li></ul></div>`;
+    h+=`<div class="cmp-card cmp-yes revealed"><div style="font-size:var(--min-font);font-weight:700;color:var(--orange);margin-bottom:.6rem">正確迴路</div><ul class="deck-list"><li>每次 Input 後問：我要怎麼輸出它？</li><li>找一個人，把你剛學到的解釋給他聽</li><li>學完當天就用一次</li></ul></div>`;
     h+=`</div></div>`;
     break;
 
@@ -751,6 +753,31 @@ function renderSlide(sd){
     h+=`<div><div style="font-size:var(--min-font);font-weight:700;color:var(--ink);margin-bottom:.25rem">Bottom-up 並非一定錯</div><div style="font-size:var(--min-font);color:var(--mid);line-height:1.6">而是它很容易讓人<strong style="color:var(--red)">先做再找理由</strong>。做完了才發現沒人要，成本已付出。Top-down 的優點：先驗證問題再動手。</div></div>`;
     h+=`</div>`;
     h+=`<div class="tip-box" style="max-width:900px;margin:0 auto;position:relative;z-index:1"><strong style="color:var(--orange)">應用到學習：</strong>不要先學一堆工具，先問「我要解決的問題是什麼？」再決定學什麼。</div>`;
+    const tdExId=`tdex-${sd.id}`;
+    h+=`<div style="max-width:900px;margin:.9rem auto 0;position:relative;z-index:1;text-align:center">`;
+    h+=`<button class="cta-btn" id="${tdExId}-btn" onclick="document.getElementById('${tdExId}').style.display='block';document.getElementById('${tdExId}-btn').style.display='none'" style="margin:0 auto">查看真實案例 →</button>`;
+    h+=`<div id="${tdExId}" style="display:none">`;
+    const tdPairs=[
+      {td:{co:'HTC / Samsung 早期 Android',desc:'先做出能跑 Android 的硬體 → 再找誰要買',tag:'Bottom-up'},bu:{co:'Apple iPhone',desc:'先問「人們最想從手機得到什麼？」→ 再設計硬體',tag:'Top-down'},domain:'智慧型手機'},
+      {td:{co:'Evernote',desc:'先建了同步筆記技術 → 再找用戶說「你需要這個」',tag:'Bottom-up'},bu:{co:'Notion',desc:'先問「知識工作者的核心痛點是什麼？」→ 再建 all-in-one 工作空間',tag:'Top-down'},domain:'生產力工具'},
+      {td:{co:'Couchsurfing',desc:'先建了沙發交換網路 → 商業模式從未清晰',tag:'Bottom-up'},bu:{co:'Airbnb',desc:'先確認「短租市場真實存在且夠痛」→ 再建撮合平台',tag:'Top-down'},domain:'共享住宿'},
+    ];
+    h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.8rem">`;
+    h+=`<div style="font-size:.62rem;font-weight:900;color:rgba(255,255,255,.35);letter-spacing:.15em;text-transform:uppercase;text-align:center;padding:.3rem 0">Bottom-up 出發</div>`;
+    h+=`<div style="font-size:.62rem;font-weight:900;color:var(--orange);letter-spacing:.15em;text-transform:uppercase;text-align:center;padding:.3rem 0">Top-down 出發</div>`;
+    tdPairs.forEach(p=>{
+      h+=`<div style="background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.12);border-radius:12px;padding:1rem">`;
+      h+=`<div style="font-size:var(--min-label);font-weight:800;color:rgba(255,255,255,.3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem">${p.domain}</div>`;
+      h+=`<div style="font-size:var(--min-font);font-weight:700;color:rgba(255,255,255,.55);margin-bottom:.3rem">${p.td.co}</div>`;
+      h+=`<div style="font-size:var(--min-label);color:var(--mid);line-height:1.5">${p.td.desc}</div>`;
+      h+=`</div>`;
+      h+=`<div style="background:rgba(255,107,0,.08);border:1.5px solid rgba(255,107,0,.3);border-radius:12px;padding:1rem">`;
+      h+=`<div style="font-size:var(--min-label);font-weight:800;color:var(--orange);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem">${p.domain}</div>`;
+      h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--orange);margin-bottom:.3rem">${p.bu.co}</div>`;
+      h+=`<div style="font-size:var(--min-label);color:var(--mid);line-height:1.5">${p.bu.desc}</div>`;
+      h+=`</div>`;
+    });
+    h+=`</div></div></div>`;
     break;}
 
   // ── MCKINSEY-SIX-V2 (v3) ─────────────────────────────────────────────────
@@ -785,6 +812,44 @@ function renderSlide(sd){
     h+=`<div class="tip-box" style="max-width:920px;margin:.9rem auto 0;position:relative;z-index:1"><strong style="color:var(--orange)">重點：</strong>這六個問題，是把「直覺出發」升格成「邏輯出發」的關鍵。先問清楚，再動手。</div>`;
     break;}
 
+  // ── SPEED READING EXAMPLE ────────────────────────────────────────────────
+  case 'speed-reading-ex':{
+    h+=blob('rgba(251,191,36,.08)','rgba(255,107,0,.06)');
+    h+=`<div style="position:relative;z-index:1;max-width:900px;width:100%">`;
+    h+=mkChip('速讀實戰示範','yellow');
+    h+=`<h2 style="margin-bottom:.3rem">打開一本書之前<br>先問自己<span class="g-orange">三個問題</span></h2>`;
+    h+=`<p style="font-size:var(--min-font);color:var(--mid);margin-bottom:.8rem">目的：帶著目標進入 → 快速翻閱激發好奇心 → 只深讀你需要的段落</p>`;
+    h+=`<div class="bar"></div>`;
+    const srScenarios=[
+      {book:'《Zero to One》— Peter Thiel',context:'你正在做一個新創早期市場驗證',q1:'這本書能回答什麼關於我的問題？',q2:'我最不確定的創業假設是什麼？',q3:'我需要的是市場洞察還是執行策略？',signal:'→ 直接跳到「Monopoly vs Competition」章節',col:'var(--orange)',colR:'rgba(255,107,0'},
+      {book:'《The Mom Test》— Rob Fitzpatrick',context:'你要去跟潛在客戶訪談',q1:'我想驗證什麼假設？',q2:'我最怕聽到哪個答案？',q3:'我的訪談目前有哪些盲點？',signal:'→ 直接找「Talking to customers」和「Bad data」段落',col:'var(--blue)',colR:'rgba(59,130,246'},
+    ];
+    srScenarios.forEach((s,i)=>{
+      const uid=`srex-${i}`;
+      h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:160px;margin-top:.8rem">`;
+      h+=`<div class="card-answer" style="background:${s.colR},.07);border:1.5px solid ${s.colR},.35);border-radius:14px;padding:1.2rem 1.3rem">`;
+      h+=`<div style="font-size:var(--min-label);font-weight:800;color:${s.col};letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem">情境：${s.context}</div>`;
+      h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--ink);margin-bottom:.7rem">${s.book}</div>`;
+      h+=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.6rem;margin-bottom:.7rem">`;
+      [['Q1：目的',s.q1],['Q2：痛點',s.q2],['Q3：需求類型',s.q3]].forEach(([label,text])=>{
+        h+=`<div style="background:${s.colR},.06);border:1px solid ${s.colR},.25);border-radius:8px;padding:.55rem .7rem">`;
+        h+=`<div style="font-size:var(--min-label);font-weight:800;color:${s.col};margin-bottom:.2rem">${label}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:rgba(255,255,255,.75);line-height:1.5">${text}</div>`;
+        h+=`</div>`;
+      });
+      h+=`</div>`;
+      h+=`<div style="font-size:var(--min-font);font-weight:700;color:${s.col};padding:.45rem .8rem;background:${s.colR},.1);border-radius:8px;display:inline-block">${s.signal}</div>`;
+      h+=`</div>`;
+      h+=`<div class="card-mask" style="border-radius:14px;background:${s.colR},.12);border:1.5px solid ${s.colR},.3)">`;
+      h+=`<div style="font-size:var(--min-label);font-weight:800;color:${s.col};letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem">情境</div>`;
+      h+=`<div style="font-size:clamp(1rem,1.6vw,1.2rem);font-weight:700;color:var(--ink)">${s.context}</div>`;
+      h+=`<div style="font-size:var(--min-label);color:var(--mid);margin-top:.25rem">${s.book}</div>`;
+      h+=`</div></div>`;
+    });
+    h+=`<div class="tip-box" style="margin-top:1rem">三個問題問完，你的眼睛就知道要在哪停下來。不帶問題的翻閱叫做「瀏覽」，帶著問題叫做「速讀」。</div>`;
+    h+=`</div>`;
+    break;}
+
   // ── THREE SCAN ───────────────────────────────────────────────────────────
   case 'three-scan':
     h+=blob('rgba(251,191,36,.08)','rgba(255,107,0,.06)');
@@ -803,6 +868,48 @@ function renderSlide(sd){
     h+=`<div class="tip-box" style="margin-top:1rem">三段掃描不是要你讀得更快，是要你讀得更<strong>有目的</strong>。沒有問題，就沒有掃描。</div>`;
     h+=`</div>`;
     break;
+
+  // ── CHUNK EXAMPLE ────────────────────────────────────────────────────────
+  case 'chunk-example':{
+    h+=blob('rgba(34,197,94,.08)','rgba(6,182,212,.05)');
+    h+=`<div style="position:relative;z-index:1;max-width:920px;width:100%">`;
+    h+=mkChip('Chunking 實戰','green');
+    h+=`<h2 style="margin-bottom:.3rem"><span class="g-green">把「創業能力」</span>拆成 3 包</h2>`;
+    h+=`<p style="font-size:var(--min-font);color:var(--mid);margin-bottom:.8rem">如果你要「學習創業」，原始清單可能有 20 項技能。Chunking 的任務：壓縮成 3 個有意義的包，大腦才裝得下。</p>`;
+    h+=`<div class="bar"></div>`;
+    const rawSkills=['市場調查','訪談技巧','競品分析','品牌定位','文案撰寫','社群經營','廣告投放','顧客回饋分析','財務建模','現金流管理','定價策略','投資人溝通','MVP 開發','產品迭代','UX 設計','數據分析','A/B 測試','技術外包管理','用戶研究','GTM 執行'];
+    h+=`<div style="margin-top:1rem">`;
+    h+=`<div style="font-size:var(--min-label);font-weight:700;color:var(--mid);margin-bottom:.5rem">原始技能清單（20 項）— 直接記？大腦崩潰</div>`;
+    h+=`<div style="display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1.2rem">`;
+    rawSkills.forEach(s=>{h+=`<span style="font-size:var(--min-label);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:.2rem .6rem;color:rgba(255,255,255,.45)">${s}</span>`;});
+    h+=`</div>`;
+    h+=`<div style="font-size:var(--min-label);font-weight:700;color:var(--green);margin-bottom:.6rem">↓ Chunking 後：3 包，每包 3 個核心動作</div>`;
+    const chunks=[
+      {n:'01',name:'發現問題',color:'var(--orange)',colR:'rgba(255,107,0',items:['市場調查 + 訪談技巧','競品分析','顧客回饋分析'],sub:'整包的意義：你在解決誰的什麼問題？'},
+      {n:'02',name:'傳遞價值',color:'var(--blue)',colR:'rgba(59,130,246',items:['品牌定位 + 文案撰寫','GTM 執行 + 廣告投放','用戶研究 + A/B 測試'],sub:'整包的意義：讓對的人看見你的解法'},
+      {n:'03',name:'維持存活',color:'var(--green)',colR:'rgba(34,197,94',items:['財務建模 + 定價策略','現金流管理','MVP 開發 + 快速迭代'],sub:'整包的意義：讓這件事能繼續做下去'},
+    ];
+    h+=`<div class="mrev-grid cols-3" style="margin-top:.5rem">`;
+    chunks.forEach(c=>{
+      const uid=`ck-${c.n}`;
+      h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked');playUnlock()" style="min-height:160px">`;
+      h+=`<div class="card-answer" style="background:${c.colR},.08);border:1.5px solid ${c.colR},.35);border-radius:14px;padding:1.2rem">`;
+      h+=`<div style="font-size:.55rem;font-weight:900;letter-spacing:.15em;color:${c.color};text-transform:uppercase;margin-bottom:.3rem">包 ${c.n}</div>`;
+      h+=`<div style="font-size:clamp(1.1rem,1.7vw,1.4rem);font-weight:800;color:${c.color};margin-bottom:.5rem">${c.name}</div>`;
+      h+=`<ul style="list-style:none;display:flex;flex-direction:column;gap:.3rem;margin-bottom:.6rem">`;
+      c.items.forEach(it=>{h+=`<li style="font-size:var(--min-font);color:rgba(255,255,255,.8);padding-left:.9rem;position:relative"><span style="position:absolute;left:0;color:${c.color}">›</span>${it}</li>`;});
+      h+=`</ul>`;
+      h+=`<div style="font-size:var(--min-label);color:${c.color};padding:.35rem .6rem;background:${c.colR},.1);border-radius:6px;line-height:1.5">${c.sub}</div>`;
+      h+=`</div>`;
+      h+=`<div class="card-mask" style="background:${c.colR},.14);border:1.5px solid ${c.colR},.3)">`;
+      h+=`<div class="card-mask-num">${c.n}</div>`;
+      h+=`<div style="font-size:clamp(1.1rem,1.7vw,1.4rem);font-weight:800;color:${c.color};margin-top:.3rem">${c.name}</div>`;
+      h+=`</div></div>`;
+    });
+    h+=`</div></div>`;
+    h+=`<div class="tip-box" style="margin-top:1rem">Chunking 的核心：不是分類，是找到「讓大腦能理解的意義」。每包都要能用一句話說清楚它存在的原因。</div>`;
+    h+=`</div>`;
+    break;}
 
   // ── DUAL CODING ──────────────────────────────────────────────────────────
   case 'dual-coding':
@@ -1479,10 +1586,12 @@ function updateUI(){
   if(typeof updateRail==='function')updateRail(sd.sec);
 }
 
+let programmaticScroll=false;
 function scrollToSlide(idx){
   idx=Math.max(0,Math.min(idx,total-1));
   slideEls[idx]?.scrollIntoView({behavior:'smooth',block:'start'});
-  cur=idx;updateUI();playPageFlip();
+  programmaticScroll=true;cur=idx;updateUI();playPageFlip();
+  setTimeout(()=>{programmaticScroll=false;},900);
 }
 function jumpToSection(sec){const idx=secStarts[sec];if(idx!==undefined)scrollToSlide(idx);}
 
@@ -1520,7 +1629,7 @@ const observer=new IntersectionObserver(entries=>{
     if(entry.isIntersecting){
       entry.target.classList.add('is-visible');
       const i=parseInt(entry.target.dataset.index);
-      if(!isNaN(i)){cur=i;updateUI();}
+      if(!isNaN(i)&&!programmaticScroll){cur=i;updateUI();}
     }else{entry.target.classList.remove('is-visible');}
   });
 },{threshold:0.5});
