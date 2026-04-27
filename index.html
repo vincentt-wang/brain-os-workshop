@@ -3696,15 +3696,6 @@ function renderSlide(sd,idx){
       break;}
     case 'fermi-game-v2':{
       h+=blob('rgba(59,130,246,.08)','rgba(255,107,0,.06)');
-      // ── Fermi definition — ABOVE the title ──
-      h+=`<div style="max-width:960px;margin:0 auto .65rem;position:relative;z-index:1">`;
-      h+=`<div style="display:grid;grid-template-columns:auto 1fr;gap:.8rem;align-items:center;background:rgba(59,130,246,.1);border:1.5px solid rgba(59,130,246,.3);border-radius:12px;padding:.75rem 1.1rem">`;
-      h+=`<div style="text-align:center;border-right:1px solid rgba(59,130,246,.25);padding-right:.8rem">`;
-      h+=`<div style="font-size:clamp(1rem,1.6vw,1.15rem);font-weight:900;color:var(--blue);white-space:nowrap">費米估算</div>`;
-      h+=`<div style="font-size:var(--min-label);color:var(--mid);white-space:nowrap">Fermi Estimation</div>`;
-      h+=`</div>`;
-      h+=`<div style="font-size:var(--min-font);color:var(--mid);line-height:1.6">用<strong style="color:var(--blue)">已知基數 × 合理假設</strong>，一步步推導複雜問題的答案。不需要精確資料，只需要邏輯。</div>`;
-      h+=`</div></div>`;
       // ── Title ──
       h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.5rem auto .6rem"></div>`;
       if(sd.title)h+=`<h2 style="margin-bottom:.7rem">${sd.title}</h2>`;
@@ -3713,39 +3704,52 @@ function renderSlide(sd,idx){
       const steps=[
         {num:'Step 1',q:'台灣 2,300 萬人<br>有飲料習慣的比例',
          label:'市場基數',col:'var(--blue)',
-         ans:'約 <strong style="color:var(--blue)">40%</strong>，即 920 萬人',
+         calc:'2,300萬 × 40%',
+         result:'920 萬人',
          src:'食力 foodNEXT 2024'},
         {num:'Step 2',q:'920 萬人<br>每週平均喝幾杯',
          label:'消費頻率',col:'var(--cyan)',
-         ans:'平均每週 <strong style="color:var(--cyan)">2.5 杯</strong>',
+         calc:'每人每週',
+         result:'2.5 杯',
          src:'未來流通研究所 2024'},
         {num:'Step 3',q:'換算成每天<br>全台共幾杯',
          label:'日銷量',col:'var(--orange)',
-         ans:'920萬 × 2.5 ÷ 7 ≈ <strong style="color:var(--orange)">330 萬杯 / 天</strong>',
+         calc:'920萬 × 2.5 ÷ 7',
+         result:'≈ 330 萬杯 / 天',
          src:'ITIS 產業情報 2024'},
         {num:'結論',q:'年市場規模<br>大概是多少',
          label:'市場規模',col:'var(--red)',
-         ans:'330萬 × 55元 × 365 ≈ <strong style="color:var(--red)">年市場 660 億</strong>',
+         calc:'330萬 × 55元 × 365',
+         result:'≈ 年市場 660 億',
          src:'經濟部統計處 2024'},
       ];
-      h+=`<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;max-width:960px;margin:0 auto;position:relative;z-index:1">`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;max-width:1280px;margin:0 auto .9rem;position:relative;z-index:1">`;
       steps.forEach((s,si)=>{
         const uid=`${sd.id}-f${si}`;
         h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:185px">`;
-        // Opened: answer face with fixed min-height for equal sizing
-        h+=`<div class="card-answer" style="background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.1);border-top:3px solid ${s.col};min-height:185px;display:flex;flex-direction:column;justify-content:center;gap:.4rem;padding:1rem">`;
+        h+=`<div class="card-answer" style="background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.1);border-top:3px solid ${s.col};height:100%;display:flex;flex-direction:column;gap:.3rem;padding:1rem;box-sizing:border-box">`;
         h+=`<div style="font-size:var(--min-label);font-weight:800;color:${s.col};letter-spacing:.08em">${s.label}</div>`;
-        h+=`<div style="font-size:var(--min-font);color:var(--ink);line-height:1.55;font-weight:600">${s.ans}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:var(--mid);line-height:1.4">${s.calc}</div>`;
+        h+=`<div style="font-size:clamp(1rem,1.5vw,1.2rem);font-weight:800;color:${s.col};line-height:1.3">${s.result}</div>`;
         h+=`<div style="font-size:var(--min-label);color:var(--mid);margin-top:auto">Source: ${s.src}</div>`;
         h+=`</div>`;
-        // Locked: step + question only (no instructional hint)
         h+=`<div class="card-mask" style="flex-direction:column;gap:.5rem;padding:1.1rem 1rem">`;
         h+=`<div style="font-size:clamp(1rem,1.6vw,1.2rem);font-weight:900;color:${s.col}">${s.num}</div>`;
         h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--ink);line-height:1.5;text-align:center">${s.q}</div>`;
         h+=`</div>`;
         h+=`</div>`;
       });
-      h+=`</div>`;break;}
+      h+=`</div>`;
+      // ── Fermi definition — BELOW the cards ──
+      h+=`<div style="max-width:1280px;margin:0 auto;position:relative;z-index:1">`;
+      h+=`<div style="display:grid;grid-template-columns:auto 1fr;gap:.8rem;align-items:center;background:rgba(59,130,246,.1);border:1.5px solid rgba(59,130,246,.3);border-radius:12px;padding:.75rem 1.1rem">`;
+      h+=`<div style="text-align:center;border-right:1px solid rgba(59,130,246,.25);padding-right:.8rem">`;
+      h+=`<div style="font-size:clamp(1rem,1.6vw,1.15rem);font-weight:900;color:var(--blue);white-space:nowrap">費米估算</div>`;
+      h+=`<div style="font-size:var(--min-label);color:var(--mid);white-space:nowrap">Fermi Estimation</div>`;
+      h+=`</div>`;
+      h+=`<div style="font-size:var(--min-font);color:var(--mid);line-height:1.6">用<strong style="color:var(--blue)">已知基數 × 合理假設</strong>，一步步推導複雜問題的答案。</div>`;
+      h+=`</div></div>`;
+      break;}
     case 'fermi-trash-v2':{
       h+=`<div style="text-align:center">${chip}<div class="bar" style="margin:.6rem auto 1rem"></div>`;
       if(sd.title)h+=`<h2 style="margin-bottom:.35rem">${sd.title}</h2>`;
