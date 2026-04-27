@@ -600,9 +600,9 @@ const D=[
 {id:'s_exec_bridge',sec:3,sub:'可行性｜執行轉場',type:'section',chip:['Section 3 轉換','white'],title:'訊息進來了<br><span class="g-orange">讓想法做出來</span>',sub2:'速讀 · 記憶 · 費曼，學會怎麼學。<br>下一步：AI 工具 · 快速原型 · Agile，學會怎麼做。',theme:'blue-light'},
 {id:'s3a2',sec:3,sub:'可行性｜AI 時代',type:'ai-feasibility',chip:['AI 時代','cyan'],title:'「做得出來」不再是最難的事'},
 {id:'s3a5',sec:3,sub:'可行性｜工具庫',type:'tools-wall-v2',chip:['一人軍隊工具庫','purple'],title:'工具推薦：一人軍隊的完整軍火庫'},
+{id:'s3a4',sec:3,sub:'可行性｜原型',type:'ideate-prototype-test',chip:['設計思維循環','orange'],title:'Ideate → Prototype → Test',xrefs:[{id:'s09',label:'設計思維循環'}]},
 {id:'s3a3',sec:3,sub:'可行性｜原型',type:'prototype-types',chip:['原型類型','purple'],title:'Prototype / MVP / MVC / POC 的差別',xrefs:[{id:'s38',label:'GTM→POC→PMF'}]},
 {id:'s38',sec:3,sub:'可行性｜驗證路徑',type:'gtm-poc-pmf-v2',chip:['驗證三階段','green'],title:'GTM → POC → PMF',subtitle:'讓對的人看到你 → 先做出來驗證 → 確認市場真的要',xrefs:[{id:'s3a3',label:'原型類型'}]},
-{id:'s3a4',sec:3,sub:'可行性｜原型',type:'ideate-prototype-test',chip:['設計思維循環','orange'],title:'Ideate → Prototype → Test',xrefs:[{id:'s09',label:'設計思維循環'}]},
 {id:'s_agile',sec:3,sub:'可行性｜方法論',type:'agile-lean',chip:['方法論','cyan'],title:'把想法跑起來：Agile × Running Lean'},
 // ❌ 移除 s3a5b ai-orchestration（太技術性）
 {id:'s3a6',sec:3,sub:'可行性｜練習',type:'feasibility-exercise',chip:['可行性練習','green'],title:'把你的想法做出第一版',time:300,theme:'green-light'},
@@ -4685,29 +4685,46 @@ function renderSlide(sd,idx){
       break;}
     case 'gtm-poc-pmf-v2':{
       h+=blob('rgba(34,197,94,.08)','rgba(59,130,246,.06)');
-      h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto 1rem"></div>`;
-      if(sd.title)h+=`<h2 style="margin-bottom:1rem">${sd.title}</h2>`;
+      h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.5rem auto .8rem"></div>`;
+      if(sd.title)h+=`<h2 style="margin-bottom:.3rem">${sd.title}</h2>`;
+      if(sd.subtitle)h+=`<p style="font-size:var(--min-font);color:var(--mid);margin-bottom:.9rem">${sd.subtitle}</p>`;
       h+=`</div>`;
       const stages=[
-        {name:'GTM',zh:'Go-To-Market',col:'var(--blue)',desc:'誰 × 說什麼 × 在哪說 × 何時說',icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>'},
-        {name:'POC',zh:'Proof of Concept',col:'var(--orange)',desc:'最低成本驗證，找第一個真實訊號',icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>'},
-        {name:'PMF',zh:'Product-Market Fit',col:'var(--green)',desc:'用戶主動回來、分享、推薦',icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>'}
+        {name:'GTM',zh:'Go-To-Market',col:'var(--blue)',colR:'rgba(59,130,246',
+         icon:'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>',
+         q:'誰買？在哪裡找到他？說什麼？',
+         steps:['1-on-1 先賣出前 10 單','用他的語言，不投廣告','IG / Dcard / 社團 / 口碑'],
+         signal:'訊號：陌生人掏錢，截圖傳給朋友'},
+        {name:'POC',zh:'Proof of Concept',col:'var(--orange)',colR:'rgba(255,107,0',
+         icon:'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',
+         q:'假設是真的嗎？最快的驗證方式？',
+         steps:['粗糙版給 5–10 人實際體驗','觀察行為，不只問感覺','留存率 > 30%，繼續做'],
+         signal:'訊號：有人自願再用一次'},
+        {name:'PMF',zh:'Product-Market Fit',col:'var(--green)',colR:'rgba(34,197,94',
+         icon:'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
+         q:'市場真的需要這個嗎？',
+         steps:['用戶主動回來，不需要催','口碑擴散，沒花廣告費','你停止推廣，仍持續增長'],
+         signal:'訊號：他主動分享給有同樣困擾的人'}
       ];
-      h+=`<div style="display:flex;gap:.5rem;justify-content:center;align-items:center;max-width:900px;margin:0 auto;position:relative;z-index:1">`;
+      h+=`<div style="display:flex;gap:.6rem;justify-content:center;align-items:stretch;max-width:1100px;margin:0 auto;position:relative;z-index:1">`;
       stages.forEach((s,i)=>{
-        h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked')" style="flex:1;min-height:200px">`;
-        h+=`<div class="card-answer" style="background:${s.col}12;border:2px solid ${s.col}40;border-radius:12px;padding:1.2rem;text-align:center">`;
-        h+=`<div style="color:${s.col};margin-bottom:.4rem">${s.icon}</div>`;
-        h+=`<div style="font-size:clamp(1.2rem,2vw,1.5rem);font-weight:700;color:${s.col}">${s.name}</div>`;
-        h+=`<div style="font-size:var(--min-font);color:var(--mid);margin:.3rem 0">${s.zh}</div>`;
-        h+=`<div style="font-size:var(--min-font);color:var(--ink);margin-top:.5rem">${s.desc}</div>`;
+        h+=`<div style="flex:1;background:${s.colR},.08);border:2px solid ${s.colR},.3);border-top:3px solid ${s.col};border-radius:14px;padding:1.2rem;display:flex;flex-direction:column;gap:.55rem">`;
+        h+=`<div style="display:flex;align-items:center;gap:.7rem">`;
+        h+=`<div style="color:${s.col};flex-shrink:0">${s.icon}</div>`;
+        h+=`<div><div style="font-size:clamp(1.2rem,2vw,1.5rem);font-weight:800;color:${s.col}">${s.name}</div><div style="font-size:var(--min-label);color:var(--mid)">${s.zh}</div></div>`;
         h+=`</div>`;
-        h+=`<div class="card-mask" style="border-radius:12px;background:${s.col}25"><div style="color:${s.col}">${s.icon}</div><div style="font-size:clamp(1.2rem,2vw,1.5rem);font-weight:700;color:var(--ink);margin-top:.3rem">${s.name}</div></div>`;
+        h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--ink);line-height:1.4">${s.q}</div>`;
+        h+=`<div style="display:flex;flex-direction:column;gap:.3rem;flex:1">`;
+        s.steps.forEach(step=>{
+          h+=`<div style="font-size:var(--min-label);color:rgba(255,255,255,.8);padding:.3rem .6rem;background:${s.colR},.1);border-radius:6px;display:flex;align-items:center;gap:.4rem"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="${s.col}" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>${step}</div>`;
+        });
         h+=`</div>`;
-        if(i<stages.length-1)h+=`<div style="font-size:1.5rem;color:var(--mid)">→</div>`;
+        h+=`<div style="font-size:var(--min-label);color:${s.col};font-weight:700;padding:.4rem .7rem;background:${s.colR},.12);border-radius:8px;border:1px solid ${s.colR},.3)">${s.signal}</div>`;
+        h+=`</div>`;
+        if(i<stages.length-1)h+=`<div style="display:flex;align-items:center;color:var(--mid);font-size:1.4rem;flex-shrink:0;align-self:center">→</div>`;
       });
       h+=`</div>`;
-      h+=`<div class="tip-box" style="max-width:900px;margin:1rem auto 0;position:relative;z-index:1"><strong style="color:var(--green)">順序不能錯：</strong>先有方向，再驗證，再放大</div>`;
+      h+=`<div class="tip-box" style="max-width:1100px;margin:.8rem auto 0;position:relative;z-index:1"><strong style="color:var(--green)">順序不能錯：</strong>先讓對的人看到 → 最低成本驗證假設 → 確認市場需求可規模化</div>`;
       break;}
     case 'viability-exercise':{
       h+=blob('rgba(255,107,0,.08)','rgba(251,191,36,.06)');
