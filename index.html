@@ -556,7 +556,7 @@ const D=[
 {id:'s13',sec:1,sub:'策略思維｜費米估算',type:'fermi-game-v2',chip:['費米估算','cyan','lg'],title:'全台灣一天賣出幾杯手搖飲',subtitle:'先猜一個數字，再一起推導'},
 // ❌ 移除 s13b fermi-trash（一個費米例子就夠了）
 // ❌ 移除 s14 dark（已被 s13c 涵蓋）
-{id:'s13c',sec:1,sub:'策略思維｜費米估算',type:'indie-hacker-math',chip:['商業推導','orange','lg'],title:'市場規模怎麼算？'},
+{id:'s13c',sec:1,sub:'策略思維｜費米估算',type:'indie-hacker-math',chip:['商業推導','orange','lg'],title:'台灣咖啡市場有多大？'},
 {id:'s14b',sec:1,sub:'策略思維｜費米估算',type:'fermi-practice',chip:['換你算算看','green','lg'],title:'換你來：全台灣有幾家便利商店',subtitle:'用費米估算，1 分鐘推導',time:60,theme:'warm'},
 {id:'s17',sec:1,sub:'策略思維｜收尾',type:'section',chip:['Section 1 收尾','white'],title:'帶著戰略腦<br>進入實戰',sub2:'Section 2：欲求性 — 你在對誰說話？',theme:'light'},
 // ── SECTION 2：欲求性｜需求探索 ──────────────────────────────────────
@@ -2466,43 +2466,38 @@ function renderSlide(sd,idx){
       if(sd.subtitle)h+=`<p style="color:var(--mid);margin-bottom:.8rem;font-size:var(--min-font)">${sd.subtitle}</p>`;
       h+=`</div>`;
       // Main grid: Left hints → Right answer
-      h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:940px;margin:0 auto .9rem;position:relative;z-index:1">`;
+      h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:1100px;margin:0 auto .9rem;position:relative;z-index:1;align-items:stretch">`;
       // ── LEFT: Bottom-up step-by-step hints ──
-      h+=`<div style="background:rgba(34,197,94,.05);border:2px solid rgba(34,197,94,.3);border-radius:12px;padding:1.1rem 1.2rem">`;
-      h+=`<div style="font-size:var(--min-label);font-weight:800;color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.7rem;display:flex;align-items:center;gap:.4rem">`;
-      h+=`<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`;
-      h+=`Bottom-up 推導框架</div>`;
-      [{step:'Step 1',q:'已知基數',hint:'台灣人口：2,300 萬人',link:'這是你的起點'},
-       {step:'Step 2',q:'服務密度',hint:'為什麼 1,650 人需要一家店？',link:'走路 5 分鐘圈約 3,000 人，平均 2 個主要品牌競爭'},
-       {step:'Step 3',q:'推導計算',hint:'2,300萬 ÷ 1,650 ≈ ?',link:'試著算出你的答案'},
+      h+=`<div style="background:rgba(34,197,94,.05);border:2px solid rgba(34,197,94,.3);border-radius:12px;padding:1.1rem 1.2rem;display:flex;flex-direction:column;gap:.55rem">`;
+      h+=`<div style="font-size:var(--min-label);font-weight:800;color:var(--green);letter-spacing:.08em;margin-bottom:.2rem">Bottom-up 推導框架</div>`;
+      [{q:'活躍使用者',hint:'2,300萬 × 都市化率 70% = 1,610萬人',sub:'台灣多數超商消費集中都市圈'},
+       {q:'年訪次推估',hint:'每人每週 4 次 × 52 週 = 208 次/年',sub:'便利店使用頻率高，替代早餐/下午茶'},
+       {q:'單店年承接',hint:'每日約 800 人次 × 365 = 29.2萬次/年',sub:'台灣超商規模小，日客流量有限'},
       ].forEach((item,i)=>{
-        h+=`<div style="display:flex;gap:.7rem;margin-bottom:.6rem;align-items:flex-start">`;
-        h+=`<div style="min-width:1.8rem;height:1.8rem;background:rgba(34,197,94,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem">`;
+        h+=`<div style="display:flex;gap:.65rem;align-items:flex-start">`;
+        h+=`<div style="min-width:1.7rem;height:1.7rem;background:rgba(34,197,94,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.15rem">`;
         h+=`<span style="font-size:var(--min-label);font-weight:800;color:var(--green)">${i+1}</span></div>`;
         h+=`<div>`;
         h+=`<div style="font-size:var(--min-label);font-weight:700;color:var(--green);margin-bottom:.1rem">${item.q}</div>`;
-        h+=`<div style="font-size:var(--min-font);color:var(--ink);font-weight:600">${item.hint}</div>`;
-        h+=`<div style="font-size:var(--min-label);color:var(--mid)">${item.link}</div>`;
+        h+=`<div style="font-size:var(--min-font);color:var(--ink);font-weight:600;line-height:1.4">${item.hint}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:var(--mid);line-height:1.35">${item.sub}</div>`;
         h+=`</div></div>`;
       });
       h+=`</div>`;
       // ── RIGHT: Answer unlock card ──
-      h+=`<div class="unlock-card" id="fermi-ans-${sd.id}" onclick="this.classList.toggle('unlocked')" style="min-height:200px">`;
-      h+=`<div class="card-answer" style="background:rgba(34,197,94,.08);border:2px solid rgba(34,197,94,.3);border-radius:12px;padding:1.2rem;height:auto">`;
-      h+=`<div style="font-size:var(--min-label);font-weight:800;color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;display:flex;align-items:center;gap:.4rem">`;
-      h+=`<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
-      h+=`推導結果</div>`;
-      h+=`<div style="font-size:clamp(1.8rem,3vw,2.4rem);font-weight:900;color:var(--green);margin-bottom:.3rem;white-space:nowrap">~14,000 家</div>`;
-      h+=`<div style="font-size:var(--min-font);color:var(--ink);font-weight:700;margin-bottom:.4rem;white-space:nowrap">2,300萬 ÷ 1,650人/店 ≈ 13,900 家</div>`;
-      h+=`<div style="height:1px;background:rgba(255,255,255,.08);margin:.5rem 0"></div>`;
-      h+=`<div style="font-size:var(--min-font);color:var(--mid);margin-bottom:.25rem;white-space:nowrap">實際：四大超商合計約 14,000 家</div>`;
-      h+=`<div style="font-size:var(--min-label);color:rgba(34,197,94,.7);white-space:nowrap">誤差 < 1%，估算成立 ✓</div>`;
-      h+=`<div style="font-size:var(--min-label);color:rgba(255,255,255,.3);margin-top:.4rem">Source: 經濟部商業司 2026</div>`;
+      h+=`<div class="unlock-card" id="fermi-ans-${sd.id}" onclick="this.classList.toggle('unlocked')">`;
+      h+=`<div class="card-answer" style="background:rgba(34,197,94,.08);border:2px solid rgba(34,197,94,.3);border-radius:12px;padding:1.2rem;height:100%;display:flex;flex-direction:column;gap:.4rem;box-sizing:border-box">`;
+      h+=`<div style="font-size:var(--min-label);font-weight:800;color:var(--green);letter-spacing:.08em;margin-bottom:.2rem">推導結果</div>`;
+      h+=`<div style="font-size:clamp(1.8rem,3vw,2.4rem);font-weight:900;color:var(--green);line-height:1">~12,000 家</div>`;
+      h+=`<div style="font-size:var(--min-font);color:var(--ink);font-weight:700;line-height:1.5">1,610萬 × 208 ÷ 292,000 ≈ 11,500 家</div>`;
+      h+=`<div style="height:1px;background:rgba(255,255,255,.08);margin:.3rem 0"></div>`;
+      h+=`<div style="font-size:var(--min-font);color:var(--mid)">實際：四大超商合計約 12,000 家</div>`;
+      h+=`<div style="font-size:var(--min-label);color:rgba(34,197,94,.7);margin-top:auto">誤差 &lt; 5%，估算成立 ✓</div>`;
+      h+=`<div style="font-size:var(--min-label);color:rgba(255,255,255,.3)">Source: 經濟部商業司 2024</div>`;
       h+=`</div>`;
       h+=`<div class="card-mask" style="border-radius:12px">`;
       h+=`<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="var(--green)" stroke-width="1.5" style="margin-bottom:.6rem"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>`;
-      h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--ink);margin-bottom:.35rem">先算出你的答案</div>`;
-      h+=`<div style="font-size:var(--min-label);color:var(--mid)">點擊揭曉正確推導</div>`;
+      h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--ink)">推導結果</div>`;
       h+=`</div>`;
       h+=`</div>`;
       h+=`</div>`;
@@ -3806,10 +3801,9 @@ function renderSlide(sd,idx){
       break;}
     case 'indie-hacker-math':{
       h+=`<div style="text-align:center">${chip}<div class="bar" style="margin:.6rem auto .9rem"></div>`;
-      if(sd.title)h+=`<h2 style="margin-bottom:.25rem">${sd.title}</h2>`;
-      h+=`<p style="color:var(--mid);margin-bottom:1rem;font-size:var(--min-font)">點擊每張牌，猜猜看</p>`;
+      if(sd.title)h+=`<h2 style="margin-bottom:.8rem">${sd.title}</h2>`;
       h+=`</div>`;
-      // Business case: Starbucks Taiwan market estimation
+      // Business case: Taiwan coffee market estimation
       const ihmSteps=[
         {num:'基礎人口',q:'台灣有多少<br>潛在咖啡消費者？',label:'Step 1 · 市場基數',col:'var(--blue)',
          big:'1,400 萬人',sub:'2,300 萬 × 都市化率 80% × 咖啡習慣 75% ≈ 1,380 萬'},
@@ -3820,14 +3814,14 @@ function renderSlide(sd,idx){
         {num:'年市場',q:'台灣咖啡市場<br>一年有多大？',label:'結論 · 市場規模',col:'var(--green)',
          big:'4,200 億+',sub:'1,400萬 × 3.2 × 180 × 52 ≈ 4,225 億 NTD／年'},
       ];
-      h+=`<div class="mrev-grid cols-4" style="gap:.8rem;max-width:940px;margin:0 auto">`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;max-width:1280px;margin:0 auto;position:relative;z-index:1">`;
       ihmSteps.forEach((s,si)=>{
         const uid=`${sd.id}-m${si}`;
-        h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:160px">`;
-        h+=`<div class="card-answer" style="background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.08);border-top:3px solid ${s.col};padding:1.1rem 1rem;display:flex;flex-direction:column;gap:.4rem;text-align:center">`;
+        h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:170px">`;
+        h+=`<div class="card-answer" style="background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.08);border-top:3px solid ${s.col};padding:1.1rem 1rem;height:100%;display:flex;flex-direction:column;gap:.4rem;text-align:center;box-sizing:border-box">`;
         h+=`<div style="font-size:var(--min-label);font-weight:700;color:${s.col};letter-spacing:.06em">${s.label}</div>`;
         h+=`<div style="font-size:clamp(1rem,2vw,1.5rem);font-weight:900;color:var(--ink);line-height:1;white-space:nowrap">${s.big}</div>`;
-        h+=`<div style="font-size:var(--min-label);color:var(--mid);line-height:1.5">${s.sub}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:var(--mid);line-height:1.5;margin-top:auto">${s.sub}</div>`;
         h+=`</div>`;
         h+=`<div class="card-mask"><div class="card-mask-num" style="color:${s.col};font-size:1.8rem">${s.num}</div><div class="card-mask-q" style="font-size:var(--min-font)">${s.q}</div></div>`;
         h+=`</div>`;
