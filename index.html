@@ -561,8 +561,8 @@ const D=[
 {id:'s17',sec:1,sub:'策略思維｜收尾',type:'section',chip:['Section 1 收尾','white'],title:'帶著戰略腦<br>進入實戰',sub2:'Section 2：欲求性 — 你在對誰說話？',theme:'light'},
 // ── SECTION 2：欲求性｜需求探索 ──────────────────────────────────────
 {id:'s18',sec:2,sub:'欲求性｜開場',type:'section-cover',secNum:'②',secTitle:'欲求性',secEn:'Desirability',sub2:'你在對誰說話'},
-{id:'s19',sec:2,sub:'欲求性｜開場',type:'big-quote',chip:['最常見的錯誤','red'],quote:'「我的受眾<br><span class="g-red">是所有人」</span>',sub2:'每次聽到這句話，我知道這個東西大概賣不起來',theme:'light'},
-{id:'s20',sec:2,sub:'欲求性｜開場',type:'dark',chip:['精準定位','orange'],title:'對所有人說話<br>等於對任何人都沒說',bullets:['訊息越泛，共鳴越淺','精準定位 1,000 個有痛的人，比觸及 100,000 個無感的人有效','每一個「也可以」，都是對核心受眾的稀釋'],footer:'設計，是為那個「最需要」的人而做的'},
+{id:'s19',sec:2,sub:'欲求性｜開場',type:'big-quote',chip:['最常見的錯誤','red'],quote:'「我的受眾<br><span class="g-red">是所有人」</span>',sub2:'受眾越模糊，訊息越無力，轉換越低 — 這是規律，不是主觀判斷',theme:'light'},
+{id:'s20',sec:2,sub:'欲求性｜開場',type:'dark',chip:['精準定位','orange'],title:'對所有人說話<br>等於對任何人都沒說',bullets:['訊息越泛，共鳴越淺 — 每多一個「也可以」，就是一次稀釋','精準定位 1,000 個有痛的人，轉換效率是廣播式的 10–20 倍'],compBoxes:[{label:'廣播思維',stat:'< 1%',statNote:'平均轉換率',desc:'觸及所有人 → 打動沒有人',col:'rgba(255,255,255,.45)',bg:'rgba(255,255,255,.04)',border:'rgba(255,255,255,.1)'},{label:'精準思維',stat:'10–20%',statNote:'精準受眾轉換率',desc:'打中最痛的人 → 共鳴最深',col:'var(--orange)',bg:'rgba(255,107,0,.07)',border:'rgba(255,107,0,.3)'}],footer:'設計，是為那個「最需要」的人而做的'},
 {id:'s09',sec:2,sub:'欲求性｜設計思維',type:'dt-loop-auto',chip:['Design Thinking','cyan'],title:'設計思維是一個循環',xrefs:[{id:'s3a4',label:'Prototype 在哪'}]},
 {id:'s_emomap',sec:2,sub:'欲求性｜設計思維',type:'emotional-touchpoints',chip:['情緒波點','cyan'],title:'找到那個讓人離開的瞬間'},
 {id:'s21',sec:2,sub:'欲求性｜ICP 與 HXC',type:'audience-layers',chip:['三層受眾收斂','blue'],title:'Persona → ICP（理想客群）→ HXC（最核心的那群人）'},
@@ -1648,8 +1648,20 @@ function renderSlide(sd,idx){
       if(sd.title)h+=`<h2 style="margin-bottom:.5rem">${sd.title}</h2>`;
       h+=`</div>`;
       if(sd.content)h+=`<div style="margin-top:.45rem;text-align:center">${sd.content}</div>`;
-      if(sd.bullets?.length){h+=`<ul class="deck-list" style="max-width:680px;margin:1rem auto 0">`;sd.bullets.forEach(b=>{h+=`<li>${b}</li>`;});h+=`</ul>`;}
-      if(sd.footer)h+=`<div class="tip-box" style="max-width:680px;margin:1rem auto 0">${sd.footer}</div>`;
+      if(sd.bullets?.length){h+=`<ul class="deck-list" style="max-width:760px;margin:1rem auto 0">`;sd.bullets.forEach(b=>{h+=`<li>${b}</li>`;});h+=`</ul>`;}
+      if(sd.compBoxes?.length){
+        h+=`<div style="display:grid;grid-template-columns:repeat(${sd.compBoxes.length},1fr);gap:.9rem;max-width:760px;margin:1rem auto 0">`;
+        sd.compBoxes.forEach(c=>{
+          h+=`<div style="background:${c.bg};border:1.5px solid ${c.border};border-radius:12px;padding:1rem 1.2rem;text-align:center">`;
+          h+=`<div style="font-size:var(--min-label);font-weight:800;color:${c.col};letter-spacing:.08em;margin-bottom:.4rem">${c.label}</div>`;
+          h+=`<div style="font-size:clamp(1.8rem,3vw,2.4rem);font-weight:900;color:${c.col};line-height:1;margin-bottom:.15rem">${c.stat}</div>`;
+          h+=`<div style="font-size:var(--min-label);color:var(--mid);margin-bottom:.5rem">${c.statNote}</div>`;
+          h+=`<div style="font-size:var(--min-font);color:var(--ink)">${c.desc}</div>`;
+          h+=`</div>`;
+        });
+        h+=`</div>`;
+      }
+      if(sd.footer)h+=`<div class="tip-box" style="max-width:760px;margin:1rem auto 0">${sd.footer}</div>`;
       break;
     case 'multi-reveal':{
       h+=`<div style="text-align:center">${chip}<div class="bar" style="margin:.6rem auto 1rem"></div>`;
@@ -2777,29 +2789,28 @@ function renderSlide(sd,idx){
       ];
       h+=blob('rgba(59,130,246,.08)','rgba(168,85,247,.06)');
       h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto .8rem"></div>`;
-      if(sd.title)h+=`<h2 style="margin-bottom:.3rem">${sd.title}</h2>`;
-      h+=`<p style="font-size:var(--min-font);color:var(--mid);margin-bottom:1rem">按下一步逐一展開每個階段</p>`;
+      if(sd.title)h+=`<h2 style="margin-bottom:.8rem">${sd.title}</h2>`;
       h+=`</div>`;
       // Build unlock-card row
-      h+=`<div style="display:flex;gap:.55rem;max-width:960px;margin:0 auto 1rem;position:relative;z-index:1;flex-wrap:nowrap">`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.65rem;max-width:1300px;margin:0 auto .9rem;position:relative;z-index:1">`;
       steps.forEach((s,si)=>{
         const uid=`dt-${sd.id}-${si}`;
-        h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="flex:1;min-height:170px">`;
-        h+=`<div class="card-answer" style="background:${s.colR},.08);border:1.5px solid ${s.colR},.3);border-radius:12px;padding:.9rem .75rem;display:flex;flex-direction:column;align-items:center;text-align:center;gap:.45rem">`;
+        h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:190px">`;
+        h+=`<div class="card-answer" style="background:${s.colR},.08);border:1.5px solid ${s.colR},.3);border-radius:12px;padding:.9rem .85rem;height:100%;display:flex;flex-direction:column;align-items:center;text-align:center;gap:.4rem;box-sizing:border-box">`;
         h+=`<div style="color:${s.col}">${s.icon}</div>`;
-        h+=`<div style="font-size:.52rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:${s.col};opacity:.8">${s.en}</div>`;
-        h+=`<div style="font-size:clamp(.95rem,1.5vw,1.1rem);font-weight:800;color:var(--ink)">${s.zh}</div>`;
-        h+=`<div style="font-size:var(--min-label);color:rgba(255,255,255,.7);line-height:1.6;text-align:left">${s.desc}</div>`;
+        h+=`<div style="font-size:var(--min-label);font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:${s.col}">${s.en}</div>`;
+        h+=`<div style="font-size:clamp(.95rem,1.4vw,1.1rem);font-weight:800;color:var(--ink)">${s.zh}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:rgba(255,255,255,.75);line-height:1.55;text-align:left;margin-top:auto">${s.desc}</div>`;
         h+=`</div>`;
         h+=`<div class="card-mask" style="border-radius:12px;background:${s.colR},.1);border:1.5px solid ${s.colR},.25)">`;
-        h+=`<div style="font-size:.6rem;font-weight:800;letter-spacing:.15em;color:${s.col};opacity:.6;text-transform:uppercase">${s.num}</div>`;
+        h+=`<div style="font-size:var(--min-label);font-weight:800;letter-spacing:.12em;color:${s.col};opacity:.7;text-transform:uppercase">${s.num}</div>`;
         h+=`<div style="color:${s.col};margin:.4rem 0">${s.icon}</div>`;
         h+=`<div style="font-size:clamp(1rem,1.5vw,1.15rem);font-weight:800;color:var(--ink)">${s.zh}</div>`;
         h+=`</div>`;
         h+=`</div>`;
       });
       h+=`</div>`;
-      h+=`<div class="tip-box" style="max-width:960px;margin:0 auto;position:relative;z-index:1">早上從 Prototype 出發沒錯。但最強的設計師，從 Empathize 就開始了。</div>`;
+      h+=`<div class="tip-box" style="max-width:1300px;margin:0 auto;position:relative;z-index:1">早上從 Prototype 出發沒錯。但最強的設計師，從 Empathize 就開始了。</div>`;
       break;}
     case 'emotional-touchpoints':{
       h+=blob('rgba(6,182,212,.08)','rgba(239,68,68,.06)');
