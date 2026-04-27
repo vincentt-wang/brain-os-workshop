@@ -544,7 +544,7 @@ const D=[
 {id:'s_who',sec:1,sub:'開場',type:'audience-who',chip:['這堂課對你有什麼用','orange'],title:'不管你什麼身份，這都和你有關'},
 {id:'s3a1',sec:1,sub:'策略思維｜創新三元',type:'feasibility-in-triad',chip:['創新三元','blue'],title:'創新三元'},
 {id:'s3a1b',sec:1,sub:'策略思維｜創新三元',type:'goal-oriented-dfv',chip:['個人 DFV','purple'],title:'找到你的黃金交集點'},
-{id:'s3a1d',sec:1,sub:'策略思維｜時間區塊',type:'dfv-time-blocking',chip:['Time Blocking','orange'],title:'把時間切分成三種區塊'},
+{id:'s5a3b_v2',sec:1,sub:'策略思維｜創新三元',type:'dfv-inner-view',chip:['內在探索','purple'],title:'同一套三元，看你的內在'},
 {id:'s05',sec:1,sub:'策略思維｜創新三元',type:'triad-v2',chip:['Innovation Triad','blue'],title:'創新需要三個條件同時成立'},
 {id:'s05a',sec:1,sub:'策略思維｜時間分配',type:'time-allocation',chip:['時間應該放哪？','purple'],title:'你把時間放在哪，決定成敗'},
 {id:'s05b',sec:1,sub:'策略思維｜創新三元',type:'dfv-combinations',chip:['三種陷阱','red'],title:'只靠一個，就是陷阱'},
@@ -636,9 +636,9 @@ const D=[
 {id:'s_safetyplus',sec:5,sub:'成長思維｜安全邊際',type:'safety-margin-plus',chip:['安全邊際 +','blue'],title:'你能承受多大壓力'},
 {id:'s5a3',sec:5,sub:'成長思維｜目標',type:'goal-oriented-intro',chip:['目標導向學習','cyan'],title:'為什麼你需要「目標」？'},
 {id:'s5a3b',sec:5,sub:'成長思維｜目標',type:'goal-oriented-dfv',chip:['個人 DFV','purple'],title:'找到你的黃金交集點'},
-{id:'s5a3b_v2',sec:5,sub:'成長思維｜目標',type:'dfv-inner-view',chip:['內在探索','purple'],title:'同一套三元，看你的內在'},
 {id:'s5a3b2',sec:5,sub:'成長思維｜目標',type:'dfv-personal-exercise',chip:['黃金交集練習','purple'],title:'現在輪到你了',time:300,theme:'light'},
 {id:'s5a3m',sec:5,sub:'成長思維｜目標',type:'dfv-mandala',chip:['曼陀羅九宮格','purple'],title:'用九宮格展開你的目標'},
+{id:'s3a1d',sec:5,sub:'成長思維｜時間管理',type:'dfv-time-blocking',chip:['Time Blocking','orange'],title:'把時間切分成三種區塊'},
 {id:'s_time1',sec:5,sub:'成長思維｜時間管理',type:'time-signal',chip:['訊號 vs 雜訊','orange'],title:'把時間放在訊號上'},
 {id:'s_time2',sec:5,sub:'成長思維｜時間管理',type:'time-isolation',chip:['守護你的時間','purple'],title:'Deadline · 時間區塊 · 物理隔離'},
 {id:'s5a3c',sec:5,sub:'成長思維｜目標',type:'goal-oriented-iterate',chip:['MVP 思維','green'],title:'沒有失敗，只有迭代'},
@@ -5895,25 +5895,22 @@ function renderSlide(sd,idx){
       h+=`<div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:220px;height:220px;border-radius:50%;background:rgba(255,107,0,.12);border:3px solid var(--orange);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1rem">`;
       h+=`<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.49 12a19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 3.4 1.26h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.7a16 16 0 0 0 6.29 6.29l.61-.61a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`;
       h+=`<div style="font-size:clamp(1rem,1.5vw,1.15rem);font-weight:800;color:var(--orange);margin:.35rem 0 .1rem">欲求性</div>`;
-      h+=`<div style="font-size:.75rem;font-weight:700;color:rgba(255,255,255,.6)">Desirability</div>`;
-      h+=`<div style="font-size:.78rem;font-weight:700;color:var(--orange);margin-top:.2rem">Delivering</div>`;
-      h+=`<div style="font-size:.66rem;color:rgba(255,255,255,.55);margin-top:.2rem;line-height:1.4">你有沒有把任務<br>確實交付給夥伴或員工？</div>`;
+      h+=`<div style="font-size:.82rem;font-weight:700;color:rgba(255,255,255,.6)">Desirability</div>`;
+      h+=`<div style="font-size:.85rem;font-weight:800;color:var(--orange);margin-top:.3rem;letter-spacing:.06em">Delivering</div>`;
       h+=`</div>`;
       // 可行性 — bottom left: Building (Learning 是子項目)
       h+=`<div style="position:absolute;bottom:0;left:50%;transform:translateX(calc(-50% - 110px));width:220px;height:220px;border-radius:50%;background:rgba(59,130,246,.12);border:3px solid var(--blue);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1rem">`;
       h+=`<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="var(--blue)" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`;
       h+=`<div style="font-size:clamp(1rem,1.5vw,1.15rem);font-weight:800;color:var(--blue);margin:.35rem 0 .1rem">可行性</div>`;
-      h+=`<div style="font-size:.75rem;font-weight:700;color:rgba(255,255,255,.6)">Feasibility</div>`;
-      h+=`<div style="font-size:.78rem;font-weight:700;color:var(--blue);margin-top:.2rem">Building</div>`;
-      h+=`<div style="font-size:.66rem;color:rgba(255,255,255,.55);margin-top:.2rem;line-height:1.4">有沒有專注打造作品，<br>而非只是學習？</div>`;
+      h+=`<div style="font-size:.82rem;font-weight:700;color:rgba(255,255,255,.6)">Feasibility</div>`;
+      h+=`<div style="font-size:.85rem;font-weight:800;color:var(--blue);margin-top:.3rem;letter-spacing:.06em">Building</div>`;
       h+=`</div>`;
       // 存續性 — bottom right: Promoting
       h+=`<div style="position:absolute;bottom:0;left:50%;transform:translateX(calc(-50% + 110px));width:220px;height:220px;border-radius:50%;background:rgba(34,197,94,.12);border:3px solid var(--green);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1rem">`;
       h+=`<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>`;
       h+=`<div style="font-size:clamp(1rem,1.5vw,1.15rem);font-weight:800;color:var(--green);margin:.35rem 0 .1rem">存續性</div>`;
-      h+=`<div style="font-size:.75rem;font-weight:700;color:rgba(255,255,255,.6)">Viability</div>`;
-      h+=`<div style="font-size:.78rem;font-weight:700;color:var(--green);margin-top:.2rem">Promoting</div>`;
-      h+=`<div style="font-size:.66rem;color:rgba(255,255,255,.55);margin-top:.2rem;line-height:1.4">有沒有持續讓更多人<br>看到你正在做的事？</div>`;
+      h+=`<div style="font-size:.82rem;font-weight:700;color:rgba(255,255,255,.6)">Viability</div>`;
+      h+=`<div style="font-size:.85rem;font-weight:800;color:var(--green);margin-top:.3rem;letter-spacing:.06em">Promoting</div>`;
       h+=`</div>`;
       h+=`</div>`;
       h+=`</div>`;
