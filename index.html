@@ -1876,7 +1876,7 @@ function renderSlide(sd,idx){
          detail:'計畫完美，卻未驗證需求與執行力',
          result:'29% 資金耗盡前未驗證'},
       ];
-      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:1140px;margin:0 auto;position:relative;z-index:1">`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:1300px;margin:0 auto;position:relative;z-index:1">`;
       traps.forEach((t,i)=>{
         const uid=`trap-${sd.id}-${i}`;
         h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:260px">`;
@@ -1901,7 +1901,7 @@ function renderSlide(sd,idx){
         h+=`</div>`;
       });
       h+=`</div>`;
-      h+=`<div class="tip-box" style="max-width:950px;margin:1rem auto 0;position:relative;z-index:1"><strong style="color:var(--orange)">重點：</strong>你的作品現在最缺哪一個？D、F、還是 V？</div>`;
+      h+=`<div class="tip-box" style="max-width:1300px;margin:1rem auto 0;position:relative;z-index:1"><strong style="color:var(--orange)">重點：</strong>你的作品現在最缺哪一個？D、F、還是 V？</div>`;
       break;}
     case 'failure-modes':{
       h+=blob('rgba(255,32,85,.1)','rgba(255,107,0,.06)');
