@@ -955,14 +955,14 @@ function tdToggle(sid,which){
     const b=document.getElementById('tdbody-'+sid+'-'+t);
     const a=document.getElementById('tdarrow-'+sid+'-'+t);
     if(b){b.style.maxHeight='0px';b.dataset.open='0';}
-    if(a)a.textContent='點擊查看案例';
+    if(a)a.style.transform='rotate(0deg)';
   });
   // Open clicked row if it was closed (rAF ensures CSS transition fires)
   if(!isOpen){
     requestAnimationFrame(()=>{
       body.style.maxHeight='420px';
       body.dataset.open='1';
-      if(arrow)arrow.textContent='收起 ✕';
+      if(arrow)arrow.style.transform='rotate(180deg)';
     });
   }
 }
@@ -1008,6 +1008,8 @@ function mtCount(sid){var els=document.querySelectorAll('[id^="mt-'+sid+'-"]');v
     requestAnimationFrame(function(){
       var body=document.getElementById('tdbody-'+sid+'-'+which);
       if(body){body.style.maxHeight='420px';body.dataset.open='1';}
+      var arrow=document.getElementById('tdarrow-'+sid+'-'+which);
+      if(arrow)arrow.style.transform='rotate(180deg)';
     });
     a.state++;return true;
   }
@@ -2655,7 +2657,7 @@ function renderSlide(sd,idx){
       h+=`<div style="display:flex;align-items:center;gap:1rem;padding:1rem 1.3rem">`;
       h+=`<div style="font-size:1.6rem;color:var(--orange);line-height:1;flex-shrink:0">↓</div>`;
       h+=`<div style="flex:1"><div style="font-size:clamp(1.1rem,1.8vw,1.35rem);font-weight:800;color:var(--orange)">Top-down</div><div style="font-size:var(--min-font);color:var(--mid)">從問題出發 — 先問誰最痛，再決定做什麼</div></div>`;
-      h+=`<div id="tdarrow-${sid}-td" style="font-size:var(--min-label);color:rgba(255,107,0,.6);font-weight:700;white-space:nowrap;padding:.3rem .8rem;border-radius:6px;border:1px solid rgba(255,107,0,.3);transition:all .2s ease">點擊查看案例</div>`;
+      h+=`<svg id="tdarrow-${sid}-td" viewBox="0 0 20 20" width="18" height="18" fill="rgba(255,107,0,.7)" style="flex-shrink:0;transition:transform .3s ease"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>`;
       h+=`</div>`;
       // body (cases, hidden by default)
       h+=`<div id="tdbody-${sid}-td" style="max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)">`;
@@ -2678,7 +2680,7 @@ function renderSlide(sd,idx){
       h+=`<div style="display:flex;align-items:center;gap:1rem;padding:1rem 1.3rem">`;
       h+=`<div style="font-size:1.6rem;color:rgba(255,255,255,.5);line-height:1;flex-shrink:0">↑</div>`;
       h+=`<div style="flex:1"><div style="font-size:clamp(1.1rem,1.8vw,1.35rem);font-weight:800;color:rgba(255,255,255,.75)">Bottom-up</div><div style="font-size:var(--min-font);color:var(--mid)">從能力出發 — 先想我能做什麼，再去找市場</div></div>`;
-      h+=`<div id="tdarrow-${sid}-bu" style="font-size:var(--min-label);color:rgba(255,255,255,.4);font-weight:700;white-space:nowrap;padding:.3rem .8rem;border-radius:6px;border:1px solid rgba(255,255,255,.15);transition:all .2s ease">點擊查看案例</div>`;
+      h+=`<svg id="tdarrow-${sid}-bu" viewBox="0 0 20 20" width="18" height="18" fill="rgba(255,255,255,.45)" style="flex-shrink:0;transition:transform .3s ease"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>`;
       h+=`</div>`;
       h+=`<div id="tdbody-${sid}-bu" style="max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)">`;
       h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;padding:.1rem 1.3rem 1.1rem">`;
