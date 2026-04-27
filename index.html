@@ -994,12 +994,13 @@ function mtCount(sid){var els=document.querySelectorAll('[id^="mt-'+sid+'-"]');v
   const visible={};
   const obs=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
-      visible[e.target.id]=e.isIntersecting;
-      if(e.isIntersecting&&ANIM[e.target.id]) ANIM[e.target.id].state=0;
+      var did=e.target.dataset.id;
+      visible[did]=e.isIntersecting;
+      if(e.isIntersecting&&ANIM[did]) ANIM[did].state=0;
     });
   },{threshold:0.6});
   Object.keys(ANIM).forEach(function(id){
-    var el=document.getElementById(id);if(el)obs.observe(el);
+    var el=document.querySelector('[data-id="'+id+'"]');if(el)obs.observe(el);
   });
   function getCurrent(){return Object.keys(ANIM).find(function(id){return visible[id];});}
   function tryStep(sid){
