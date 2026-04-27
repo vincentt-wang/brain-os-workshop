@@ -62,7 +62,7 @@ body{font-family:system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;backg
 .slide[data-theme="light"] .unlock-card .card-mask-num,.slide[data-theme="warm"] .unlock-card .card-mask-num{color:rgba(0,0,0,.2)}
 .slide[data-theme="light"] .tip-box,.slide[data-theme="warm"] .tip-box{background:rgba(255,107,0,.08);border-color:var(--orange)}
 
-.inner{position:relative;z-index:2;width:min(94vw,1320px);max-height:calc(100vh - 120px);overflow:hidden;scrollbar-width:none}
+.inner{position:relative;z-index:2;width:min(96vw,1400px);max-height:calc(100vh - 120px);overflow:hidden;scrollbar-width:none}
 .inner::-webkit-scrollbar{display:none}
 .slide-content{opacity:0;transform:translateY(32px) scale(.97);transition:opacity .6s var(--ease-smooth),transform .6s var(--ease-back)}
 .slide.is-visible .slide-content{opacity:1;transform:none}
@@ -3527,7 +3527,7 @@ function renderSlide(sd,idx){
          badWhy:'「服務不好」包含前兩，邊界模糊',
          good:'等待前 / 服務中 / 離開後',
          goodWhy:'時間維度切分，完整無重疊'},
-        {n:'03',src:'HBR',fw:'Ansoff Matrix',col:'var(--purple)',colR:'rgba(168,85,247',
+        {n:'03',src:'HBR · Ansoff',fw:'',col:'var(--purple)',colR:'rgba(168,85,247',
          mask:'成長策略',
          title:'四個方向窮盡所有成長路徑',
          bad:'找新客戶 / 做產品 / 進新市場',
@@ -3535,7 +3535,7 @@ function renderSlide(sd,idx){
          good:'滲透 / 市場延伸 / 產品開發 / 多元化',
          goodWhy:'四格完整，互不重疊'},
       ];
-      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;max-width:1160px;margin:0 auto;position:relative;z-index:1">`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;max-width:1380px;margin:0 auto;position:relative;z-index:1">`;
       meceCases.forEach((c,i)=>{
         const uid=`mi3-${sd.id}-${i}`;
         h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:300px">`;
@@ -3570,7 +3570,7 @@ function renderSlide(sd,idx){
         h+=`</div>`;
       });
       h+=`</div>`;
-      h+=`<div class="tip-box" style="max-width:1160px;margin:.75rem auto 0;position:relative;z-index:1"><strong style="color:var(--yellow)">為什麼重要：</strong>沒有 MECE，分析就像在猜謎。有了 MECE，任何問題都能拆解成可行動的模組。</div>`;
+      h+=`<div class="tip-box" style="max-width:1380px;margin:.75rem auto 0;position:relative;z-index:1"><strong style="color:var(--yellow)">為什麼重要：</strong>沒有 MECE，分析就像在猜謎。有了 MECE，任何問題都能拆解成可行動的模組。</div>`;
       break;}
     case 'mece-game-v2':{
       h+=blob('rgba(251,191,36,.08)','rgba(255,107,0,.06)');
