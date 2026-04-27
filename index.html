@@ -603,6 +603,7 @@ const D=[
 {id:'s3a4',sec:3,sub:'可行性｜原型',type:'ideate-prototype-test',chip:['設計思維循環','orange'],title:'Ideate → Prototype → Test',xrefs:[{id:'s09',label:'設計思維循環'}]},
 {id:'s3a3',sec:3,sub:'可行性｜原型',type:'prototype-types',chip:['原型類型','purple'],title:'Prototype / MVP / MVC / POC 的差別',xrefs:[{id:'s38',label:'GTM→POC→PMF'}]},
 {id:'s38',sec:3,sub:'可行性｜驗證路徑',type:'gtm-poc-pmf-v2',chip:['驗證三階段','green'],title:'GTM → POC → PMF',subtitle:'讓對的人看到你 → 先做出來驗證 → 確認市場真的要',xrefs:[{id:'s3a3',label:'原型類型'}]},
+{id:'s24c',sec:3,sub:'可行性｜PMF 訊號',type:'pmf-signals-game',chip:['PMF 訊號辨識','green'],title:'這是 PMF 訊號嗎？'},
 {id:'s_agile',sec:3,sub:'可行性｜方法論',type:'agile-lean',chip:['執行框架','cyan'],title:'用 Running Lean 把想法跑起來'},
 {id:'s_pivot',sec:3,sub:'可行性｜Pivot',type:'pivot-stories',chip:['真實 Pivot 故事','orange'],title:'失敗不是終點，是轉向的起點'},
 // ❌ 移除 s3a5b ai-orchestration（太技術性）
@@ -611,7 +612,6 @@ const D=[
 // ── SECTION 4：存續性｜價值表達 ──────────────────────────────────────
 {id:'s36',sec:4,sub:'存續性｜開場',type:'section-cover',secNum:'④',secTitle:'存續性',secEn:'Viability',sub2:'從作品走到市場'},
 {id:'s37',sec:4,sub:'存續性｜GTM',type:'gtm-interactive-v2',chip:['Go-To-Market','blue'],title:'讓對的人看見對的訊息'},
-{id:'s24c',sec:4,sub:'存續性｜PMF',type:'pmf-signals-game',chip:['PMF 訊號辨識','green'],title:'這是 PMF 訊號嗎？'},
 {id:'s24',sec:4,sub:'存續性｜PMF',type:'pmf-pillars-v2',chip:['PMF 三支柱','red'],title:'好產品帶來的三種成長'},
 {id:'s25e',sec:4,sub:'存續性｜價值公式',type:'hormozi-value',chip:['價值公式','orange'],title:'Alex Hormozi 的價值公式',xrefs:[{id:'s36d',label:'定價策略'}]},
 {id:'s25e2',sec:4,sub:'存續性｜價值公式',type:'hormozi-value-b',chip:['四個變數','green'],title:'四個變數，怎麼用在你的作品上'},
@@ -2452,7 +2452,6 @@ function renderSlide(sd,idx){
       h+=blob('rgba(34,197,94,.08)','rgba(59,130,246,.06)');
       h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto 1rem"></div>`;
       if(sd.title)h+=`<h2 style="margin-bottom:.4rem">${sd.title}</h2>`;
-      h+=`<p style="color:var(--mid);font-size:var(--min-font);margin-bottom:1rem">點擊每個情境，判斷它是不是真正的 PMF 訊號</p>`;
       h+=`</div>`;
       const pmfSignals=[
         {icon:'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>',scenario:'陌生人主動截圖你的作品，tag 給有相同困擾的朋友',isPmf:true,label:'PMF 訊號 ✓',why:'有機傳播 = 他認為這值得分享。朋友推薦的信任度是廣告的 10 倍。',col:'var(--green)'},
@@ -2462,7 +2461,7 @@ function renderSlide(sd,idx){
         {icon:'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>',scenario:'用戶每週自發回來使用，你完全沒有做任何推廣',isPmf:true,label:'PMF 訊號 ✓',why:'自發留存 = 已融入生活習慣。這是最強的 PMF 訊號，沒有之一。',col:'var(--green)'},
         {icon:'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',scenario:'朋友說「等你做完記得通知我！」但發布後完全沒有回音',isPmf:false,label:'不是 PMF ✗',why:'嘴說想要 ≠ 真的需要。Sean Ellis 說：觀察行動，不要問意願。',col:'var(--red)'},
       ];
-      h+=`<div class="mrev-grid cols-3" style="gap:.7rem;max-width:960px;margin:0 auto;position:relative;z-index:1">`;
+      h+=`<div class="mrev-grid cols-3" style="gap:.7rem;max-width:1160px;margin:0 auto;position:relative;z-index:1">`;
       pmfSignals.forEach((s,si)=>{
         const uid=`pmfs-${sd.id}-${si}`;
         const isGreen=s.col==='var(--green)';
@@ -2475,12 +2474,11 @@ function renderSlide(sd,idx){
         h+=`<div class="card-mask" style="border-radius:10px;flex-direction:column;gap:.5rem;padding:1rem">`;
         h+=`<div style="color:${s.col};opacity:.9">${s.icon}</div>`;
         h+=`<div style="font-size:var(--min-font);color:var(--ink);text-align:center;line-height:1.5">${s.scenario}</div>`;
-        h+=`<div style="font-size:var(--min-label);color:rgba(255,255,255,.35);margin-top:.3rem">PMF 訊號嗎？點擊判斷</div>`;
         h+=`</div>`;
         h+=`</div>`;
       });
       h+=`</div>`;
-      h+=`<div class="tip-box" style="max-width:960px;margin:.8rem auto 0;position:relative;z-index:1"><strong style="color:var(--green)">真正的 PMF 訊號：</strong>陌生人的行動、自發留存、付費意願。你媽的稱讚很溫暖，但不算數。</div>`;
+      h+=`<div class="tip-box" style="max-width:1160px;margin:.8rem auto 0;position:relative;z-index:1"><strong style="color:var(--green)">真正的 PMF 訊號：</strong>陌生人的行動、自發留存、付費意願。你媽的稱讚很溫暖，但不算數。</div>`;
       break;}
     case 'perceived-value':{
       const pvCards=[
