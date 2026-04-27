@@ -567,8 +567,9 @@ const D=[
 {id:'s_emomap',sec:2,sub:'欲求性｜設計思維',type:'emotional-touchpoints',chip:['情緒波點','cyan'],title:'找到那個讓人離開的瞬間'},
 {id:'s21',sec:2,sub:'欲求性｜ICP 與 HXC',type:'audience-layers',chip:['三層受眾收斂','blue'],title:'Persona → ICP → HXC'},
 {id:'s22',sec:2,sub:'欲求性｜市場判斷',type:'perfect-market',chip:['完美市場','green'],title:'完美市場的四個特徵'},
-{id:'s23',sec:2,sub:'欲求性｜ICP 與 HXC',type:'hxc-case-study',chip:['案例分析','green'],title:'如何找到 HXC'},
 {id:'s11',sec:2,sub:'欲求性｜設計思維',type:'observe-insight-v3',chip:['提問與觀察','blue'],title:'好問題與觀察讓洞察浮現'},
+{id:'s23',sec:2,sub:'欲求性｜ICP 與 HXC',type:'hxc-case-study',chip:['案例分析','green'],title:'如何找到 HXC'},
+{id:'s_eternal',sec:2,sub:'欲求性｜市場選擇',type:'eternal-markets',chip:['三大永恆市場','purple'],title:'三大永恆市場'},
 {id:'s10',sec:2,sub:'欲求性｜設計思維',type:'insight-types-coffee',chip:['挖掘洞察','orange'],title:'如何從訪談中挖出 Insight'},
 // s24/s24c 移至 Section 4 存續性（s38 之後）
 {id:'s25',sec:2,sub:'欲求性｜痛點',type:'vitamin-painkiller',chip:['痛點測試','orange'],title:'維他命 vs 止痛藥'},
@@ -690,6 +691,7 @@ const T_en={
   's21':{chip:['Audience Funnel','blue'],title:'Persona → ICP (Ideal Customer Profile) → HXC (Hardcore Users)'},
   's22':{chip:['Perfect Market','green'],title:'4 Traits of a Perfect Market'},
   's23':{chip:['Case Study','green'],title:'How Spotify Found Its HXC'},
+  's_eternal':{chip:['Eternal Markets','purple'],title:'The 3 Eternal Markets'},
   's11':{chip:['Questions & Observation','blue'],title:'Great Questions and Observation Surface Insights'},
   's10':{chip:['Mining Insights','orange'],title:'How to Extract Insights from Interviews'},
   's25':{chip:['Pain Point Test','orange'],title:'Vitamin vs Painkiller'},
@@ -2260,6 +2262,58 @@ function renderSlide(sd,idx){
       });
       h+=`</div>`;
       h+=`<div class="tip-box" style="max-width:1280px;margin:.8rem auto 0;position:relative;z-index:1">四個條件不必全滿足，但越多、越強，你的市場假設就越穩固。</div>`;
+      break;}
+    case 'eternal-markets':{
+      const markets=[
+        {en:'Health',zh:'健康',col:'var(--green)',colR:'rgba(34,197,94',
+         icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+         tags:[{zh:'減脂',en:'Weight Loss'},{zh:'營養',en:'Nutrition'},{zh:'健身',en:'Fitness'},{zh:'心理健康',en:'Mental Health'},{zh:'睡眠優化',en:'Sleep'}],
+         desc:'身體是最私密的痛點，人會為恢復和維持健康付出高代價。'},
+        {en:'Wealth',zh:'財富',col:'var(--yellow)',colR:'rgba(251,191,36',
+         icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
+         tags:[{zh:'投資',en:'Investing'},{zh:'房地產',en:'Real Estate'},{zh:'創業',en:'Startups'},{zh:'職涯發展',en:'Career'},{zh:'個人理財',en:'Finance'}],
+         desc:'財富焦慮是現代最普遍的痛點，「不夠有錢」的恐懼驅動龐大市場。'},
+        {en:'Relationships',zh:'關係',col:'var(--red)',colR:'rgba(255,32,85',
+         icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+         tags:[{zh:'約會',en:'Dating'},{zh:'婚姻',en:'Marriage'},{zh:'育兒',en:'Parenting'},{zh:'社交技能',en:'Social Skills'},{zh:'家庭和諧',en:'Family'}],
+         desc:'人際是最深層的需求，孤獨感與關係困境讓人迫切尋求解法。'},
+      ];
+      h+=blob('rgba(168,85,247,.08)','rgba(34,197,94,.06)');
+      h+=`<div style="position:relative;z-index:1;text-align:center">`;
+      h+=`<div style="font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;letter-spacing:-.02em;color:var(--ink);line-height:1;margin-bottom:.35rem">Eternal Markets</div>`;
+      h+=`${chip}<div class="bar" style="margin:.5rem auto .6rem"></div>`;
+      if(sd.title)h+=`<h2 style="margin-bottom:.9rem">${sd.title}</h2>`;
+      h+=`</div>`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;max-width:1280px;margin:0 auto;position:relative;z-index:1">`;
+      markets.forEach((m,i)=>{
+        const uid=`em-${sd.id}-${i}`;
+        h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:320px">`;
+        h+=`<div class="card-answer" style="background:${m.colR},.07);border:1.5px solid ${m.colR},.3);border-top:3px solid ${m.col};border-radius:12px;padding:1rem;height:100%;display:flex;flex-direction:column;gap:.4rem;box-sizing:border-box">`;
+        h+=`<div style="display:flex;align-items:center;gap:.65rem">`;
+        h+=`<div style="color:${m.col};flex-shrink:0">${m.icon}</div>`;
+        h+=`<div><div style="font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:900;color:${m.col}">${m.en}</div>`;
+        h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--ink)">${m.zh}</div></div>`;
+        h+=`</div>`;
+        h+=`<div style="height:1px;background:${m.colR},.2);margin:.1rem 0"></div>`;
+        h+=`<div style="display:flex;flex-wrap:wrap;gap:.4rem">`;
+        m.tags.forEach(t=>{
+          h+=`<div style="display:inline-flex;flex-direction:column;align-items:center;padding:.28rem .7rem;background:${m.colR},.12);border:1px solid ${m.colR},.4);border-radius:20px">`;
+          h+=`<span style="font-size:var(--min-label);font-weight:700;color:${m.col};white-space:nowrap;line-height:1.3">${t.zh}</span>`;
+          h+=`<span style="font-size:.8rem;color:var(--mid);white-space:nowrap;line-height:1.2">${t.en}</span>`;
+          h+=`</div>`;
+        });
+        h+=`</div>`;
+        h+=`<div style="font-size:var(--min-font);color:rgba(255,255,255,.82);line-height:1.55;margin-top:auto">${m.desc}</div>`;
+        h+=`</div>`;
+        h+=`<div class="card-mask" style="border-radius:12px;background:${m.colR},.1);border:1.5px solid ${m.colR},.25)">`;
+        h+=`<div style="color:${m.col};margin-bottom:.5rem">${m.icon.replace(/width="\d+" height="\d+"/,'width="44" height="44"')}</div>`;
+        h+=`<div style="font-size:clamp(1.4rem,2.5vw,2rem);font-weight:900;color:var(--ink);white-space:nowrap">${m.en}</div>`;
+        h+=`<div style="font-size:var(--min-font);color:var(--mid);margin-top:.35rem">${m.zh}</div>`;
+        h+=`</div>`;
+        h+=`</div>`;
+      });
+      h+=`</div>`;
+      h+=`<div class="tip-box" style="max-width:1280px;margin:.8rem auto 0;position:relative;z-index:1">90%+ 的成功產品都在這三大領域之內 — 市場的取向，從這些永恆痛點出發。</div>`;
       break;}
     case 'hxc-case-study':{
       h+=blob('rgba(34,197,94,.08)','rgba(59,130,246,.06)');
