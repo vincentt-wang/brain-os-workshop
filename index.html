@@ -3513,60 +3513,64 @@ function renderSlide(sd,idx){
       h+=`</div>`;
       h+=`</div></div>`;
       const meceCases=[
-        {n:'01',src:'McKinsey Quarterly',col:'var(--orange)',colR:'rgba(255,107,0',
+        {n:'01',src:'McKinsey Quarterly',fw:'',col:'var(--orange)',colR:'rgba(255,107,0',
          mask:'市場細分',
          title:'用年齡帶分割消費族群',
-         bad:'❌  學生 / 上班族 / 家庭主婦',
+         bad:'學生 / 上班族 / 家庭主婦',
          badWhy:'上班族媽媽同屬多類，重疊',
-         good:'✓  18-25 / 26-40 / 41-60 / 60+',
+         good:'18–25 / 26–40 / 41–60 / 60+',
          goodWhy:'互斥且涵蓋全部人口'},
-        {n:'02',src:'Stanford d.school',col:'var(--blue)',colR:'rgba(59,130,246',
+        {n:'02',src:'Stanford d.school',fw:'',col:'var(--blue)',colR:'rgba(59,130,246',
          mask:'使用者旅程',
          title:'用時間點切分旅程',
-         bad:'❌  體驗差 / 等待久 / 服務不好',
+         bad:'體驗差 / 等待久 / 服務不好',
          badWhy:'「服務不好」包含前兩，邊界模糊',
-         good:'✓  等待前 / 服務中 / 離開後',
+         good:'等待前 / 服務中 / 離開後',
          goodWhy:'時間維度切分，完整無重疊'},
-        {n:'03',src:'HBR · Ansoff',col:'var(--purple)',colR:'rgba(168,85,247',
+        {n:'03',src:'HBR',fw:'Ansoff Matrix',col:'var(--purple)',colR:'rgba(168,85,247',
          mask:'成長策略',
-         title:'Ansoff：4 個方向窮盡所有成長',
-         bad:'❌  找新客戶 / 做產品 / 進新市場',
+         title:'四個方向窮盡所有成長路徑',
+         bad:'找新客戶 / 做產品 / 進新市場',
          badWhy:'找新客戶可能也是進新市場',
-         good:'✓  滲透 / 市場延伸 / 產品開發 / 多元化',
+         good:'滲透 / 市場延伸 / 產品開發 / 多元化',
          goodWhy:'四格完整，互不重疊'},
       ];
-      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;max-width:980px;margin:0 auto;position:relative;z-index:1">`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;max-width:1160px;margin:0 auto;position:relative;z-index:1">`;
       meceCases.forEach((c,i)=>{
         const uid=`mi3-${sd.id}-${i}`;
-        h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:260px">`;
+        h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:300px">`;
         // Answer face
-        h+=`<div class="card-answer" style="background:rgba(0,0,0,.28);border:1.5px solid ${c.colR},.35);border-top:3px solid ${c.col};border-radius:12px;padding:.9rem 1rem;min-height:250px;display:flex;flex-direction:column;box-sizing:border-box;gap:.35rem">`;
-        // Source label
-        h+=`<div style="font-size:var(--min-label);font-weight:800;color:${c.col};letter-spacing:.08em">${c.src}</div>`;
-        // Title
-        h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--ink);margin-bottom:.1rem">${c.title}</div>`;
-        // Spacer
-        h+=`<div style="flex:1"></div>`;
-        // Bad row - fixed structure
-        h+=`<div style="background:rgba(255,32,85,.08);border-left:2px solid rgba(255,32,85,.4);border-radius:0 6px 6px 0;padding:.4rem .65rem">`;
-        h+=`<div style="font-size:var(--min-label);color:rgba(255,100,100,.9);text-decoration:line-through;line-height:1.4">${c.bad}</div>`;
-        h+=`<div style="font-size:var(--min-label);color:var(--mid);margin-top:.15rem;line-height:1.35">${c.badWhy}</div>`;
+        h+=`<div class="card-answer" style="background:rgba(0,0,0,.28);border:1.5px solid ${c.colR},.35);border-top:3px solid ${c.col};border-radius:12px;padding:.9rem 1rem;height:100%;display:flex;flex-direction:column;box-sizing:border-box;gap:.3rem">`;
+        // Source label — fixed height so all 3 cards align
+        h+=`<div style="min-height:2.2rem;display:flex;flex-direction:column;justify-content:flex-start">`;
+        h+=`<div style="font-size:var(--min-label);font-weight:800;color:${c.col};letter-spacing:.08em;line-height:1.3">${c.src}</div>`;
+        if(c.fw)h+=`<div style="font-size:var(--min-label);color:${c.col};opacity:.7;line-height:1.2">${c.fw}</div>`;
         h+=`</div>`;
-        // Good row - fixed structure
-        h+=`<div style="background:${c.colR},.1);border-left:2px solid ${c.colR},.5);border-radius:0 6px 6px 0;padding:.4rem .65rem">`;
-        h+=`<div style="font-size:var(--min-label);color:${c.col};font-weight:700;line-height:1.4">${c.good}</div>`;
-        h+=`<div style="font-size:var(--min-label);color:var(--mid);margin-top:.15rem;line-height:1.35">${c.goodWhy}</div>`;
+        // Title — fixed min-height
+        h+=`<div style="min-height:2.8rem;display:flex;align-items:center;font-size:var(--min-font);font-weight:700;color:var(--ink);line-height:1.4">${c.title}</div>`;
+        // Spacer
+        h+=`<div style="flex:1;min-height:.4rem"></div>`;
+        // Bad row — fixed min-height
+        h+=`<div style="min-height:4.8rem;background:rgba(255,32,85,.08);border-left:2px solid rgba(255,32,85,.4);border-radius:0 6px 6px 0;padding:.45rem .7rem;display:flex;flex-direction:column;justify-content:center">`;
+        h+=`<div style="font-size:var(--min-label);color:rgba(255,100,100,.9);text-decoration:line-through;line-height:1.45">${c.bad}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:var(--mid);margin-top:.2rem;line-height:1.35">${c.badWhy}</div>`;
+        h+=`</div>`;
+        // Good row — fixed min-height
+        h+=`<div style="min-height:4.8rem;background:${c.colR},.1);border-left:2px solid ${c.colR},.5);border-radius:0 6px 6px 0;padding:.45rem .7rem;display:flex;flex-direction:column;justify-content:center">`;
+        h+=`<div style="font-size:var(--min-label);color:${c.col};font-weight:700;line-height:1.45">${c.good}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:var(--mid);margin-top:.2rem;line-height:1.35">${c.goodWhy}</div>`;
         h+=`</div>`;
         h+=`</div>`;
         // Mask face
         h+=`<div class="card-mask" style="border-radius:12px;background:${c.colR},.1);border:1.5px solid ${c.colR},.28)">`;
-        h+=`<div style="font-size:var(--min-label);font-weight:800;color:${c.col};letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem">${c.n} · ${c.src}</div>`;
+        h+=`<div style="font-size:var(--min-label);font-weight:800;color:${c.col};letter-spacing:.1em;text-transform:uppercase;margin-bottom:.2rem">${c.n} · ${c.src}</div>`;
+        if(c.fw)h+=`<div style="font-size:var(--min-label);color:${c.col};opacity:.7;letter-spacing:.06em;margin-bottom:.4rem">${c.fw}</div>`;
         h+=`<div style="font-size:clamp(1rem,1.5vw,1.15rem);font-weight:700;color:var(--ink);line-height:1.4;text-align:center">${c.mask}</div>`;
         h+=`</div>`;
         h+=`</div>`;
       });
       h+=`</div>`;
-      h+=`<div class="tip-box" style="max-width:980px;margin:.75rem auto 0;position:relative;z-index:1;white-space:nowrap"><strong style="color:var(--yellow)">為什麼重要：</strong>沒有 MECE，分析就像在猜謎。有了 MECE，任何問題都能拆解成可行動的模組。</div>`;
+      h+=`<div class="tip-box" style="max-width:1160px;margin:.75rem auto 0;position:relative;z-index:1"><strong style="color:var(--yellow)">為什麼重要：</strong>沒有 MECE，分析就像在猜謎。有了 MECE，任何問題都能拆解成可行動的模組。</div>`;
       break;}
     case 'mece-game-v2':{
       h+=blob('rgba(251,191,36,.08)','rgba(255,107,0,.06)');
