@@ -999,9 +999,11 @@ function mtCount(sid){var els=document.querySelectorAll('[id^="mt-'+sid+'-"]');v
       if(e.isIntersecting&&ANIM[did]) ANIM[did].state=0;
     });
   },{threshold:0.6});
-  Object.keys(ANIM).forEach(function(id){
-    var el=document.querySelector('[data-id="'+id+'"]');if(el)obs.observe(el);
-  });
+  setTimeout(function(){
+    Object.keys(ANIM).forEach(function(id){
+      var el=document.querySelector('[data-id="'+id+'"]');if(el)obs.observe(el);
+    });
+  },0);
   function getCurrent(){return Object.keys(ANIM).find(function(id){return visible[id];});}
   function tryStep(sid){
     var a=ANIM[sid];if(!a||a.state>=a.steps.length)return false;
@@ -6367,6 +6369,12 @@ function renderSlide(sd,idx){
 const slideEls=[];
 D.forEach((sd,idx)=>{const el=renderSlide(applyLang(sd),idx);container.appendChild(el);slideEls.push(el);});
 
+// 恢復上次瀏覽的頁面（刷新後維持同頁）
+setTimeout(function(){
+  const _s=parseInt(sessionStorage.getItem('slide')||'0',10);
+  if(_s>0&&slideEls[_s]){slideEls[_s].scrollIntoView({behavior:'instant',block:'start'});cur=_s;updateUI();}
+},50);
+
 // 初始化照片輪播
 setTimeout(initCarousels,500);
 
@@ -6647,6 +6655,7 @@ function scrollToSlide(idx){
   idx=Math.max(0,Math.min(idx,total-1));
   slideEls[idx]?.scrollIntoView({behavior:'smooth',block:'start'});
   cur=idx;updateUI();
+  sessionStorage.setItem('slide',idx);
 }
 function jumpToSection(sec){const idx=secStarts[sec];if(idx!==undefined)scrollToSlide(idx);}
 function jumpToSlide(slideId){const idx=D.findIndex(s=>s.id===slideId);if(idx!==-1)scrollToSlide(idx);}
