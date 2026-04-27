@@ -566,7 +566,7 @@ const D=[
 {id:'s09',sec:2,sub:'欲求性｜設計思維',type:'dt-loop-auto',chip:['Design Thinking','cyan'],title:'設計思維是一個循環',xrefs:[{id:'s3a4',label:'Prototype 在哪'}]},
 {id:'s_emomap',sec:2,sub:'欲求性｜設計思維',type:'emotional-touchpoints',chip:['情緒波點','cyan'],title:'找到那個讓人離開的瞬間'},
 {id:'s21',sec:2,sub:'欲求性｜ICP 與 HXC',type:'audience-layers',chip:['三層受眾收斂','blue'],title:'Persona → ICP → HXC'},
-// ❌ 移除 s22 funnel-v3-examples（s21 + s23 已足夠）
+{id:'s22',sec:2,sub:'欲求性｜市場判斷',type:'perfect-market',chip:['完美市場','green'],title:'完美市場的四個特徵'},
 {id:'s23',sec:2,sub:'欲求性｜ICP 與 HXC',type:'hxc-case-study',chip:['案例分析','green'],title:'如何找到 HXC'},
 {id:'s11',sec:2,sub:'欲求性｜設計思維',type:'observe-insight-v3',chip:['提問與觀察','blue'],title:'好問題與觀察讓洞察浮現'},
 {id:'s10',sec:2,sub:'欲求性｜設計思維',type:'insight-types-coffee',chip:['挖掘洞察','orange'],title:'如何從訪談中挖出 Insight'},
@@ -688,6 +688,7 @@ const T_en={
   's09':{chip:['Design Thinking','cyan'],title:'Design Thinking Is a Cycle'},
   's_emomap':{chip:['Emotional Touchpoints','cyan'],title:'Find the Moment People Walk Away'},
   's21':{chip:['Audience Funnel','blue'],title:'Persona → ICP (Ideal Customer Profile) → HXC (Hardcore Users)'},
+  's22':{chip:['Perfect Market','green'],title:'4 Traits of a Perfect Market'},
   's23':{chip:['Case Study','green'],title:'How Spotify Found Its HXC'},
   's11':{chip:['Questions & Observation','blue'],title:'Great Questions and Observation Surface Insights'},
   's10':{chip:['Mining Insights','orange'],title:'How to Extract Insights from Interviews'},
@@ -2204,6 +2205,61 @@ function renderSlide(sd,idx){
       });
       h+=`</div></div>`;
       h+=`<div id="fd-${fid}" style="margin-top:.6rem;padding:.7rem 1.2rem;border-radius:8px;border-left:3px solid var(--orange);background:rgba(255,107,0,.08);font-size:var(--min-font);color:var(--ink);max-width:600px;margin-left:auto;margin-right:auto;transition:opacity .3s;opacity:0">點擊漏斗層查看說明</div>`;
+      break;}
+    case 'perfect-market':{
+      const traits=[
+        {num:'01',en:'Massive Pain',zh:'巨大痛苦',col:'var(--red)',colR:'rgba(255,32,85',
+         icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
+         desc:'不是「有點不舒服」，是迫切到今天就必須解決的急性痛。',
+         insight:'越急的痛，付費決策越快，願意付的金額越高。',
+         example:'急診 vs. 健檢 — 前者今天掏錢，後者能拖就拖。'},
+        {num:'02',en:'Purchasing Power',zh:'購買力',col:'var(--green)',colR:'rgba(34,197,94',
+         icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>',
+         desc:'對象要有痛，也要有錢，或有管道籌錢。',
+         insight:'沒有預算的需求是公益，不是生意。',
+         example:'青少年有情緒困擾，但付錢的是父母 — 銷售對象完全不同。'},
+        {num:'03',en:'Easy to Reach',zh:'易於觸達',col:'var(--blue)',colR:'rgba(59,130,246',
+         icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
+         desc:'同類型的人聚在一起，一則貼文就能觸及數千個精準受眾。',
+         insight:'共同興趣創造聚集：找到那個社群，CAC 趨近於零。',
+         example:'焦慮族聚在 Threads，健身族在 IG — 聚集點就是入口。'},
+        {num:'04',en:'Growing Market',zh:'市場增長',col:'var(--orange)',colR:'rgba(255,107,0',
+         icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>',
+         desc:'順風而行。萎縮市場裡，再好的策略也難存活。',
+         insight:'趨勢決定天花板：成長市場讓平庸的執行也能成功。',
+         example:'2010 年做行動 App vs. 報紙廣告 — 選對賽道比戰術更重要。'},
+      ];
+      h+=blob('rgba(34,197,94,.08)','rgba(59,130,246,.06)');
+      h+=`<div style="position:relative;z-index:1;text-align:center">`;
+      h+=`<div style="font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;letter-spacing:-.02em;color:var(--ink);line-height:1;margin-bottom:.35rem">Perfect Market</div>`;
+      h+=`${chip}<div class="bar" style="margin:.5rem auto .6rem"></div>`;
+      if(sd.title)h+=`<h2 style="margin-bottom:.9rem">${sd.title}</h2>`;
+      h+=`</div>`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.65rem;max-width:1280px;margin:0 auto;position:relative;z-index:1">`;
+      traits.forEach((t,i)=>{
+        const uid=`pm-${sd.id}-${i}`;
+        h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:300px">`;
+        h+=`<div class="card-answer" style="background:${t.colR},.07);border:1.5px solid ${t.colR},.3);border-top:3px solid ${t.col};border-radius:12px;padding:.9rem;height:100%;display:flex;flex-direction:column;gap:.35rem;box-sizing:border-box">`;
+        h+=`<div style="display:flex;align-items:center;gap:.6rem">`;
+        h+=`<div style="color:${t.col};flex-shrink:0">${t.icon}</div>`;
+        h+=`<div><div style="font-size:var(--min-label);font-weight:800;letter-spacing:.06em;color:${t.col};white-space:nowrap">${t.en}</div>`;
+        h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--ink)">${t.zh}</div></div>`;
+        h+=`</div>`;
+        h+=`<div style="height:1px;background:${t.colR},.2);margin:.1rem 0"></div>`;
+        h+=`<div style="font-size:var(--min-font);color:rgba(255,255,255,.82);line-height:1.55">${t.desc}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:${t.col};padding:.4rem .65rem;background:${t.colR},.1);border-left:3px solid ${t.col};border-radius:0 6px 6px 0;line-height:1.5;margin-top:auto">${t.insight}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:var(--mid);padding:.35rem .55rem;background:rgba(255,255,255,.03);border-radius:6px;line-height:1.45">${t.example}</div>`;
+        h+=`</div>`;
+        h+=`<div class="card-mask" style="border-radius:12px;background:${t.colR},.1);border:1.5px solid ${t.colR},.25)">`;
+        h+=`<div style="font-size:var(--min-label);font-weight:800;letter-spacing:.14em;color:${t.col};opacity:.7">${t.num}</div>`;
+        h+=`<div style="color:${t.col};margin:.35rem 0">${t.icon}</div>`;
+        h+=`<div style="font-size:clamp(.95rem,1.5vw,1.1rem);font-weight:800;color:var(--ink);white-space:nowrap">${t.en}</div>`;
+        h+=`<div style="font-size:var(--min-font);color:var(--mid);margin-top:.25rem">${t.zh}</div>`;
+        h+=`</div>`;
+        h+=`</div>`;
+      });
+      h+=`</div>`;
+      h+=`<div class="tip-box" style="max-width:1280px;margin:.8rem auto 0;position:relative;z-index:1">四個條件不必全滿足，但越多、越強，你的市場假設就越穩固。</div>`;
       break;}
     case 'hxc-case-study':{
       h+=blob('rgba(34,197,94,.08)','rgba(59,130,246,.06)');
