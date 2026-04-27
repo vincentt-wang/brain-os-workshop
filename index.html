@@ -1630,7 +1630,7 @@ function renderSlide(sd,idx){
       break;}
     case 'rules':
       h+=blob('rgba(255,255,255,.04)','rgba(255,107,0,.06)');
-      h+=`<div style="position:relative;z-index:1;text-align:center;max-width:1020px;margin:0 auto">`;
+      h+=`<div style="position:relative;z-index:1;text-align:center;max-width:1160px;margin:0 auto">`;
       h+=chip;
       h+=`<div class="bar" style="margin:.5rem auto .9rem"></div>`;
       if(sd.title)h+=`<h1 style="font-size:clamp(2.8rem,7vw,5rem);margin-bottom:1.2rem">${sd.title}</h1>`;
@@ -1662,12 +1662,12 @@ function renderSlide(sd,idx){
         {n:'04',t:'看清楚自己真正想做什麼',col:'var(--cyan)',colR:'rgba(6,182,212',detail:'方向不是想出來的，是驗證出來的'},
         {n:'05',t:'把這套思維帶回去用',col:'var(--green)',colR:'rgba(34,197,94',detail:'創業、作品、方向：同一套工具'},
       ];
-      h+=`<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.55rem">`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.4rem">`;
       courseItems.forEach((item,i)=>{
         const uid=`ci-${sd.id}-${i}`;
         h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:160px">`;
-        h+=`<div class="card-answer" style="background:${item.colR},.09);border:1.5px solid ${item.colR},.3);border-top:2px solid ${item.col};border-radius:10px;padding:1.1rem .8rem;display:flex;align-items:center;justify-content:center;text-align:center;height:auto;box-sizing:border-box">`;
-        h+=`<div style="font-size:clamp(.95rem,1.4vw,1.1rem);font-weight:700;color:var(--ink);line-height:1.5;word-break:break-all">${item.t}</div>`;
+        h+=`<div class="card-answer" style="background:${item.colR},.09);border:1.5px solid ${item.colR},.3);border-top:2px solid ${item.col};border-radius:10px;padding:1.1rem .5rem;display:flex;align-items:center;justify-content:center;text-align:center;height:auto;box-sizing:border-box">`;
+        h+=`<div style="font-size:clamp(.85rem,1.2vw,1rem);font-weight:700;color:var(--ink);line-height:1.5">${item.t}</div>`;
         h+=`</div>`;
         h+=`<div class="card-mask" style="border-radius:10px;background:${item.colR},.07);border:1.5px solid ${item.colR},.25)">`;
         h+=`<div style="font-size:clamp(3rem,8vw,5rem);font-weight:900;color:${item.col};line-height:1;opacity:.85">${parseInt(item.n,10)}</div>`;
