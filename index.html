@@ -586,7 +586,7 @@ const D=[
 {id:'s30',sec:2,sub:'欲求性｜收尾',type:'section',chip:['Section 2 收尾','white'],title:'你現在知道<br>在對誰說話了',sub2:'Section 3：可行性 — 快速把想法做出來',theme:'blue-light'},
 // ── SECTION 3：可行性｜快速驗證 ──────────────────────────────────────
 {id:'s3a0',sec:3,sub:'可行性｜開場',type:'section-cover',secNum:'③',secTitle:'可行性',secEn:'Feasibility',sub2:'先學得快、記得牢，再快速把想法做出來'},
-{id:'s_learn_noise',sec:3,sub:'可行性｜學習基礎',type:'concept-single',chip:['排除干擾','blue'],title:'學習的第一步：<span class="g-blue">排除干擾源</span>',body:'可行性的核心是執行能力。學會快速輸入訊息、留住它、輸出它——這三個環節缺一不可。排除干擾，讓輸入品質最大化。',tip:'<strong style="color:var(--blue)">訊息獲取</strong>（速讀）→ <strong style="color:var(--purple)">訊息留存</strong>（Chunking · 費曼 · 間隔複習）→ <strong style="color:var(--green)">訊息輸出</strong>（教人 · Anki）<br>手機面朝下，通知關掉。干擾不只是聲音，是一切搶佔注意力的東西。'},
+{id:'s_learn_noise',sec:3,sub:'可行性｜學習基礎',type:'learning-framework',chip:['學習能力','blue'],title:'光有想法，還不夠'},
 {id:'s_learn_memory',sec:3,sub:'可行性｜學習基礎',type:'memory-types'},
 {id:'s_learn_speed',sec:3,sub:'可行性｜速讀工具',type:'concept-single',chip:['速讀本質','yellow'],title:'速讀不是<span class="g-orange">讀更快</span>，是<span class="g-orange">帶問題閱讀</span>',body:'帶著問題進入一本書，決定你能提取多少價值。沒有問題，就是被動接收訊息。',tip:'前置作業：先預覽目錄 → 手繪骨架思維導圖 → 寫下 3 個你想得到的答案，再開始讀'},
 {id:'s_learn_scan',sec:3,sub:'可行性｜速讀工具',type:'preview-scan'},
@@ -6376,6 +6376,55 @@ function renderSlide(sd,idx){
     // ========== END NEW RENDER CASES V3 ==========
 
     // ========== LEARNING TOOLS (from brain_os_workshop) ==========
+    case 'learning-framework':{
+      h+=blob('rgba(59,130,246,.08)','rgba(168,85,247,.06)');
+      h+=`<div style="position:relative;z-index:1;text-align:center;max-width:1100px;margin:0 auto">`;
+      h+=chip;
+      h+=`<div class="bar" style="margin:.5rem auto .8rem"></div>`;
+      if(sd.title)h+=`<h2 style="margin-bottom:.3rem">${sd.title}</h2>`;
+      h+=`<p style="font-size:var(--min-font);color:var(--mid);margin-bottom:1.1rem">可行性 = 學習能力 × 執行能力。把想法做出來，先學會如何學習。</p>`;
+      // 3 unlock cards for the 3 learning pillars
+      const lfPillars=[
+        {
+          letter:'獲',word:'訊息獲取',col:'var(--blue)',colR:'rgba(59,130,246',
+          icon:'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>',
+          headline:'帶問題閱讀，速讀讓高質量訊號大量進入',
+          detail:'速讀不是讀更快，是主動選擇哪些訊號值得進入。先預覽、先提問、再閱讀。'
+        },
+        {
+          letter:'存',word:'訊息留存',col:'var(--purple)',colR:'rgba(168,85,247',
+          icon:'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
+          headline:'Chunking · 費曼 · 間隔複習，讓訊息真正記住',
+          detail:'工作記憶只能記 7±2 個單位。Chunking 壓縮，費曼驗證，間隔複習對抗遺忘曲線。'
+        },
+        {
+          letter:'出',word:'訊息輸出',col:'var(--green)',colR:'rgba(34,197,94',
+          icon:'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>',
+          headline:'教人才算真懂，輸出是記憶最強的固化工具',
+          detail:'費曼輸出：不看書用 3 句話解釋給別人聽。能教人的，才是真的懂了。'
+        }
+      ];
+      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;margin-bottom:1rem">`;
+      lfPillars.forEach((p,i)=>{
+        const uid=`lf-${sd.id}-${i}`;
+        h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:180px">`;
+        h+=`<div class="card-answer" style="height:100%;display:flex;flex-direction:column;background:${p.colR},.08);border:1.5px solid ${p.colR},.3);border-top:3px solid ${p.col};border-radius:12px;padding:1.1rem;gap:.45rem;box-sizing:border-box">`;
+        h+=`<div style="display:flex;align-items:center;gap:.7rem">`;
+        h+=`<div style="width:44px;height:44px;border-radius:10px;background:${p.colR},.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:${p.col}">${p.icon}</div>`;
+        h+=`<div><div style="font-size:clamp(1.1rem,1.8vw,1.3rem);font-weight:800;color:${p.col}">${p.word}</div></div>`;
+        h+=`</div>`;
+        h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--ink);line-height:1.4">${p.headline}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:var(--mid);line-height:1.5;margin-top:auto">${p.detail}</div>`;
+        h+=`</div>`;
+        h+=`<div class="card-mask" style="border-radius:12px;background:${p.colR},.1)">`;
+        h+=`<div style="font-size:clamp(2rem,4vw,3rem);font-weight:900;color:${p.col};line-height:1;margin-bottom:.4rem">${p.letter}</div>`;
+        h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--ink)">${p.word}</div>`;
+        h+=`</div></div>`;
+      });
+      h+=`</div>`;
+      h+=`<div class="tip-box"><strong style="color:var(--blue)">第一步：排除干擾</strong>，讓輸入品質最大化。手機面朝下，通知關掉。干擾不只是聲音，是一切搶佔注意力的東西。</div>`;
+      h+=`</div>`;
+      break;}
     case 'concept-single':{
       h+=blob('rgba(255,255,255,.03)','rgba(255,255,255,.02)');
       h+=`<div style="position:relative;z-index:1;max-width:960px;text-align:left;margin:0 auto">`;
