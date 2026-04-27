@@ -2167,10 +2167,10 @@ function renderSlide(sd,idx){
         {key:'H',name:'HXC',zh:'高期望消費者',col:'var(--red)',bg:'rgba(255,32,85,.1)',border:'rgba(255,32,85,.45)',
          def:'High Expectation Consumer',desc:'在 ICP 裡，最急、最痛、最會主動找解法的那個人。他的反應代表市場的邊界。',example:'晚上腦袋停不下來，已經在 App Store 搜過「焦慮」「情緒」'}
       ];
-      h+=`<div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap">`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;max-width:1100px;margin:0 auto">`;
       layers.forEach((l,i)=>{
         const uid=`al-${sd.id}-${i}`;
-        h+=`<div class="step-item" id="${uid}" onclick="toggleStep('${uid}')" style="flex:1;min-width:260px;max-width:320px;border:2px solid ${l.border};background:${l.bg};border-radius:12px">`;
+        h+=`<div class="step-item" id="${uid}" onclick="toggleStep('${uid}')" style="border:2px solid ${l.border};background:${l.bg};border-radius:12px">`;
         h+=`<div class="step-front" style="background:transparent;border:none;padding:1rem 1.2rem;flex-direction:column;align-items:center;text-align:center;gap:.4rem">`;
         h+=`<span style="font-size:1.8rem;font-weight:800;color:${l.col}">${l.key}</span>`;
         h+=`<span style="font-size:clamp(1rem,1.6vw,1.2rem);font-weight:700;color:${l.col}">${l.name}</span>`;
@@ -2208,20 +2208,41 @@ function renderSlide(sd,idx){
       h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto 1rem"></div>`;
       if(sd.title)h+=`<h2 style="margin-bottom:1rem">${sd.title}</h2>`;
       h+=`</div>`;
-      const spotifyLayers=[
-        {level:'Persona',col:'rgba(255,255,255,.6)',content:'喜歡聽音樂的人（範圍太廣）'},
-        {level:'ICP',col:'var(--blue)',content:'會付錢買音樂串流服務的人（有付費意願）'},
-        {level:'HXC',col:'var(--red)',content:'「聽到一首新歌會想知道這是誰唱的、馬上加到播放清單、還會分享給朋友」的人'}
+      const hxcCases=[
+        {brand:'Spotify',col:'var(--green)',colR:'rgba(34,197,94',
+         persona:'喜歡聽音樂的人',
+         icp:'會付費訂閱串流服務的人',
+         hxc:'聽到新歌馬上查誰唱的、加播放清單、分享給朋友',
+         insight:'HXC 是音樂傳教士，不只消費，還幫你擴散'},
+        {brand:'Airbnb',col:'var(--orange)',colR:'rgba(255,107,0',
+         persona:'需要住宿的旅行者',
+         icp:'想要有當地生活感、不喜歡制式飯店的旅人',
+         hxc:'出發前會搜三個城市的特色民宿、發 IG、寫長評論',
+         insight:'HXC 既是消費者也是內容創作者，UGC 推動新用戶'},
+        {brand:'Notion',col:'var(--blue)',colR:'rgba(59,130,246',
+         persona:'需要記筆記的人',
+         icp:'有協作需求、願意花時間設定工作流的人',
+         hxc:'自己建 template、在社群分享、推薦給整個團隊',
+         insight:'HXC 是 Notion 的免費銷售員，口碑傳播成本接近零'},
       ];
-      h+=`<div style="display:flex;flex-direction:column;gap:.8rem;max-width:640px;margin:0 auto;position:relative;z-index:1">`;
-      spotifyLayers.forEach((l,i)=>{
-        h+=`<div style="display:flex;align-items:center;gap:1rem;padding:.9rem 1.2rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-left:4px solid ${l.col};border-radius:0 10px 10px 0">`;
-        h+=`<div style="font-size:.65rem;font-weight:800;letter-spacing:.1em;color:${l.col};min-width:70px">${l.level}</div>`;
-        h+=`<div style="font-size:clamp(.88rem,1.4vw,1.05rem);color:var(--ink)">${l.content}</div>`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;max-width:1200px;margin:0 auto;position:relative;z-index:1">`;
+      hxcCases.forEach((c,i)=>{
+        const uid=`hxc-${sd.id}-${i}`;
+        h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:250px">`;
+        h+=`<div class="card-answer" style="background:${c.colR},.07);border:1.5px solid ${c.colR},.3);border-top:3px solid ${c.col};border-radius:12px;padding:1rem;height:100%;display:flex;flex-direction:column;gap:.4rem;box-sizing:border-box">`;
+        h+=`<div style="font-size:clamp(1rem,1.6vw,1.2rem);font-weight:900;color:${c.col}">${c.brand}</div>`;
+        h+=`<div style="display:flex;gap:.5rem;align-items:flex-start"><span style="font-size:var(--min-label);font-weight:700;color:rgba(255,255,255,.4);min-width:3rem">Persona</span><span style="font-size:var(--min-font);color:var(--mid)">${c.persona}</span></div>`;
+        h+=`<div style="display:flex;gap:.5rem;align-items:flex-start"><span style="font-size:var(--min-label);font-weight:700;color:var(--blue);min-width:3rem">ICP</span><span style="font-size:var(--min-font);color:var(--ink)">${c.icp}</span></div>`;
+        h+=`<div style="display:flex;gap:.5rem;align-items:flex-start"><span style="font-size:var(--min-label);font-weight:700;color:${c.col};min-width:3rem">HXC</span><span style="font-size:var(--min-font);color:var(--ink);font-weight:600">${c.hxc}</span></div>`;
+        h+=`<div style="font-size:var(--min-label);color:${c.col};padding:.4rem .7rem;background:${c.colR},.1);border-radius:6px;margin-top:auto;line-height:1.45">${c.insight}</div>`;
+        h+=`</div>`;
+        h+=`<div class="card-mask" style="border-radius:12px;background:${c.colR},.1);border:1.5px solid ${c.colR},.3)">`;
+        h+=`<div style="font-size:clamp(1.2rem,2vw,1.5rem);font-weight:900;color:${c.col}">${c.brand}</div>`;
+        h+=`</div>`;
         h+=`</div>`;
       });
       h+=`</div>`;
-      h+=`<div class="tip-box" style="max-width:640px;margin:1rem auto 0;position:relative;z-index:1"><strong>Spotify 的洞察：</strong>HXC 不只是「願意付錢聽歌的人」，而是「會主動探索音樂並分享給朋友的人」——這群人會幫你做口碑傳播</div>`;
+      h+=`<div class="tip-box" style="max-width:1200px;margin:.9rem auto 0;position:relative;z-index:1"><strong style="color:var(--green)">共同規律：</strong>HXC 不只使用產品，還主動傳播。找到他們，你就找到了口碑引擎。</div>`;
       break;}
     case 'pivot-stories':{
       h+=blob('rgba(255,107,0,.08)','rgba(168,85,247,.06)');
@@ -2319,7 +2340,7 @@ function renderSlide(sd,idx){
       h+=`</div>`;
       const vitaminIcon='<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>';
       const painkillerIcon='<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>';
-      h+=`<div class="compare-grid">`;
+      h+=`<div class="compare-grid" style="max-width:900px;margin:0 auto">`;
       // Vitamin
       h+=`<div class="cmp-card cmp-no" onclick="this.classList.toggle('revealed')">`;
       h+=`<div style="color:var(--mid);margin-bottom:.4rem">${vitaminIcon}</div>`;
@@ -2327,7 +2348,7 @@ function renderSlide(sd,idx){
       h+=`<ul class="deck-list" style="margin-top:.5rem">`;
       ['有的話不錯','沒有也過得去','購買動機弱','難以建立急迫性'].forEach(it=>{h+=`<li>${it}</li>`;});
       h+=`</ul>`;
-      h+=`<div class="cmp-mask"><div class="cmp-mask-icon">${vitaminIcon}</div><div style="font-weight:800;font-size:clamp(.88rem,1.45vw,1.1rem);color:var(--ink);margin:.3rem 0">維他命</div><div class="cmp-mask-label">點擊解鎖</div></div>`;
+      h+=`<div class="cmp-mask"><div class="cmp-mask-icon">${vitaminIcon}</div><div style="font-weight:800;font-size:clamp(.88rem,1.45vw,1.1rem);color:var(--ink);margin:.3rem 0">維他命</div></div>`;
       h+=`</div>`;
       // Painkiller
       h+=`<div class="cmp-card cmp-yes" onclick="this.classList.toggle('revealed')">`;
@@ -2336,7 +2357,7 @@ function renderSlide(sd,idx){
       h+=`<ul class="deck-list" style="margin-top:.5rem">`;
       ['沒有就真的很痛','用戶主動在找','決策快、行動快','高轉換、高黏著'].forEach(it=>{h+=`<li>${it}</li>`;});
       h+=`</ul>`;
-      h+=`<div class="cmp-mask"><div class="cmp-mask-icon">${painkillerIcon}</div><div style="font-weight:800;font-size:clamp(.88rem,1.45vw,1.1rem);color:var(--ink);margin:.3rem 0">止痛藥</div><div class="cmp-mask-label">點擊解鎖</div></div>`;
+      h+=`<div class="cmp-mask"><div class="cmp-mask-icon">${painkillerIcon}</div><div style="font-weight:800;font-size:clamp(.88rem,1.45vw,1.1rem);color:var(--ink);margin:.3rem 0">止痛藥</div></div>`;
       h+=`</div>`;
       h+=`</div>`;
       h+=`<div style="margin-top:.9rem;padding:.85rem 1.2rem;border-radius:8px;background:rgba(168,85,247,.07);border:1px solid rgba(168,85,247,.25);font-size:clamp(.8rem,1.28vw,.92rem);color:var(--mid)"><span style="color:var(--purple);font-weight:700">補充：</span>維他命產品也能成功 — 透過極致的包裝、儀式感設計、品牌敘事，把「Nice to Have」變成生活方式的一部分。LUSH、無印良品、韓系保養品都是案例。重點是：你要知道你在賣哪種，並且用對應的策略。</div>`;
@@ -2773,26 +2794,26 @@ function renderSlide(sd,idx){
       const steps=[
         {en:'Empathize',zh:'同理心',col:'var(--blue)',colR:'rgba(59,130,246',num:'01',
          icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
-         desc:'先理解那個人在想什麼、感受什麼。<strong style="color:var(--blue)">不是假設</strong>，是真正去問、去觀察。'},
+         desc:'<strong style="color:var(--blue)">不是假設</strong>，是去問、去觀察。真正理解對方的感受。'},
         {en:'Define',zh:'定義問題',col:'var(--purple)',colR:'rgba(168,85,247',num:'02',
          icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>',
-         desc:'從觀察中萃取出清晰的問題陳述。<strong style="color:var(--purple)">HMW（How Might We）</strong>是常見框架。'},
+         desc:'從觀察萃取清晰的問題陳述。<strong style="color:var(--purple)">HMW</strong> 是切入框架。'},
         {en:'Ideate',zh:'發散構想',col:'var(--orange)',colR:'rgba(255,107,0',num:'03',
          icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>',
          desc:'<strong style="color:var(--orange)">不評判</strong>地產生大量想法。數量優先，質量稍後。'},
         {en:'Prototype',zh:'快速原型',col:'var(--green)',colR:'rgba(34,197,94',num:'04',
          icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>',
-         desc:'用最低成本讓想法<strong style="color:var(--green)">可以被測試</strong>。你的 Canva 圖就是一種原型。'},
+         desc:'用最低成本讓想法<strong style="color:var(--green)">可被測試</strong>。Canva 圖就是原型。'},
         {en:'Test',zh:'測試驗證',col:'var(--yellow)',colR:'rgba(251,191,36',num:'05',
          icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>',
-         desc:'拿給<strong style="color:var(--yellow)">真實用戶</strong>看。他的反應 &gt; 你的感覺。然後循環回第一步。'},
+         desc:'拿給<strong style="color:var(--yellow)">真實用戶</strong>看。他的反應 &gt; 你的感覺。循環回第一步。'},
       ];
       h+=blob('rgba(59,130,246,.08)','rgba(168,85,247,.06)');
       h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto .8rem"></div>`;
       if(sd.title)h+=`<h2 style="margin-bottom:.8rem">${sd.title}</h2>`;
       h+=`</div>`;
       // Build unlock-card row
-      h+=`<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.65rem;max-width:1300px;margin:0 auto .9rem;position:relative;z-index:1">`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.65rem;max-width:1380px;margin:0 auto .9rem;position:relative;z-index:1">`;
       steps.forEach((s,si)=>{
         const uid=`dt-${sd.id}-${si}`;
         h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:190px">`;
@@ -2810,7 +2831,7 @@ function renderSlide(sd,idx){
         h+=`</div>`;
       });
       h+=`</div>`;
-      h+=`<div class="tip-box" style="max-width:1300px;margin:0 auto;position:relative;z-index:1">早上從 Prototype 出發沒錯。但最強的設計師，從 Empathize 就開始了。</div>`;
+      h+=`<div class="tip-box" style="max-width:1380px;margin:0 auto;position:relative;z-index:1">早上從 Prototype 出發沒錯。但最強的設計師，從 Empathize 就開始了。</div>`;
       break;}
     case 'emotional-touchpoints':{
       h+=blob('rgba(6,182,212,.08)','rgba(239,68,68,.06)');
@@ -2822,7 +2843,7 @@ function renderSlide(sd,idx){
       // ── CJM Wave Chart — full width, tall ──
       h+=`<div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:.7rem 1rem .5rem;margin-bottom:.6rem">`;
       h+=`<div style="font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);text-align:center;margin-bottom:.35rem">Customer Journey Map — 購物情緒旅程</div>`;
-      h+=`<svg viewBox="0 0 100 72" style="width:100%;height:260px;overflow:visible" xmlns="http://www.w3.org/2000/svg">`;
+      h+=`<svg viewBox="0 0 100 72" style="width:100%;height:320px;overflow:visible" xmlns="http://www.w3.org/2000/svg">`;
       h+=`<defs>`;
       h+=`<linearGradient id="waveGrad-emo" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#22c55e"/><stop offset="30%" stop-color="rgba(168,85,247,1)"/><stop offset="62%" stop-color="#ef4444"/><stop offset="76%" stop-color="#ef4444"/><stop offset="100%" stop-color="#22c55e"/></linearGradient>`;
       h+=`<linearGradient id="fillGrad-emo" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="rgba(59,130,246,.12)"/><stop offset="65%" stop-color="rgba(239,68,68,.2)"/><stop offset="100%" stop-color="rgba(239,68,68,.02)"/></linearGradient>`;
@@ -2852,14 +2873,14 @@ function renderSlide(sd,idx){
       h+=`</svg>`;
       h+=`</div>`;
       // ── Unlock cards ──
-      h+=`<div style="display:flex;gap:.65rem;margin-bottom:.6rem">`;
+      h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:.65rem;margin-bottom:.6rem">`;
       // Customer card
       h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked')" style="flex:1;min-height:118px">`;
       h+=`<div class="card-answer" style="background:rgba(239,68,68,.08);border:1.5px solid rgba(239,68,68,.35);border-radius:12px;padding:.9rem 1rem">`;
       h+=`<div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#ef4444" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="card-label" style="color:#ef4444">客戶視角 — 核心痛點</span></div>`;
       h+=`<div class="card-body">情緒最低點 = <strong style="color:#ef4444">流失率最高點</strong>。修復「等待感」，不必解決全部痛點，只需解決<strong style="color:rgba(255,255,255,.85)">這一個</strong>。</div>`;
       h+=`</div>`;
-      h+=`<div class="card-mask" style="border:1.5px solid rgba(239,68,68,.3)"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="rgba(239,68,68,.75)" stroke-width="1.8"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg><div class="card-mask-q" style="color:rgba(239,68,68,.9)">客戶視角</div><div class="card-mask-hint">點擊查看痛點洞察</div></div>`;
+      h+=`<div class="card-mask" style="border:1.5px solid rgba(239,68,68,.3)"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="rgba(239,68,68,.75)" stroke-width="1.8"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg><div class="card-mask-q" style="color:rgba(239,68,68,.9)">客戶視角</div></div>`;
       h+=`</div>`;
       // Business card
       h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked')" style="flex:1;min-height:118px">`;
@@ -2867,13 +2888,8 @@ function renderSlide(sd,idx){
       h+=`<div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span class="card-label" style="color:#22c55e">商家視角 — 留存即營收</span></div>`;
       h+=`<div class="card-body"><strong style="color:#22c55e">Retention</strong> 是首要指標。解決「等待感」= 商家目標與客戶痛點同時達成，是<strong style="color:rgba(255,255,255,.85)">ROI 最高的突破口</strong>。</div>`;
       h+=`</div>`;
-      h+=`<div class="card-mask" style="border:1.5px solid rgba(34,197,94,.3)"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="rgba(34,197,94,.75)" stroke-width="1.8"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg><div class="card-mask-q" style="color:rgba(34,197,94,.9)">商家視角</div><div class="card-mask-hint">點擊查看商業洞察</div></div>`;
+      h+=`<div class="card-mask" style="border:1.5px solid rgba(34,197,94,.3)"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="rgba(34,197,94,.75)" stroke-width="1.8"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg><div class="card-mask-q" style="color:rgba(34,197,94,.9)">商家視角</div></div>`;
       h+=`</div>`;
-      h+=`</div>`;
-      // ── Empathy callout ──
-      h+=`<div style="display:flex;align-items:flex-start;gap:.7rem;background:rgba(6,182,212,.07);border:1.5px solid rgba(6,182,212,.22);border-radius:10px;padding:.6rem 1rem">`;
-      h+=`<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--cyan)" stroke-width="2" style="flex-shrink:0;margin-top:2px"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`;
-      h+=`<div style="font-size:var(--min-font);color:var(--mid);line-height:1.6"><strong style="color:var(--cyan)">Empathize 的本質：</strong>不是解決所有問題，而是找到<strong style="color:rgba(255,255,255,.85)">情緒最低的那個瞬間</strong>，搭配利害關係人目標，把<strong style="color:rgba(255,255,255,.85)">有限資源集中在範疇內最關鍵的突破口</strong>。</div>`;
       h+=`</div>`;
       h+=`</div>`;
       break;}
