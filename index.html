@@ -565,6 +565,7 @@ const D=[
 {id:'s20',sec:2,sub:'欲求性｜開場',type:'dark',chip:['精準定位','orange'],title:'對所有人說話<br>等於對任何人都沒說',bullets:['訊息越泛，共鳴越淺 — 每多一個「也可以」，就是一次稀釋','精準定位 1,000 個有痛的人，轉換效率是廣播式的 10–20 倍'],compBoxes:[{label:'廣播思維',stat:'< 1%',statNote:'平均轉換率',desc:'觸及所有人 → 打動沒有人',col:'rgba(255,255,255,.45)',bg:'rgba(255,255,255,.04)',border:'rgba(255,255,255,.1)'},{label:'精準思維',stat:'10–20%',statNote:'精準受眾轉換率',desc:'打中最痛的人 → 共鳴最深',col:'var(--orange)',bg:'rgba(255,107,0,.07)',border:'rgba(255,107,0,.3)'}],footer:'設計，是為那個「最需要」的人而做的'},
 {id:'s22',sec:2,sub:'欲求性｜市場判斷',type:'perfect-market',chip:['完美市場','green'],title:'完美市場的四個特徵'},
 {id:'s_eternal',sec:2,sub:'欲求性｜市場選擇',type:'eternal-markets',chip:['三大永恆市場','purple'],title:'三大永恆市場'},
+{id:'s_mktfinder',sec:2,sub:'欲求性｜市場選擇',type:'market-finder',chip:['市場定位練習','green'],title:'3 分鐘找到你的核心市場'},
 {id:'s09',sec:2,sub:'欲求性｜設計思維',type:'dt-loop-auto',chip:['Design Thinking','cyan'],title:'設計思維是一個循環',xrefs:[{id:'s3a4',label:'Prototype 在哪'}]},
 {id:'s_emomap',sec:2,sub:'欲求性｜設計思維',type:'emotional-touchpoints',chip:['情緒波點','cyan'],title:'找到那個讓人離開的瞬間'},
 {id:'s21',sec:2,sub:'欲求性｜ICP 與 HXC',type:'audience-layers',chip:['三層受眾收斂','blue'],title:'Persona → ICP → HXC'},
@@ -692,6 +693,7 @@ const T_en={
   's22':{chip:['Perfect Market','green'],title:'4 Traits of a Perfect Market'},
   's23':{chip:['Case Study','green'],title:'How Spotify Found Its HXC'},
   's_eternal':{chip:['Eternal Markets','purple'],title:'The 3 Eternal Markets'},
+  's_mktfinder':{chip:['3-Min Market Finder','green'],title:'Find Your Core Market in 3 Minutes'},
   's11':{chip:['Questions & Observation','blue'],title:'Great Questions and Observation Surface Insights'},
   's10':{chip:['Mining Insights','orange'],title:'How to Extract Insights from Interviews'},
   's25':{chip:['Pain Point Test','orange'],title:'Vitamin vs Painkiller'},
@@ -2314,6 +2316,75 @@ function renderSlide(sd,idx){
       });
       h+=`</div>`;
       h+=`<div class="tip-box" style="max-width:1280px;margin:.8rem auto 0;position:relative;z-index:1">90%+ 的成功產品都在這三大領域之內 — 市場的取向，從這些永恆痛點出發。</div>`;
+      break;}
+    case 'market-finder':{
+      const mfSteps=[
+        {n:'01',en:'Pick One',zh:'選定核心市場',col:'var(--green)',colR:'rgba(34,197,94',
+         icon:'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
+         desc:'從三大永恆市場選一個。不允許選「都有關係」。'},
+        {n:'02',en:'Drill Down',zh:'細分兩到三層',col:'var(--blue)',colR:'rgba(59,130,246',
+         icon:'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18M3 10h12M3 15h8M3 20h5"/></svg>',
+         desc:'每層收窄一次，直到能描述出一個具體的人。'},
+        {n:'03',en:'Check Signals',zh:'驗證四大指標',col:'var(--orange)',colR:'rgba(255,107,0',
+         icon:'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>',
+         desc:'四個指標缺一不可，一個都不能少。'},
+        {n:'04',en:'Commit',zh:'堅持下去',col:'var(--red)',colR:'rgba(255,32,85',
+         icon:'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>',
+         desc:'選定就全力執行。頻繁換市場是最常見的失敗原因。'},
+      ];
+      h+=blob('rgba(34,197,94,.08)','rgba(59,130,246,.06)');
+      h+=`<div style="position:relative;z-index:1;text-align:center">`;
+      h+=`${chip}<div class="bar" style="margin:.5rem auto .6rem"></div>`;
+      if(sd.title)h+=`<h2 style="margin-bottom:.4rem">${sd.title}</h2>`;
+      h+=`<div style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(34,197,94,.1);border:1.5px solid rgba(34,197,94,.3);border-radius:20px;padding:.28rem .9rem;margin-bottom:.9rem">`;
+      h+=`<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
+      h+=`<span style="font-size:var(--min-label);font-weight:700;color:var(--green);letter-spacing:.04em;white-space:nowrap">3-min exercise · Pick → Drill → Verify → Commit</span>`;
+      h+=`</div>`;
+      h+=`</div>`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;max-width:1280px;margin:0 auto;position:relative;z-index:1">`;
+      mfSteps.forEach((s,i)=>{
+        h+=`<div style="background:${s.colR},.07);border:1.5px solid ${s.colR},.3);border-top:3px solid ${s.col};border-radius:12px;padding:1.1rem;display:flex;flex-direction:column;gap:.45rem;box-sizing:border-box">`;
+        h+=`<div style="display:flex;align-items:center;gap:.6rem">`;
+        h+=`<div style="color:${s.col};flex-shrink:0">${s.icon}</div>`;
+        h+=`<div><div style="font-size:var(--min-label);font-weight:800;letter-spacing:.1em;color:${s.col};text-transform:uppercase;white-space:nowrap">${s.n} · ${s.en}</div>`;
+        h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--ink)">${s.zh}</div></div>`;
+        h+=`</div>`;
+        h+=`<div style="height:1px;background:${s.colR},.2);margin:.05rem 0"></div>`;
+        h+=`<div style="font-size:var(--min-font);color:rgba(255,255,255,.82);line-height:1.5">${s.desc}</div>`;
+        if(i===0){
+          h+=`<div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.1rem">`;
+          [{zh:'健康',en:'Health',cR:'rgba(34,197,94'},{zh:'財富',en:'Wealth',cR:'rgba(251,191,36'},{zh:'關係',en:'Relationships',cR:'rgba(255,32,85'}].forEach(m=>{
+            h+=`<div style="padding:.28rem .65rem;background:${m.cR},.12);border:1px solid ${m.cR},.4);border-radius:20px;text-align:center">`;
+            h+=`<div style="font-size:var(--min-label);font-weight:700;color:${m.cR==='rgba(34,197,94'?'var(--green)':m.cR==='rgba(251,191,36'?'var(--yellow)':'var(--red)'};white-space:nowrap">${m.zh}</div>`;
+            h+=`<div style="font-size:.8rem;color:var(--mid);white-space:nowrap">${m.en}</div>`;
+            h+=`</div>`;
+          });
+          h+=`</div>`;
+        } else if(i===1){
+          [['健康','心理健康','職場焦慮'],['財富','個人投資','ETF 新手']].forEach(row=>{
+            h+=`<div style="display:flex;align-items:center;gap:.2rem;margin-top:.2rem">`;
+            row.forEach((item,ri)=>{
+              if(ri>0)h+=`<svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="${s.col}" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+              h+=`<span style="font-size:.8rem;font-weight:600;color:${ri===0?'rgba(255,255,255,.45)':ri===1?s.colR+',.9)':'var(--ink)'};background:${ri===0?'rgba(255,255,255,.06)':ri===1?s.colR+',.12)':s.colR+',.22)'};border-radius:4px;padding:.1rem .35rem;white-space:nowrap">${item}</span>`;
+            });
+            h+=`</div>`;
+          });
+        } else if(i===2){
+          [['Massive Pain','巨大痛苦'],['Purchasing Power','購買力'],['Easy to Reach','易於觸達'],['Growing Market','市場增長']].forEach(([en,zh])=>{
+            h+=`<div style="display:flex;align-items:center;gap:.4rem;margin-top:.15rem">`;
+            h+=`<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="${s.col}" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>`;
+            h+=`<span style="font-size:var(--min-label);font-weight:700;color:${s.col};white-space:nowrap">${en}</span>`;
+            h+=`<span style="font-size:var(--min-label);color:var(--mid);opacity:.75">${zh}</span>`;
+            h+=`</div>`;
+          });
+        } else if(i===3){
+          h+=`<div style="padding:.5rem .7rem;background:${s.colR},.08);border-left:3px solid ${s.col};border-radius:0 6px 6px 0;font-size:var(--min-label);color:var(--mid);font-style:italic;line-height:1.55;margin-top:.1rem">`;
+          h+=`"Commit to a lane.<br>Pivot only when the data says so."`;
+          h+=`</div>`;
+        }
+        h+=`</div>`;
+      });
+      h+=`</div>`;
       break;}
     case 'hxc-case-study':{
       h+=blob('rgba(34,197,94,.08)','rgba(59,130,246,.06)');
