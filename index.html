@@ -986,47 +986,7 @@ function tdStep(sid){
 function tdPrev(sid){const tabs=['td','bu','diff'];const c=window['tdCur_'+sid]||'td';tdSwitch(sid,tabs[(tabs.indexOf(c)-1+tabs.length)%tabs.length]);}
 function mtCount(sid){var els=document.querySelectorAll('[id^="mt-'+sid+'-"]');var c=0;els.forEach(el=>{if(el.classList.contains('unlocked'))c++;});var el=document.getElementById('mt-count-'+sid);if(el)el.textContent=c+' / 3 揭曉';}
 
-// ── Slide step-animation intercept ──────────────────────────────────────────
-// Slides listed here show sequential animations before advancing to next slide.
-// Sequence: step 0 → expand 'bu' → step 1 → expand 'td' → step 2 → slide advance
-(function initStepIntercept(){
-  const ANIM={'s08':{steps:['bu','td'],state:0}};
-  const visible={};
-  const obs=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      var did=e.target.dataset.id;
-      visible[did]=e.isIntersecting;
-      if(e.isIntersecting&&ANIM[did]) ANIM[did].state=0;
-    });
-  },{threshold:0.6});
-  setTimeout(function(){
-    Object.keys(ANIM).forEach(function(id){
-      var el=document.querySelector('[data-id="'+id+'"]');if(el)obs.observe(el);
-    });
-  },0);
-  function getCurrent(){return Object.keys(ANIM).find(function(id){return visible[id];});}
-  function tryStep(sid){
-    var a=ANIM[sid];if(!a||a.state>=a.steps.length)return false;
-    var which=a.steps[a.state];
-    requestAnimationFrame(function(){
-      var body=document.getElementById('tdbody-'+sid+'-'+which);
-      if(body){body.style.maxHeight='420px';body.dataset.open='1';}
-      var arrow=document.getElementById('tdarrow-'+sid+'-'+which);
-      if(arrow)arrow.style.transform='rotate(180deg)';
-    });
-    a.state++;return true;
-  }
-  var sc=document.getElementById('slides-container');
-  if(sc)sc.addEventListener('wheel',function(e){
-    var sid=getCurrent();if(!sid||e.deltaY<=0)return;
-    if(tryStep(sid)){e.preventDefault();e.stopPropagation();}
-  },{passive:false});
-  document.addEventListener('keydown',function(e){
-    if(['ArrowDown','ArrowRight',' ','PageDown'].indexOf(e.key)===-1)return;
-    var sid=getCurrent();if(!sid)return;
-    if(tryStep(sid))e.preventDefault();
-  });
-})();
+// Sequential step animations are handled via findNextRevealable() + data-td-step attribute.
 
 function toggleTimer(id,tot){
   const d=document.getElementById('td-'+id),b=document.getElementById('tb-'+id);
@@ -2653,7 +2613,7 @@ function renderSlide(sd,idx){
       if(sd.title)h+=`<h2 style="margin-bottom:.7rem">${sd.title}</h2>`;
       h+=`</div>`;
       const sid=sd.id;
-      h+=`<div style="max-width:960px;margin:0 auto;position:relative;z-index:1;display:flex;flex-direction:column;gap:.7rem">`;
+      h+=`<div data-td-step="0" style="max-width:960px;margin:0 auto;position:relative;z-index:1;display:flex;flex-direction:column;gap:.7rem">`;
       // ── Card 1: Top-down (上方，橘色) ──
       h+=`<div id="tdr-${sid}-td" style="border-radius:14px;border:2px solid rgba(255,107,0,.35);background:rgba(255,107,0,.07);overflow:hidden;cursor:pointer;transition:border-color .2s ease" onclick="tdToggle('${sid}','td')">`;
       // header
@@ -6742,7 +6702,24 @@ function findNextRevealable(){
   // 6. First compare card not yet revealed (vitamin-painkiller etc.)
   const cmpCard=slideEl.querySelector('.cmp-card:not(.revealed)');
   if(cmpCard)return cmpCard;
-  // 7. Phase panels (time-allocation) — open one at a time via step counter
+  // 7. Top-down / Bottom-up panels (topdown-bottomup-v2)
+  const tdCont=slideEl.querySelector('[data-td-step]');
+  if(tdCont){
+    const step=parseInt(tdCont.dataset.tdStep||'0');
+    const seq=['bu','td'];
+    if(step<seq.length){
+      const which=seq[step];
+      tdCont.dataset.tdStep=String(step+1);
+      const sid=slideEl.dataset.id;
+      return {click(){
+        const body=document.getElementById('tdbody-'+sid+'-'+which);
+        if(body){body.style.maxHeight='420px';body.dataset.open='1';}
+        const arrow=document.getElementById('tdarrow-'+sid+'-'+which);
+        if(arrow)arrow.style.transform='rotate(180deg)';
+      }};
+    }
+  }
+  // 8. Phase panels (time-allocation) — open one at a time via step counter
   const phaseContainer=slideEl.querySelector('[data-phase-step]');
   if(phaseContainer){
     const panels=[...phaseContainer.querySelectorAll('.phase-panel')];
@@ -6785,7 +6762,12 @@ document.addEventListener('keydown',e=>{
   if(e.key==='End'){e.preventDefault();scrollToSlide(total-1);}
 });
 let wlk=false;
-document.addEventListener('wheel',e=>{if(wlk)return;wlk=true;scrollToSlide(e.deltaY>0?cur+1:cur-1);setTimeout(()=>wlk=false,850);},{passive:true});
+document.addEventListener('wheel',e=>{
+  if(wlk)return;wlk=true;
+  if(e.deltaY>0){const t=findNextRevealable();if(t){t.click();}else{scrollToSlide(cur+1);}}
+  else{scrollToSlide(cur-1);}
+  setTimeout(()=>wlk=false,850);
+},{passive:true});
 let tsY=0;
 document.addEventListener('touchstart',e=>{tsY=e.touches[0].clientY;},{passive:true});
 document.addEventListener('touchend',e=>{const dy=tsY-e.changedTouches[0].clientY;if(Math.abs(dy)>50)scrollToSlide(dy>0?cur+1:cur-1);},{passive:true});
