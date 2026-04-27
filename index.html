@@ -622,6 +622,7 @@ const D=[
 {id:'s36d',sec:4,sub:'存續性｜定價',type:'pricing-full',chip:['Pricing is Product','yellow'],title:'定價即產品',xrefs:[{id:'s25e',label:'價值公式'}]},
 {id:'s_dmm',sec:4,sub:'存續性｜市場動能',type:'market-momentum',chip:['市場動能模型','purple'],title:'市場動能怎麼看'},
 {id:'s_viakpi',sec:4,sub:'存續性｜成長指標',type:'viability-kpi',chip:['Growth KPI','green'],title:'我們追的 KPI'},
+{id:'s_viakpi2',sec:4,sub:'存續性｜進階指標',type:'viability-kpi-2',chip:['進階 KPI','purple'],title:'進階指標：看更深的生意健康度'},
 {id:'s39',sec:4,sub:'存續性｜GTM',type:'big-quote',chip:['最重要的判斷','red'],quote:'陌生人的行動<br>比朋友的稱讚<br><span class="g-red">重要 100 倍</span>',sub2:'PMF 訊號：他截圖、tag 朋友、主動傳給有相同困擾的人',theme:'warm'},
 {id:'s42b',sec:4,sub:'存續性｜Pitch',type:'pitch-combined',chip:['Pitch 四要素','red'],title:'Hook <span class="g-red">→</span> Pain <span class="g-orange">→</span> Solution <span class="g-blue">→</span> CTA'},
 {id:'s41',sec:4,sub:'存續性｜Pitch',type:'pitch-elements',chip:['十大元素','blue'],title:'Pitch 的<span class="g-blue">十個</span>關鍵元素'},
@@ -630,9 +631,9 @@ const D=[
 {id:'s44b',sec:4,sub:'存續性｜評審視角',type:'external-review-desirability',chip:['欲求性評分','red'],title:'欲求性：創新與痛點解決能力'},
 {id:'s44c',sec:4,sub:'存續性｜評審視角',type:'external-review-feasibility',chip:['競爭能力','blue'],title:'可行性：市場競爭與落地能力'},
 {id:'s44d',sec:4,sub:'存續性｜評審視角',type:'external-review-viability',chip:['發展能力','green'],title:'存續性：團隊與發展策略'},
-{id:'s45',sec:4,sub:'存續性｜發表',type:'big-quote',chip:['最後一句話','white'],quote:'做圖不是目的<br><span class="g-orange">讓那個人<span style="white-space:nowrap">採取行動，才是</span></span>',sub2:'今天學的所有工具，都服務這一個目標',theme:'light'},
+{id:'s45',sec:4,sub:'存續性｜發表',type:'big-quote',chip:['最後一句話','white'],quote:'做圖不是目的<br><span class="g-orange" style="white-space:nowrap">讓那個人採取行動才是</span>',sub2:'今天學的所有工具，都服務這一個目標',theme:'light'},
 {id:'s4ex',sec:4,sub:'存續性｜練習',type:'viability-exercise',chip:['存續性自檢','orange'],title:'把今天學的用出來',time:300,theme:'warm'},
-{id:'s46',sec:4,sub:'存續性｜收尾',type:'section',chip:['Section 4 收尾','white'],title:'價值已經說清楚<br>接下來：<span class="g-purple">成長思維</span>',sub2:'Section 5：成長思維，擴展你的邊界',theme:'warm'},
+{id:'s46',sec:4,sub:'存續性｜收尾',type:'section',chip:['Section 4 收尾','white'],title:'價值已經說清楚<br><span style="white-space:nowrap">接下來：<span class="g-purple">成長思維</span></span>',sub2:'Section 5：成長思維，擴展你的邊界',theme:'warm'},
 // ── SECTION 5：成長思維｜擴展邊界 ──────────────────────────────────────
 {id:'s5a0',sec:5,sub:'成長思維｜開場',type:'section-cover',secNum:'⑤',secTitle:'成長思維',secEn:'Growth Mindset',sub2:'擴展你的邊界'},
 {id:'s5a2',sec:5,sub:'成長思維｜槓桿',type:'leverage-safety',chip:['槓桿與安全邊際','blue'],title:'Leverage 與 Safety Margin'},
@@ -1425,18 +1426,19 @@ function renderSlide(sd,idx){
       h+=`<div style="position:relative;z-index:1;text-align:center;max-width:680px;margin:0 auto">${chip}<div class="bar" style="margin:.6rem auto 1.1rem"></div><h1>${sd.title}</h1>${sd.sub2?`<p style="margin-top:.9rem;font-size:clamp(1rem,1.8vw,1.25rem)">${sd.sub2}</p>`:''}</div>`;
       break;
     case 'close-carousel':{
-      h+=blob('rgba(255,107,0,.12)','rgba(168,85,247,.09)');
+      h+=`<div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,55,35,.92) 0%,rgba(0,25,90,.88) 60%,rgba(0,40,60,.85) 100%);z-index:0"></div>`;
+      h+=blob('rgba(34,197,94,.15)','rgba(6,182,212,.12)');
       const cqQuotes=[
-        {q:'設計是為了改變行為',s:'不是展示美術，不是獲得讚美',col:'var(--orange)'},
-        {q:'讓那個正在痛的人，採取對他有益的行動',s:'這就是行銷設計的本質',col:'var(--orange)'},
-        {q:'不是有人說讚，是有人願意花時間、注意力、甚至金錢去換取它',s:'那才叫價值',col:'var(--orange)'},
-        {q:'找那個最痛的人，他就是你的受眾',s:'不是找最多人，是找最對的人',col:'var(--green)'},
-        {q:'市場不在乎你的想法，只在乎他的痛',s:'欲求性第一',col:'var(--cyan)'},
-        {q:'Top-down 思維：先找最痛的問題，再想解法',s:'不是反過來',col:'var(--blue)'},
-        {q:'可行性在 AI 時代已不是障礙，難的是欲求性',s:'你做得出來，但有人要嗎？',col:'var(--purple)'},
-        {q:'Persona 不是年齡性別，是一個有名字的真實的人',s:'你的作品是寫給他的一封信',col:'var(--orange)'},
-        {q:'你的作品出現在他最痛的那個 TPO，才有意義',s:'對的人、對的地方、對的時刻',col:'var(--cyan)'},
-        {q:'一個清晰的 CTA，勝過十個漂亮的設計',s:'告訴他下一步要做什麼',col:'var(--green)'},
+        {q:'讓那個最痛的人，因你而有所不同',s:'這就是今天帶走最重要的一句話',col:'#4ade80'},
+        {q:'讓那個正在痛的人，採取對他有益的行動',s:'行銷設計的本質只有一件事',col:'#34d399'},
+        {q:'不是有人說讚，是有人願意掏錢換取它',s:'那才叫真實的價值',col:'#6ee7b7'},
+        {q:'找那個最痛的人，他就是你的受眾',s:'不是找最多人，是找最對的人',col:'#5eead4'},
+        {q:'市場不在乎你的想法，只在乎他的痛',s:'欲求性第一，其他都往後排',col:'#22d3ee'},
+        {q:'先問誰最痛，再決定做什麼',s:'Top-down 思維的核心',col:'#67e8f9'},
+        {q:'可行性在 AI 時代已不是障礙',s:'難的是欲求性——你做得出來，但有人要嗎？',col:'#38bdf8'},
+        {q:'你的作品出現在他最痛的 TPO，才有意義',s:'對的人，對的地方，對的時刻',col:'#6ee7b7'},
+        {q:'做一件有人真正需要的事',s:'這就夠了',col:'#4ade80'},
+        {q:'一個清晰的 CTA，勝過十個漂亮的設計',s:'告訴他下一步要做什麼',col:'#34d399'},
       ];
       h+=`<style>
         @keyframes floatQuote0 { 0%,100%{transform:translate(0,0) rotate(-2deg)} 50%{transform:translate(8px,-12px) rotate(1deg)} }
@@ -1446,7 +1448,7 @@ function renderSlide(sd,idx){
         @keyframes titlePulse { 0%,100%{opacity:1} 50%{opacity:.85} }
         .float-quote{position:absolute;padding:.5rem .8rem;border-radius:8px;font-size:var(--min-label);font-weight:600;max-width:140px;text-align:center;backdrop-filter:blur(8px);cursor:pointer;transition:all .3s ease;opacity:.4;z-index:0}
         .float-quote:hover{transform:scale(1.1)!important;opacity:1;z-index:10}
-        .carousel-title-clean{font-size:clamp(1.6rem,4vw,2.8rem);line-height:1.3;font-weight:800;color:var(--orange);animation:titlePulse 3s ease-in-out infinite;white-space:nowrap}
+        .carousel-title-clean{font-size:clamp(1.8rem,4.5vw,3.2rem);line-height:1.25;font-weight:800;animation:titlePulse 4s ease-in-out infinite}
       </style>`;
       h+=`<div style="position:relative;z-index:1;text-align:center;max-width:950px;margin:0 auto;min-height:620px">`;
       h+=chip;
@@ -1466,8 +1468,8 @@ function renderSlide(sd,idx){
       // Center carousel with WHITE BOARD background to prevent overlap
       h+=`<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:70%;max-width:580px;background:rgba(10,10,18,.98);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:2rem 2.5rem;backdrop-filter:blur(16px);box-shadow:0 8px 32px rgba(0,0,0,.4);z-index:5">`;
       h+=`<div id="cq-wrap-${sd.id}" style="min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer" onclick="cqNext_${sd.id}()">`;
-      h+=`<h1 id="cq-title-${sd.id}" class="carousel-title-clean">${cqQuotes[0].q}</h1>`;
-      h+=`<p id="cq-sub-${sd.id}" style="margin-top:.8rem;font-size:var(--min-font);color:var(--mid);transition:opacity .4s">${cqQuotes[0].s}</p>`;
+      h+=`<h1 id="cq-title-${sd.id}" class="carousel-title-clean" style="color:${cqQuotes[0].col}">${cqQuotes[0].q}</h1>`;
+      h+=`<p id="cq-sub-${sd.id}" style="margin-top:.9rem;font-size:var(--min-font);color:rgba(255,255,255,.6);transition:opacity .4s">${cqQuotes[0].s}</p>`;
       h+=`</div>`;
       // Dots
       h+=`<div style="display:flex;gap:.4rem;justify-content:center;margin-top:1rem">`;
@@ -1481,18 +1483,18 @@ function renderSlide(sd,idx){
       // LinkedIn QR
       h+=`<div style="display:flex;flex-direction:column;align-items:center;gap:.5rem">`;
       h+=`<img src="images/Linkedin.jpg" alt="LinkedIn QR" style="width:150px;height:150px;object-fit:cover;border-radius:12px;border:3px solid rgba(255,255,255,.15)">`;
-      h+=`<div style="font-size:.72rem;font-weight:600;color:rgba(255,255,255,.45);letter-spacing:.06em">LinkedIn</div>`;
+      h+=`<div style="font-size:var(--min-label);font-weight:600;color:rgba(255,255,255,.55);letter-spacing:.06em">LinkedIn</div>`;
       h+=`</div>`;
       // EmoTree QR
       h+=`<div style="display:flex;flex-direction:column;align-items:center;gap:.5rem">`;
       h+=`<img src="images/Emotree.jpg" alt="EmoTree QR" style="width:150px;height:150px;object-fit:cover;border-radius:12px;border:3px solid rgba(255,255,255,.15)">`;
-      h+=`<div style="font-size:.72rem;font-weight:600;color:rgba(255,255,255,.45);letter-spacing:.06em">EmoTree</div>`;
+      h+=`<div style="font-size:var(--min-label);font-weight:600;color:rgba(255,255,255,.55);letter-spacing:.06em">EmoTree</div>`;
       h+=`</div>`;
       h+=`</div>`;
       h+=`</div>`;
       // Carousel script
-      const cqData=JSON.stringify(cqQuotes.map(q=>({q:q.q,s:q.s})));
-      h+=`<script>(function(){var qs=${cqData};var cur=0;var sid='${sd.id}';function go(n){cur=((n%qs.length)+qs.length)%qs.length;var t=document.getElementById('cq-title-'+sid);var s=document.getElementById('cq-sub-'+sid);if(t){t.style.opacity='0';s.style.opacity='0';setTimeout(function(){t.textContent=qs[cur].q;s.textContent=qs[cur].s;t.style.opacity='1';s.style.opacity='1';},150);}document.querySelectorAll('.cq-dot-'+sid).forEach(function(d,i){d.style.width=i===cur?'18px':'6px';d.style.background=i===cur?'var(--orange)':'rgba(255,255,255,.2)';});}window['cqGo_'+sid]=go;window['cqNext_'+sid]=function(){go(cur+1);};var timer=setInterval(function(){if(!document.getElementById('cq-title-'+sid)){clearInterval(timer);return;}go(cur+1);},1000);})();<\/script>`;
+      const cqData=JSON.stringify(cqQuotes.map(q=>({q:q.q,s:q.s,col:q.col})));
+      h+=`<script>(function(){var qs=${cqData};var cur=0;var sid='${sd.id}';function go(n){cur=((n%qs.length)+qs.length)%qs.length;var t=document.getElementById('cq-title-'+sid);var s=document.getElementById('cq-sub-'+sid);if(t){t.style.opacity='0';s.style.opacity='0';setTimeout(function(){t.textContent=qs[cur].q;t.style.color=qs[cur].col;s.textContent=qs[cur].s;t.style.opacity='1';s.style.opacity='1';},200);}document.querySelectorAll('.cq-dot-'+sid).forEach(function(d,i){d.style.width=i===cur?'18px':'6px';d.style.background=i===cur?qs[cur].col:'rgba(255,255,255,.2)';});}window['cqGo_'+sid]=go;window['cqNext_'+sid]=function(){go(cur+1);};var timer=setInterval(function(){if(!document.getElementById('cq-title-'+sid)){clearInterval(timer);return;}go(cur+1);},3000);})();<\/script>`;
       break;}
     case 'close':
       h+=blob('rgba(255,107,0,.12)','rgba(255,32,85,.09)');
@@ -3477,7 +3479,7 @@ function renderSlide(sd,idx){
          tip:'具體金額或資源 + 用途 + 你能給的回報',
          ex:'「尋找種子輪 300 萬，或餐飲業人脈連結」'},
       ];
-      h+=`<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.55rem;max-width:1100px;margin:0 auto;position:relative;z-index:1">`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem;max-width:1160px;margin:0 auto;position:relative;z-index:1">`;
       pitchElems.forEach((e,i)=>{
         const uid=`pe-${sd.id}-${i}`;
         h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:160px">`;
@@ -3496,7 +3498,7 @@ function renderSlide(sd,idx){
         h+=`</div>`;
       });
       h+=`</div>`;
-      h+=`<div class="tip-box" style="max-width:1100px;margin:.8rem auto 0;position:relative;z-index:1"><strong style="color:var(--blue)">核心順序：</strong>Hook → Problem → Solution → Ask。其餘元素視場合增減，但這四個不能少。</div>`;
+      h+=`<div class="tip-box" style="max-width:1160px;margin:.8rem auto 0;position:relative;z-index:1"><strong style="color:var(--blue)">核心順序：</strong>Hook → Problem → Solution → Ask。其餘元素視場合增減，但這四個不能少。</div>`;
       break;}
     case 'elevator-pitch':{
       h+=blob('rgba(168,85,247,.08)','rgba(255,107,0,.06)');
@@ -4798,7 +4800,7 @@ function renderSlide(sd,idx){
          bad:'「歡迎聯繫我們」',
          tip:'一個就好，讓他知道下一步是什麼'}
       ];
-      h+=`<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.65rem;max-width:1100px;margin:0 auto;position:relative;z-index:1">`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.65rem;max-width:1100px;margin:0 auto;position:relative;z-index:1;align-items:stretch">`;
       pitchElements.forEach((p,i)=>{
         const uid=`pc-${sd.id}-${i}`;
         h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:160px">`;
@@ -5619,47 +5621,73 @@ function renderSlide(sd,idx){
          explain:'原本的客戶，有多少人還留著',
          formula:'留存客戶數 ÷ 期初客戶數',
          signal:'高 Retention = 產品有真實價值，是一切成長的基礎'},
-        {key:'Payback Period',zh:'回本期',col:'var(--yellow)',colR:'rgba(251,191,36',
-         icon:'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
-         explain:'花出去的獲客成本，要多久才能賺回來',
-         formula:'CAC ÷ 每期單客毛利',
-         signal:'越短越好；超過 12 個月代表現金流壓力很大'},
       ];
-      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:.55rem">`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;max-width:1100px;margin:0 auto .55rem">`;
       kpiList.forEach((k,i)=>{
         const uid=`kpi-${sd.id}-${i}`;
-        h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:145px${i===6?';grid-column:2':''}">`;
-        h+=`<div class="card-answer" style="background:${k.colR},.07);border:1.5px solid ${k.colR},.28);border-radius:12px;padding:.75rem .85rem;gap:.28rem">`;
-        h+=`<div style="display:flex;align-items:center;gap:.4rem;margin-bottom:.05rem"><span style="color:${k.col};flex-shrink:0">${k.icon}</span><div><div style="font-size:.55rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:${k.col}">${k.key}</div><div style="font-size:clamp(.88rem,1.4vw,1rem);font-weight:700;color:var(--ink);line-height:1.2">${k.zh}</div></div></div>`;
+        h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:155px">`;
+        h+=`<div class="card-answer" style="background:${k.colR},.07);border:1.5px solid ${k.colR},.28);border-top:3px solid ${k.col};border-radius:12px;padding:.85rem 1rem;display:flex;flex-direction:column;gap:.3rem">`;
+        h+=`<div style="display:flex;align-items:center;gap:.5rem"><span style="color:${k.col};flex-shrink:0">${k.icon}</span><div><div style="font-size:var(--min-label);font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:${k.col}">${k.key}</div><div style="font-size:var(--min-font);font-weight:700;color:var(--ink);line-height:1.2">${k.zh}</div></div></div>`;
         h+=`<div style="font-size:var(--min-label);color:rgba(255,255,255,.72);line-height:1.42">${k.explain}</div>`;
-        h+=`<div style="font-size:.6rem;color:${k.col};background:${k.colR},.1);border-radius:5px;padding:.16rem .4rem;font-weight:600;font-family:monospace;letter-spacing:.01em">${k.formula}</div>`;
-        h+=`<div style="font-size:var(--min-label);color:var(--mid);line-height:1.38">${k.signal}</div>`;
+        h+=`<div style="font-size:var(--min-font);color:${k.col};background:${k.colR},.1);border-radius:6px;padding:.3rem .6rem;font-weight:700;font-family:monospace">${k.formula}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:var(--mid);line-height:1.4">${k.signal}</div>`;
         h+=`</div>`;
         h+=`<div class="card-mask" style="background:${k.colR},.06);border:1.5px solid ${k.colR},.22)">`;
         h+=`<div style="color:${k.col};margin-bottom:.25rem">${k.icon}</div>`;
-        h+=`<div style="font-size:clamp(.9rem,1.4vw,1.05rem);font-weight:800;color:var(--ink);margin-bottom:.12rem">${k.key}</div>`;
+        h+=`<div style="font-size:clamp(.9rem,1.4vw,1.1rem);font-weight:800;color:var(--ink);margin-bottom:.12rem">${k.key}</div>`;
         h+=`<div class="card-mask-q" style="color:${k.col}">${k.zh}</div>`;
-        h+=`<div class="card-mask-hint">點擊查看</div>`;
         h+=`</div></div>`;
       });
       h+=`</div>`;
-      // Advanced KPI toggle
-      const advKpiId=`advkpi-${sd.id}`;
-      h+=`<div style="text-align:center;margin-bottom:.45rem"><button onclick="(function(b){var p=document.getElementById('${advKpiId}');var o=p.style.maxHeight&&p.style.maxHeight!='0px';p.style.maxHeight=o?'0px':'260px';p.style.opacity=o?'0':'1';b.querySelector('.adv-arr').style.transform=o?'rotate(0deg)':'rotate(180deg)'})(this)" style="display:inline-flex;align-items:center;gap:.45rem;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.15);border-radius:20px;padding:.38rem 1.1rem;font-size:.7rem;font-weight:700;color:rgba(255,255,255,.55);cursor:pointer;transition:all .2s" onmouseover="this.style.background='rgba(255,255,255,.09)'" onmouseout="this.style.background='rgba(255,255,255,.05)'"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>進階 KPI<svg class="adv-arr" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" style="transition:transform .3s"><polyline points="6 9 12 15 18 9"/></svg></button></div>`;
-      h+=`<div id="${advKpiId}" style="max-height:0px;opacity:0;overflow:hidden;transition:max-height .4s ease,opacity .3s ease">`;
-      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem">`;
-      [{key:'ROIC',zh:'投入資本報酬率',col:'var(--purple)',colR:'rgba(168,85,247',icon:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',formula:'年度獲利 ÷ 投入資本',signal:'每投入 1 元資本，能賺多少錢'},
-       {key:'Sales Velocity',zh:'銷售速度',col:'var(--orange)',colR:'rgba(255,107,0',icon:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',formula:'每期新增成交客戶數',signal:'新客成交速度；決定成長能跑多快'},
-       {key:'Max Customers',zh:'可維持客戶上限',col:'var(--cyan)',colR:'rgba(6,182,212',icon:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',formula:'Sales Velocity ÷ Churn Rate',signal:'系統穩定後，最多能維持多少客戶'},
-      ].forEach(a=>{
-        h+=`<div style="background:${a.colR},.07);border:1.5px solid ${a.colR},.25);border-radius:10px;padding:.75rem .85rem;display:flex;flex-direction:column;gap:.28rem">`;
-        h+=`<div style="display:flex;align-items:center;gap:.38rem"><span style="color:${a.col}">${a.icon}</span><div><div style="font-size:.55rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:${a.col}">${a.key}</div><div style="font-size:var(--min-font);font-weight:700;color:var(--ink)">${a.zh}</div></div></div>`;
-        h+=`<div style="font-size:.6rem;color:${a.col};background:${a.colR},.1);border-radius:5px;padding:.15rem .38rem;font-weight:600;font-family:monospace">${a.formula}</div>`;
-        h+=`<div style="font-size:var(--min-label);color:var(--mid);line-height:1.38">${a.signal}</div>`;
-        h+=`</div>`;
-      });
-      h+=`</div></div>`;
+      h+=`<div class="tip-box" style="max-width:1100px;margin:.5rem auto 0;position:relative;z-index:1"><strong style="color:var(--green)">核心公式：</strong>LTGP ÷ CAC > 3× 才健康。Churn 越高，做再多行銷都只是在補破桶。</div>`;
       h+=`</div>`;
+      break;}
+    case 'viability-kpi-2':{
+      h+=blob('rgba(168,85,247,.07)','rgba(34,197,94,.05)');
+      h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.45rem auto .5rem"></div>`;
+      if(sd.title)h+=`<h2 style="margin-bottom:.4rem">${sd.title}</h2>`;
+      h+=`<p style="color:var(--mid);font-size:var(--min-font);margin-bottom:.7rem">看懂這四個，你對一門生意的診斷能力就到位了</p>`;
+      h+=`</div>`;
+      const kpi2List=[
+        {key:'Payback Period',zh:'回本期',col:'var(--yellow)',colR:'rgba(251,191,36',
+         icon:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+         explain:'花出去的獲客成本，要多久才能賺回來',
+         formula:'CAC ÷ 每期單客毛利',
+         signal:'< 6 個月最佳；> 12 個月代表現金流壓力大'},
+        {key:'ROIC',zh:'投入資本報酬率',col:'var(--purple)',colR:'rgba(168,85,247',
+         icon:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
+         explain:'每投入 1 元資本，最終帶來多少淨利',
+         formula:'年度獲利 ÷ 投入資本',
+         signal:'> 15% 被視為健康；巴菲特標準 > 20%'},
+        {key:'Sales Velocity',zh:'銷售速度',col:'var(--orange)',colR:'rgba(255,107,0',
+         icon:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
+         explain:'每個時間單位能成交多少新客戶',
+         formula:'成交客戶數 ÷ 週期時間',
+         signal:'決定成長能跑多快；影響 Max Customers 上限'},
+        {key:'Max Customers',zh:'可維持客戶上限',col:'var(--cyan)',colR:'rgba(6,182,212',
+         icon:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+         explain:'系統穩定後，理論上能維持多少活躍客戶',
+         formula:'Sales Velocity ÷ Churn Rate',
+         signal:'Churn 越低，上限越高，生意越穩健'},
+      ];
+      h+=`<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.65rem;max-width:1100px;margin:0 auto;position:relative;z-index:1">`;
+      kpi2List.forEach((k,i)=>{
+        const uid=`kpi2-${sd.id}-${i}`;
+        h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:155px">`;
+        h+=`<div class="card-answer" style="background:${k.colR},.07);border:1.5px solid ${k.colR},.28);border-top:3px solid ${k.col};border-radius:12px;padding:.85rem .9rem;display:flex;flex-direction:column;gap:.3rem">`;
+        h+=`<div style="display:flex;align-items:center;gap:.45rem"><span style="color:${k.col};flex-shrink:0">${k.icon}</span><div><div style="font-size:var(--min-label);font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:${k.col}">${k.key}</div><div style="font-size:var(--min-font);font-weight:700;color:var(--ink);line-height:1.2">${k.zh}</div></div></div>`;
+        h+=`<div style="font-size:var(--min-label);color:rgba(255,255,255,.72);line-height:1.42">${k.explain}</div>`;
+        h+=`<div style="font-size:var(--min-font);color:${k.col};background:${k.colR},.1);border-radius:6px;padding:.3rem .6rem;font-weight:700;font-family:monospace">${k.formula}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:var(--mid);line-height:1.4">${k.signal}</div>`;
+        h+=`</div>`;
+        h+=`<div class="card-mask" style="background:${k.colR},.06);border:1.5px solid ${k.colR},.22)">`;
+        h+=`<div style="color:${k.col};margin-bottom:.25rem">${k.icon}</div>`;
+        h+=`<div style="font-size:clamp(.9rem,1.4vw,1.1rem);font-weight:800;color:var(--ink);margin-bottom:.12rem">${k.key}</div>`;
+        h+=`<div class="card-mask-q" style="color:${k.col}">${k.zh}</div>`;
+        h+=`</div></div>`;
+      });
+      h+=`</div>`;
+      h+=`<div class="tip-box" style="max-width:1100px;margin:.65rem auto 0;position:relative;z-index:1"><strong style="color:var(--purple)">Max Customers 公式：</strong>Sales Velocity ÷ Churn Rate。Churn 砍半，理論上限翻倍。這就是為什麼留存比獲客更重要。</div>`;
       break;}
     case 'pricing-full':{
       h+=blob('rgba(251,191,36,.1)','rgba(255,107,0,.07)');
@@ -5731,23 +5759,23 @@ function renderSlide(sd,idx){
         {letter:'D',name:'Demand',zh:'需求強度',col:'var(--red)',colR:'rgba(255,32,85',
          icon:'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10A15.3 15.3 0 0 1 8 12 15.3 15.3 0 0 1 12 2z"/></svg>',
          q:'有沒有人真的在找這個解法？',
-         low:'只有你自己覺得需要',high:'大量搜尋、論壇抱怨、等不到解法'},
+         why:'沒有需求，做再好都是白費。真實痛點的訊號是：用戶已經在找解法了，你只是出現在他們路上。',signal:'論壇抱怨 · 自費試用 · 等不到好解法'},
         {letter:'P',name:'Price',zh:'價格承受度',col:'var(--green)',colR:'rgba(34,197,94',
          icon:'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
          q:'他們願意為此付多少錢？',
-         low:'只願付象徵性的金額',high:'有清楚預算、有競品定價可參考'},
+         why:'付費意願反映痛點強度。有清楚的競品定價 = 市場已有共識，你不用從零說服。',signal:'有預算 · 競品已在收費 · 問「多少錢？」'},
         {letter:'Q',name:'Quantity',zh:'市場量體',col:'var(--blue)',colR:'rgba(59,130,246',
          icon:'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
          q:'潛在客戶有多少人？',
-         low:'只有幾百人在意',high:'以萬計的可觸及對象'},
+         why:'市場太小，就算 100% 市占也撐不起生意。先確認「有足夠多的人在痛」。',signal:'以萬計的可觸及對象 · 可用費米估算驗算'},
         {letter:'F',name:'Frequency',zh:'使用頻率',col:'var(--orange)',colR:'rgba(255,107,0',
          icon:'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>',
          q:'他們多常需要這個解法？',
-         low:'一生一次（搬家、畢業）',high:'每天、每週都在用'},
-        {letter:'T',name:'Time',zh:'轉換阻力',col:'var(--purple)',colR:'rgba(168,85,247',
+         why:'高頻建立習慣，習慣建立留存，留存建立 LTV。你的生意靠這條鏈才能活下去。',signal:'每天 / 每週使用 · 自發回訪 · 難以替代'},
+        {letter:'T',name:'Time to Value',zh:'轉換阻力',col:'var(--purple)',colR:'rgba(168,85,247',
          icon:'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 22h14"/><path d="M5 2h14"/><path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22"/><path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2"/></svg>',
-         q:'要多久才能說服第一個客人買？',
-         low:'漫長的教育期、高信任門檻',high:'馬上能感受到價值，決策快'},
+         q:'要多久才能讓用戶感受到價值？',
+         why:'T 越小 = 障礙越少。第一批用戶的轉換速度，決定了你的現金流能撐多久。',signal:'馬上感受到 · 決策快 · 無需長期教育'},
       ];
       h+=`<div id="${dmmGrpId}" data-seq-grp data-seq-keep data-seq-step="0" style="display:flex;flex-direction:column;gap:.28rem;margin-bottom:.5rem">`;
       dmmFactors.forEach((f,i)=>{
@@ -5755,15 +5783,14 @@ function renderSlide(sd,idx){
         h+=`<div>`;
         h+=`<button onclick="dmmToggle('${dmmGrpId}',${i})" style="width:100%;display:flex;align-items:center;gap:.65rem;padding:.5rem .85rem;background:${f.colR},.08);border:1.5px solid ${f.colR},.3);border-radius:10px;cursor:pointer;text-align:left;transition:background .2s">`;
         h+=`<div style="width:34px;height:34px;border-radius:8px;background:${f.colR},.15);border:1px solid ${f.colR},.35);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:${f.col}">${f.icon}</div>`;
-        h+=`<div style="flex:1;min-width:0"><div style="font-size:.56rem;font-weight:800;letter-spacing:.1em;color:${f.col};text-transform:uppercase">${f.name} — ${f.zh}</div><div style="font-size:clamp(.9rem,1.5vw,1.1rem);font-weight:800;color:var(--ink);margin-top:.04rem">${f.q}</div></div>`;
+        h+=`<div style="flex:1;min-width:0"><div style="font-size:var(--min-label);font-weight:800;letter-spacing:.08em;color:${f.col};text-transform:uppercase">${f.name} · ${f.zh}</div><div style="font-size:clamp(.9rem,1.5vw,1.1rem);font-weight:800;color:var(--ink);margin-top:.04rem">${f.q}</div></div>`;
         h+=`<div style="font-size:1.25rem;font-weight:900;color:${f.col};flex-shrink:0;min-width:20px;text-align:center">${f.letter}</div>`;
         h+=`<svg id="${aId}" data-seq-arr viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="${f.col}" stroke-width="2.5" style="flex-shrink:0;transition:transform .3s"><polyline points="6 9 12 15 18 9"/></svg>`;
         h+=`</button>`;
         h+=`<div id="${bId}" data-seq-body style="max-height:0px;opacity:0;overflow:hidden;transition:max-height .3s ease,opacity .25s ease">`;
-        h+=`<div style="padding:.4rem .85rem .45rem;background:${f.colR},.05);border:1px solid ${f.colR},.2);border-top:none;border-radius:0 0 10px 10px;display:flex;gap:1.2rem">`;
-        h+=`<div style="flex:1"><div style="font-size:var(--min-label);color:var(--mid);margin-bottom:.15rem;font-weight:600">1 分 低</div><div style="font-size:var(--min-label);color:rgba(255,255,255,.6)">${f.low}</div></div>`;
-        h+=`<div style="width:1px;background:rgba(255,255,255,.08)"></div>`;
-        h+=`<div style="flex:1"><div style="font-size:var(--min-label);color:${f.col};margin-bottom:.15rem;font-weight:600">5 分 高</div><div style="font-size:var(--min-label);color:rgba(255,255,255,.75)">${f.high}</div></div>`;
+        h+=`<div style="padding:.55rem .85rem .6rem;background:${f.colR},.05);border:1px solid ${f.colR},.2);border-top:none;border-radius:0 0 10px 10px">`;
+        h+=`<div style="font-size:var(--min-font);color:rgba(255,255,255,.8);line-height:1.6;margin-bottom:.3rem">${f.why}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:${f.col};font-weight:600">${f.signal}</div>`;
         h+=`</div></div></div>`;
       });
       h+=`</div>`;
@@ -5907,7 +5934,7 @@ function renderSlide(sd,idx){
       h+=`</div>`;
       h+=`</div></div>`;
       h+=`</div>`;
-      h+=`<div class="tip-box" style="max-width:960px;margin:.9rem auto 0;position:relative;z-index:1"><strong style="color:var(--blue)">核心觀念：</strong>槓桿放大收益，也放大風險。承壓係數幫你確認「在最壞情況下，你還能撐住」，而不是賭明天一定更好。</div>`;
+      h+=`<div class="tip-box" style="max-width:960px;margin:.9rem auto 0;position:relative;z-index:1"><strong style="color:var(--blue)">核心觀念：</strong>槓桿放大收益也放大風險。承壓係數告訴你在最壞情況下還能撐多久，不是賭明天更好。</div>`;
       break;}
     // ========== 目標導向學習 (Goal-Oriented Learning) Pages ==========
     case 'goal-oriented-intro':{
@@ -6197,13 +6224,13 @@ function renderSlide(sd,idx){
       h+=`</div>`;
       // Explanation strip
       h+=`<div style="display:flex;gap:1rem;align-items:flex-start;max-width:700px;margin:0 auto .65rem;position:relative;z-index:1">`;
-      [{num:'①',col:'var(--purple)',title:'定核心目標',desc:'最重要的目標放在中心格'},
-       {num:'②',col:'var(--blue)',title:'展開 8 個維度',desc:'點擊各格查看說明'},
-       {num:'③',col:'var(--green)',title:'每維度展 8 個行動',desc:'1 個目標 = 64 個具體計畫'},
+      [{num:'①',col:'var(--purple)',title:'定核心目標'},
+       {num:'②',col:'var(--blue)',title:'展開 8 個維度'},
+       {num:'③',col:'var(--green)',title:'每維度展 8 個行動'},
       ].forEach(s=>{
-        h+=`<div style="flex:1;display:flex;gap:.55rem;align-items:flex-start">`;
-        h+=`<div style="width:26px;height:26px;border-radius:7px;background:${s.col};display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;flex-shrink:0;font-size:.75rem">${s.num}</div>`;
-        h+=`<div><div style="font-size:var(--min-label);font-weight:700;color:var(--ink)">${s.title}</div><div style="font-size:.62rem;color:var(--mid)">${s.desc}</div></div>`;
+        h+=`<div style="flex:1;display:flex;gap:.55rem;align-items:center">`;
+        h+=`<div style="width:26px;height:26px;border-radius:7px;background:${s.col};display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;flex-shrink:0;font-size:var(--min-label)">${s.num}</div>`;
+        h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--ink)">${s.title}</div>`;
         h+=`</div>`;
       });
       h+=`</div>`;
@@ -6226,7 +6253,6 @@ function renderSlide(sd,idx){
           h+=`<div style="background:rgba(168,85,247,.25);border:2px solid rgba(168,85,247,.7);border-radius:10px;padding:.6rem .4rem;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:96px">`;
           h+=`<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:.25rem"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>`;
           h+=`<div style="font-size:var(--min-font);font-weight:900;color:var(--purple);line-height:1.3">${cell.t}</div>`;
-          h+=`<div style="font-size:.52rem;color:rgba(168,85,247,.55);margin-top:.18rem">中央目標</div>`;
         } else {
           h+=`<div id="mc-${mdid}-${i}" class="mandala-cell" data-title="${cell.t}" data-desc="${cell.desc.replace(/"/g,'&quot;')}" onclick="mandalaFocus('${mdid}','${i}','${cell.c}')" style="background:${cell.c},.08);border:1.5px solid ${cell.c},.3);border-radius:10px;padding:.55rem .4rem;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:96px;gap:.3rem">`;
           h+=`<div style="font-size:var(--min-font);font-weight:700;color:${cell.c},1);line-height:1.3">${cell.t}</div>`;
