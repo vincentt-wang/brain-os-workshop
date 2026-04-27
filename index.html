@@ -599,11 +599,11 @@ const D=[
 {id:'s_learn_spacing',sec:3,sub:'可行性｜記憶留存',type:'spacing-curve'},
 {id:'s_learn_sprint',sec:3,sub:'可行性｜Sprint',type:'sprint-v4',title:'速讀工具即時體驗',task:'翻開手機一篇<strong>你一直想讀的文章</strong><br>用預覽掃描 + 視覺三段掃描，2 分鐘萃取 1 個洞見<br>告訴旁邊的人你抓到了什麼',time:120},
 {id:'s_exec_bridge',sec:3,sub:'可行性｜執行轉場',type:'section',chip:['Section 3 轉換','white'],title:'訊息進來了，<br><span class="g-orange">讓想法做出來</span>',sub2:'速讀 · 記憶 · 費曼，學會怎麼學。<br>下一步：AI 工具 · 快速原型 · Agile，學會怎麼做。',theme:'blue-light'},
+{id:'s3a5',sec:3,sub:'可行性｜工具庫',type:'tools-wall-v2',chip:['一人軍隊工具庫','purple'],title:'工具推薦：一人軍隊的完整軍火庫'},
 {id:'s3a2',sec:3,sub:'可行性｜AI 時代',type:'ai-feasibility',chip:['AI 時代','cyan'],title:'「做得出來」不再是最難的事'},
 {id:'s3a3',sec:3,sub:'可行性｜原型',type:'prototype-types',chip:['原型類型','purple'],title:'Prototype / MVP / MVC / POC 的差別',xrefs:[{id:'s38',label:'GTM→POC→PMF'}]},
 {id:'s3a4',sec:3,sub:'可行性｜原型',type:'ideate-prototype-test',chip:['設計思維循環','orange'],title:'Ideate → Prototype → Test',xrefs:[{id:'s09',label:'設計思維循環'}]},
 {id:'s_agile',sec:3,sub:'可行性｜方法論',type:'agile-lean',chip:['方法論','cyan'],title:'把想法跑起來：Agile × Running Lean'},
-{id:'s3a5',sec:3,sub:'可行性｜工具庫',type:'tools-wall-v2',chip:['一人軍隊工具庫','purple'],title:'工具推薦：一人軍隊的完整軍火庫'},
 // ❌ 移除 s3a5b ai-orchestration（太技術性）
 {id:'s3a6',sec:3,sub:'可行性｜練習',type:'feasibility-exercise',chip:['可行性練習','green'],title:'把你的想法做出第一版',time:300,theme:'green-light'},
 {id:'s3a7',sec:3,sub:'可行性｜收尾',type:'section',chip:['Section 3 收尾','white'],title:'工具在手<br>讓市場說話',sub2:'Section 4：存續性 — 從作品走到市場'},
@@ -5385,16 +5385,15 @@ function renderSlide(sd,idx){
       break;}
     case 'tools-wall-v2':{
       h+=blob('rgba(168,85,247,.1)','rgba(6,182,212,.06)');
-      h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto 1rem"></div>`;
-      if(sd.title)h+=`<h2 style="margin-bottom:.35rem">${sd.title}</h2>`;
-      h+=`<p style="color:var(--mid);font-size:var(--min-font);margin-bottom:1rem">每個類別點擊可展開工具清單</p>`;
+      h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.5rem auto .75rem"></div>`;
+      if(sd.title)h+=`<h2 style="margin-bottom:.6rem">${sd.title}</h2>`;
       h+=`</div>`;
       const toolCats=[
         {cat:'AI 寫程式',en:'Vibe Coding',col:'var(--purple)',colR:'rgba(168,85,247',
          icon:'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>',
          tools:[
            {name:'Cursor',desc:'自帶 Claude，寫 Code 像在對話'},
-           {name:'VS Code + Copilot',desc:'業界標準，保守派首選'},
+           {name:'Claude Code',desc:'Claude 官方 CLI，終端機直接下指令'},
            {name:'v0.dev',desc:'AI 直接生成 UI 元件'},
          ]},
         {cat:'設計視覺',en:'Design',col:'var(--cyan)',colR:'rgba(6,182,212',
@@ -5425,37 +5424,35 @@ function renderSlide(sd,idx){
            {name:'LemonSqueezy',desc:'SaaS 首選，自動處理稅務'},
            {name:'綠界 / 藍新',desc:'台灣本地金流，支援超商'},
          ]},
-        {cat:'用戶溝通',en:'Engage',col:'var(--red)',colR:'rgba(255,32,85',
-         icon:'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
+        {cat:'語音輸入',en:'Voice Input',col:'var(--purple)',colR:'rgba(168,85,247',
+         icon:'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>',
          tools:[
-           {name:'Resend',desc:'開發者首選 Email API，超簡單'},
-           {name:'Beehiiv',desc:'電子報平台，內建成長工具'},
-           {name:'Intercom / Crisp',desc:'網站即時客服，提升轉換率'},
+           {name:'VoiceIn',desc:'瀏覽器語音輸入，任何欄位即說即打'},
+           {name:'Typeless',desc:'靜音語音輸入，思緒流暢不中斷'},
+           {name:'MacWhisper',desc:'本機 Whisper，隱私最高，離線可用'},
          ]},
       ];
-      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;max-width:960px;margin:0 auto;position:relative;z-index:1">`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;max-width:1160px;margin:0 auto;position:relative;z-index:1">`;
       toolCats.forEach((cat,i)=>{
         const uid=`tw2-${sd.id}-${i}`;
         h+=`<div style="border-radius:14px;overflow:hidden;border:2px solid ${cat.colR},.3)">`;
-        // header button
-        h+=`<button data-reveal-btn="1" onclick="(function(btn){var c=btn.nextElementSibling;var open=c.style.display!=='none';c.style.display=open?'none':'block';btn.querySelector('.tw-arr').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;background:${cat.colR},.1);border:none;cursor:pointer;padding:.9rem 1.1rem;display:flex;align-items:center;gap:.7rem;text-align:left">`;
+        h+=`<button data-reveal-btn="1" onclick="(function(btn){var c=btn.nextElementSibling;var open=c.style.display!=='none';c.style.display=open?'none':'block';btn.querySelector('.tw-arr').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;background:${cat.colR},.1);border:none;cursor:pointer;padding:.85rem 1rem;display:flex;align-items:center;gap:.65rem;text-align:left">`;
         h+=`<span style="color:${cat.col};flex-shrink:0">${cat.icon}</span>`;
         h+=`<span style="flex:1"><span style="display:block;font-size:var(--min-font);font-weight:700;color:var(--ink)">${cat.cat}</span><span style="font-size:var(--min-label);color:var(--mid)">${cat.en} · ${cat.tools.length} 工具</span></span>`;
         h+=`<svg class="tw-arr" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="${cat.col}" stroke-width="2" style="transition:transform .25s;flex-shrink:0"><polyline points="6 9 12 15 18 9"/></svg>`;
         h+=`</button>`;
-        // body — hidden by default
-        h+=`<div style="display:none;background:${cat.colR},.06);padding:.7rem .8rem;flex-direction:column;gap:.45rem">`;
+        h+=`<div style="display:none;background:${cat.colR},.06);padding:.65rem .8rem;flex-direction:column;gap:.4rem">`;
         cat.tools.forEach(t=>{
-          h+=`<div style="padding:.5rem .75rem;background:rgba(255,255,255,.04);border-radius:8px;border-left:3px solid ${cat.colR},.55)">`;
-          h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--ink);margin-bottom:.15rem">${t.name}</div>`;
-          h+=`<div style="font-size:var(--min-label);color:var(--mid);line-height:1.45">${t.desc}</div>`;
+          h+=`<div style="padding:.5rem .7rem;background:rgba(255,255,255,.04);border-radius:8px;border-left:3px solid ${cat.colR},.55)">`;
+          h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--ink);margin-bottom:.1rem">${t.name}</div>`;
+          h+=`<div style="font-size:var(--min-label);color:var(--mid);line-height:1.4">${t.desc}</div>`;
           h+=`</div>`;
         });
         h+=`</div>`;
         h+=`</div>`;
       });
       h+=`</div>`;
-      h+=`<div class="tip-box" style="max-width:1020px;margin:.8rem auto 0;position:relative;z-index:1"><strong style="color:var(--purple)">一人軍隊標準配置：</strong>Cursor 寫 code → Next.js 建站 → Vercel 部署 → Stripe 收錢。四個工具，從 0 到收入</div>`;
+      h+=`<div class="tip-box" style="max-width:1160px;margin:.75rem auto 0;position:relative;z-index:2"><strong style="color:var(--cyan)">一人軍隊標準配置：</strong>Cursor 寫 code → Next.js 建站 → Vercel 部署 → Stripe 收錢。四個工具，從 0 到收入。</div>`;
       break;}
     case 'ai-orchestration':{
       h+=blob('rgba(6,182,212,.1)','rgba(168,85,247,.06)');
