@@ -3639,7 +3639,7 @@ function renderSlide(sd,idx){
       h+=`</div>`;
       const mtId=sd.id;
       // Track open count for reveal
-      h+=`<div style="max-width:980px;margin:0 auto;position:relative;z-index:1">`;
+      h+=`<div style="max-width:1300px;margin:0 auto;position:relative;z-index:1">`;
       // Root node
       h+=`<div style="text-align:center;margin-bottom:.5rem">`;
       h+=`<div style="display:inline-block;background:var(--yellow);padding:.6rem 1.6rem;border-radius:999px;font-weight:800;color:#000;font-size:var(--min-font)">用戶不願意付費</div>`;
@@ -3663,7 +3663,7 @@ function renderSlide(sd,idx){
          why:'這是心理問題，不是價值或體驗問題',
          subs:['沒有社會證明（評價 / 案例）','無試用期，風險感太高','新品牌知名度不足']},
       ];
-      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;max-width:1200px;margin:0 auto .7rem">`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;max-width:1280px;margin:0 auto .7rem">`;
       branches.forEach((b,bi)=>{
         const uid=`mt-${mtId}-${bi}`;
         h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:230px">`;
@@ -3688,7 +3688,7 @@ function renderSlide(sd,idx){
       });
       h+=`</div>`;
       // MECE validation row + progress
-      h+=`<div style="max-width:1200px;margin:0 auto;background:rgba(251,191,36,.08);border:1.5px solid rgba(251,191,36,.3);border-radius:10px;padding:.75rem 1.1rem">`;
+      h+=`<div style="max-width:1280px;margin:0 auto;background:rgba(251,191,36,.08);border:1.5px solid rgba(251,191,36,.3);border-radius:10px;padding:.75rem 1.1rem">`;
       h+=`<div style="font-size:var(--min-font);color:var(--mid);white-space:nowrap"><strong style="color:var(--yellow)">MECE 驗證：</strong>認知 / 體驗 / 心理 — 互斥且無遺漏</div>`;
       h+=`</div>`;
       h+=`</div>`;
