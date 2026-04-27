@@ -565,9 +565,9 @@ const D=[
 {id:'s20',sec:2,sub:'欲求性｜開場',type:'dark',chip:['精準定位','orange'],title:'對所有人說話<br>等於對任何人都沒說',bullets:['訊息越泛，共鳴越淺 — 每多一個「也可以」，就是一次稀釋','精準定位 1,000 個有痛的人，轉換效率是廣播式的 10–20 倍'],compBoxes:[{label:'廣播思維',stat:'< 1%',statNote:'平均轉換率',desc:'觸及所有人 → 打動沒有人',col:'rgba(255,255,255,.45)',bg:'rgba(255,255,255,.04)',border:'rgba(255,255,255,.1)'},{label:'精準思維',stat:'10–20%',statNote:'精準受眾轉換率',desc:'打中最痛的人 → 共鳴最深',col:'var(--orange)',bg:'rgba(255,107,0,.07)',border:'rgba(255,107,0,.3)'}],footer:'設計，是為那個「最需要」的人而做的'},
 {id:'s09',sec:2,sub:'欲求性｜設計思維',type:'dt-loop-auto',chip:['Design Thinking','cyan'],title:'設計思維是一個循環',xrefs:[{id:'s3a4',label:'Prototype 在哪'}]},
 {id:'s_emomap',sec:2,sub:'欲求性｜設計思維',type:'emotional-touchpoints',chip:['情緒波點','cyan'],title:'找到那個讓人離開的瞬間'},
-{id:'s21',sec:2,sub:'欲求性｜ICP 與 HXC',type:'audience-layers',chip:['三層受眾收斂','blue'],title:'Persona → ICP（理想客群）→ HXC（最核心的那群人）'},
+{id:'s21',sec:2,sub:'欲求性｜ICP 與 HXC',type:'audience-layers',chip:['三層受眾收斂','blue'],title:'Persona → ICP → HXC'},
 // ❌ 移除 s22 funnel-v3-examples（s21 + s23 已足夠）
-{id:'s23',sec:2,sub:'欲求性｜ICP 與 HXC',type:'hxc-case-study',chip:['案例分析','green'],title:'Spotify 如何找到 HXC'},
+{id:'s23',sec:2,sub:'欲求性｜ICP 與 HXC',type:'hxc-case-study',chip:['案例分析','green'],title:'如何找到 HXC'},
 {id:'s11',sec:2,sub:'欲求性｜設計思維',type:'observe-insight-v3',chip:['提問與觀察','blue'],title:'好問題與觀察讓洞察浮現'},
 {id:'s10',sec:2,sub:'欲求性｜設計思維',type:'insight-types-coffee',chip:['挖掘洞察','orange'],title:'如何從訪談中挖出 Insight'},
 // s24/s24c 移至 Section 4 存續性（s38 之後）
@@ -2156,7 +2156,9 @@ function renderSlide(sd,idx){
       h+=`<div style="margin-top:.8rem;font-size:var(--min-font);color:var(--mid);position:relative;z-index:1">和旁邊的人互相檢查：你能回答出這四個問題嗎？</div>`;
       break;}
     case 'audience-layers':{
-      h+=`<div style="text-align:center">${chip}<div class="bar" style="margin:.6rem auto 1rem"></div>`;
+      h+=`<div style="text-align:center">`;
+      h+=`<div style="font-size:clamp(3rem,8vw,5.5rem);font-weight:900;letter-spacing:-.02em;color:var(--ink);line-height:1;margin-bottom:.4rem">Avatar</div>`;
+      h+=`${chip}<div class="bar" style="margin:.5rem auto .7rem"></div>`;
       if(sd.title)h+=`<h2 style="margin-bottom:.8rem">${sd.title}</h2>`;
       h+=`</div>`;
       const layers=[
@@ -2176,7 +2178,7 @@ function renderSlide(sd,idx){
         h+=`<span style="font-size:clamp(1rem,1.6vw,1.2rem);font-weight:700;color:${l.col}">${l.name}</span>`;
         h+=`<span style="font-size:var(--min-font);color:var(--mid)">${l.zh}</span>`;
         h+=`</div>`;
-        h+=`<div class="step-back" style="background:rgba(0,0,0,.2);max-height:280px"><div class="step-back-inner" style="padding:.8rem 1.2rem">`;
+        h+=`<div class="step-back" style="background:rgba(0,0,0,.2);max-height:500px"><div class="step-back-inner" style="padding:.8rem 1.2rem">`;
         h+=`<div style="font-size:var(--min-label);font-weight:700;color:${l.col};letter-spacing:.1em;margin-bottom:.3rem">${l.def}</div>`;
         h+=`<div style="font-size:var(--min-font);color:rgba(255,255,255,.8);margin-bottom:.5rem">${l.desc}</div>`;
         h+=`<div style="font-size:var(--min-font);color:var(--mid);padding:.5rem;background:rgba(255,255,255,.04);border-radius:6px"><strong style="color:${l.col}">範例：</strong>${l.example}</div>`;
@@ -2231,9 +2233,9 @@ function renderSlide(sd,idx){
         h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:250px">`;
         h+=`<div class="card-answer" style="background:${c.colR},.07);border:1.5px solid ${c.colR},.3);border-top:3px solid ${c.col};border-radius:12px;padding:1rem;height:100%;display:flex;flex-direction:column;gap:.4rem;box-sizing:border-box">`;
         h+=`<div style="font-size:clamp(1rem,1.6vw,1.2rem);font-weight:900;color:${c.col}">${c.brand}</div>`;
-        h+=`<div style="display:flex;gap:.5rem;align-items:flex-start"><span style="font-size:var(--min-label);font-weight:700;color:rgba(255,255,255,.4);min-width:3rem">Persona</span><span style="font-size:var(--min-font);color:var(--mid)">${c.persona}</span></div>`;
-        h+=`<div style="display:flex;gap:.5rem;align-items:flex-start"><span style="font-size:var(--min-label);font-weight:700;color:var(--blue);min-width:3rem">ICP</span><span style="font-size:var(--min-font);color:var(--ink)">${c.icp}</span></div>`;
-        h+=`<div style="display:flex;gap:.5rem;align-items:flex-start"><span style="font-size:var(--min-label);font-weight:700;color:${c.col};min-width:3rem">HXC</span><span style="font-size:var(--min-font);color:var(--ink);font-weight:600">${c.hxc}</span></div>`;
+        h+=`<div style="display:flex;gap:.5rem;align-items:flex-start;min-height:3rem"><span style="font-size:var(--min-label);font-weight:700;color:rgba(255,255,255,.4);min-width:3rem">Persona</span><span style="font-size:var(--min-font);color:var(--mid)">${c.persona}</span></div>`;
+        h+=`<div style="display:flex;gap:.5rem;align-items:flex-start;min-height:3.5rem"><span style="font-size:var(--min-label);font-weight:700;color:var(--blue);min-width:3rem">ICP</span><span style="font-size:var(--min-font);color:var(--ink)">${c.icp}</span></div>`;
+        h+=`<div style="display:flex;gap:.5rem;align-items:flex-start;min-height:4rem"><span style="font-size:var(--min-label);font-weight:700;color:${c.col};min-width:3rem">HXC</span><span style="font-size:var(--min-font);color:var(--ink);font-weight:600">${c.hxc}</span></div>`;
         h+=`<div style="font-size:var(--min-label);color:${c.col};padding:.4rem .7rem;background:${c.colR},.1);border-radius:6px;margin-top:auto;line-height:1.45">${c.insight}</div>`;
         h+=`</div>`;
         h+=`<div class="card-mask" style="border-radius:12px;background:${c.colR},.1);border:1.5px solid ${c.colR},.3)">`;
@@ -2794,19 +2796,19 @@ function renderSlide(sd,idx){
       const steps=[
         {en:'Empathize',zh:'同理心',col:'var(--blue)',colR:'rgba(59,130,246',num:'01',
          icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
-         desc:'<strong style="color:var(--blue)">不是假設</strong>，是去問、去觀察。真正理解對方的感受。'},
+         desc:'不是假設，去問去觀察，理解對方感受。'},
         {en:'Define',zh:'定義問題',col:'var(--purple)',colR:'rgba(168,85,247',num:'02',
          icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>',
-         desc:'從觀察萃取清晰的問題陳述。<strong style="color:var(--purple)">HMW</strong> 是切入框架。'},
+         desc:'從觀察萃取問題陳述。HMW 是切入框架。'},
         {en:'Ideate',zh:'發散構想',col:'var(--orange)',colR:'rgba(255,107,0',num:'03',
          icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>',
-         desc:'<strong style="color:var(--orange)">不評判</strong>地產生大量想法。數量優先，質量稍後。'},
+         desc:'不評判地產生大量想法，數量優先。'},
         {en:'Prototype',zh:'快速原型',col:'var(--green)',colR:'rgba(34,197,94',num:'04',
          icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>',
-         desc:'用最低成本讓想法<strong style="color:var(--green)">可被測試</strong>。Canva 圖就是原型。'},
+         desc:'用最低成本讓想法可被測試。Canva 就是原型。'},
         {en:'Test',zh:'測試驗證',col:'var(--yellow)',colR:'rgba(251,191,36',num:'05',
          icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>',
-         desc:'拿給<strong style="color:var(--yellow)">真實用戶</strong>看。他的反應 &gt; 你的感覺。循環回第一步。'},
+         desc:'拿給真實用戶看，他的反應勝過你的感覺。'},
       ];
       h+=blob('rgba(59,130,246,.08)','rgba(168,85,247,.06)');
       h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto .8rem"></div>`;
@@ -2878,7 +2880,7 @@ function renderSlide(sd,idx){
       h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked')" style="flex:1;min-height:118px">`;
       h+=`<div class="card-answer" style="background:rgba(239,68,68,.08);border:1.5px solid rgba(239,68,68,.35);border-radius:12px;padding:.9rem 1rem">`;
       h+=`<div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#ef4444" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="card-label" style="color:#ef4444">客戶視角 — 核心痛點</span></div>`;
-      h+=`<div class="card-body">情緒最低點 = <strong style="color:#ef4444">流失率最高點</strong>。修復「等待感」，不必解決全部痛點，只需解決<strong style="color:rgba(255,255,255,.85)">這一個</strong>。</div>`;
+      h+=`<div class="card-body" style="font-size:var(--min-font)">情緒最低點 = <strong style="color:#ef4444">流失率最高點</strong>。修復「等待感」，不必解決全部痛點，只需解決<strong style="color:rgba(255,255,255,.85)">這一個</strong>。</div>`;
       h+=`</div>`;
       h+=`<div class="card-mask" style="border:1.5px solid rgba(239,68,68,.3)"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="rgba(239,68,68,.75)" stroke-width="1.8"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg><div class="card-mask-q" style="color:rgba(239,68,68,.9)">客戶視角</div></div>`;
       h+=`</div>`;
@@ -2886,7 +2888,7 @@ function renderSlide(sd,idx){
       h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked')" style="flex:1;min-height:118px">`;
       h+=`<div class="card-answer" style="background:rgba(34,197,94,.08);border:1.5px solid rgba(34,197,94,.35);border-radius:12px;padding:.9rem 1rem">`;
       h+=`<div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span class="card-label" style="color:#22c55e">商家視角 — 留存即營收</span></div>`;
-      h+=`<div class="card-body"><strong style="color:#22c55e">Retention</strong> 是首要指標。解決「等待感」= 商家目標與客戶痛點同時達成，是<strong style="color:rgba(255,255,255,.85)">ROI 最高的突破口</strong>。</div>`;
+      h+=`<div class="card-body" style="font-size:var(--min-font)"><strong style="color:#22c55e">Retention</strong> 是首要指標。解決「等待感」= 商家目標與客戶痛點同時達成，是<strong style="color:rgba(255,255,255,.85)">ROI 最高的突破口</strong>。</div>`;
       h+=`</div>`;
       h+=`<div class="card-mask" style="border:1.5px solid rgba(34,197,94,.3)"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="rgba(34,197,94,.75)" stroke-width="1.8"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg><div class="card-mask-q" style="color:rgba(34,197,94,.9)">商家視角</div></div>`;
       h+=`</div>`;
