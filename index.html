@@ -535,7 +535,7 @@ svg{overflow:visible}
 <script>
 const D=[
 // ── SECTION 1：策略思維｜問題框定 ──────────────────────────────────────
-{id:'s01',sec:1,sub:'開場',type:'cover',title:'策略思維 × 創新創業<br>工作坊',sub2:'從需求發現到產品打造，從市場驗證到成長思維<br><span style="font-size:.72em;opacity:.35;letter-spacing:.04em;display:block;margin-top:.4rem">台北大學職涯發展中心 &nbsp;·&nbsp; 中山醫創新醫療小組 &nbsp;·&nbsp; Design for Taiwan 十週年</span>'},
+{id:'s01',sec:1,sub:'開場',type:'cover',title:'策略思維 × 創新創業<br>工作坊',sub2:'從需求發現到產品打造，從市場驗證到成長思維<br><span style="font-size:.9em;opacity:.65;letter-spacing:.06em;display:block;margin-top:.65rem;font-weight:500">台北大學職涯發展中心 &nbsp;·&nbsp; 中山醫創新醫療小組 &nbsp;·&nbsp; Design for Taiwan 十週年</span>'},
 {id:'s02',sec:1,sub:'開場',type:'big-quote',chip:['先問一個問題','red'],quote:'你做的東西<br><span class="g-red">有人真的需要嗎</span>',sub2:'不是有人說讚。是有人願意花時間、注意力、甚至金錢去換取它。'},
 {id:'s03',sec:1,sub:'開場',type:'profile-hero',chip:['關於講者','white']},
 {id:'s_poll',sec:1,sub:'開場｜學員調查',type:'audience-poll',chip:['現況調查','orange'],title:'你是不是其中之一？'},
@@ -581,7 +581,7 @@ const D=[
 {id:'s27',sec:2,sub:'欲求性｜感知價值',type:'perceived-value',chip:['感知價值','orange'],title:'客戶真正在買什麼'},
 {id:'s_octalysis',sec:2,sub:'欲求性｜遊戲化設計',type:'octalysis',chip:['Octalysis 八角化','purple'],title:'8 個讓人停不下來的驅動力'},
 {id:'s28',sec:2,sub:'欲求性｜練習',type:'exercise-persona-v2',chip:['實作挑戰','red'],title:'把你的作品對準一個真實的人',time:180,theme:'warm'},
-{id:'s29b',sec:2,sub:'欲求性｜練習',type:'hormozi-exercise',chip:['價值公式練習','orange'],title:'套用 Hormozi 公式優化你的作品',time:180,theme:'warm',xrefs:[{id:'s25e',label:'價值公式'}]},
+{id:'s29',sec:2,sub:'欲求性｜練習',type:'exercise-tpo-v2',chip:['TPO 練習','purple'],title:'Time · Place · Occasion',time:180,theme:'blue-light'},
 {id:'s30',sec:2,sub:'欲求性｜收尾',type:'section',chip:['Section 2 收尾','white'],title:'你現在知道<br>在對誰說話了',sub2:'Section 3：可行性 — 快速把想法做出來',theme:'blue-light'},
 // ── SECTION 3：可行性｜快速驗證 ──────────────────────────────────────
 {id:'s3a0',sec:3,sub:'可行性｜開場',type:'section-cover',secNum:'③',secTitle:'可行性',secEn:'Feasibility',sub2:'先學得快、記得牢，再快速把想法做出來'},
@@ -612,7 +612,7 @@ const D=[
 {id:'s25e',sec:4,sub:'存續性｜價值公式',type:'hormozi-value',chip:['價值公式','orange'],title:'Alex Hormozi 的價值公式',xrefs:[{id:'s36d',label:'定價策略'}]},
 {id:'s25e2',sec:4,sub:'存續性｜價值公式',type:'hormozi-value-b',chip:['四個變數','green'],title:'四個變數，怎麼用在你的作品上'},
 {id:'s25f',sec:4,sub:'存續性｜價值公式',type:'hormozi-example',chip:['Canva 案例','green'],title:'用 Canva 拆解價值公式'},
-{id:'s29',sec:4,sub:'存續性｜練習',type:'exercise-tpo-v2',chip:['TPO 練習','purple'],title:'Time · Place · Occasion',time:180,theme:'blue-light'},
+{id:'s29b',sec:4,sub:'存續性｜練習',type:'hormozi-exercise',chip:['價值公式練習','orange'],title:'套用 Hormozi 公式優化你的作品',time:180,theme:'warm',xrefs:[{id:'s25e',label:'價值公式'}]},
 {id:'s36d',sec:4,sub:'存續性｜定價',type:'pricing-full',chip:['Pricing is Product','yellow'],title:'定價即產品',xrefs:[{id:'s25e',label:'價值公式'}]},
 {id:'s_dmm',sec:4,sub:'存續性｜市場動能',type:'market-momentum',chip:['市場動能模型','purple'],title:'市場動能怎麼看'},
 {id:'s_viakpi',sec:4,sub:'存續性｜成長指標',type:'viability-kpi',chip:['Growth KPI','green'],title:'我們追的 KPI'},
@@ -1518,17 +1518,17 @@ function renderSlide(sd,idx){
         {col:'var(--orange)',colR:'rgba(255,107,0',
          icon:'<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>',
          en:'STUDENT',role:'學生',
-         items:['把想法包裝成讓人一聽就懂的計畫','從「我有點子」到「我知道誰需要它」','競賽提案、專題發表，讓評審快速看到價值']},
+         items:['把想法包裝成讓人一聽就懂的計畫','從有點子到知道誰真正需要它','讓評審快速看到你作品的價值']},
         {col:'var(--blue)',colR:'rgba(59,130,246',
          icon:'<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',
          en:'PROFESSIONAL',role:'職場工作者 / 轉職者',
-         items:['用框架讓提案和溝通更精準有力','從執行者變成能提出問題的策略思考者','把工作中的混亂轉化成可執行的行動框架']},
+         items:['用框架讓提案和溝通更精準有力','從執行者變成策略思考者','把工作混亂轉化成可執行的框架']},
         {col:'var(--purple)',colR:'rgba(168,85,247',
          icon:'<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
          en:'INNOVATOR',role:'創業者 / Side Project 實踐者',
-         items:['找到真實痛點，不是假設需求','最低成本先驗證，再決定是否全力投入','讓想法從「有人做」變成「有人真的要」']},
+         items:['找到真實痛點，不是假設需求','最低成本先驗證，再全力投入','讓想法從有人做變成有人真的要']},
       ];
-      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;max-width:1140px;margin:0 auto;position:relative;z-index:1">`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;max-width:1200px;margin:0 auto;position:relative;z-index:1">`;
       whoGroups.forEach((g,i)=>{
         const uid=`who-${sd.id}-${i}`;
         h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:230px">`;
@@ -2271,15 +2271,15 @@ function renderSlide(sd,idx){
         {en:'Health',zh:'健康',col:'var(--green)',colR:'rgba(34,197,94',
          icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
          tags:[{zh:'減脂',en:'Weight Loss'},{zh:'營養',en:'Nutrition'},{zh:'健身',en:'Fitness'},{zh:'心理健康',en:'Mental Health'},{zh:'睡眠優化',en:'Sleep'}],
-         desc:'身體是最私密的痛點，人會為恢復和維持健康付出高代價。'},
+         desc:'身體痛點最私密，恢復健康的付費意願最強。'},
         {en:'Wealth',zh:'財富',col:'var(--yellow)',colR:'rgba(251,191,36',
          icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
          tags:[{zh:'投資',en:'Investing'},{zh:'房地產',en:'Real Estate'},{zh:'創業',en:'Startups'},{zh:'職涯發展',en:'Career'},{zh:'個人理財',en:'Finance'}],
-         desc:'財富焦慮是現代最普遍的痛點，「不夠有錢」的恐懼驅動龐大市場。'},
+         desc:'「不夠有錢」的恐懼驅動龐大市場。'},
         {en:'Relationships',zh:'關係',col:'var(--red)',colR:'rgba(255,32,85',
          icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
          tags:[{zh:'約會',en:'Dating'},{zh:'婚姻',en:'Marriage'},{zh:'育兒',en:'Parenting'},{zh:'社交技能',en:'Social Skills'},{zh:'家庭和諧',en:'Family'}],
-         desc:'人際是最深層的需求，孤獨感與關係困境讓人迫切尋求解法。'},
+         desc:'孤獨感與關係困境讓人迫切尋求解法。'},
       ];
       h+=blob('rgba(168,85,247,.08)','rgba(34,197,94,.06)');
       h+=`<div style="position:relative;z-index:1;text-align:center">`;
@@ -2287,7 +2287,7 @@ function renderSlide(sd,idx){
       h+=`${chip}<div class="bar" style="margin:.5rem auto .6rem"></div>`;
       if(sd.title)h+=`<h2 style="margin-bottom:.9rem">${sd.title}</h2>`;
       h+=`</div>`;
-      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;max-width:1280px;margin:0 auto;position:relative;z-index:1">`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;max-width:1400px;margin:0 auto;position:relative;z-index:1">`;
       markets.forEach((m,i)=>{
         const uid=`em-${sd.id}-${i}`;
         h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:320px">`;
@@ -2316,7 +2316,7 @@ function renderSlide(sd,idx){
         h+=`</div>`;
       });
       h+=`</div>`;
-      h+=`<div class="tip-box" style="max-width:1280px;margin:.8rem auto 0;position:relative;z-index:1">90%+ 的成功產品都在這三大領域之內 — 市場的取向，從這些永恆痛點出發。</div>`;
+      h+=`<div class="tip-box" style="max-width:1400px;margin:.8rem auto 0;position:relative;z-index:1">90%+ 的成功產品都在這三大領域之內 — 市場的取向，從這些永恆痛點出發。</div>`;
       break;}
     case 'market-finder':{
       const mfSteps=[
@@ -4227,25 +4227,25 @@ function renderSlide(sd,idx){
           letter:'T',word:'Time',zh:'時間',col:'var(--blue)',colR:'rgba(59,130,246',
           icon:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
           q:'需求什麼時候發生？',
-          pain:'截止前24小時 vs 三個月前',
+          pain:'截止前24小時 vs 三個月後',
           insight:'時間壓力決定止痛藥強度'
         },
         {
           letter:'P',word:'Place',zh:'地點',col:'var(--purple)',colR:'rgba(168,85,247',
           icon:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
           q:'在哪裡使用？',
-          pain:'在辦公室 vs 在家 vs 通勤途中',
-          insight:'地點改變「被看見」的焦慮性質'
+          pain:'辦公室 / 居家 / 通勤途中',
+          insight:'地點改變「被看見」的焦慮'
         },
         {
-          letter:'O',word:'Occasion',zh:'場合',col:'var(--orange)',colR:'rgba(255,107,0',
-          icon:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
-          q:'為什麼需要？',
-          pain:'自用 vs 工作需要 vs 面試前',
-          insight:'場合決定後果嚴重性'
+          letter:'O',word:'Occasion',zh:'情境',col:'var(--orange)',colR:'rgba(255,107,0',
+          icon:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>',
+          q:'在什麼情境下發生？',
+          pain:'應急任務 / 日常作業 / 對外展示',
+          insight:'情境決定痛的強度與後果'
         }
       ];
-      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:900px;margin:0 auto;position:relative;z-index:1">`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:1100px;margin:0 auto;position:relative;z-index:1">`;
       tpoDims.forEach(d=>{
         h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked')" style="min-height:220px">`;
         h+=`<div class="card-answer" style="height:100%;display:flex;flex-direction:column;background:${d.colR},.07);border:1.5px solid ${d.colR},.3);border-radius:12px;padding:1.2rem;box-sizing:border-box">`;
@@ -4264,7 +4264,7 @@ function renderSlide(sd,idx){
         h+=`</div></div>`;
       });
       h+=`</div>`;
-      h+=`<div class="tip-box" style="max-width:900px;margin:1rem auto 0;position:relative;z-index:1"><strong style="color:var(--blue)">結論：</strong>了解場景，才能理解痛點的真實樣貌。同一個產品，T·P·O 不同，對應的痛點完全不同。</div>`;
+      h+=`<div class="tip-box" style="max-width:1100px;margin:1rem auto 0;position:relative;z-index:1"><strong style="color:var(--blue)">結論：</strong>同一個產品，T·P·O 不同，對應的痛點完全不同。了解情境，才能理解痛點的真實樣貌。</div>`;
       break;}
     case 'hormozi-value':{
       h+=blob('rgba(255,107,0,.1)','rgba(255,32,85,.06)');
@@ -4396,16 +4396,16 @@ function renderSlide(sd,idx){
         `<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
       ];
       const ocDrives=[
-        {num:1,name:'史詩意義',sub:'Epic Meaning',col:'#06b6d4',brain:'R',desc:'比個人更大的使命感，驅動無償貢獻',tip:'「加入我們，一起改變世界」'},
-        {num:2,name:'發展成就',sub:'Accomplishment',col:'#22c55e',brain:'L',desc:'進步感與成就解鎖讓人持續投入',tip:'「完成 10 堂課，解鎖進階模式」'},
-        {num:3,name:'創意授權',sub:'Creativity',col:'#a855f7',brain:'R',desc:'允許創造與試錯，回饋即是獎勵',tip:'「完全自訂，做出你的專屬版本」'},
-        {num:4,name:'所有權',sub:'Ownership',col:'#eab308',brain:'L',desc:'擁有感讓人願意持續投入與優化',tip:'「你的積分永久保留，不過期」'},
-        {num:5,name:'社交影響',sub:'Social Influence',col:'#3b82f6',brain:'R',desc:'排行榜、邀請、歸屬感讓人留下',tip:'「和 10 萬名創業者一起學習」'},
-        {num:6,name:'稀缺急迫',sub:'Scarcity',col:'#f97316',brain:'L',desc:'越難得到越想要，限量製造急迫感',tip:'「僅剩 3 個名額，今天截止」'},
-        {num:7,name:'未知好奇',sub:'Curiosity',col:'#ef4444',brain:'R',desc:'隨機獎勵比固定獎勵更令人上癮',tip:'「打開看看你今天得到了什麼」'},
-        {num:8,name:'損失規避',sub:'Loss Avoidance',col:'#b91c1c',brain:'L',desc:'怕失去比想得到更強，連擊就是這招',tip:'「不報名你會後悔的那種課」'},
+        {num:1,name:'史詩意義',sub:'Epic Meaning',col:'#06b6d4',brain:'R',desc:'比個人更大的使命感',tip:'「加入我們，一起改變世界」'},
+        {num:2,name:'發展成就',sub:'Accomplishment',col:'#22c55e',brain:'L',desc:'進步感與成就感驅動持續投入',tip:'「完成 10 堂課，解鎖進階模式」'},
+        {num:3,name:'創意授權',sub:'Creativity',col:'#a855f7',brain:'R',desc:'允許創造與試錯',tip:'「完全自訂，做出你的專屬版本」'},
+        {num:4,name:'所有權',sub:'Ownership',col:'#eab308',brain:'L',desc:'擁有感讓人持續優化',tip:'「你的積分永久保留，不過期」'},
+        {num:5,name:'社交影響',sub:'Social Influence',col:'#3b82f6',brain:'R',desc:'歸屬感與社交比較讓人留下',tip:'「和 10 萬名創業者一起學習」'},
+        {num:6,name:'稀缺急迫',sub:'Scarcity',col:'#f97316',brain:'L',desc:'越難得到越想要',tip:'「僅剩 3 個名額，今天截止」'},
+        {num:7,name:'未知好奇',sub:'Curiosity',col:'#ef4444',brain:'R',desc:'隨機獎勵比固定獎勵更上癮',tip:'「打開看看你今天得到了什麼」'},
+        {num:8,name:'損失規避',sub:'Loss Avoidance',col:'#b91c1c',brain:'L',desc:'怕失去比想得到更有驅動力',tip:'「不報名你會後悔的那種課」'},
       ];
-      h+=`<div id="${ocGrpId}" data-seq-grp data-seq-keep data-seq-step="0" style="display:grid;grid-template-columns:1fr 1fr;gap:.45rem;max-width:960px;margin:0 auto;position:relative;z-index:1">`;
+      h+=`<div id="${ocGrpId}" data-seq-grp data-seq-keep data-seq-step="0" style="display:grid;grid-template-columns:1fr 1fr;gap:.45rem;max-width:1100px;margin:0 auto;position:relative;z-index:1">`;
       // White hat header
       h+=`<div style="grid-column:1/-1;display:flex;align-items:center;gap:.5rem;padding:.28rem .75rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:7px">`;
       h+=`<div style="width:7px;height:7px;border-radius:50%;background:#e2e8f0;flex-shrink:0"></div>`;
@@ -4418,15 +4418,14 @@ function renderSlide(sd,idx){
         h+=`<button onclick="ocToggle('${ocGrpId}',${i})" style="width:100%;display:flex;align-items:center;gap:.7rem;padding:.65rem .9rem;background:${d.col}14;border:1.5px solid ${d.col}40;border-radius:9px;cursor:pointer;text-align:left;transition:background .2s">`;
         h+=`<div style="width:34px;height:34px;border-radius:8px;background:${d.col}20;border:1px solid ${d.col}40;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:${d.col}">${ocIcons[i]}</div>`;
         h+=`<div style="flex:1;min-width:0">`;
-        h+=`<div style="font-size:.8rem;font-weight:700;color:${d.col};letter-spacing:.03em">${d.sub}</div>`;
-        h+=`<div style="font-size:clamp(1.1rem,1.7vw,1.25rem);font-weight:800;color:var(--ink);line-height:1.2;margin-top:.1rem">${d.name}</div>`;
+        h+=`<div style="font-size:.8rem;font-weight:600;color:${d.col};letter-spacing:.03em;opacity:.8">${d.sub}</div>`;
+        h+=`<div style="font-size:clamp(1.2rem,2vw,1.45rem);font-weight:800;color:var(--ink);line-height:1.2;margin-top:.08rem">${d.name}</div>`;
         h+=`</div>`;
         h+=`<svg id="${arrId}" data-seq-arr viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="${d.col}" stroke-width="2.5" style="flex-shrink:0;transition:transform .3s"><polyline points="6 9 12 15 18 9"/></svg>`;
         h+=`</button>`;
         h+=`<div id="${bodyId}" data-seq-body style="max-height:0px;opacity:0;overflow:hidden;transition:max-height .32s ease,opacity .28s ease">`;
-        h+=`<div style="padding:.5rem .75rem .6rem;background:${d.col}0c;border:1px solid ${d.col}28;border-radius:0 0 9px 9px;margin-top:-2px">`;
-        h+=`<div style="font-size:var(--min-label);color:var(--ink);line-height:1.45;margin-bottom:.35rem">${d.desc}</div>`;
-        h+=`<div style="font-size:.8rem;display:inline-block;padding:.2rem .55rem;background:${d.col}1a;border-radius:5px;color:${d.col};font-weight:600">${d.tip}</div>`;
+        h+=`<div style="padding:.5rem .75rem .55rem;background:${d.col}0c;border:1px solid ${d.col}28;border-radius:0 0 9px 9px;margin-top:-2px">`;
+        h+=`<div style="font-size:var(--min-font);color:var(--ink);line-height:1.4">${d.desc}</div>`;
         h+=`</div></div></div>`;
       });
       // Black hat header
@@ -4441,15 +4440,14 @@ function renderSlide(sd,idx){
         h+=`<button onclick="ocToggle('${ocGrpId}',${idx})" style="width:100%;display:flex;align-items:center;gap:.7rem;padding:.65rem .9rem;background:${d.col}14;border:1.5px solid ${d.col}40;border-radius:9px;cursor:pointer;text-align:left;transition:background .2s">`;
         h+=`<div style="width:34px;height:34px;border-radius:8px;background:${d.col}20;border:1px solid ${d.col}40;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:${d.col}">${ocIcons[idx]}</div>`;
         h+=`<div style="flex:1;min-width:0">`;
-        h+=`<div style="font-size:.8rem;font-weight:700;color:${d.col};letter-spacing:.03em">${d.sub}</div>`;
-        h+=`<div style="font-size:clamp(1.1rem,1.7vw,1.25rem);font-weight:800;color:var(--ink);line-height:1.2;margin-top:.1rem">${d.name}</div>`;
+        h+=`<div style="font-size:.8rem;font-weight:600;color:${d.col};letter-spacing:.03em;opacity:.8">${d.sub}</div>`;
+        h+=`<div style="font-size:clamp(1.2rem,2vw,1.45rem);font-weight:800;color:var(--ink);line-height:1.2;margin-top:.08rem">${d.name}</div>`;
         h+=`</div>`;
         h+=`<svg id="${arrId}" data-seq-arr viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="${d.col}" stroke-width="2.5" style="flex-shrink:0;transition:transform .3s"><polyline points="6 9 12 15 18 9"/></svg>`;
         h+=`</button>`;
         h+=`<div id="${bodyId}" data-seq-body style="max-height:0px;opacity:0;overflow:hidden;transition:max-height .32s ease,opacity .28s ease">`;
-        h+=`<div style="padding:.5rem .75rem .6rem;background:${d.col}0c;border:1px solid ${d.col}28;border-radius:0 0 9px 9px;margin-top:-2px">`;
-        h+=`<div style="font-size:var(--min-label);color:var(--ink);line-height:1.45;margin-bottom:.35rem">${d.desc}</div>`;
-        h+=`<div style="font-size:.8rem;display:inline-block;padding:.2rem .55rem;background:${d.col}1a;border-radius:5px;color:${d.col};font-weight:600">${d.tip}</div>`;
+        h+=`<div style="padding:.5rem .75rem .55rem;background:${d.col}0c;border:1px solid ${d.col}28;border-radius:0 0 9px 9px;margin-top:-2px">`;
+        h+=`<div style="font-size:var(--min-font);color:var(--ink);line-height:1.4">${d.desc}</div>`;
         h+=`</div></div></div>`;
       });
       h+=`</div>`;
@@ -6006,8 +6004,8 @@ function renderSlide(sd,idx){
       // Bottom description
       h+=`<div style="max-width:860px;margin:1rem auto 0;position:relative;z-index:1">`;
       h+=`<div style="background:rgba(255,107,0,.1);border:2px solid rgba(255,107,0,.3);border-radius:12px;padding:1rem 1.2rem;text-align:center">`;
-      h+=`<div style="font-size:clamp(1rem,1.6vw,1.2rem);font-weight:700;color:var(--orange);margin-bottom:.4rem">三者兼具，才能真正幫助這個世界</div>`;
-      h+=`<div style="font-size:var(--min-font);color:var(--mid);white-space:nowrap">有<span style="color:var(--purple)">自我激勵</span>才會持續行動；有<span style="color:var(--blue)">適應力</span>才能跟上時代；有<span style="color:var(--green)">低自我</span>才能服務真正重要的目標</div>`;
+      h+=`<div style="font-size:clamp(1rem,1.6vw,1.2rem);font-weight:700;color:var(--orange);margin-bottom:.4rem">三者缺一不可</div>`;
+      h+=`<div style="font-size:var(--min-font);color:var(--mid)"><span style="color:var(--purple)">自我激勵</span>持續行動 &nbsp;·&nbsp; <span style="color:var(--blue)">適應力</span>跟上時代 &nbsp;·&nbsp; <span style="color:var(--green)">低自我</span>服務重要目標</div>`;
       h+=`</div>`;
       h+=`</div>`;
       h+=`<div class="tip-box" style="max-width:860px;margin:1rem auto 0;position:relative;z-index:1"><strong style="color:var(--purple)">自問：</strong>你現在哪一塊最強？哪一塊最需要刻意培養？</div>`;
