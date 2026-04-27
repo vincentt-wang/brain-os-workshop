@@ -1528,7 +1528,7 @@ function renderSlide(sd,idx){
          en:'INNOVATOR',role:'創業者 / Side Project 實踐者',
          items:['找到真實痛點，不是假設需求','最低成本先驗證，再全力投入','讓想法從有人做變成有人真的要']},
       ];
-      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;max-width:1200px;margin:0 auto;position:relative;z-index:1">`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;max-width:1400px;margin:0 auto;position:relative;z-index:1">`;
       whoGroups.forEach((g,i)=>{
         const uid=`who-${sd.id}-${i}`;
         h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:230px">`;
@@ -1657,12 +1657,18 @@ function renderSlide(sd,idx){
       if(sd.bullets?.length){h+=`<ul class="deck-list" style="max-width:760px;margin:1rem auto 0">`;sd.bullets.forEach(b=>{h+=`<li>${b}</li>`;});h+=`</ul>`;}
       if(sd.compBoxes?.length){
         h+=`<div style="display:grid;grid-template-columns:repeat(${sd.compBoxes.length},1fr);gap:.9rem;max-width:760px;margin:1rem auto 0">`;
-        sd.compBoxes.forEach(c=>{
-          h+=`<div style="background:${c.bg};border:1.5px solid ${c.border};border-radius:12px;padding:1rem 1.2rem;text-align:center">`;
-          h+=`<div style="font-size:var(--min-label);font-weight:800;color:${c.col};letter-spacing:.08em;margin-bottom:.4rem">${c.label}</div>`;
-          h+=`<div style="font-size:clamp(1.8rem,3vw,2.4rem);font-weight:900;color:${c.col};line-height:1;margin-bottom:.15rem">${c.stat}</div>`;
-          h+=`<div style="font-size:var(--min-label);color:var(--mid);margin-bottom:.5rem">${c.statNote}</div>`;
-          h+=`<div style="font-size:var(--min-font);color:var(--ink)">${c.desc}</div>`;
+        sd.compBoxes.forEach((c,ci)=>{
+          const uid=`cb-${sd.id}-${ci}`;
+          h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:140px">`;
+          h+=`<div class="card-answer" style="background:${c.bg};border:1.5px solid ${c.border};border-radius:12px;padding:1rem 1.2rem;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;height:100%;box-sizing:border-box">`;
+          h+=`<div style="font-size:var(--min-label);font-weight:800;color:${c.col};letter-spacing:.08em">${c.label}</div>`;
+          h+=`<div style="font-size:clamp(1.8rem,3vw,2.4rem);font-weight:900;color:${c.col};line-height:1">${c.stat}</div>`;
+          h+=`<div style="font-size:var(--min-label);color:var(--mid)">${c.statNote}</div>`;
+          h+=`<div style="font-size:var(--min-font);color:var(--ink);margin-top:.2rem">${c.desc}</div>`;
+          h+=`</div>`;
+          h+=`<div class="card-mask" style="border-radius:12px;background:${c.bg};border:1.5px solid ${c.border}">`;
+          h+=`<div style="font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:800;color:${c.col};white-space:nowrap">${c.label}</div>`;
+          h+=`</div>`;
           h+=`</div>`;
         });
         h+=`</div>`;
@@ -2236,7 +2242,8 @@ function renderSlide(sd,idx){
       ];
       h+=blob('rgba(34,197,94,.08)','rgba(59,130,246,.06)');
       h+=`<div style="position:relative;z-index:1;text-align:center">`;
-      h+=`<div style="font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;letter-spacing:-.02em;color:var(--ink);line-height:1;margin-bottom:.35rem">Perfect Market</div>`;
+      h+=`<div style="font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;letter-spacing:-.02em;color:var(--ink);line-height:1;margin-bottom:.2rem">Perfect Market</div>`;
+      h+=`<div style="font-size:clamp(.9rem,1.4vw,1.05rem);font-weight:700;color:var(--mid);letter-spacing:.16em;text-transform:uppercase;margin-bottom:.4rem">Four Key Indicators</div>`;
       h+=`${chip}<div class="bar" style="margin:.5rem auto .6rem"></div>`;
       if(sd.title)h+=`<h2 style="margin-bottom:.9rem">${sd.title}</h2>`;
       h+=`</div>`;
@@ -3030,7 +3037,7 @@ function renderSlide(sd,idx){
       if(sd.title)h+=`<h2 style="margin-bottom:.2rem">${sd.title}</h2>`;
       h+=`<p style="color:var(--mid);font-size:var(--min-font);margin-bottom:.7rem">用 <strong style="color:var(--cyan)">情緒波點</strong> 找出有限資源下最值得解決的痛點</p>`;
       h+=`</div>`;
-      h+=`<div style="max-width:960px;margin:0 auto;position:relative;z-index:1">`;
+      h+=`<div style="max-width:1100px;margin:0 auto;position:relative;z-index:1">`;
       // ── CJM Wave Chart — full width, tall ──
       h+=`<div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:.7rem 1rem .5rem;margin-bottom:.6rem">`;
       h+=`<div style="font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);text-align:center;margin-bottom:.35rem">Customer Journey Map — 購物情緒旅程</div>`;
