@@ -2167,9 +2167,9 @@ function renderSlide(sd,idx){
         {key:'I',name:'ICP',zh:'理想客群',col:'var(--blue)',bg:'rgba(59,130,246,.08)',border:'rgba(59,130,246,.35)',
          def:'Ideal Customer Profile',desc:'從 Persona 收斂：最有明確痛點、最有行動意願的那群人。不是平均值，是你最想服務的。',example:'知道自己需要情緒支持，但覺得諮商太貴或有 stigma'},
         {key:'H',name:'HXC',zh:'高期望消費者',col:'var(--red)',bg:'rgba(255,32,85,.1)',border:'rgba(255,32,85,.45)',
-         def:'High Expectation Consumer',desc:'在 ICP 裡，最急、最痛、最會主動找解法的那個人。他的反應代表市場的邊界。',example:'晚上腦袋停不下來，已經在 App Store 搜過「焦慮」「情緒」'}
+         def:'High Expectation Consumer',desc:'在 ICP 裡，最急、最痛、最會主動找解法的那個人。他的反應代表市場的邊界。',example:'晚上腦袋停不下來，已在手機搜過「焦慮」「情緒管理」'}
       ];
-      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;max-width:1260px;margin:0 auto">`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;max-width:1280px;margin:0 auto">`;
       layers.forEach((l,i)=>{
         const uid=`al-${sd.id}-${i}`;
         h+=`<div class="step-item" id="${uid}" onclick="toggleStep('${uid}')" style="border:2px solid ${l.border};background:${l.bg};border-radius:12px">`;
