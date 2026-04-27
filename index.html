@@ -3519,49 +3519,46 @@ function renderSlide(sd,idx){
       break;}
     case 'insight-types-coffee':{
       const insights=[
-        {num:'01',q:'他為什麼買咖啡？',color:'var(--orange)',label:'Functional',reveals:['表面：提神','洞察：切換工作狀態的儀式感']},
-        {num:'02',q:'他為什麼訂閱 Netflix？',color:'var(--blue)',label:'Social',reveals:['表面：看劇方便','洞察：社交話題的入場券']},
-        {num:'03',q:'他為什麼去健身房？',color:'var(--green)',label:'Emotional',reveals:['表面：想變健康','洞察：尋找生活中能掌控的事']},
-        {num:'04',q:'他為什麼辦信用卡？',color:'var(--purple)',label:'Identity',reveals:['表面：有優惠','洞察：成為「精打細算的成熟大人」']},
+        {num:'01',q:'他為什麼買咖啡？',color:'var(--orange)',colR:'rgba(255,107,0',label:'Functional',zh:'功能性洞察',reveals:['表面：提神','洞察：切換工作狀態的儀式感']},
+        {num:'02',q:'他為什麼訂閱 Netflix？',color:'var(--blue)',colR:'rgba(59,130,246',label:'Social',zh:'社會性洞察',reveals:['表面：看劇方便','洞察：社交話題的入場券']},
+        {num:'03',q:'他為什麼去健身房？',color:'var(--green)',colR:'rgba(34,197,94',label:'Emotional',zh:'情緒性洞察',reveals:['表面：想變健康','洞察：尋找生活中能掌控的事']},
+        {num:'04',q:'他為什麼辦信用卡？',color:'var(--purple)',colR:'rgba(168,85,247',label:'Identity',zh:'身份性洞察',reveals:['表面：有優惠','洞察：成為「精打細算的成熟大人」']},
       ];
-      h+=`<div style="max-width:900px">`;
-      h+=chip;
-      h+=`<div class="bar"></div><h2 style="margin-bottom:.3rem">${sd.title}</h2>`;
-      h+=`<p style="font-size:clamp(.82rem,1.3vw,.92rem);color:var(--mid);margin-bottom:1rem">點擊解鎖他們真正在意的 <strong style="color:var(--orange)">Hidden Agenda</strong></p>`;
-      h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:.9rem">`;
+      h+=blob('rgba(255,107,0,.08)','rgba(168,85,247,.06)');
+      h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto .8rem"></div>`;
+      if(sd.title)h+=`<h2 style="margin-bottom:.4rem">${sd.title}</h2>`;
+      h+=`<p style="font-size:var(--min-font);color:var(--mid);margin-bottom:1rem">人購買的從來不是產品，而是 <strong style="color:var(--orange)">Hidden Agenda</strong> — 那個說不出口的真實動機</p>`;
+      h+=`</div>`;
+      h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:.85rem;max-width:1000px;margin:0 auto;position:relative;z-index:1">`;
       insights.forEach((ins,ii)=>{
         const uid=`ins-${sd.id}-${ii}`;
-        h+=`<div id="${uid}" onclick="insightReveal('${uid}')" style="position:relative;border-radius:12px;overflow:hidden;cursor:pointer;min-height:120px;border:1.5px solid ${ins.color};background:rgba(255,255,255,.03);transition:transform .2s var(--ease-back)"`;
+        h+=`<div id="${uid}" onclick="insightReveal('${uid}')" style="position:relative;border-radius:12px;overflow:hidden;cursor:pointer;min-height:140px;border:1.5px solid ${ins.color};background:${ins.colR},.04);transition:transform .2s var(--ease-back)"`;
         h+=` onmouseenter="this.style.transform='translateY(-3px)'" onmouseleave="this.style.transform=''">`;
-        // Answer layer (hidden behind mask)
-        h+=`<div class="ins-answer" style="padding:1rem;visibility:hidden">`;
-        h+=`<div style="font-size:.55rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:${ins.color};margin-bottom:.4rem">${ins.label} Insight</div>`;
+        h+=`<div class="ins-answer" style="padding:1rem 1.1rem;visibility:hidden">`;
+        h+=`<div style="font-size:var(--min-label);font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:${ins.color};margin-bottom:.5rem">${ins.label} <span style="opacity:.6;font-weight:600;letter-spacing:.02em;text-transform:none">· ${ins.zh}</span></div>`;
         ins.reveals.forEach((r,ri)=>{
-          h+=`<div style="display:flex;align-items:baseline;gap:.5rem;margin-bottom:.3rem"><span style="color:${ins.color};font-weight:800;flex-shrink:0">${ri===ins.reveals.length-1?'→':'·'}</span><span style="font-size:var(--min-font);color:${ri===ins.reveals.length-1?'var(--ink)':'var(--mid)'};${ri===ins.reveals.length-1?'font-weight:700;':''}">${r}</span></div>`;
+          h+=`<div style="display:flex;align-items:baseline;gap:.5rem;margin-bottom:.35rem"><span style="color:${ins.color};font-weight:800;flex-shrink:0">${ri===ins.reveals.length-1?'→':'·'}</span><span style="font-size:var(--min-font);color:${ri===ins.reveals.length-1?'var(--ink)':'var(--mid)'};${ri===ins.reveals.length-1?'font-weight:700;':''}">${r}</span></div>`;
         });
         h+=`</div>`;
-        // Mask layer
-        h+=`<div class="ins-mask" style="position:absolute;inset:0;background:rgba(10,10,18,.96);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;padding:1rem;text-align:center;transition:opacity .45s ease,transform .45s var(--ease-back)">`;
-        h+=`<div style="font-size:2rem;font-weight:800;color:${ins.color};opacity:.3;line-height:1">${ins.num}</div>`;
-        h+=`<div style="font-size:clamp(.92rem,1.5vw,1.15rem);font-weight:700;color:var(--ink);line-height:1.4">${ins.q}</div>`;
-        h+=`<div style="font-size:.58rem;color:rgba(255,255,255,.3);letter-spacing:.12em;text-transform:uppercase;margin-top:.2rem">點擊解鎖洞察</div>`;
+        h+=`<div class="ins-mask" style="position:absolute;inset:0;background:rgba(8,8,16,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;padding:1.2rem;text-align:center;transition:opacity .45s ease,transform .45s var(--ease-back)">`;
+        h+=`<div style="font-size:1.8rem;font-weight:800;color:${ins.color};opacity:.25;line-height:1">${ins.num}</div>`;
+        h+=`<div style="font-size:clamp(.95rem,1.5vw,1.1rem);font-weight:700;color:var(--ink);line-height:1.45">${ins.q}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:${ins.color};opacity:.55;letter-spacing:.08em;text-transform:uppercase;margin-top:.1rem">${ins.label}</div>`;
         h+=`</div></div>`;
       });
       h+=`</div>`;
-      // Value → Function → Currency flow
-      h+=`<div style="margin-top:1.2rem;padding:1rem 1.2rem;background:linear-gradient(135deg,rgba(255,107,0,.08),rgba(168,85,247,.06));border:1.5px solid rgba(255,107,0,.25);border-radius:12px">`;
-      h+=`<div style="font-size:var(--min-label);font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:.6rem">Hidden Agenda → 變現路徑</div>`;
+      h+=`<div style="max-width:1000px;margin:.9rem auto 0;padding:.85rem 1.2rem;background:linear-gradient(135deg,rgba(255,107,0,.08),rgba(168,85,247,.06));border:1.5px solid rgba(255,107,0,.22);border-radius:12px;position:relative;z-index:1;text-align:center">`;
+      h+=`<div style="font-size:var(--min-label);font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:.6rem">Hidden Agenda → 變現路徑</div>`;
       h+=`<div style="display:flex;align-items:center;justify-content:center;gap:.45rem;flex-wrap:nowrap">`;
-      h+=`<div style="padding:.4rem .7rem;background:rgba(255,32,85,.15);border-radius:8px;font-size:var(--min-font);font-weight:700;color:var(--red)">Hidden Agenda</div>`;
-      h+=`<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--mid)" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
-      h+=`<div style="padding:.5rem .9rem;background:rgba(168,85,247,.15);border-radius:8px;font-size:var(--min-font);font-weight:700;color:var(--purple)">Value 價值</div>`;
-      h+=`<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--mid)" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
-      h+=`<div style="padding:.5rem .9rem;background:rgba(59,130,246,.15);border-radius:8px;font-size:var(--min-font);font-weight:700;color:var(--blue)">Function 功能</div>`;
-      h+=`<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--mid)" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
-      h+=`<div style="padding:.5rem .9rem;background:rgba(34,197,94,.15);border-radius:8px;font-size:var(--min-font);font-weight:700;color:var(--green)">Currency 變現</div>`;
+      h+=`<div style="padding:.4rem .8rem;background:rgba(255,32,85,.15);border-radius:8px;font-size:var(--min-font);font-weight:700;color:var(--red)">Hidden Agenda</div>`;
+      h+=`<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--mid)" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+      h+=`<div style="padding:.4rem .8rem;background:rgba(168,85,247,.15);border-radius:8px;font-size:var(--min-font);font-weight:700;color:var(--purple)">Value 價值</div>`;
+      h+=`<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--mid)" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+      h+=`<div style="padding:.4rem .8rem;background:rgba(59,130,246,.15);border-radius:8px;font-size:var(--min-font);font-weight:700;color:var(--blue)">Function 功能</div>`;
+      h+=`<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--mid)" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+      h+=`<div style="padding:.4rem .8rem;background:rgba(34,197,94,.15);border-radius:8px;font-size:var(--min-font);font-weight:700;color:var(--green)">Currency 變現</div>`;
       h+=`</div>`;
-      h+=`<div style="font-size:var(--min-label);color:var(--mid);text-align:center;margin-top:.6rem">找到他真正在意的事 → 創造他願意付費的價值</div>`;
-      h+=`</div>`;
+      h+=`<div style="font-size:var(--min-label);color:var(--mid);margin-top:.5rem">找到他真正在意的事，創造他願意付費的價值</div>`;
       h+=`</div>`;
       break;}
     case 'observe-insight-v3':{
