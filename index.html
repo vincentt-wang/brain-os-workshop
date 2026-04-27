@@ -1666,11 +1666,12 @@ function renderSlide(sd,idx){
       courseItems.forEach((item,i)=>{
         const uid=`ci-${sd.id}-${i}`;
         h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:160px">`;
-        h+=`<div class="card-answer" style="background:${item.colR},.09);border:1.5px solid ${item.colR},.3);border-top:2px solid ${item.col};border-radius:10px;padding:1.1rem .4rem;display:flex;align-items:center;justify-content:center;text-align:center;height:auto;box-sizing:border-box">`;
-        h+=`<div style="font-size:clamp(.8rem,1.1vw,.85rem);font-weight:700;color:var(--ink);line-height:1.5">${item.t}</div>`;
+        h+=`<div class="card-answer" style="background:${item.colR},.09);border:1.5px solid ${item.colR},.3);border-top:2px solid ${item.col};border-radius:10px;padding:1rem .4rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%;box-sizing:border-box;gap:.35rem">`;
+        h+=`<div style="font-size:1.6rem;font-weight:900;color:${item.col};line-height:1;opacity:.9;letter-spacing:.04em">${item.n}</div>`;
+        h+=`<div style="font-size:clamp(.8rem,1.1vw,.85rem);font-weight:700;color:var(--ink);line-height:1.4">${item.t}</div>`;
         h+=`</div>`;
         h+=`<div class="card-mask" style="border-radius:10px;background:${item.colR},.07);border:1.5px solid ${item.colR},.25)">`;
-        h+=`<div style="font-size:clamp(3rem,8vw,5rem);font-weight:900;color:${item.col};line-height:1;opacity:.85">${parseInt(item.n,10)}</div>`;
+        h+=`<div style="font-size:clamp(2.5rem,6vw,4rem);font-weight:900;color:${item.col};line-height:1;opacity:.85;letter-spacing:.04em">${item.n}</div>`;
         h+=`</div>`;
         h+=`</div>`;
       });
