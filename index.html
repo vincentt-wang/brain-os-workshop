@@ -3635,8 +3635,7 @@ function renderSlide(sd,idx){
     case 'mece-tree':{
       h+=blob('rgba(251,191,36,.08)','rgba(168,85,247,.06)');
       h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto .7rem"></div>`;
-      if(sd.title)h+=`<h2 style="margin-bottom:.25rem">${sd.title}</h2>`;
-      h+=`<p style="font-size:var(--min-label);color:var(--mid);margin-bottom:.8rem">Stanford d.school × McKinsey：真實議題的 MECE 拆解 — 猜猜三個分支是什麼，再點擊揭曉</p>`;
+      if(sd.title)h+=`<h2 style="margin-bottom:.5rem">${sd.title}</h2>`;
       h+=`</div>`;
       const mtId=sd.id;
       // Track open count for reveal
@@ -3669,7 +3668,7 @@ function renderSlide(sd,idx){
         const uid=`mt-${mtId}-${bi}`;
         h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked');mtCount('${mtId}')" style="min-height:230px">`;
         // Answer face
-        h+=`<div class="card-answer" style="background:${b.colR},.07);border:1.5px solid ${b.colR},.35);border-top:3px solid ${b.col};border-radius:12px;padding:1rem 1.1rem;height:auto">`;
+        h+=`<div class="card-answer" style="background:${b.colR},.07);border:1.5px solid ${b.colR},.35);border-top:3px solid ${b.col};border-radius:12px;padding:1rem 1.1rem;height:100%;display:flex;flex-direction:column;box-sizing:border-box">`;
         h+=`<div style="font-size:clamp(1rem,1.5vw,1.15rem);font-weight:800;color:${b.col};margin-bottom:.2rem">${b.name}</div>`;
         h+=`<div style="font-size:var(--min-font);color:var(--mid);margin-bottom:.35rem;font-style:italic">${b.def}</div>`;
         h+=`<div style="height:1px;background:${b.colR},.2);margin:.4rem 0"></div>`;
@@ -3679,20 +3678,18 @@ function renderSlide(sd,idx){
           h+=`<span style="font-size:var(--min-label);color:rgba(255,255,255,.8)">${s}</span>`;
           h+=`</div>`;
         });
-        h+=`<div style="margin-top:.4rem;font-size:var(--min-label);color:${b.col};font-style:italic;opacity:.7">${b.why}</div>`;
+        h+=`<div style="margin-top:auto;padding-top:.4rem;font-size:var(--min-label);color:${b.col};font-style:italic;opacity:.7">${b.why}</div>`;
         h+=`</div>`;
         // Mask face
         h+=`<div class="card-mask" style="border-radius:12px;background:${b.colR},.12);border:1.5px solid ${b.colR},.3)">`;
-        h+=`<div style="font-size:clamp(1.3rem,2.2vw,1.8rem);font-weight:900;color:${b.col};margin-bottom:.4rem">${b.mask}</div>`;
-        h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--ink);margin-bottom:.25rem">${b.maskSub}</div>`;
-        h+=`<div style="font-size:var(--min-label);color:rgba(255,255,255,.35)">點擊揭曉分支</div>`;
+        h+=`<div style="font-size:clamp(1.3rem,2.2vw,1.8rem);font-weight:900;color:${b.col}">${b.mask}</div>`;
         h+=`</div>`;
         h+=`</div>`;
       });
       h+=`</div>`;
       // MECE validation row + progress
       h+=`<div id="mt-validate-${mtId}" style="background:rgba(251,191,36,.08);border:1.5px solid rgba(251,191,36,.3);border-radius:10px;padding:.75rem 1.1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">`;
-      h+=`<div style="font-size:var(--min-font);color:var(--mid)"><strong style="color:var(--yellow)">MECE 驗證：</strong>三個分支互斥（認知 / 體驗 / 心理）且涵蓋全部原因 — 這才是乾淨的拆解</div>`;
+      h+=`<div style="font-size:var(--min-font);color:var(--mid);white-space:nowrap"><strong style="color:var(--yellow)">MECE 驗證：</strong>認知 / 體驗 / 心理 — 互斥且無遺漏</div>`;
       h+=`<div id="mt-count-${mtId}" style="font-size:var(--min-label);color:var(--yellow);white-space:nowrap;flex-shrink:0">0 / 3 揭曉</div>`;
       h+=`</div>`;
       h+=`</div>`;
