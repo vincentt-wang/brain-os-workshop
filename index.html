@@ -2269,30 +2269,30 @@ function renderSlide(sd,idx){
       const hxcCases=[
         {brand:'Spotify',col:'var(--green)',colR:'rgba(34,197,94',
          persona:'喜歡聽音樂的人',
-         icp:'會付費訂閱串流服務的人',
-         hxc:'聽到新歌馬上查誰唱的、加播放清單、分享給朋友',
-         insight:'HXC 是音樂傳教士，不只消費，還幫你擴散'},
+         icp:'願意付費訂閱的聽眾',
+         hxc:'聽到新歌馬上查詞、加清單，主動分享給朋友',
+         insight:'HXC 是音樂傳教士，消費之外也在傳播'},
         {brand:'Airbnb',col:'var(--orange)',colR:'rgba(255,107,0',
          persona:'需要住宿的旅行者',
-         icp:'想要有當地生活感、不喜歡制式飯店的旅人',
-         hxc:'出發前會搜三個城市的特色民宿、發 IG、寫長評論',
-         insight:'HXC 既是消費者也是內容創作者，UGC 推動新用戶'},
+         icp:'不喜歡制式飯店的旅行者',
+         hxc:'出發前搜遍特色民宿，到了寫長評論留下足跡',
+         insight:'HXC 既消費也創造 UGC，帶動新用戶'},
         {brand:'Notion',col:'var(--blue)',colR:'rgba(59,130,246',
          persona:'需要記筆記的人',
-         icp:'有協作需求、願意花時間設定工作流的人',
+         icp:'重視協作與效率的用戶',
          hxc:'自己建 template、在社群分享、推薦給整個團隊',
-         insight:'HXC 是 Notion 的免費銷售員，口碑傳播成本接近零'},
+         insight:'HXC 是免費業務員，口碑幾乎零成本'},
       ];
-      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;max-width:1200px;margin:0 auto;position:relative;z-index:1">`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;max-width:1280px;margin:0 auto;position:relative;z-index:1">`;
       hxcCases.forEach((c,i)=>{
         const uid=`hxc-${sd.id}-${i}`;
         h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:250px">`;
         h+=`<div class="card-answer" style="background:${c.colR},.07);border:1.5px solid ${c.colR},.3);border-top:3px solid ${c.col};border-radius:12px;padding:1rem;height:100%;display:flex;flex-direction:column;gap:.4rem;box-sizing:border-box">`;
         h+=`<div style="font-size:clamp(1rem,1.6vw,1.2rem);font-weight:900;color:${c.col}">${c.brand}</div>`;
-        h+=`<div style="display:flex;gap:.5rem;align-items:flex-start;min-height:3rem"><span style="font-size:var(--min-label);font-weight:700;color:rgba(255,255,255,.4);min-width:3rem">Persona</span><span style="font-size:var(--min-font);color:var(--mid)">${c.persona}</span></div>`;
-        h+=`<div style="display:flex;gap:.5rem;align-items:flex-start;min-height:3.5rem"><span style="font-size:var(--min-label);font-weight:700;color:var(--blue);min-width:3rem">ICP</span><span style="font-size:var(--min-font);color:var(--ink)">${c.icp}</span></div>`;
-        h+=`<div style="display:flex;gap:.5rem;align-items:flex-start;min-height:4rem"><span style="font-size:var(--min-label);font-weight:700;color:${c.col};min-width:3rem">HXC</span><span style="font-size:var(--min-font);color:var(--ink);font-weight:600">${c.hxc}</span></div>`;
-        h+=`<div style="font-size:var(--min-label);color:${c.col};padding:.4rem .7rem;background:${c.colR},.1);border-radius:6px;margin-top:auto;line-height:1.45">${c.insight}</div>`;
+        h+=`<div style="display:flex;gap:.5rem;align-items:flex-start;min-height:2rem"><span style="font-size:var(--min-label);font-weight:700;color:rgba(255,255,255,.4);min-width:3rem">Persona</span><span style="font-size:var(--min-font);color:var(--mid)">${c.persona}</span></div>`;
+        h+=`<div style="display:flex;gap:.5rem;align-items:flex-start;min-height:2rem"><span style="font-size:var(--min-label);font-weight:700;color:var(--blue);min-width:3rem">ICP</span><span style="font-size:var(--min-font);color:var(--ink)">${c.icp}</span></div>`;
+        h+=`<div style="display:flex;gap:.5rem;align-items:flex-start;min-height:4.4rem"><span style="font-size:var(--min-label);font-weight:700;color:${c.col};min-width:3rem">HXC</span><span style="font-size:var(--min-font);color:var(--ink);font-weight:600">${c.hxc}</span></div>`;
+        h+=`<div style="font-size:var(--min-label);color:${c.col};padding:.4rem .7rem;background:${c.colR},.1);border-radius:6px;margin-top:auto;line-height:1.45;white-space:nowrap">${c.insight}</div>`;
         h+=`</div>`;
         h+=`<div class="card-mask" style="border-radius:12px;background:${c.colR},.1);border:1.5px solid ${c.colR},.3)">`;
         h+=`<div style="font-size:clamp(1.2rem,2vw,1.5rem);font-weight:900;color:${c.col}">${c.brand}</div>`;
@@ -2300,7 +2300,7 @@ function renderSlide(sd,idx){
         h+=`</div>`;
       });
       h+=`</div>`;
-      h+=`<div class="tip-box" style="max-width:1200px;margin:.9rem auto 0;position:relative;z-index:1"><strong style="color:var(--green)">共同規律：</strong>HXC 不只使用產品，還主動傳播。找到他們，你就找到了口碑引擎。</div>`;
+      h+=`<div class="tip-box" style="max-width:1280px;margin:.9rem auto 0;position:relative;z-index:1"><strong style="color:var(--green)">共同規律：</strong>HXC 不只使用產品，還主動傳播。找到他們，你就找到了口碑引擎。</div>`;
       break;}
     case 'pivot-stories':{
       h+=blob('rgba(255,107,0,.08)','rgba(168,85,247,.06)');
