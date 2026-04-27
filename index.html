@@ -21,7 +21,7 @@ html{font-size:20px}
 body{font-family:system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--ink);overflow:hidden;width:100vw;height:100vh}
 #slides-container{height:100vh;width:100vw;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth;position:fixed;inset:0;scrollbar-width:none}
 #slides-container::-webkit-scrollbar{display:none}
-.slide{height:100vh;width:100%;scroll-snap-align:start;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:clamp(2rem,4vw,4rem) clamp(2rem,5vw,5rem) 68px}
+.slide{height:100vh;width:100%;scroll-snap-align:start;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:clamp(2rem,4vw,4rem) clamp(2rem,5vw,5rem) 80px}
 .slide[data-sec="1"]{background:linear-gradient(165deg,#1c1130 0%,#241535 35%,#2c1628 70%,#1e1020 100%)}
 .slide[data-sec="2"]{background:linear-gradient(165deg,#0c1830 0%,#112240 35%,#142848 70%,#0c1828 100%)}
 .slide[data-sec="3"]{background:linear-gradient(165deg,#0c201a 0%,#102818 35%,#143020 70%,#0c1e14 100%)}
@@ -287,14 +287,14 @@ svg{overflow:visible}
 #btn-prev{bottom:68px;right:68px}
 #btn-next{bottom:68px;right:16px}
 #counter{position:fixed;bottom:76px;left:18px;z-index:900;font-size:1.5rem;font-weight:800;color:#ffffff;letter-spacing:.04em;font-variant-numeric:tabular-nums;text-shadow:0 2px 12px rgba(0,0,0,.7)}
-#sec-nav{position:fixed;bottom:0;left:0;right:0;height:52px;background:rgba(8,8,12,.95);backdrop-filter:blur(20px);display:flex;align-items:stretch;z-index:950;border-top:1px solid var(--line)}
-.sec-btn{flex:1;display:flex;align-items:center;justify-content:center;font-size:clamp(.56rem,.8vw,.72rem);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.3);cursor:pointer;border:none;background:transparent;border-right:1px solid var(--line);transition:color .2s,background .2s;border-top:2px solid transparent;position:relative;overflow:visible}
+#sec-nav{position:fixed;bottom:0;left:0;right:0;height:64px;background:rgba(8,8,12,.95);backdrop-filter:blur(20px);display:flex;align-items:stretch;z-index:950;border-top:1px solid var(--line)}
+.sec-btn{flex:1;display:flex;align-items:center;justify-content:center;font-size:clamp(1rem,1.5vw,1.15rem);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.3);cursor:pointer;border:none;background:transparent;border-right:1px solid var(--line);transition:color .2s,background .2s;border-top:2px solid transparent;position:relative;overflow:visible}
 .sec-btn:last-child{border-right:none}
 .sec-btn:hover{color:rgba(255,255,255,.8);background:rgba(255,107,0,.08)}
 .sec-btn.active{color:#fff;background:rgba(255,107,0,.1);border-top-color:var(--orange)}
 .sec-btn-split{position:absolute;bottom:100%;left:0;right:0;height:0;overflow:hidden;transition:height .28s cubic-bezier(.25,.46,.45,.94);background:rgba(8,8,12,.97);border:1px solid rgba(255,255,255,.1);border-bottom:none;border-radius:10px 10px 0 0;display:flex;z-index:1001}
-.sec-btn:hover .sec-btn-split{height:66px}
-.sec-split-col{flex:1;display:flex;align-items:center;justify-content:center;padding:.3rem .25rem;cursor:pointer;border-right:1px solid rgba(255,255,255,.06);opacity:0;transform:translateY(5px);transition:opacity .2s ease,transform .2s ease,background .15s,color .15s;font-size:.62rem;font-weight:700;color:rgba(255,255,255,.6);text-align:center;line-height:1.35;letter-spacing:.04em;text-transform:none}
+.sec-btn:hover .sec-btn-split{height:80px}
+.sec-split-col{flex:1;display:flex;align-items:center;justify-content:center;padding:.35rem .3rem;cursor:pointer;border-right:1px solid rgba(255,255,255,.06);opacity:0;transform:translateY(5px);transition:opacity .2s ease,transform .2s ease,background .15s,color .15s;font-size:.82rem;font-weight:700;color:rgba(255,255,255,.6);text-align:center;line-height:1.35;letter-spacing:.04em;text-transform:none}
 .sec-split-col:last-child{border-right:none}
 .sec-btn:hover .sec-split-col:nth-child(1){opacity:1;transform:none;transition-delay:.05s}
 .sec-btn:hover .sec-split-col:nth-child(2){opacity:1;transform:none;transition-delay:.1s}
@@ -333,7 +333,7 @@ svg{overflow:visible}
 /* ── MOBILE RESPONSIVE ─────────────────────────────────────────────────── */
 @media (max-width: 767px) {
   html { font-size: 16px; }
-  .slide { padding: 1rem 1rem 52px !important; }
+  .slide { padding: 1rem 1rem 60px !important; }
   .inner {
     max-height: calc(100vh - 68px);
     overflow-y: auto;
@@ -379,8 +379,8 @@ svg{overflow:visible}
   }
 
   /* Bottom section nav */
-  #sec-nav { height: 44px; }
-  .sec-btn { font-size: .42rem; letter-spacing: .01em; padding: 0 2px; }
+  #sec-nav { height: 52px; }
+  .sec-btn { font-size: .75rem; letter-spacing: .01em; padding: 0 2px; }
 
   /* Grid layouts */
   .mrev-grid.cols-3 { grid-template-columns: 1fr 1fr !important; }
@@ -500,14 +500,14 @@ svg{overflow:visible}
     <div class="sec-btn-split">
       <div class="sec-split-col" onclick="jumpToSlide('s3a1');event.stopPropagation()">創新三元</div>
       <div class="sec-split-col" onclick="jumpToSlide('s08');event.stopPropagation()">思維框架</div>
-      <div class="sec-split-col" onclick="jumpToSlide('s12');event.stopPropagation()">MECE 工具</div>
+      <div class="sec-split-col" onclick="jumpToSlide('s12b');event.stopPropagation()">MECE 工具</div>
     </div>
   </button>
   <button class="sec-btn" data-sec="2" onclick="jumpToSection(2)">② 欲求性
     <div class="sec-btn-split">
       <div class="sec-split-col" onclick="jumpToSlide('s09');event.stopPropagation()">設計思維</div>
       <div class="sec-split-col" onclick="jumpToSlide('s25');event.stopPropagation()">痛點分析</div>
-      <div class="sec-split-col" onclick="jumpToSlide('s25e');event.stopPropagation()">價值公式</div>
+      <div class="sec-split-col" onclick="jumpToSlide('s21');event.stopPropagation()">ICP / HXC</div>
     </div>
   </button>
   <button class="sec-btn" data-sec="3" onclick="jumpToSection(3)">③ 可行性
