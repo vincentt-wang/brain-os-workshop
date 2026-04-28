@@ -2488,11 +2488,11 @@ function renderSlide(sd,idx){
          example:'買 Apple 不是買手機，是買「我是懂品味的人」的形象。'},
         {en:'Desired State',zh:'最終狀態',col:'var(--blue)',colR:'rgba(59,130,246',
          icon:'<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>',
-         q:'用完之後，我的生活會變成什麼樣子？',
+         q:'用完之後，生活會如何改變？',
          example:'健身房賣的不是訓練，是「穿上那件衣服的那一刻」。'},
         {en:'Emotional Relief',zh:'情感滿足',col:'var(--red)',colR:'rgba(255,32,85',
          icon:'<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
-         q:'購買或使用過程中，我的情緒狀態是什麼？',
+         q:'消費過程中，情緒狀態是什麼？',
          example:'買精品咖啡不是為了咖啡因，是「我在照顧自己」的十分鐘。'},
       ];
       h+=blob('rgba(255,107,0,.08)','rgba(59,130,246,.06)');
@@ -2502,7 +2502,7 @@ function renderSlide(sd,idx){
       h+=`<div style="font-size:clamp(1rem,1.6vw,1.2rem);font-weight:700;color:var(--ink);font-style:italic;line-height:1.5">"Pride is relative to the perceived value of the outcome."</div>`;
       h+=`</div>`;
       h+=`</div>`;
-      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;max-width:1080px;margin:0 auto;position:relative;z-index:1">`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;max-width:1140px;margin:0 auto;position:relative;z-index:1">`;
       pvCards.forEach((c,i)=>{
         const uid=`pv-${sd.id}-${i}`;
         h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:260px">`;
@@ -2524,7 +2524,7 @@ function renderSlide(sd,idx){
         h+=`</div>`;
       });
       h+=`</div>`;
-      h+=`<div class="tip-box" style="max-width:1080px;margin:.85rem auto 0;position:relative;z-index:1">`;
+      h+=`<div class="tip-box" style="max-width:1140px;margin:.85rem auto 0;position:relative;z-index:1">`;
       h+=`<strong style="color:var(--orange)">Value</strong> 不是我們定義的，是客戶感知的。設計從客戶的感受出發，不是從功能出發。`;
       h+=`</div>`;
       break;}
