@@ -4263,21 +4263,21 @@ function renderSlide(sd,idx){
       const v2cases=[
         {brand:'Rogaine 落建',col:'var(--orange)',colR:'rgba(255,107,0',
          vitamin:'促進頭皮健康的保養品',
-         anxiety:'掉髮者害怕失去自我形象與吸引力',
+         anxiety:'掉髮者害怕失去吸引力',
          painkiller:'治療禿頭，重拾自信',
          icon:'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0-3-3.87"/></svg>'},
         {brand:'Canva',col:'var(--cyan)',colR:'rgba(6,182,212',
          vitamin:'簡單易用的設計工具',
-         anxiety:'做的東西看起來很素人，顯得不專業',
+         anxiety:'做的東西看起來很素人',
          painkiller:'10 分鐘讓你看起來像設計師',
          icon:'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>'},
         {brand:'Duolingo',col:'var(--green)',colR:'rgba(34,197,94',
          vitamin:'每天幾分鐘學語言',
-         anxiety:'你的競爭對手已經在學了，你還沒開始',
-         painkiller:'連續學習 365 天，別人永遠追不上你',
+         anxiety:'對手已在學，你還沒開始',
+         painkiller:'學 365 天，別人永遠追不上',
          icon:'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>'}
       ];
-      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;max-width:1100px;margin:0 auto;position:relative;z-index:1;align-items:stretch">`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;max-width:1140px;margin:0 auto;position:relative;z-index:1;align-items:stretch">`;
       v2cases.forEach(c=>{
         h+=`<div style="background:${c.colR},.06);border:1.5px solid ${c.colR},.25);border-radius:14px;padding:1.1rem;display:flex;flex-direction:column;gap:.5rem">`;
         h+=`<div style="display:flex;align-items:center;gap:.55rem;margin-bottom:.1rem">`;
@@ -4302,7 +4302,7 @@ function renderSlide(sd,idx){
         h+=`</div>`;
       });
       h+=`</div>`;
-      h+=`<div class="tip-box" style="max-width:1100px;margin:.8rem auto 0;position:relative;z-index:1"><strong style="color:var(--purple)">包裝公式：</strong>「___功能」→ 挖出用戶已在焦慮的那件事 → 用他的焦慮語言重新說你的解法</div>`;
+      h+=`<div class="tip-box" style="max-width:1140px;margin:.8rem auto 0;position:relative;z-index:1"><strong style="color:var(--purple)">包裝公式：</strong>「___功能」→ 挖出用戶已在焦慮的那件事 → 用他的焦慮語言重新說你的解法</div>`;
       break;}
     case 'tpo-pain':{
       h+=blob('rgba(59,130,246,.08)','rgba(168,85,247,.05)');
@@ -5409,13 +5409,13 @@ function renderSlide(sd,idx){
         {n:'2',name:'Prototype',zh:'做出來',col:'var(--blue)',
          icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',
          what:'選一個解法，做最粗糙的可展示版',
-         how:'Canva / Google Form / 手繪 / Figma',
+         how:'Canva · Figma · 手繪均可',
          time:'20–30 分鐘',
          rule:'完成比完美重要，能展示就夠了'},
         {n:'3',name:'Test',zh:'給人看',col:'var(--green)',
          icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
          what:'找 2–3 個人看原型，觀察反應',
-         how:'問「你會怎麼用？」不問「好不好？」',
+         how:'問「怎麼用」而非「好不好」',
          time:'10 分鐘',
          rule:'他卡在哪裡，比他說的更有價值'}
       ];
@@ -5423,11 +5423,11 @@ function renderSlide(sd,idx){
       iptSteps.forEach((s,i)=>{
         const uid=`ipt-${sd.id}-${i}`;
         h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="flex:1;min-height:180px">`;
-        h+=`<div class="card-answer" style="background:${s.col}10;border:2px solid ${s.col}40;border-radius:14px;padding:1.1rem;text-align:left">`;
+        h+=`<div class="card-answer" style="background:${s.col}10;border:2px solid ${s.col}40;border-radius:14px;padding:1.1rem;text-align:left;height:100%;display:flex;flex-direction:column;box-sizing:border-box">`;
         h+=`<div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.55rem"><div style="width:30px;height:30px;border-radius:50%;background:${s.col};color:#000;font-weight:800;font-size:.95rem;display:flex;align-items:center;justify-content:center;flex-shrink:0">${s.n}</div><div><div style="font-size:clamp(1rem,1.5vw,1.15rem);font-weight:700;color:${s.col}">${s.name}</div><div style="font-size:var(--min-label);color:var(--mid)">${s.zh}</div></div><div style="margin-left:auto;font-size:var(--min-label);color:${s.col};font-weight:700;padding:.15em .45em;background:${s.col}20;border-radius:4px;white-space:nowrap">${s.time}</div></div>`;
-        h+=`<div style="font-size:var(--min-font);color:var(--ink);margin-bottom:.45rem;line-height:1.5">${s.what}</div>`;
-        h+=`<div style="font-size:var(--min-label);color:var(--mid);padding:.4rem .6rem;background:rgba(255,255,255,.04);border-radius:6px;margin-bottom:.45rem;line-height:1.5">${s.how}</div>`;
-        h+=`<div style="font-size:var(--min-label);color:var(--mid);border-top:1px solid rgba(255,255,255,.07);padding-top:.4rem;font-style:italic;line-height:1.5">${s.rule}</div>`;
+        h+=`<div style="font-size:var(--min-font);color:var(--ink);margin-bottom:.45rem;line-height:1.5;min-height:2.2rem">${s.what}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:var(--mid);padding:.4rem .6rem;background:rgba(255,255,255,.04);border-radius:6px;margin-bottom:.45rem;line-height:1.5;min-height:2.8rem">${s.how}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:var(--mid);border-top:1px solid rgba(255,255,255,.07);padding-top:.4rem;font-style:italic;line-height:1.5;margin-top:auto">${s.rule}</div>`;
         h+=`</div>`;
         h+=`<div class="card-mask" style="border-radius:14px;background:${s.col}18"><div style="color:${s.col}">${s.icon}</div><div style="font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:800;color:${s.col};margin-top:.4rem">${s.name}</div><div style="font-size:var(--min-font);color:var(--mid);margin-top:.2rem">${s.zh}</div></div>`;
         h+=`</div>`;
@@ -6632,7 +6632,7 @@ function renderSlide(sd,idx){
       break;}
     case 'memory-types':{
       h+=blob('rgba(59,130,246,.1)','rgba(168,85,247,.08)');
-      h+=`<div style="position:relative;z-index:1;max-width:920px;width:100%;text-align:center;margin:0 auto">`;
+      h+=`<div style="position:relative;z-index:1;max-width:1100px;width:100%;text-align:center;margin:0 auto">`;
       h+=chip;
       h+=`<h2 style="margin-bottom:.2rem">訊息的兩種命運</h2>`;
       h+=`<div style="font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:800;color:var(--mid);margin-bottom:.4rem"><span class="g-blue">工作記憶</span> vs 長期記憶</div>`;
