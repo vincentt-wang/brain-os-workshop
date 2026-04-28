@@ -616,11 +616,11 @@ const D=[
 // ── SECTION 4：存續性｜價值表達 ──────────────────────────────────────
 {id:'s36',sec:4,sub:'存續性｜開場',type:'section-cover',secNum:'④',secTitle:'存續性',secEn:'Viability',sub2:'從作品走到市場'},
 {id:'s37',sec:4,sub:'存續性｜GTM',type:'gtm-interactive-v2',chip:['Go-To-Market','blue'],title:'讓對的人看見對的訊息'},
-{id:'s24',sec:4,sub:'存續性｜PMF',type:'pmf-pillars-v2',chip:['PMF 三支柱','red'],title:'好產品帶來的三種成長'},
 {id:'s25e',sec:4,sub:'存續性｜價值公式',type:'hormozi-value',chip:['價值公式','orange'],title:'Alex Hormozi 的價值公式',xrefs:[{id:'s36d',label:'定價策略'}]},
 {id:'s25e2',sec:4,sub:'存續性｜價值公式',type:'hormozi-value-b',chip:['四個變數','green'],title:'四個變數，怎麼用在你的作品上'},
 {id:'s25f',sec:4,sub:'存續性｜價值公式',type:'hormozi-example',chip:['Canva 案例','green'],title:'用 Canva 拆解價值公式'},
 {id:'s29b',sec:4,sub:'存續性｜練習',type:'hormozi-exercise',chip:['價值公式練習','orange'],title:'套用 Hormozi 公式優化你的作品',time:180,theme:'warm',xrefs:[{id:'s25e',label:'價值公式'}]},
+{id:'s24',sec:4,sub:'存續性｜PMF',type:'pmf-pillars-v2',chip:['PMF 三支柱','red'],title:'好產品帶來的三種成長'},
 {id:'s36d',sec:4,sub:'存續性｜定價',type:'pricing-full',chip:['Pricing is Product','yellow'],title:'定價即產品',xrefs:[{id:'s25e',label:'價值公式'}]},
 {id:'s_dmm',sec:4,sub:'存續性｜市場動能',type:'market-momentum',chip:['市場動能模型','purple'],title:'市場動能怎麼看'},
 {id:'s_viakpi',sec:4,sub:'存續性｜成長指標',type:'viability-kpi',chip:['Growth KPI','green'],title:'我們追的 KPI'},
@@ -4167,29 +4167,58 @@ function renderSlide(sd,idx){
       break;}
     case 'pmf-pillars-v2':{
       h+=blob('rgba(255,32,85,.08)','rgba(34,197,94,.06)');
-      h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto 1rem"></div>`;
-      if(sd.title)h+=`<h2 style="margin-bottom:.6rem">${sd.title}</h2>`;
-      h+=`<p style="color:var(--mid);font-size:var(--min-font);margin-bottom:1rem">Product-Market Fit 的三個訊號</p>`;
+      h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.5rem auto .7rem"></div>`;
+      if(sd.title)h+=`<h2 style="margin-bottom:.25rem">${sd.title}</h2>`;
+      h+=`<p style="color:var(--mid);font-size:var(--min-font);margin-bottom:.7rem">真正的 PMF 有三個同時出現的訊號，缺一不算</p>`;
       h+=`</div>`;
       const pillars=[
-        {icon:'<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',name:'Sticky',zh:'黏著度',col:'var(--blue)',desc:'用戶主動回來，<span style="white-space:nowrap">不需要你提醒</span>',metric:'DAU/MAU > 25%'},
-        {icon:'<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>',name:'Viral',zh:'病毒性',col:'var(--green)',desc:'用戶主動分享給朋友',metric:'推薦值 NPS > 50'},
-        {icon:'<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',name:'Paid',zh:'付費意願',col:'var(--orange)',desc:'用戶願意掏錢購買',metric:'轉換率 > 2%'}
+        {n:'01',icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+         name:'Sticky',zh:'黏著度',col:'var(--blue)',colR:'rgba(59,130,246',
+         q:'他會自己回來嗎？',
+         def:'不需要提醒，用戶主動回來用',
+         looks:'每週不催，用戶自己打開',
+         notPmf:'首次體驗後再也不開',
+         metric:'DAU / MAU > 25%'},
+        {n:'02',icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>',
+         name:'Viral',zh:'病毒性',col:'var(--green)',colR:'rgba(34,197,94',
+         q:'他會主動分享嗎？',
+         def:'用戶自發推薦給有相同困擾的人',
+         looks:'截圖傳朋友，不是你請他傳的',
+         notPmf:'按讚但不 tag 任何人',
+         metric:'NPS > 50'},
+        {n:'03',icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
+         name:'Paid',zh:'付費意願',col:'var(--orange)',colR:'rgba(255,107,0',
+         q:'他願意付錢嗎？',
+         def:'用戶主動詢問或直接付費',
+         looks:'用戶主動問「有付費版嗎？」',
+         notPmf:'「很好用，但不需要付費版」',
+         metric:'轉換率 > 2%'}
       ];
-      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:850px;margin:0 auto;position:relative;z-index:1">`;
-      pillars.forEach((p,i)=>{
-        h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked')" style="min-height:170px">`;
-        h+=`<div class="card-answer" style="background:${p.col}12;border:2px solid ${p.col}40;border-radius:12px;padding:1.1rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.4rem">`;
-        h+=`<div style="color:${p.col}">${p.icon}</div>`;
-        h+=`<div style="font-size:clamp(1.2rem,2vw,1.5rem);font-weight:800;color:${p.col};line-height:1.2">${p.name}<br><span style="font-size:var(--min-label);color:var(--mid);font-weight:500">${p.zh}</span></div>`;
-        h+=`<div style="font-size:var(--min-font);color:var(--ink)">${p.desc}</div>`;
-        h+=`<div style="font-size:var(--min-label);color:${p.col};padding:.28rem .6rem;background:${p.col}20;border-radius:4px">${p.metric}</div>`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:1140px;margin:0 auto;position:relative;z-index:1;align-items:stretch">`;
+      pillars.forEach(p=>{
+        const uid=`pmfp-${sd.id}-${p.n}`;
+        h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:180px">`;
+        h+=`<div class="card-answer" style="background:${p.colR},.07);border:2px solid ${p.colR},.3);border-top:3px solid ${p.col};border-radius:12px;padding:1.1rem;height:100%;display:flex;flex-direction:column;box-sizing:border-box">`;
+        h+=`<div style="display:flex;align-items:center;gap:.55rem;margin-bottom:.45rem">`;
+        h+=`<div style="color:${p.col};flex-shrink:0">${p.icon}</div>`;
+        h+=`<div><div style="font-size:clamp(1.1rem,1.8vw,1.35rem);font-weight:800;color:${p.col}">${p.name}</div><div style="font-size:var(--min-label);color:var(--mid)">${p.zh}</div></div>`;
+        h+=`<div style="margin-left:auto;font-size:var(--min-label);color:${p.col};padding:.15em .5em;background:${p.colR},.15);border-radius:4px;white-space:nowrap">${p.metric}</div>`;
         h+=`</div>`;
-        h+=`<div class="card-mask" style="border-radius:12px;background:${p.col}25"><div style="color:${p.col}">${p.icon}</div><div style="font-size:clamp(1.2rem,2vw,1.5rem);font-weight:800;color:var(--ink);margin-top:.3rem">${p.name}</div></div>`;
+        h+=`<div style="height:1px;background:${p.colR},.2);margin-bottom:.45rem"></div>`;
+        h+=`<div style="font-size:var(--min-font);color:var(--ink);min-height:2.5rem;line-height:1.4;margin-bottom:.4rem">${p.def}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:var(--mid);padding:.38rem .6rem;background:${p.colR},.08);border-left:2px solid ${p.colR},.4);border-radius:0 6px 6px 0;line-height:1.4;margin-bottom:.35rem"><strong style="color:${p.col}">實際樣子：</strong>${p.looks}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:rgba(255,32,85,.75);padding:.32rem .6rem;background:rgba(255,32,85,.07);border-radius:6px;margin-top:auto"><strong style="color:var(--red)">不算：</strong>${p.notPmf}</div>`;
+        h+=`</div>`;
+        h+=`<div class="card-mask" style="border-radius:12px;background:${p.colR},.12);flex-direction:column;gap:.4rem">`;
+        h+=`<div style="color:${p.col}">${p.icon}</div>`;
+        h+=`<div style="font-size:clamp(1.2rem,2vw,1.5rem);font-weight:800;color:${p.col};margin-top:.3rem">${p.name}</div>`;
+        h+=`<div style="font-size:var(--min-font);color:var(--mid);margin-top:.15rem">${p.zh}</div>`;
+        h+=`<div style="font-size:var(--min-font);font-weight:600;color:var(--ink);margin-top:.3rem">${p.q}</div>`;
+        h+=`</div>`;
         h+=`</div>`;
       });
       h+=`</div>`;
-      h+=`<div class="tip-box" style="max-width:850px;margin:1rem auto 0;position:relative;z-index:1"><strong style="color:var(--red)">三個都有 = PMF。</strong>缺任何一個，都還在找 Product-Solution Fit (PSF)</div>`;
+      h+=`<div class="tip-box" style="max-width:1140px;margin:.8rem auto 0;position:relative;z-index:1"><strong style="color:var(--red)">三個同時出現 = PMF。</strong>只有其中一個，代表你有 PSF，但還沒找到市場。</div>`;
       break;}
     case 'psf-pmf-scale':{
       h+=blob('rgba(34,197,94,.08)','rgba(59,130,246,.06)');
@@ -4759,7 +4788,7 @@ function renderSlide(sd,idx){
          q:'有人願意嘗試你的解法嗎？',
          signal:'目標用戶說「這正是我需要的」',
          focus:'深度訪談 · 原型測試 · 行為觀察',
-         trap:'只問感受，沒有觀察實際行為'},
+         trap:'只問感受，沒有觀察行為'},
         {short:'PMF',full:'Product-Market Fit',zh:'產品市場契合',col:'var(--green)',colR:'rgba(34,197,94',
          icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
          def:'市場自發留下來，口碑開始擴散',
