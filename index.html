@@ -4759,7 +4759,7 @@ function renderSlide(sd,idx){
          def:'找到真實問題，且解法能回應它',
          q:'有人願意嘗試你的解法嗎？',
          signal:'目標用戶說「這正是我需要的」',
-         focus:'深度訪談 · 快速原型 · 行為觀察',
+         focus:'深度訪談 · 原型測試 · 行為觀察',
          trap:'只問感受，沒有觀察實際行為'},
         {short:'PMF',full:'Product-Market Fit',zh:'產品市場契合',col:'var(--green)',colR:'rgba(34,197,94',
          icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
@@ -4798,7 +4798,6 @@ function renderSlide(sd,idx){
         h+=`<div style="font-size:var(--min-label);color:${s.col};margin-top:.2rem;padding:.2em .6em;background:${s.colR},.12);border-radius:99px">${s.q}</div>`;
         h+=`</div>`;
         h+=`</div>`;
-        if(i<psfStages.length-1)h+=`<div style="display:flex;align-items:center;color:var(--mid);font-size:1.4rem;flex-shrink:0;align-self:center">→</div>`;
       });
       h+=`</div>`;
       h+=`<div style="max-width:1160px;margin:.5rem auto 0;position:relative;z-index:1;background:rgba(255,107,0,.07);border:1.5px solid rgba(255,107,0,.25);border-radius:12px;padding:.5rem .9rem">`;
