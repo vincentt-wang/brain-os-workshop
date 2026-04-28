@@ -2534,27 +2534,61 @@ function renderSlide(sd,idx){
       h+=`</div>`;
       const vitaminIcon='<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>';
       const painkillerIcon='<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>';
-      h+=`<div class="compare-grid" style="max-width:900px;margin:0 auto">`;
+      h+=`<div class="compare-grid" style="max-width:940px;margin:0 auto">`;
       // Vitamin
       h+=`<div class="cmp-card cmp-no" onclick="this.classList.toggle('revealed')">`;
-      h+=`<div style="color:var(--mid);margin-bottom:.4rem">${vitaminIcon}</div>`;
-      h+=`<h3 style="color:rgba(255,255,255,.7)">維他命 Nice to Have</h3>`;
-      h+=`<ul class="deck-list" style="margin-top:.5rem">`;
-      ['有的話不錯','沒有也過得去','購買動機弱','難以建立急迫性'].forEach(it=>{h+=`<li>${it}</li>`;});
-      h+=`</ul>`;
+      h+=`<div style="display:flex;flex-direction:column;gap:.55rem">`;
+      h+=`<div style="display:flex;align-items:center;gap:.7rem">`;
+      h+=`<div style="color:rgba(255,255,255,.4)">${vitaminIcon}</div>`;
+      h+=`<div><div style="font-size:var(--min-label);font-weight:900;letter-spacing:.1em;color:rgba(255,255,255,.35);text-transform:uppercase">Nice to Have</div><div style="font-size:clamp(1.1rem,1.8vw,1.35rem);font-weight:800;color:rgba(255,255,255,.7)">維他命</div></div>`;
+      h+=`</div>`;
+      h+=`<div style="font-size:var(--min-font);color:var(--mid);padding:.5rem .7rem;background:rgba(255,255,255,.04);border-radius:8px;line-height:1.5">有的話更好，沒有也過得去。用戶知道自己「應該」用，但不急。</div>`;
+      h+=`<div style="display:flex;flex-direction:column;gap:.3rem">`;
+      [{co:'Headspace',pain:'「冥想對我有益」但忘了開 App',tag:'rgba(255,255,255'},
+       {co:'多數健身 App',pain:'明知該運動，下載後三天就停用',tag:'rgba(255,255,255'}].forEach(ex=>{
+        h+=`<div style="display:flex;align-items:flex-start;gap:.5rem;padding:.4rem .6rem;background:rgba(255,255,255,.04);border-left:2px solid rgba(255,255,255,.12);border-radius:0 7px 7px 0">`;
+        h+=`<div style="font-size:var(--min-label);font-weight:700;color:rgba(255,255,255,.5);min-width:80px;flex-shrink:0">${ex.co}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:rgba(255,255,255,.45);line-height:1.4">${ex.pain}</div>`;
+        h+=`</div>`;
+      });
+      h+=`</div>`;
+      h+=`<div style="display:flex;flex-wrap:wrap;gap:.35rem">`;
+      ['「以後再說」','免費版就夠','高流失率'].forEach(s=>{
+        h+=`<span style="font-size:var(--min-label);padding:.2em .65em;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:20px;color:rgba(255,255,255,.5)">${s}</span>`;
+      });
+      h+=`</div>`;
+      h+=`<div style="font-size:var(--min-font);color:rgba(255,255,255,.35);font-style:italic;border-top:1px solid rgba(255,255,255,.07);padding-top:.5rem">「感覺不錯，但不急著付費」</div>`;
+      h+=`</div>`;
       h+=`<div class="cmp-mask"><div class="cmp-mask-icon">${vitaminIcon}</div><div style="font-weight:800;font-size:clamp(.88rem,1.45vw,1.1rem);color:var(--ink);margin:.3rem 0">維他命</div></div>`;
       h+=`</div>`;
       // Painkiller
       h+=`<div class="cmp-card cmp-yes" onclick="this.classList.toggle('revealed')">`;
-      h+=`<div style="color:var(--orange);margin-bottom:.4rem">${painkillerIcon}</div>`;
-      h+=`<h3>止痛藥 Must Have</h3>`;
-      h+=`<ul class="deck-list" style="margin-top:.5rem">`;
-      ['沒有就真的很痛','用戶主動在找','決策快、行動快','高轉換、高黏著'].forEach(it=>{h+=`<li>${it}</li>`;});
-      h+=`</ul>`;
+      h+=`<div style="display:flex;flex-direction:column;gap:.55rem">`;
+      h+=`<div style="display:flex;align-items:center;gap:.7rem">`;
+      h+=`<div style="color:var(--orange)">${painkillerIcon}</div>`;
+      h+=`<div><div style="font-size:var(--min-label);font-weight:900;letter-spacing:.1em;color:rgba(255,107,0,.6);text-transform:uppercase">Must Have</div><div style="font-size:clamp(1.1rem,1.8vw,1.35rem);font-weight:800;color:var(--orange)">止痛藥</div></div>`;
+      h+=`</div>`;
+      h+=`<div style="font-size:var(--min-font);color:var(--mid);padding:.5rem .7rem;background:rgba(255,107,0,.06);border-radius:8px;border-left:2px solid rgba(255,107,0,.3);line-height:1.5">沒有它，現在就很痛。用戶主動在找，找到就立刻行動。</div>`;
+      h+=`<div style="display:flex;flex-direction:column;gap:.3rem">`;
+      [{co:'Slack',pain:'訊息散落各處 → 現在就要解決',tag:'rgba(255,107,0'},
+       {co:'Uber',pain:'深夜叫不到車的那種焦慮',tag:'rgba(255,107,0'}].forEach(ex=>{
+        h+=`<div style="display:flex;align-items:flex-start;gap:.5rem;padding:.4rem .6rem;background:rgba(255,107,0,.07);border-left:2px solid rgba(255,107,0,.3);border-radius:0 7px 7px 0">`;
+        h+=`<div style="font-size:var(--min-label);font-weight:700;color:var(--orange);min-width:80px;flex-shrink:0">${ex.co}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:rgba(255,255,255,.65);line-height:1.4">${ex.pain}</div>`;
+        h+=`</div>`;
+      });
+      h+=`</div>`;
+      h+=`<div style="display:flex;flex-wrap:wrap;gap:.35rem">`;
+      ['用戶主動在找','第一次用就轉換','願意付溢價'].forEach(s=>{
+        h+=`<span style="font-size:var(--min-label);padding:.2em .65em;background:rgba(255,107,0,.1);border:1px solid rgba(255,107,0,.3);border-radius:20px;color:var(--orange)">${s}</span>`;
+      });
+      h+=`</div>`;
+      h+=`<div style="font-size:var(--min-font);color:rgba(255,107,0,.6);font-style:italic;border-top:1px solid rgba(255,107,0,.15);padding-top:.5rem">「這個不能沒有，現在就要用」</div>`;
+      h+=`</div>`;
       h+=`<div class="cmp-mask"><div class="cmp-mask-icon">${painkillerIcon}</div><div style="font-weight:800;font-size:clamp(.88rem,1.45vw,1.1rem);color:var(--ink);margin:.3rem 0">止痛藥</div></div>`;
       h+=`</div>`;
       h+=`</div>`;
-      h+=`<div class="tip-box" style="max-width:900px;margin:.9rem auto 0"><strong style="color:var(--purple)">品牌策略：</strong>維他命也能成功 — 品牌敘事與儀式感讓「Nice to Have」變成生活方式。LUSH、無印良品都是案例。</div>`;
+      h+=`<div class="tip-box" style="max-width:940px;margin:.9rem auto 0"><strong style="color:var(--purple)">品牌策略：</strong>維他命也能成功，靠品牌敘事與儀式感讓 Nice to Have 成為生活方式。</div>`;
       break;}
     case 'painkiller-examples':{
       h+=blob('rgba(34,197,94,.08)','rgba(255,107,0,.06)');
