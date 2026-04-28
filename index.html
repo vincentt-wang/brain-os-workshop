@@ -602,6 +602,7 @@ const D=[
 {id:'s3a5',sec:3,sub:'可行性｜工具庫',type:'tools-wall-v2',chip:['一人軍隊工具庫','purple'],title:'工具推薦：一人軍隊的完整軍火庫'},
 {id:'s3a4',sec:3,sub:'可行性｜原型',type:'ideate-prototype-test',chip:['設計思維循環','orange'],title:'Ideate → Prototype → Test',xrefs:[{id:'s09',label:'設計思維循環'}]},
 {id:'s3a3',sec:3,sub:'可行性｜原型',type:'prototype-types',chip:['原型類型','purple'],title:'Prototype / MVP / MVC / POC 的差別',xrefs:[{id:'s38',label:'GTM→POC→PMF'}]},
+{id:'s3a3b',sec:3,sub:'可行性｜驗證關卡',type:'psf-pmf-scaling',chip:['三個驗證關卡','orange'],title:'PSF · PMF · Scaling',subtitle:'從找到問題到規模化，每個關卡都要親手通過'},
 {id:'s38',sec:3,sub:'可行性｜驗證路徑',type:'gtm-poc-pmf-v2',chip:['驗證三階段','green'],title:'GTM → POC → PMF',subtitle:'讓對的人看到你 → 先做出來驗證 → 確認市場真的要',xrefs:[{id:'s3a3',label:'原型類型'}]},
 {id:'s24c',sec:3,sub:'可行性｜PMF 訊號',type:'pmf-signals-game',chip:['PMF 訊號辨識','green'],title:'這是 PMF 訊號嗎？'},
 {id:'s_agile',sec:3,sub:'可行性｜方法論',type:'agile-lean',chip:['執行框架','cyan'],title:'用 Running Lean 把想法跑起來'},
@@ -4746,6 +4747,70 @@ function renderSlide(sd,idx){
       h+=`</div>`;
       h+=`</div>`;
       break;}
+    case 'psf-pmf-scaling':{
+      h+=blob('rgba(255,107,0,.08)','rgba(168,85,247,.06)');
+      h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.5rem auto .7rem"></div>`;
+      if(sd.title)h+=`<h2 style="margin-bottom:.25rem">${sd.title}</h2>`;
+      if(sd.subtitle)h+=`<p style="font-size:var(--min-font);color:var(--mid);margin-bottom:.7rem">${sd.subtitle}</p>`;
+      h+=`</div>`;
+      const psfStages=[
+        {short:'PSF',full:'Problem-Solution Fit',zh:'問題解法契合',col:'var(--purple)',colR:'rgba(168,85,247',
+         icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
+         def:'找到真實問題，且解法能回應它',
+         q:'有人願意嘗試你的解法嗎？',
+         signal:'目標用戶說「這正是我需要的」',
+         focus:'深度訪談 · 快速原型 · 行為觀察',
+         trap:'只問感受，沒有觀察實際行為'},
+        {short:'PMF',full:'Product-Market Fit',zh:'產品市場契合',col:'var(--green)',colR:'rgba(34,197,94',
+         icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
+         def:'市場自發留下來，口碑開始擴散',
+         q:'停止推廣後，他還會回來嗎？',
+         signal:'留存率 > 30%，有機口碑增長',
+         focus:'留存指標 · NPS · 有機成長',
+         trap:'把 IG 按讚數當成 PMF 訊號'},
+        {short:'Scaling',full:'Growth & Scale',zh:'規模化成長',col:'var(--orange)',colR:'rgba(255,107,0',
+         icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>',
+         def:'找到可複製的成長引擎，放大成功',
+         q:'每投入 1 元，能回收多少？',
+         signal:'LTGP / CAC > 3× 且持續成長',
+         focus:'渠道複製 · 系統化 · 自動化',
+         trap:'PMF 未確認就砸行銷費'}
+      ];
+      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;max-width:1160px;margin:0 auto;position:relative;z-index:1;align-items:stretch">`;
+      psfStages.forEach((s,i)=>{
+        const uid=`psf-${sd.id}-${i}`;
+        h+=`<div class="unlock-card" id="${uid}" onclick="this.classList.toggle('unlocked')" style="min-height:130px">`;
+        h+=`<div class="card-answer" style="background:${s.colR},.07);border:2px solid ${s.colR},.3);border-top:3px solid ${s.col};border-radius:12px;padding:.9rem;height:100%;display:flex;flex-direction:column;box-sizing:border-box">`;
+        h+=`<div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem">`;
+        h+=`<span style="font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:800;color:${s.col}">${s.short}</span>`;
+        h+=`</div>`;
+        h+=`<div style="font-size:var(--min-label);color:var(--mid);margin-bottom:.4rem">${s.full} · <span style="color:var(--ink)">${s.zh}</span></div>`;
+        h+=`<div style="height:1px;background:${s.colR},.18);margin-bottom:.4rem"></div>`;
+        h+=`<div style="font-size:var(--min-font);color:var(--ink);min-height:2.8rem;line-height:1.4;margin-bottom:.3rem">${s.def}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:var(--mid);min-height:2.4rem;line-height:1.4;margin-bottom:.3rem"><strong style="color:${s.col}">訊號：</strong>${s.signal}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:var(--mid);padding:.35rem .55rem;background:${s.colR},.08);border-radius:5px;margin-bottom:.3rem">${s.focus}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:rgba(255,32,85,.7);padding:.3rem .55rem;background:rgba(255,32,85,.07);border-radius:5px;margin-top:auto"><strong style="color:var(--red)">常見錯誤：</strong>${s.trap}</div>`;
+        h+=`</div>`;
+        h+=`<div class="card-mask" style="border-radius:12px;background:${s.colR},.1);flex-direction:column;gap:.4rem">`;
+        h+=`<div style="color:${s.col}">${s.icon}</div>`;
+        h+=`<div style="font-size:clamp(1.3rem,2vw,1.7rem);font-weight:800;color:${s.col};margin-top:.3rem">${s.short}</div>`;
+        h+=`<div style="font-size:var(--min-font);color:var(--mid);margin-top:.15rem">${s.zh}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:${s.col};margin-top:.2rem;padding:.2em .6em;background:${s.colR},.12);border-radius:99px">${s.q}</div>`;
+        h+=`</div>`;
+        h+=`</div>`;
+        if(i<psfStages.length-1)h+=`<div style="display:flex;align-items:center;color:var(--mid);font-size:1.4rem;flex-shrink:0;align-self:center">→</div>`;
+      });
+      h+=`</div>`;
+      h+=`<div style="max-width:1160px;margin:.5rem auto 0;position:relative;z-index:1;background:rgba(255,107,0,.07);border:1.5px solid rgba(255,107,0,.25);border-radius:12px;padding:.5rem .9rem">`;
+      h+=`<div style="display:flex;align-items:center;gap:.3rem">`;
+      [{label:'找問題',col:'var(--purple)',colR:'rgba(168,85,247'},{label:'驗市場',col:'var(--green)',colR:'rgba(34,197,94'},{label:'放大成功',col:'var(--orange)',colR:'rgba(255,107,0'}].forEach((s,i,arr)=>{
+        h+=`<div style="flex:1;text-align:center;padding:.35rem .2rem;background:${s.colR},.1);border-radius:7px;border:1px solid ${s.colR},.3)"><div style="font-size:var(--min-font);font-weight:800;color:${s.col}">${s.label}</div></div>`;
+        if(i<arr.length-1)h+=`<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="2.5" style="flex-shrink:0"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+      });
+      h+=`</div>`;
+      h+=`<div style="font-size:var(--min-label);color:rgba(255,255,255,.4);font-style:italic;padding-top:.4rem;margin-top:.3rem;border-top:1px solid rgba(255,255,255,.07)">每個關卡都要有真實訊號才能進入下一關。跳過任何一步，你只是在花錢買幻覺。</div>`;
+      h+=`</div>`;
+      break;}
     case 'gtm-poc-pmf-v2':{
       h+=blob('rgba(34,197,94,.08)','rgba(59,130,246,.06)');
       h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.5rem auto .8rem"></div>`;
@@ -5652,7 +5717,7 @@ function renderSlide(sd,idx){
          icon:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>',
          qs:[{q:'你選哪種原型？',hint:'Prototype / MVP / MVC / POC'},
              {q:'你用哪個工具做？',hint:'今天下午就可以用的那個'},
-             {q:'你砍掉什麼，才叫 MVP？',hint:'最精簡版本只保留能驗證假設的那一個功能'}]},
+             {q:'你砍掉什麼，才叫 MVP？',hint:'只留能驗證核心假設的那一個功能'}]},
         {col:'var(--blue)',colR:'rgba(59,130,246',label:'TEST',
          icon:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
          qs:[{q:'找誰來測試？',hint:'不是你的家人或好朋友'},
