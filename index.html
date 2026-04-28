@@ -6632,32 +6632,42 @@ function renderSlide(sd,idx){
       h+=`<h2 style="margin-bottom:.3rem">圖像 + 語言 = <span class="g-purple">記憶威力加倍</span></h2>`;
       h+=`<p style="font-size:var(--min-font);color:var(--mid);margin-bottom:.8rem">同一個訊息用兩種方式處理 → 騙過海馬迴，大幅提升記憶固化效率</p>`;
       h+=`<div class="bar" style="margin:.4rem auto .9rem"></div>`;
-      h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1rem">`;
-      h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked')" style="min-height:180px">`;
-      h+=`<div class="card-answer" style="background:rgba(168,85,247,.08);border:1.5px solid rgba(168,85,247,.3);border-radius:14px;padding:1.2rem;height:100%;text-align:left;display:flex;flex-direction:column;gap:.5rem;box-sizing:border-box">`;
-      h+=`<div style="font-size:.8rem;font-weight:800;letter-spacing:.1em;color:var(--purple);text-transform:uppercase;margin-bottom:.1rem">視覺通道</div>`;
-      [['手畫「競爭 vs 壟斷」商業模型圖，把書中案例標上去'],
-       ['畫「問題 → 解法 → 市場」視覺流程圖']].forEach(([content])=>{
-        h+=`<div style="display:flex;gap:.5rem;align-items:flex-start;padding:.4rem .65rem;background:rgba(168,85,247,.08);border-left:2px solid rgba(168,85,247,.4);border-radius:0 6px 6px 0">`;
-        h+=`<span style="color:var(--purple);flex-shrink:0;margin-top:.05rem;font-size:var(--min-label)">↳</span>`;
-        h+=`<span style="font-size:var(--min-label);color:rgba(255,255,255,.8);line-height:1.5">${content}</span></div>`;
+      h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1rem;align-items:stretch">`;
+      // 視覺通道
+      h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked')" style="min-height:220px">`;
+      h+=`<div class="card-answer" style="background:rgba(168,85,247,.08);border:1.5px solid rgba(168,85,247,.3);border-top:3px solid var(--purple);border-radius:14px;padding:1.4rem;height:100%;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.7rem;box-sizing:border-box">`;
+      h+=`<div style="display:flex;align-items:center;gap:.55rem"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--purple)" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span style="font-size:var(--min-font);font-weight:800;letter-spacing:.08em;color:var(--purple);text-transform:uppercase">視覺通道</span></div>`;
+      h+=`<div style="height:1px;background:rgba(168,85,247,.2);width:100%"></div>`;
+      [['手畫商業模型圖','把書中案例對應標上去'],
+       ['畫「問題 → 解法 → 市場」','視覺流程圖，一張紙搞定']].forEach(([main,sub])=>{
+        h+=`<div style="width:100%;padding:.55rem .8rem;background:rgba(168,85,247,.1);border-radius:8px;border:1px solid rgba(168,85,247,.25)">`;
+        h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--ink);line-height:1.4">${main}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:rgba(168,85,247,.9);margin-top:.15rem">${sub}</div>`;
+        h+=`</div>`;
       });
-      h+=`</div><div class="card-mask" style="border-radius:14px;background:rgba(168,85,247,.14);border:1.5px solid rgba(168,85,247,.3)">`;
-      h+=`<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="var(--purple)" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>`;
-      h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--purple);margin-top:.5rem">視覺通道</div>`;
+      h+=`</div>`;
+      h+=`<div class="card-mask" style="border-radius:14px;background:rgba(168,85,247,.14);border:1.5px solid rgba(168,85,247,.3)">`;
+      h+=`<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="var(--purple)" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>`;
+      h+=`<div style="font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:800;color:var(--purple);margin-top:.5rem">視覺通道</div>`;
+      h+=`<div style="font-size:var(--min-label);color:rgba(168,85,247,.6);margin-top:.25rem">Visual Channel</div>`;
       h+=`</div></div>`;
-      h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked')" style="min-height:180px">`;
-      h+=`<div class="card-answer" style="background:rgba(6,182,212,.08);border:1.5px solid rgba(6,182,212,.3);border-radius:14px;padding:1.2rem;height:100%;text-align:left;display:flex;flex-direction:column;gap:.5rem;box-sizing:border-box">`;
-      h+=`<div style="font-size:.8rem;font-weight:800;letter-spacing:.1em;color:var(--cyan);text-transform:uppercase;margin-bottom:.1rem">語言通道</div>`;
-      [['不看書，用 3 句話解釋給旁邊的人聽。說不清楚 = 知識漏洞'],
-       ['Anki 卡片：正面概念，背面用自己的話解釋，間隔重複自動排程']].forEach(([content])=>{
-        h+=`<div style="display:flex;gap:.5rem;align-items:flex-start;padding:.4rem .65rem;background:rgba(6,182,212,.08);border-left:2px solid rgba(6,182,212,.4);border-radius:0 6px 6px 0">`;
-        h+=`<span style="color:var(--cyan);flex-shrink:0;margin-top:.05rem;font-size:var(--min-label)">↳</span>`;
-        h+=`<span style="font-size:var(--min-label);color:rgba(255,255,255,.8);line-height:1.5">${content}</span></div>`;
+      // 語言通道
+      h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked')" style="min-height:220px">`;
+      h+=`<div class="card-answer" style="background:rgba(6,182,212,.08);border:1.5px solid rgba(6,182,212,.3);border-top:3px solid var(--cyan);border-radius:14px;padding:1.4rem;height:100%;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.7rem;box-sizing:border-box">`;
+      h+=`<div style="display:flex;align-items:center;gap:.55rem"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--cyan)" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span style="font-size:var(--min-font);font-weight:800;letter-spacing:.08em;color:var(--cyan);text-transform:uppercase">語言通道</span></div>`;
+      h+=`<div style="height:1px;background:rgba(6,182,212,.2);width:100%"></div>`;
+      [['不看書，用 3 句話解釋給旁邊的人','說不清楚 = 知識漏洞，費曼驗證法'],
+       ['Anki 卡片：正面概念，背面自己說','間隔重複系統自動排程複習']].forEach(([main,sub])=>{
+        h+=`<div style="width:100%;padding:.55rem .8rem;background:rgba(6,182,212,.1);border-radius:8px;border:1px solid rgba(6,182,212,.25)">`;
+        h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--ink);line-height:1.4">${main}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:rgba(6,182,212,.9);margin-top:.15rem">${sub}</div>`;
+        h+=`</div>`;
       });
-      h+=`</div><div class="card-mask" style="border-radius:14px;background:rgba(6,182,212,.1);border:1.5px solid rgba(6,182,212,.3)">`;
-      h+=`<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="var(--cyan)" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`;
-      h+=`<div style="font-size:var(--min-font);font-weight:700;color:var(--cyan);margin-top:.5rem">語言通道</div>`;
+      h+=`</div>`;
+      h+=`<div class="card-mask" style="border-radius:14px;background:rgba(6,182,212,.1);border:1.5px solid rgba(6,182,212,.3)">`;
+      h+=`<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="var(--cyan)" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`;
+      h+=`<div style="font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:800;color:var(--cyan);margin-top:.5rem">語言通道</div>`;
+      h+=`<div style="font-size:var(--min-label);color:rgba(6,182,212,.6);margin-top:.25rem">Verbal Channel</div>`;
       h+=`</div></div>`;
       h+=`</div>`;
       h+=`<div style="text-align:center;margin:.8rem 0;font-size:clamp(1rem,1.5vw,1.2rem);color:var(--mid)">兩個通道<strong style="color:var(--ink)">同時</strong>使用，記憶提取率提升 <span style="color:var(--purple);font-size:1.5em;font-weight:800">65%</span></div>`;
