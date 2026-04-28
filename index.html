@@ -4219,62 +4219,90 @@ function renderSlide(sd,idx){
       break;}
     case 'painkiller-game':{
       h+=blob('rgba(34,197,94,.08)','rgba(255,107,0,.06)');
-      h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto 1rem"></div>`;
-      if(sd.title)h+=`<h2 style="margin-bottom:.6rem">${sd.title}</h2>`;
-      h+=`<p style="color:var(--mid);font-size:var(--min-font);margin-bottom:1rem">六個常見產品 — 維他命還是止痛藥？</p>`;
+      h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.5rem auto .7rem"></div>`;
+      if(sd.title)h+=`<h2 style="margin-bottom:.5rem">${sd.title}</h2>`;
+      h+=`</div>`;
+      h+=`<div style="max-width:1100px;margin:0 auto .8rem;position:relative;z-index:1;display:flex;align-items:center;gap:1.2rem;padding:.7rem 1.2rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px">`;
+      h+=`<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--yellow)" stroke-width="2" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`;
+      h+=`<div style="font-size:var(--min-font);color:var(--mid)">判斷標準：「如果明天這個消失了，你今天怎麼辦？」<span style="color:rgba(255,255,255,.5)">聳肩 = 維他命，皺眉 = 止痛藥</span></div>`;
       h+=`</div>`;
       const products=[
-        {name:'Notion',answer:'止痛藥',reason:'解決「文件散落各處、協作混亂」的焦慮，估值 100 億',isVitamin:false},
-        {name:'Threads',answer:'維他命',reason:'有 IG 就夠了，沒有急迫需求切換',isVitamin:true},
-        {name:'ChatGPT',answer:'止痛藥',reason:'「寫不出來、查不到」的即時痛點，用了回不去',isVitamin:false},
-        {name:'Duolingo',answer:'維他命',reason:'學語言是長期目標，沒有急迫性',isVitamin:true},
-        {name:'Uber Eats',answer:'止痛藥',reason:'「餓了但不想出門」是真實的即時痛點',isVitamin:false},
-        {name:'Headspace',answer:'維他命',reason:'冥想 App，大家知道該練習正念，但沒有立即急迫性，下載後常被遺忘',isVitamin:true}
+        {name:'Notion',scenario:'「想把東西整理在一個地方」',answer:'維他命',reason:'Google Docs 也行，不急著換',voice:'「有空再整理」',isVitamin:true},
+        {name:'Slack',scenario:'「遠端工作，訊息散落各處」',answer:'止痛藥',reason:'訊息混亂的焦慮，今天就要解決',voice:'「不用這個沒辦法工作」',isVitamin:false},
+        {name:'ChatGPT',scenario:'「卡住了，寫不出來」',answer:'止痛藥',reason:'即時解鎖思路，用了回不去',voice:'「沒有它我要多花兩小時」',isVitamin:false},
+        {name:'Duolingo',scenario:'「想學外語，沒有截止日期」',answer:'維他命',reason:'長期目標，沒有立即急迫性',voice:'「以後有空再學」',isVitamin:true},
+        {name:'Uber Eats',scenario:'「肚子餓了不想出門」',answer:'止痛藥',reason:'當下飢餓是真實即時的痛',voice:'「現在就要吃」',isVitamin:false},
+        {name:'Headspace',scenario:'「應該要多冥想一下」',answer:'維他命',reason:'知道有益，但沒有急迫性',voice:'「以後再說」',isVitamin:true}
       ];
-      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;max-width:900px;margin:0 auto;position:relative;z-index:1">`;
-      products.forEach((p,i)=>{
-        const col=p.isVitamin?'rgba(255,255,255,.5)':'var(--green)';
-        h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked')" style="min-height:130px">`;
-        h+=`<div class="card-answer" style="background:${p.isVitamin?'rgba(255,255,255,.03)':'rgba(34,197,94,.08)'};border:1.5px solid ${p.isVitamin?'rgba(255,255,255,.1)':'rgba(34,197,94,.3)'};border-radius:10px;padding:1rem">`;
-        h+=`<div style="font-size:var(--min-label);font-weight:800;color:${col};margin-bottom:.3rem">${p.answer}</div>`;
-        h+=`<div style="font-size:clamp(.95rem,1.5vw,1.15rem);font-weight:700;color:var(--ink);margin-bottom:.3rem">${p.name}</div>`;
-        h+=`<div style="font-size:var(--min-font);color:var(--mid)">${p.reason}</div>`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;max-width:1100px;margin:0 auto;position:relative;z-index:1;align-items:stretch">`;
+      products.forEach((p)=>{
+        const bg=p.isVitamin?'rgba(255,255,255,.03)':'rgba(34,197,94,.07)';
+        const bd=p.isVitamin?'rgba(255,255,255,.1)':'rgba(34,197,94,.28)';
+        const ansCol=p.isVitamin?'rgba(255,255,255,.45)':'var(--green)';
+        h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked')" style="min-height:150px">`;
+        h+=`<div class="card-answer" style="background:${bg};border:1.5px solid ${bd};border-top:2.5px solid ${ansCol};border-radius:10px;padding:1rem;height:100%;display:flex;flex-direction:column;box-sizing:border-box">`;
+        h+=`<div style="font-size:var(--min-label);font-weight:900;letter-spacing:.08em;color:${ansCol};margin-bottom:.35rem">${p.answer}</div>`;
+        h+=`<div style="font-size:1.1rem;font-weight:800;color:var(--ink);margin-bottom:.4rem">${p.name}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:var(--mid);line-height:1.4;flex:1">${p.reason}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:${ansCol};font-style:italic;margin-top:.5rem;padding-top:.4rem;border-top:1px solid ${p.isVitamin?'rgba(255,255,255,.07)':'rgba(34,197,94,.15)'}">${p.voice}</div>`;
         h+=`</div>`;
-        h+=`<div class="card-mask" style="border-radius:10px"><div style="font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:700;color:var(--ink)">${p.name}</div></div>`;
+        h+=`<div class="card-mask" style="border-radius:10px;flex-direction:column;gap:.5rem;padding:1rem">`;
+        h+=`<div style="font-size:1.15rem;font-weight:800;color:var(--ink)">${p.name}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:var(--mid);text-align:center;line-height:1.4">${p.scenario}</div>`;
+        h+=`</div>`;
         h+=`</div>`;
       });
       h+=`</div>`;
       break;}
     case 'vitamin-to-painkiller-v2':{
       h+=blob('rgba(168,85,247,.08)','rgba(255,107,0,.06)');
-      h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.6rem auto 1rem"></div>`;
-      if(sd.title)h+=`<h2 style="margin-bottom:1rem">${sd.title}</h2>`;
+      h+=`<div style="position:relative;z-index:1;text-align:center">${chip}<div class="bar" style="margin:.5rem auto .7rem"></div>`;
+      if(sd.title)h+=`<h2 style="margin-bottom:.3rem">${sd.title}</h2>`;
+      h+=`<p style="font-size:var(--min-font);color:var(--mid);margin-bottom:.7rem">找到用戶沒說出口的焦慮，把功能連結上去</p>`;
       h+=`</div>`;
-      h+=`<div style="max-width:850px;margin:0 auto;position:relative;z-index:1">`;
-      // 主案例
-      h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked')" style="min-height:160px;margin-bottom:1rem">`;
-      h+=`<div class="card-answer" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:1.2rem">`;
-      h+=`<div style="text-align:center;margin-bottom:1rem"><div style="font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:700;color:var(--ink)">案例：Rogaine 落建</div></div>`;
-      h+=`<div style="display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:center">`;
-      h+=`<div style="background:rgba(255,255,255,.04);border-radius:8px;padding:1rem;text-align:center"><div style="font-size:var(--min-label);color:var(--mid);margin-bottom:.3rem">原本</div><div style="font-size:var(--min-font);font-weight:700;color:var(--ink)">維他命</div><div style="font-size:var(--min-label);color:var(--mid);margin-top:.3rem">「促進頭皮健康」</div></div>`;
-      h+=`<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="var(--purple)" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`;
-      h+=`<div style="background:rgba(168,85,247,.1);border-radius:8px;padding:1rem;text-align:center"><div style="font-size:var(--min-label);color:var(--purple);margin-bottom:.3rem">包裝成</div><div style="font-size:var(--min-font);font-weight:700;color:var(--ink)">止痛藥</div><div style="font-size:var(--min-label);color:var(--mid);margin-top:.3rem">「治療禿頭」</div></div>`;
-      h+=`</div></div>`;
-      h+=`<div class="card-mask" style="border-radius:12px"><div style="font-size:clamp(1.2rem,2vw,1.5rem);font-weight:700;color:var(--ink)">Rogaine 落建</div></div>`;
-      h+=`</div>`;
-      // 更多案例
-      h+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">`;
-      [{brand:'Canva',from:'設計工具',to:'「讓你 10 分鐘做出專業簡報」',col:'var(--cyan)'},{brand:'ChatGPT',from:'聊天機器人',to:'「讓你 1 分鐘寫完要想 1 小時的東西」',col:'var(--green)'}].forEach(ex=>{
-        h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked')" style="min-height:auto">`;
-        h+=`<div class="card-answer" style="background:${ex.col}12;border:1px solid ${ex.col}30;border-radius:8px;padding:.8rem 1rem">`;
-        h+=`<div style="font-weight:700;color:var(--ink);margin-bottom:.3rem">${ex.brand}</div>`;
-        h+=`<div style="font-size:var(--min-label);color:var(--mid)">${ex.from} → ${ex.to}</div>`;
+      const v2cases=[
+        {brand:'Rogaine 落建',col:'var(--orange)',colR:'rgba(255,107,0',
+         vitamin:'促進頭皮健康的保養品',
+         anxiety:'掉髮者害怕失去自我形象與吸引力',
+         painkiller:'治療禿頭，重拾自信',
+         icon:'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0-3-3.87"/></svg>'},
+        {brand:'Canva',col:'var(--cyan)',colR:'rgba(6,182,212',
+         vitamin:'簡單易用的設計工具',
+         anxiety:'做的東西看起來很素人，顯得不專業',
+         painkiller:'10 分鐘讓你看起來像設計師',
+         icon:'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>'},
+        {brand:'Duolingo',col:'var(--green)',colR:'rgba(34,197,94',
+         vitamin:'每天幾分鐘學語言',
+         anxiety:'你的競爭對手已經在學了，你還沒開始',
+         painkiller:'連續學習 365 天，別人永遠追不上你',
+         icon:'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>'}
+      ];
+      h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;max-width:1100px;margin:0 auto;position:relative;z-index:1;align-items:stretch">`;
+      v2cases.forEach(c=>{
+        h+=`<div style="background:${c.colR},.06);border:1.5px solid ${c.colR},.25);border-radius:14px;padding:1.1rem;display:flex;flex-direction:column;gap:.5rem">`;
+        h+=`<div style="display:flex;align-items:center;gap:.55rem;margin-bottom:.1rem">`;
+        h+=`<div style="color:${c.col}">${c.icon}</div>`;
+        h+=`<div style="font-size:1rem;font-weight:800;color:${c.col}">${c.brand}</div>`;
         h+=`</div>`;
-        h+=`<div class="card-mask" style="border-radius:8px"><div style="font-weight:700;color:var(--ink)">${ex.brand}</div></div>`;
+        // Before zone
+        h+=`<div style="background:rgba(255,255,255,.04);border-radius:8px;padding:.55rem .7rem">`;
+        h+=`<div style="font-size:var(--min-label);font-weight:700;color:rgba(255,255,255,.35);margin-bottom:.2rem;letter-spacing:.06em">原本定位</div>`;
+        h+=`<div style="font-size:var(--min-font);color:rgba(255,255,255,.6)">${c.vitamin}</div>`;
+        h+=`</div>`;
+        // Arrow + anxiety
+        h+=`<div style="display:flex;align-items:center;gap:.5rem;padding:.45rem .7rem;background:rgba(255,107,0,.08);border-left:2px solid rgba(255,107,0,.4);border-radius:0 7px 7px 0">`;
+        h+=`<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--orange)" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`;
+        h+=`<div style="font-size:var(--min-label);color:rgba(255,107,0,.85);line-height:1.4">${c.anxiety}</div>`;
+        h+=`</div>`;
+        // After zone
+        h+=`<div style="background:${c.colR},.12);border-radius:8px;padding:.55rem .7rem;margin-top:.1rem">`;
+        h+=`<div style="font-size:var(--min-label);font-weight:700;color:${c.col};margin-bottom:.2rem;letter-spacing:.06em">止痛藥版</div>`;
+        h+=`<div style="font-size:var(--min-font);font-weight:600;color:var(--ink)">${c.painkiller}</div>`;
+        h+=`</div>`;
         h+=`</div>`;
       });
-      h+=`</div></div>`;
-      h+=`<div class="tip-box" style="max-width:850px;margin:1rem auto 0;position:relative;z-index:1"><strong style="color:var(--purple)">包裝的關鍵：</strong>找到他已經在焦慮的問題，把你的功能連結上去</div>`;
+      h+=`</div>`;
+      h+=`<div class="tip-box" style="max-width:1100px;margin:.8rem auto 0;position:relative;z-index:1"><strong style="color:var(--purple)">包裝公式：</strong>「___功能」→ 挖出用戶已在焦慮的那件事 → 用他的焦慮語言重新說你的解法</div>`;
       break;}
     case 'tpo-pain':{
       h+=blob('rgba(59,130,246,.08)','rgba(168,85,247,.05)');
