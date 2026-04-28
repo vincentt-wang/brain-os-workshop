@@ -4702,33 +4702,33 @@ function renderSlide(sd,idx){
       const gtmSteps=[
         {q:'誰？',label:'Audience',col:'var(--red)',colR:'rgba(255,32,85',
          icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
-         answer:'你的 ICP，不是「所有人」',detail:'誰痛得最深？誰最急需解決？先服務他，再擴大。'},
+         answer:'你的 ICP，不是「所有人」',detail:'誰痛得最深、最急？先服務他一個，再往外擴。'},
         {q:'說什麼？',label:'Message',col:'var(--orange)',colR:'rgba(255,107,0',
          icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
-         answer:'對應他的痛，用他的語言說',detail:'不說功能，說結果。不說「我們有 AI」，說「你的問題消失了」。'},
+         answer:'用他的語言，說他的痛',detail:'不說功能，說結果。讓他看見使用後的自己。'},
         {q:'在哪說？',label:'Channel',col:'var(--blue)',colR:'rgba(59,130,246',
          icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>',
-         answer:'他在哪，你就在哪說',detail:'不是你喜歡的平台，是他出現的地方。找到他每天刷的那個地方。'},
+         answer:'他在哪，你就在哪說',detail:'不是你喜歡的平台，是他每天出現的地方。'},
         {q:'何時說？',label:'Timing',col:'var(--green)',colR:'rgba(34,197,94',
          icon:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
-         answer:'對的時機 × 對的路徑 = 爆發',detail:'市場正在成長嗎？趨勢站在你這邊嗎？太早死，太晚被淹。'},
+         answer:'時機 × 路徑 = 爆發',detail:'趨勢站你這邊，平凡執行也能爆發。太早或太晚都是死局。'},
       ];
-      h+=`<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;max-width:960px;margin:0 auto .7rem;position:relative;z-index:1">`;
+      h+=`<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;max-width:1160px;margin:0 auto .7rem;position:relative;z-index:1;align-items:stretch">`;
       gtmSteps.forEach((s,i)=>{
         h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked')" style="min-height:155px">`;
-        h+=`<div class="card-answer" style="background:${s.colR},.1);border:2px solid ${s.colR},.4);border-radius:12px;padding:1rem;text-align:center">`;
+        h+=`<div class="card-answer" style="background:${s.colR},.1);border:2px solid ${s.colR},.4);border-radius:12px;padding:1rem;text-align:center;height:100%;display:flex;flex-direction:column;box-sizing:border-box">`;
         h+=`<div style="color:${s.col};margin-bottom:.3rem">${s.icon}</div>`;
         h+=`<div style="font-size:var(--min-label);font-weight:700;color:${s.col};margin-bottom:.15rem;letter-spacing:.08em">0${i+1}</div>`;
         h+=`<div style="font-size:clamp(.95rem,1.5vw,1.15rem);font-weight:800;color:var(--ink);margin-bottom:.35rem">${s.label}</div>`;
-        h+=`<div style="font-size:var(--min-label);color:${s.col};margin-bottom:.3rem;font-weight:600">${s.answer}</div>`;
-        h+=`<div style="font-size:var(--min-label);color:var(--mid);line-height:1.5">${s.detail}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:${s.col};margin-bottom:.3rem;font-weight:600;min-height:2.4rem;line-height:1.45">${s.answer}</div>`;
+        h+=`<div style="font-size:var(--min-label);color:var(--mid);line-height:1.5;margin-top:auto">${s.detail}</div>`;
         h+=`</div>`;
         h+=`<div class="card-mask" style="border-radius:12px;background:${s.colR},.22)"><div style="color:${s.col}">${s.icon}</div><div style="font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:800;color:var(--ink);margin-top:.3rem">${s.q}</div><div style="font-size:var(--min-label);color:${s.col};margin-top:.2rem">${s.label}</div></div>`;
         h+=`</div>`;
       });
       h+=`</div>`;
-      // Timing unlock card
-      h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked')" style="max-width:960px;margin:0 auto;position:relative;z-index:1;min-height:90px">`;
+      // Timing bottom card
+      h+=`<div class="unlock-card" onclick="this.classList.toggle('unlocked')" style="max-width:1160px;margin:0 auto;position:relative;z-index:1;min-height:90px">`;
       h+=`<div class="card-answer" style="background:linear-gradient(135deg,rgba(34,197,94,.12),rgba(6,182,212,.07));border:2px solid rgba(34,197,94,.45);border-radius:14px;padding:.85rem 1.2rem;display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:center">`;
       h+=`<div style="text-align:center;min-width:90px">`;
       h+=`<div style="font-size:var(--min-label);font-weight:800;color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.2rem">最重要的元素</div>`;
@@ -4737,13 +4737,12 @@ function renderSlide(sd,idx){
       h+=`</div>`;
       h+=`<div style="border-left:2px solid rgba(34,197,94,.3);padding-left:1rem">`;
       h+=`<div style="font-size:clamp(1rem,1.6vw,1.2rem);font-weight:700;color:var(--ink);margin-bottom:.3rem">「站在風口上，豬都會飛。」</div>`;
-      h+=`<div style="font-size:var(--min-label);color:var(--mid);margin-bottom:.35rem">— 雷軍（小米創辦人）</div>`;
-      h+=`<div style="font-size:var(--min-font);color:rgba(255,255,255,.75)">Audience、Message、Channel 都對，但時機錯了，再好的產品也難逃失敗。<br>反過來，站在正在成長的趨勢上，平凡的執行也能帶來爆發性結果。</div>`;
+      h+=`<div style="font-size:var(--min-label);color:var(--mid);margin-bottom:.35rem">雷軍（小米創辦人）</div>`;
+      h+=`<div style="font-size:var(--min-font);color:rgba(255,255,255,.75)">Audience、Message、Channel 都對，但時機錯了，再好的產品也難逃失敗。<br>站在正在成長的趨勢上，平凡的執行也能帶來爆發性結果。</div>`;
       h+=`</div></div>`;
       h+=`<div class="card-mask" style="border-radius:14px;background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(6,182,212,.05));border:2px solid rgba(34,197,94,.3)">`;
       h+=`<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
       h+=`<div style="font-size:clamp(1.2rem,2vw,1.6rem);font-weight:800;color:var(--green);margin-top:.5rem">GTM 四要素中，最重要的是哪一個？</div>`;
-      h+=`<div style="font-size:var(--min-font);color:rgba(255,255,255,.35);margin-top:.4rem">點擊揭曉答案</div>`;
       h+=`</div>`;
       h+=`</div>`;
       break;}
